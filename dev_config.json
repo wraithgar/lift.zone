@@ -1,0 +1,7 @@
+{
+    "isDev": true,
+    "electricfence": {
+        "path": "public",
+        "url": "/"
+    }
+}

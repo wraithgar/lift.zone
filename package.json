@@ -27,5 +27,6 @@
     "hapi": "^6.11.1",
     "moonboots_hapi": "^2.4.0",
     "templatizer": "^1.0.1"
-  }
+  },
+  "private": true
 }

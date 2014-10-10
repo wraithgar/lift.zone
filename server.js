@@ -35,6 +35,7 @@ server.pack.register([
         options: config.electricfence
     }
 ], function () {
-    server.start();
-    server.log(['info'], 'lift.gar.zone running on the year ' + server.info.port);
+    server.start(function () {
+        server.log(['info'], 'lift.gar.zone running on the year ' + server.info.port);
+    });
 });

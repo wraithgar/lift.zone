@@ -23,8 +23,8 @@
     "electricfence": "^1.1.1",
     "getconfig": "^0.3.0",
     "good": "^3.0.1",
-    "hapi": "^6.11.1",
-    "moonboots_hapi": "^2.4.0",
+    "hapi": "^7.0.0",
+    "moonboots_hapi": "^3.0.0",
     "templatizer": "^1.0.1"
   },
   "private": true,

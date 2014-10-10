@@ -7,6 +7,11 @@ module.exports = View.extend({
         'model.formatted': {
             type: 'text',
             hook: 'rep'
+        },
+        'model.nonpr': {
+            type: 'booleanClass',
+            name: 'nonpr',
+            hook: 'pr'
         }
     }
 });

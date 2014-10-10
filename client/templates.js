@@ -34,7 +34,7 @@
 
     // includes/bbcodeRep.jade compiled template
     templatizer["includes"]["bbcodeRep"] = function tmpl_includes_bbcodeRep() {
-        return '<div class="rep">- <span data-hook="rep"></span></div>';
+        return '<div class="rep">- <span data-hook="pr">[b]</span><span data-hook="rep"></span><span data-hook="pr">[/b]</span></div>';
     };
 
     // includes/markdown.jade compiled template
@@ -51,7 +51,7 @@
 
     // includes/markdownRep.jade compiled template
     templatizer["includes"]["markdownRep"] = function tmpl_includes_markdownRep() {
-        return '<div class="rep">&gt;<span data-hook="rep"></span></div>';
+        return '<div class="rep">&gt;<span data-hook="pr">**</span><span data-hook="rep"></span><span data-hook="pr">**</span></div>';
     };
 
     // pages/home.jade compiled template

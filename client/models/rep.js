@@ -7,7 +7,8 @@ module.exports = Model.extend({
         'unit': {
             type: 'string',
             values: ['lb', 'kg']
-        }
+        },
+        'pr': ['boolean', true, false]
     },
     derived: {
         formatted: {
@@ -26,6 +27,12 @@ module.exports = Model.extend({
                     formatted.push('reps');
                 }
                 return formatted.join(' ');
+            }
+        },
+        nonpr: {
+            deps: ['pr'],
+            fn: function () {
+                return !this.pr;
             }
         }
     }

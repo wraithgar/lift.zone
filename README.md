@@ -1,3 +1,3 @@
-#lifts.gar.zone
+#lift.gar.zone
 
 Workout parser thingy

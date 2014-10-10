@@ -1,2 +1,23 @@
 section.page.home
-  h1 Home
+  row
+    .col-sm-12
+      h1 Workout Log
+      ol
+        li Type your workout in the box
+        li Select an output format
+        li Copy and paste it wherever
+        li Have a great day
+  row
+    .col-sm-6
+      form(role='form')
+        .form-group
+          label.radio Format
+          input(type='radio' name='format' value='md' data-hook='format')
+          =" Markdown "
+          input(type='radio' name='format' value='bb' data-hook='format')
+          =" BBCode "
+        .form-group
+          label Workout
+          textarea.form-control(data-hook='raw' rows=50 placeholder='Squat 255x5 255x5\nBench 185x5x4' id='rawInput')
+    .col-sm-6
+      div(data-hook='formatted')

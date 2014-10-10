@@ -1,8 +1,8 @@
+/*global app*/
 var View = require('ampersand-view');
 var ViewSwitcher = require('ampersand-view-switcher');
 var dom = require('ampersand-dom');
 var templates = require('../templates');
-
 
 module.exports = View.extend({
     template: templates.body,
@@ -15,7 +15,6 @@ module.exports = View.extend({
     },
     render: function () {
         this.renderWithTemplate();
-
         this.pages = new ViewSwitcher(this.queryByHook('page-container'));
     },
     handlePage: function (pageView) {

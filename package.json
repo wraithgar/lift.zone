@@ -4,7 +4,6 @@
   "description": "Website to parse your workouts",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,6 +18,7 @@
     "ampersand-state": "^4.3.12",
     "ampersand-view": "^7.1.4",
     "ampersand-view-switcher": "^1.0.5",
+    "andlog": "^1.0.0",
     "caber": "^1.0.1",
     "domready": "^1.0.7",
     "electricfence": "^1.1.1",
@@ -28,5 +28,9 @@
     "moonboots_hapi": "^2.4.0",
     "templatizer": "^1.0.1"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "jshint": "^2.5.6",
+    "precommit-hook": "^1.0.7"
+  }
 }

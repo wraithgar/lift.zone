@@ -56,7 +56,7 @@
 
     // pages/home.jade compiled template
     templatizer["pages"]["home"] = function tmpl_pages_home() {
-        return '<section class="page home"><row><div class="col-sm-12"><h1>Workout Log</h1><ol><li>Type your workout in the box</li><li>Select an output format</li><li>Copy and paste it wherever</li><li>Have a great day</li></ol></div></row><row><div class="col-sm-6"><form role="form"><div class="form-group"><label class="radio">Format</label><input type="radio" name="format" value="md" data-hook="format"/> Markdown <input type="radio" name="format" value="bb" data-hook="format"/> BBCode </div><div class="form-group"><label>Workout</label><textarea data-hook="raw" rows="50" placeholder="Squat 255x5 255x5\nBench 185x5x4" id="rawInput" class="form-control"></textarea></div></form></div><div class="col-sm-6"><div data-hook="formatted"></div></div></row></section>';
+        return '<section class="page home"><row><div class="col-sm-6"><form role="form"><div class="form-group"><label class="radio">Format</label><input type="radio" name="format" value="md" data-hook="format"/> Markdown <input type="radio" name="format" value="bb" data-hook="format"/> BBCode </div><div class="form-group"><label>Workout</label><textarea data-hook="raw" rows="50" placeholder="Squat 255x5 255x5\nBench 185x5x4" id="rawInput" class="form-control"></textarea></div></form></div><div class="col-sm-6"><div data-hook="formatted" class="workout"></div><div class="instructions"><h1>Workout Log</h1><ol><li>Type your workout in the box</li><li>Select an output format</li><li>Copy and paste it wherever</li><li>Have a great day</li></ol></div></div></row></section>';
     };
 
     return templatizer;

@@ -1,0 +1,9 @@
+.workout:empty + .instructions {
+    display: block;
+}
+.workout:empty ~ .instructions {
+    display: block;
+}
+.instructions {
+    display: none;
+}

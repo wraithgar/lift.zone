@@ -1,3 +1,4 @@
+/*global app*/
 var Router = require('ampersand-router');
 var HomePage = require('./pages/home');
 var FitocracyPage = require('./pages/fitocracy');
@@ -8,9 +9,11 @@ module.exports = Router.extend({
         'fitocracy': 'fitocracy'
     },
     home: function () {
+        app.activities.reset();
         this.trigger('page', new HomePage());
     },
     fitocracy: function () {
+        app.activities.reset();
         this.trigger('page', new FitocracyPage());
     }
 });

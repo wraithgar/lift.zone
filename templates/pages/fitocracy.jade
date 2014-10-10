@@ -1,0 +1,23 @@
+section.page.home
+  row
+    .col-sm-6
+      form(role='form')
+        .form-group
+          label.radio Format
+          input(type='radio' name='format' value='md' data-hook='format')
+          =" Markdown "
+          input(type='radio' name='format' value='bb' data-hook='format')
+          =" BBCode "
+        .form-group
+          label Workout
+          textarea.form-control(data-hook='raw' rows=50 placeholder='Squat 255x5 255x5\nBench 185x5x4\nDeadlift 450x5, 500x1*' id='rawInput')
+    .col-sm-6
+      .workout(data-hook='formatted')
+      .instructions
+        h1 Workout Log from Fitocracy
+        ol
+          li Copy your workout on fitocracy
+          li Paste your workout in the box
+          li Select an output format
+          li Copy and paste it wherever
+          li Have a great day

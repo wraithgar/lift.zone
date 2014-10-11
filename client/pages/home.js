@@ -4,7 +4,9 @@ var caber = require('caber');
 var templates = require('../templates');
 var debounce = require('../lib/debounce');
 var MarkdownView = require('../views/markdown');
+var MarkdownCreditsView = require('../views/markdownCredits');
 var BBCodeView = require('../views/bbcode');
+var BBCodeCreditsView = require('../views/bbcodeCredits');
 
 module.exports = View.extend({
     template: templates.pages.home,
@@ -31,11 +33,14 @@ module.exports = View.extend({
         e.preventDefault();
         if (this.formattedView) {
             this.formattedView.remove();
+            this.creditsView.remove();
         }
         if (e.target.value === 'md') {
             this.formattedView = this.renderCollection(app.activities, MarkdownView, this.queryByHook('formatted'));
+            this.creditsView = this.renderSubview(new MarkdownCreditsView(), this.queryByHook('credits'));
         } else {
             this.formattedView = this.renderCollection(app.activities, BBCodeView, this.queryByHook('formatted'));
+            this.creditsView = this.renderSubview(new BBCodeCreditsView(), this.queryByHook('credits'));
         }
     }
 });

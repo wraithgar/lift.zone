@@ -1,0 +1,46 @@
+section.page
+  .col-sm-8
+    h1 531 Calculator
+    .workout(data-hook='results')
+    .instructions
+      ol
+        li Type your current maxes into the inputs
+        li See what your 531 workouts calculate to
+        li Go into the gym and lift things
+        li Later, you can add arbitrary weights to the results for subsequent cycles
+        li Don't forget to eat
+  .col-sm-4
+    form.form-horizontal(role='form')
+      .row
+        .form-group.form-group-sm
+          label.col-sm-3 OHP
+          .col-sm-4
+            input.form-control(type='text' data-hook='ohp-weight' placeholder='weight')
+          .col-sm-3
+            input.form-control(type='text' data-hook='ohp-reps' placeholder='reps')
+          .col-sm-2
+            input.form-control(type='text' data-hook='ohp-extra' placeholder='+')
+        .form-group.form-group-sm
+          label.col-sm-3 Squat
+          .col-sm-4
+            input.form-control(type='text' data-hook='squat-weight' placeholder='weight')
+          .col-sm-3
+            input.form-control(type='text' data-hook='squat-reps' placeholder='reps')
+          .col-sm-2
+            input.form-control(type='text' data-hook='squat-extra' placeholder='+')
+        .form-group.form-group-sm
+          label.col-sm-3 Bench
+          .col-sm-4
+            input.form-control(type='text' data-hook='bench-weight' placeholder='weight')
+          .col-sm-3
+            input.form-control(type='text' data-hook='bench-reps' placeholder='reps')
+          .col-sm-2
+            input.form-control(type='text' data-hook='benh-extra' placeholder='+')
+        .form-group.form-group-sm
+          label.col-sm-3 Deadlift
+          .col-sm-4
+            input.form-control(type='text' data-hook='deadlift-weight' placeholder='weight')
+          .col-sm-3
+            input.form-control(type='text' data-hook='deadlift-reps' placeholder='reps')
+          .col-sm-2
+            input.form-control(type='text' data-hook='deadlift-extra' placeholder='+')

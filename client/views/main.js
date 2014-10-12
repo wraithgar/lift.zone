@@ -18,6 +18,7 @@ module.exports = View.extend({
         this.pages = new ViewSwitcher(this.queryByHook('page-container'));
     },
     handlePage: function (pageView) {
+        app.currentPage = pageView;
         this.pages.set(pageView);
         this.setActiveNavItem();
     },

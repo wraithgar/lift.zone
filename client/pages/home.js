@@ -19,10 +19,10 @@ module.exports = View.extend({
     },
     rawChanged: function (e) {
         e.preventDefault();
-        this.throttledParse();
+        this.throttledParse(e);
     },
-    parseRaw: function () {
-        var raw = this.queryByHook('raw').value;
+    parseRaw: function (e) {
+        var raw = e.target.value;
         var parsed = caber.parse(raw);
         var models = Object.keys(parsed).map(function (activity) {
             return {name: activity, reps: parsed[activity]};

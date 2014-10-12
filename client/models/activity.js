@@ -3,7 +3,7 @@ var Reps = require('./reps');
 
 module.exports = Model.extend({
     props: {
-        'name': 'string'
+        name: 'string'
     },
     idAttribute: 'name',
     collections: {

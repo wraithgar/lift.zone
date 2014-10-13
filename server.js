@@ -36,6 +36,6 @@ server.pack.register([
     }
 ], function () {
     server.start(function () {
-        server.log(['info'], 'lift.gar.zone running on the year ' + server.info.port);
+        server.log(['info'], 'lift.zone running on the year ' + server.info.port);
     });
 });

@@ -1,6 +1,7 @@
 var View = require('ampersand-view');
 var templates = require('../templates');
 var LiftView = require('../views/lift531');
+var debounce = require('../lib/debounce');
 
 var fuzzyNumber = function fuzzyNumber(value) {
     if (value !== '') {
@@ -17,10 +18,14 @@ module.exports = View.extend({
         this.squatView = this.registerSubview(new LiftView({model: this.model.squat}));
         this.benchView = this.registerSubview(new LiftView({model: this.model.bench}));
         this.deadliftView = this.registerSubview(new LiftView({model: this.model.deadlift}));
-        this.listenTo(this.model.ohp, 'change:ready', this.renderOHP);
-        this.listenTo(this.model.squat, 'change:ready', this.renderSquat);
-        this.listenTo(this.model.bench, 'change:ready', this.renderBench);
-        this.listenTo(this.model.deadlift, 'change:ready', this.renderDeadlift);
+        this.saveModel = debounce(this.model.save.bind(this.model), 250);
+    },
+    render: function () {
+        this.renderWithTemplate();
+        this.listenToAndRun(this.model.ohp, 'change:ready', this.renderOHP);
+        this.listenToAndRun(this.model.squat, 'change:ready', this.renderSquat);
+        this.listenToAndRun(this.model.bench, 'change:ready', this.renderBench);
+        this.listenToAndRun(this.model.deadlift, 'change:ready', this.renderDeadlift);
     },
     events: {
         'input [data-hook=ohp-weight]': 'setOHPWeight',
@@ -39,14 +44,17 @@ module.exports = View.extend({
     setOHPWeight: function (e) {
         e.preventDefault();
         this.model.ohp.weight = fuzzyNumber(e.target.value);
+        this.saveModel();
     },
     setOHPReps: function (e) {
         e.preventDefault();
         this.model.ohp.reps = fuzzyNumber(e.target.value);
+        this.saveModel();
     },
     setOHPExtra: function (e) {
         e.preventDefault();
         this.model.ohp.extra = fuzzyNumber(e.target.value);
+        this.saveModel();
     },
     renderOHP: function () {
         if (this.model.ohp.ready) {
@@ -58,14 +66,17 @@ module.exports = View.extend({
     setSquatWeight: function (e) {
         e.preventDefault();
         this.model.squat.weight = fuzzyNumber(e.target.value);
+        this.saveModel();
     },
     setSquatReps: function (e) {
         e.preventDefault();
         this.model.squat.reps = fuzzyNumber(e.target.value);
+        this.saveModel();
     },
     setSquatExtra: function (e) {
         e.preventDefault();
         this.model.squat.extra = fuzzyNumber(e.target.value);
+        this.saveModel();
     },
     renderSquat: function () {
         if (this.model.squat.ready) {
@@ -77,14 +88,17 @@ module.exports = View.extend({
     setBenchWeight: function (e) {
         e.preventDefault();
         this.model.bench.weight = fuzzyNumber(e.target.value);
+        this.saveModel();
     },
     setBenchReps: function (e) {
         e.preventDefault();
         this.model.bench.reps = fuzzyNumber(e.target.value);
+        this.saveModel();
     },
     setBenchExtra: function (e) {
         e.preventDefault();
         this.model.bench.extra = fuzzyNumber(e.target.value);
+        this.saveModel();
     },
     renderBench: function () {
         if (this.model.bench.ready) {
@@ -96,14 +110,17 @@ module.exports = View.extend({
     setDeadliftWeight: function (e) {
         e.preventDefault();
         this.model.deadlift.weight = fuzzyNumber(e.target.value);
+        this.saveModel();
     },
     setDeadliftReps: function (e) {
         e.preventDefault();
         this.model.deadlift.reps = fuzzyNumber(e.target.value);
+        this.saveModel();
     },
     setDeadliftExtra: function (e) {
         e.preventDefault();
         this.model.deadlift.extra = fuzzyNumber(e.target.value);
+        this.saveModel();
     },
     renderDeadlift: function () {
         if (this.model.deadlift.ready) {

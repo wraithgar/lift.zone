@@ -33,7 +33,7 @@ var calc = module.exports = {
         return String(calc.mround(weight * 0.75, 5)) + ' lb';
     },
     wave3_2: function (weight) {
-        return String(calc.mround(weight * 0.95, 5)) + ' lb';
+        return String(calc.mround(weight * 0.85, 5)) + ' lb';
     },
     wave3_3: function (weight) {
         return String(calc.mround(weight * 0.95, 5)) + ' lb';

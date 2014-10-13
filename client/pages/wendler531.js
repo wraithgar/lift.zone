@@ -1,7 +1,6 @@
-/*global app*/
 var View = require('ampersand-view');
 var templates = require('../templates');
-var OHPView = require('../views/ohp531');
+var LiftView = require('../views/lift531');
 
 var fuzzyNumber = function fuzzyNumber(value) {
     if (value !== '') {
@@ -14,8 +13,14 @@ var fuzzyNumber = function fuzzyNumber(value) {
 module.exports = View.extend({
     template: templates.pages.wendler531,
     initialize: function () {
-        this.ohpView = this.registerSubview(new OHPView({model: app.wendler531.ohp}));
-        this.listenTo(app.wendler531.ohp, 'change:ready', this.renderOHP);
+        this.ohpView = this.registerSubview(new LiftView({model: this.model.ohp}));
+        this.squatView = this.registerSubview(new LiftView({model: this.model.squat}));
+        this.benchView = this.registerSubview(new LiftView({model: this.model.bench}));
+        this.deadliftView = this.registerSubview(new LiftView({model: this.model.deadlift}));
+        this.listenTo(this.model.ohp, 'change:ready', this.renderOHP);
+        this.listenTo(this.model.squat, 'change:ready', this.renderSquat);
+        this.listenTo(this.model.bench, 'change:ready', this.renderBench);
+        this.listenTo(this.model.deadlift, 'change:ready', this.renderDeadlift);
     },
     events: {
         'input [data-hook=ohp-weight]': 'setOHPWeight',
@@ -33,18 +38,18 @@ module.exports = View.extend({
     },
     setOHPWeight: function (e) {
         e.preventDefault();
-        app.wendler531.ohp.weight = fuzzyNumber(e.target.value);
+        this.model.ohp.weight = fuzzyNumber(e.target.value);
     },
     setOHPReps: function (e) {
         e.preventDefault();
-        app.wendler531.ohp.reps = fuzzyNumber(e.target.value);
+        this.model.ohp.reps = fuzzyNumber(e.target.value);
     },
     setOHPExtra: function (e) {
         e.preventDefault();
-        app.wendler531.ohp.extra = fuzzyNumber(e.target.value);
+        this.model.ohp.extra = fuzzyNumber(e.target.value);
     },
     renderOHP: function () {
-        if (app.wendler531.ohp.ready) {
+        if (this.model.ohp.ready) {
             this.queryByHook('results').appendChild(this.ohpView.el);
         } else {
             if (this.ohpView.el.parentNode) { this.ohpView.el.parentNode.removeChild(this.ohpView.el); }
@@ -52,20 +57,59 @@ module.exports = View.extend({
     },
     setSquatWeight: function (e) {
         e.preventDefault();
+        this.model.squat.weight = fuzzyNumber(e.target.value);
     },
     setSquatReps: function (e) {
         e.preventDefault();
+        this.model.squat.reps = fuzzyNumber(e.target.value);
+    },
+    setSquatExtra: function (e) {
+        e.preventDefault();
+        this.model.squat.extra = fuzzyNumber(e.target.value);
+    },
+    renderSquat: function () {
+        if (this.model.squat.ready) {
+            this.queryByHook('results').appendChild(this.squatView.el);
+        } else {
+            if (this.squatView.el.parentNode) { this.squatView.el.parentNode.removeChild(this.squatView.el); }
+        }
     },
     setBenchWeight: function (e) {
         e.preventDefault();
+        this.model.bench.weight = fuzzyNumber(e.target.value);
     },
     setBenchReps: function (e) {
         e.preventDefault();
+        this.model.bench.reps = fuzzyNumber(e.target.value);
+    },
+    setBenchExtra: function (e) {
+        e.preventDefault();
+        this.model.bench.extra = fuzzyNumber(e.target.value);
+    },
+    renderBench: function () {
+        if (this.model.bench.ready) {
+            this.queryByHook('results').appendChild(this.benchView.el);
+        } else {
+            if (this.benchView.el.parentNode) { this.benchView.el.parentNode.removeChild(this.benchView.el); }
+        }
     },
     setDeadliftWeight: function (e) {
         e.preventDefault();
+        this.model.deadlift.weight = fuzzyNumber(e.target.value);
     },
     setDeadliftReps: function (e) {
         e.preventDefault();
+        this.model.deadlift.reps = fuzzyNumber(e.target.value);
     },
+    setDeadliftExtra: function (e) {
+        e.preventDefault();
+        this.model.deadlift.extra = fuzzyNumber(e.target.value);
+    },
+    renderDeadlift: function () {
+        if (this.model.deadlift.ready) {
+            this.queryByHook('results').appendChild(this.deadliftView.el);
+        } else {
+            if (this.deadliftView.el.parentNode) { this.deadliftView.el.parentNode.removeChild(this.deadliftView.el); }
+        }
+    }
 });

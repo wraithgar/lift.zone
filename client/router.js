@@ -4,6 +4,7 @@ var HomePage = require('./pages/home');
 var FitocracyPage = require('./pages/fitocracy');
 var AboutPage = require('./pages/about');
 var Wendler531Page = require('./pages/wendler531');
+var Wendler531Model = require('./models/wendler531');
 
 module.exports = Router.extend({
     routes: {
@@ -24,6 +25,8 @@ module.exports = Router.extend({
         this.trigger('page', new AboutPage());
     },
     calc531: function () {
-        this.trigger('page', new Wendler531Page());
+        this.trigger('page', new Wendler531Page({
+            model: new Wendler531Model()
+        }));
     }
 });

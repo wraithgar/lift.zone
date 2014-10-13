@@ -2,9 +2,13 @@ var View = require('ampersand-view');
 var templates = require('../templates');
 
 module.exports = View.extend({
-    template: templates.includes.ohp531,
+    template: templates.includes.lift531,
     autoRender: true,
     bindings: {
+        'model.name': {
+            type: 'text',
+            hook: 'name'
+        },
         'model.warmup_1': {
             type: 'text',
             hook: 'warmup_1'

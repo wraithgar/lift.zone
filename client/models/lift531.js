@@ -3,6 +3,7 @@ var calc = require('../lib/wendlerCalc');
 
 module.exports = Model.extend({
     props: {
+        name: 'string',
         weight: 'number',
         reps: 'number',
         extra: 'number',

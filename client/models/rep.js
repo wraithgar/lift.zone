@@ -4,10 +4,9 @@ module.exports = Model.extend({
     props: {
         'weight': 'number',
         'reps': 'number',
-        'unit': {
-            type: 'string',
-            values: ['lb', 'kg']
-        },
+        'time': 'string',
+        'distance': 'number',
+        'unit': 'string',
         'pr': ['boolean', true, false]
     },
     derived: {
@@ -15,12 +14,22 @@ module.exports = Model.extend({
             deps: ['weight', 'reps', 'unit'],
             fn: function () {
                 var formatted = [];
-                if (this.weight && this.reps) {
-                    formatted.push('x');
+                if (this.time) {
+                    formatted.push(this.time);
+                }
+                if (this.time && this.distance) {
+                    formatted.push('|');
+                }
+                if (this.distance) {
+                    formatted.push(this.distance);
+                    formatted.push(this.unit);
                 }
                 if (this.weight) {
-                    formatted.unshift(this.unit);
-                    formatted.unshift(this.weight);
+                    formatted.push(this.weight);
+                    formatted.push(this.unit);
+                }
+                if (this.weight && this.reps) {
+                    formatted.push('x');
                 }
                 if (this.reps) {
                     formatted.push(this.reps);
@@ -37,4 +46,3 @@ module.exports = Model.extend({
         }
     }
 });
-

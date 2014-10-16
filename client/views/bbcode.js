@@ -1,6 +1,26 @@
 var View = require('ampersand-view');
-var RepView = require('./bbcodeRep');
+var GroupedCollectionView = require('ampersand-grouped-collection-view');
 var templates = require('../templates');
+
+var RepItemView = View.extend({
+    template: templates.includes.bbcodeRepItem,
+    bindings: {
+        'model.formatted': {
+            type: 'text',
+            hook: 'rep'
+        },
+        'model.nonpr': {
+            type: 'booleanClass',
+            name: 'nonpr',
+            hook: 'pr'
+        }
+    }
+});
+
+var RepGroupView = View.extend({
+    template: templates.includes.bbcodeRepGroup
+});
+
 
 module.exports = View.extend({
     template: templates.includes.bbcode,
@@ -12,6 +32,22 @@ module.exports = View.extend({
     },
     render: function () {
         this.renderWithTemplate();
-        this.renderCollection(this.model.reps, RepView, this.queryByHook('reps'));
+        var repView = new GroupedCollectionView({
+            collection: this.model.reps,
+            el: this.queryByHook('reps'),
+            itemView: RepItemView,
+            groupView: RepGroupView,
+            groupsWith: function (model) {
+                if (model.collection.length < 6) {
+                    return true;
+                } else {
+                    return (model.collection.indexOf(model) % 3) !== 0;
+                }
+            },
+            prepareGroup: function () {
+                return;
+            }
+        });
+        this.renderSubview(repView);
     }
 });

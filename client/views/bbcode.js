@@ -5,7 +5,7 @@ var templates = require('../templates');
 var RepItemView = View.extend({
     template: templates.includes.bbcodeRepItem,
     bindings: {
-        'model.formatted': {
+        'model.formattedShort': {
             type: 'text',
             hook: 'rep'
         },
@@ -18,7 +18,14 @@ var RepItemView = View.extend({
 });
 
 var RepGroupView = View.extend({
-    template: templates.includes.bbcodeRepGroup
+    template: templates.includes.bbcodeRepGroup,
+    render: function () {
+        this.renderWithTemplate();
+        this.cacheElements({
+            groupEl: '[data-hook=reps]'
+        });
+    }
+
 });
 
 

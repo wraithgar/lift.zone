@@ -51,11 +51,14 @@ module.exports = Model.extend({
                 if (this.distance) {
                     formatted.push(this.distance);
                     formatted.push(' ');
-                    formatted.push(this.unit);
+                    if (this.unit === 'miles') {
+                        formatted.push ('mi');
+                    } else {
+                        formatted.push ('km');
+                    }
                 }
                 if (this.weight) {
                     formatted.push(this.weight);
-                    formatted.push(this.unit);
                 }
                 if (this.weight && this.reps) {
                     formatted.push('x');

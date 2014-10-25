@@ -18,7 +18,8 @@ var RepItemView = View.extend({
 });
 
 var RepGroupView = View.extend({
-    template: templates.includes.markdownRepGroup
+    template: templates.includes.markdownRepGroup,
+    containerEl: '[data-hook=sets]',
 });
 
 
@@ -34,7 +35,6 @@ module.exports = View.extend({
         this.renderWithTemplate();
         var repView = new GroupedCollectionView({
             collection: this.model.reps,
-            el: this.queryByHook('reps'),
             itemView: RepItemView,
             groupView: RepGroupView,
             groupsWith: function (model) {

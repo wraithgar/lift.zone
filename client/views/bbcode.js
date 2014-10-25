@@ -19,13 +19,7 @@ var RepItemView = View.extend({
 
 var RepGroupView = View.extend({
     template: templates.includes.bbcodeRepGroup,
-    render: function () {
-        this.renderWithTemplate();
-        this.cacheElements({
-            groupEl: '[data-hook=reps]'
-        });
-    }
-
+    containerEl: '[data-hook=sets]',
 });
 
 
@@ -41,7 +35,6 @@ module.exports = View.extend({
         this.renderWithTemplate();
         var repView = new GroupedCollectionView({
             collection: this.model.reps,
-            el: this.queryByHook('reps'),
             itemView: RepItemView,
             groupView: RepGroupView,
             groupsWith: function (model) {

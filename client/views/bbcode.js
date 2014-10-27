@@ -19,7 +19,12 @@ var RepItemView = View.extend({
 
 var RepGroupView = View.extend({
     template: templates.includes.bbcodeRepGroup,
-    containerEl: '[data-hook=sets]',
+    render: function () {
+        this.renderWithTemplate();
+        this.cacheElements({
+            groupEl: '[data-hook=repGroup]'
+        });
+    }
 });
 
 
@@ -48,6 +53,6 @@ module.exports = View.extend({
                 return;
             }
         });
-        this.renderSubview(repView);
+        this.renderSubview(repView, this.queryByHook('sets'));
     }
 });

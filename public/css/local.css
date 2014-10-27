@@ -1,8 +1,8 @@
-.instructions {
-    display: none;
-}
 .workout:empty + .instructions {
     display: block;
+}
+.instructions {
+    display: none;
 }
 .nonpr {
     display: none;

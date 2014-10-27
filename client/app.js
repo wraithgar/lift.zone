@@ -1,7 +1,7 @@
 var domready = require('domready');
-var MainView = require('./views/main');
-var Router = require('./router');
-var ActivitiesModel = require('./models/activities');
+var MainView = require('views/main');
+var Router = require('router');
+var ActivitiesModel = require('models/activities');
 var andlog = require('andlog');
 
 window.app = {

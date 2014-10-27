@@ -1,10 +1,10 @@
 /*global app*/
 var Router = require('ampersand-router');
-var HomePage = require('./pages/home');
-var FitocracyPage = require('./pages/fitocracy');
-var AboutPage = require('./pages/about');
-var Wendler531Page = require('./pages/wendler531');
-var Wendler531Model = require('./models/wendler531');
+var HomePage = require('pages/home');
+var FitocracyPage = require('pages/fitocracy');
+var AboutPage = require('pages/about');
+var Wendler531Page = require('pages/wendler531');
+var Wendler531Model = require('models/wendler531');
 
 module.exports = Router.extend({
     routes: {

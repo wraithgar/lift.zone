@@ -26,7 +26,6 @@ module.exports = View.extend({
     parseRaw: function (e) {
         var raw = e.target.value;
         var parsed = caber.parse(raw);
-        console.log(JSON.stringify(parsed));
         var models = Object.keys(parsed).map(function (activity) {
             return {name: activity, reps: parsed[activity]};
         });

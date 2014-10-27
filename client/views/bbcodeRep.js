@@ -4,7 +4,7 @@ var templates = require('../templates');
 module.exports = View.extend({
     template: templates.includes.bbcodeRep,
     bindings: {
-        'model.formatted': {
+        'model.formattedFull': {
             type: 'text',
             hook: 'rep'
         },
@@ -15,4 +15,3 @@ module.exports = View.extend({
         }
     }
 });
-

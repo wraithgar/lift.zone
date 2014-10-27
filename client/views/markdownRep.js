@@ -4,7 +4,7 @@ var templates = require('../templates');
 module.exports = View.extend({
     template: templates.includes.markdownRep,
     bindings: {
-        'model.formatted': {
+        'model.formattedFull': {
             type: 'text',
             hook: 'rep'
         },

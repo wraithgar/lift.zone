@@ -1,6 +1,6 @@
 var View = require('ampersand-view');
 var GroupedCollectionView = require('ampersand-grouped-collection-view');
-var templates = require('../templates');
+var templates = require('templates');
 
 var RepItemView = View.extend({
     template: templates.includes.markdownRepItem,
@@ -34,12 +34,20 @@ module.exports = View.extend({
         'model.name': {
             type: 'text',
             hook: 'name'
+        },
+        'model.comment': {
+            type: 'text',
+            hook: 'comment'
+        },
+        'model.hasComment': {
+            type: 'toggle',
+            hook: 'commentLabel'
         }
     },
     render: function () {
         this.renderWithTemplate();
         var repView = new GroupedCollectionView({
-            collection: this.model.reps,
+            collection: this.model.sets,
             itemView: RepItemView,
             groupView: RepGroupView,
             groupsWith: function (model) {

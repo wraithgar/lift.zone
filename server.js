@@ -20,6 +20,9 @@ server.pack.register([
                 ],
                 beforeBuildJS: function () {
                     templatizer(__dirname + '/templates', __dirname + '/client/templates.js');
+                },
+                browserify: {
+                    'paths': ['./node_modules', './client']
                 }
             }
         }

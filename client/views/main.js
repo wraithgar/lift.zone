@@ -2,7 +2,7 @@
 var View = require('ampersand-view');
 var ViewSwitcher = require('ampersand-view-switcher');
 var dom = require('ampersand-dom');
-var templates = require('../templates');
+var templates = require('templates');
 
 module.exports = View.extend({
     template: templates.body,

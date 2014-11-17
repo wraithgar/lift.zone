@@ -1,14 +1,14 @@
 /*global app*/
 var View = require('ampersand-view');
 var caber = require('caber');
-var templates = require('../templates');
-var debounce = require('../lib/debounce');
-var MarkdownView = require('../views/markdown');
-var MarkdownFullView = require('../views/markdownFull');
-var BBCodeView = require('../views/bbcode');
-var BBCodeFullView = require('../views/bbcodeFull');
-var MarkdownCreditsView = require('../views/markdownCredits');
-var BBCodeCreditsView = require('../views/bbcodeCredits');
+var templates = require('templates');
+var debounce = require('lib/debounce');
+var MarkdownView = require('views/markdown');
+var MarkdownFullView = require('views/markdownFull');
+var BBCodeView = require('views/bbcode');
+var BBCodeFullView = require('views/bbcodeFull');
+var MarkdownCreditsView = require('views/markdownCredits');
+var BBCodeCreditsView = require('views/bbcodeCredits');
 
 module.exports = View.extend({
     template: templates.pages.fitocracy,
@@ -26,10 +26,7 @@ module.exports = View.extend({
     parseRaw: function () {
         var raw = this.queryByHook('raw').value;
         var parsed = caber.fitocracy(raw);
-        var models = Object.keys(parsed).map(function (activity) {
-            return {name: activity, reps: parsed[activity]};
-        });
-        app.activities.reset(models, {parse: true});
+        app.activities.reset(parsed, {parse: true});
     },
     changeFormat: function (e) {
         e.preventDefault();

@@ -1,6 +1,6 @@
 var View = require('ampersand-view');
-var RepView = require('./bbcodeRep');
-var templates = require('../templates');
+var RepView = require('views/bbcodeRep');
+var templates = require('templates');
 
 module.exports = View.extend({
     template: templates.includes.bbcode,
@@ -8,10 +8,18 @@ module.exports = View.extend({
         'model.name': {
             type: 'text',
             hook: 'name'
+        },
+        'model.comment': {
+            type: 'text',
+            hook: 'comment'
+        },
+        'model.hasComment': {
+            type: 'toggle',
+            hook: 'commentLabel'
         }
     },
     render: function () {
         this.renderWithTemplate();
-        this.renderCollection(this.model.reps, RepView, this.queryByHook('sets'));
+        this.renderCollection(this.model.sets, RepView, this.queryByHook('sets'));
     }
 });

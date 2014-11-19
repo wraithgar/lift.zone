@@ -23,6 +23,8 @@
     "domready": "^1.0.7",
     "electricfence": "^1.1.2",
     "getconfig": "^0.3.0",
+    "good": "^4.0.0",
+    "good-console": "^2.0.1",
     "hapi": "^7.5.2",
     "moonboots_hapi": "^3.0.2",
     "templatizer": "^1.1.0"

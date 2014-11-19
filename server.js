@@ -2,7 +2,7 @@ var hapi = require('hapi');
 var moonboots = require('moonboots_hapi');
 var config = require('getconfig');
 var templatizer = require('templatizer');
-//var Good = require('good');
+var Good = require('good');
 var ElectricFence = require('electricfence');
 var server = hapi.createServer(8080, 'localhost');
 
@@ -26,13 +26,14 @@ server.pack.register([
                 }
             }
         }
-    //}, {
-        //plugin: Good,
-        //options: {
-            //reporters: [{
-                ////reporter: Good.GoodConsole
-            //}]
-        //}
+    }, {
+        plugin: Good,
+        options: {
+            reporters: [{
+                reporter: require('good-console'),
+                args:[{ log: '*', request: '*' }]
+            }]
+        }
     }, {
         plugin: ElectricFence,
         options: config.electricfence

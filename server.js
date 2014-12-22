@@ -1,14 +1,16 @@
-var hapi = require('hapi');
-var moonboots = require('moonboots_hapi');
+var Hapi = require('hapi');
+var Moonboots = require('moonboots_hapi');
 var config = require('getconfig');
 var templatizer = require('templatizer');
 var Good = require('good');
 var ElectricFence = require('electricfence');
-var server = hapi.createServer(8080, 'localhost');
+var server = new Hapi.Server();
 
-server.pack.register([
+server.connection({port: 8080, host: 'localhost'});
+
+server.register([
     {
-        plugin: moonboots,
+        register: Moonboots,
         options: {
             appPath: '/{p*}',
             moonboots: {
@@ -27,7 +29,7 @@ server.pack.register([
             }
         }
     }, {
-        plugin: Good,
+        register: Good,
         options: {
             reporters: [{
                 reporter: require('good-console'),
@@ -35,7 +37,7 @@ server.pack.register([
             }]
         }
     }, {
-        plugin: ElectricFence,
+        register: ElectricFence,
         options: config.electricfence
     }
 ], function () {

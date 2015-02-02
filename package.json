@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Website to parse your workouts",
   "main": "server.js",
-  "scripts": {},
+  "scripts": {
+    "build": "moonboots moonbootsConfig.js"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:wraithgar/lift.zone.git"
@@ -33,6 +35,7 @@
   "devDependencies": {
     "electricfence": "^1.1.3",
     "jshint": "^2.5.11",
+    "moonboots-static": "^1.2.0",
     "precommit-hook": "^1.0.7"
   }
 }

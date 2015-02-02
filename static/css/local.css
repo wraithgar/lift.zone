@@ -1,0 +1,12 @@
+.workout:empty + .instructions {
+    display: block;
+}
+.instructions {
+    display: none;
+}
+.nonpr {
+    display: none;
+}
+.rep:last-child > .repsep {
+    display: none;
+}

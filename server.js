@@ -6,15 +6,23 @@ var config = require('getconfig');
 var moonbootsConfig = require('./moonbootsConfig');
 var server = new Hapi.Server();
 
-
 server.connection({port: 8080, host: 'localhost'});
+
+server.views({
+  engines: {
+    jade: require('jade')
+  },
+  isCached: process.env.node === 'production',
+  path: __dirname + '/views',
+  compileOptions: {
+    pretty: true
+  }
+});
 
 server.register([
     {
         register: Moonboots,
-        options: {
-            moonboots: moonbootsConfig
-        }
+        options: moonbootsConfig
     }, {
         register: Good,
         options: {

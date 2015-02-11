@@ -1,8 +1,9 @@
-var domready = require('domready');
-var MainView = require('views/main');
 var Router = require('router');
-var ActivitiesModel = require('models/activities');
 var andlog = require('andlog');
+var domready = require('domready');
+var ActivitiesModel = require('models/activities');
+var MainView = require('views/main');
+var MeModel = require('./models/me');
 
 window.app = {
     init: function () {
@@ -11,8 +12,13 @@ window.app = {
         this.activities = new ActivitiesModel();
         this.router = new Router();
         this.logger = andlog;
+        this.me = new MeModel();
+        this.me.fetch();
 
         domready(function renderPage() {
+            self.apiUrl = document.querySelector('link[rel=api]').attributes.href.value;
+            self.accountsUrl = document.querySelector('link[rel=accounts]').attributes.href.value;
+
             self.view = new MainView({
                 el: document.body
             });

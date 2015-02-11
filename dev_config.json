@@ -1,7 +1,10 @@
 {
-    "isDev": true,
-    "electricfence": {
-        "path": "public",
-        "url": "/"
-    }
+  "apiUrl": "http://localhost:3001",
+  "accountsUrl": "http://locahost:3000",
+  "cookie": "localdevelopment",
+  "isDev": true,
+  "electricfence": {
+    "path": "public",
+    "url": "/"
+  }
 }

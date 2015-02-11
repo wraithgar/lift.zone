@@ -13,12 +13,12 @@ window.app = {
         this.router = new Router();
         this.logger = andlog;
         this.me = new MeModel();
-        this.me.fetch();
 
         domready(function renderPage() {
             self.apiUrl = document.querySelector('link[rel=api]').attributes.href.value;
             self.accountsUrl = document.querySelector('link[rel=accounts]').attributes.href.value;
 
+            self.me.fetch();
             self.view = new MainView({
                 el: document.body
             });

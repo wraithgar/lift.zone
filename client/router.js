@@ -47,7 +47,8 @@ module.exports = Router.extend({
         }
         xhr({
             url: app.apiUrl + '/validate?token=' + encodeURIComponent(token),
-            json: true
+            json: true,
+            withCredentials: true
         }, function (err, resp, body) {
             if (!err && resp.statusCode !== 200 && body.status !== 'ok') {
                 app.me.fetch();

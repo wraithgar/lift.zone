@@ -2,7 +2,7 @@
 var BaseModel = require('./base');
 
 module.exports = BaseModel.extend({
-    urlRoot: function () { return app.apiUrl + '/me'; },
+    url: function () { return app.apiUrl + '/me'; },
     props: {
         id: 'number',
         login: 'string',

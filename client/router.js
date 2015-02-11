@@ -34,23 +34,17 @@ module.exports = Router.extend({
     },
     auth: function () {
         var self = this;
-        var params, token;
-        var search = window.location.search.slice(1);
-        if (search.length > 0) {
-            params = querystring.parse(window.location.search.slice(1));
-            if (params) {
-                token = params.token;
-            }
-        }
+        var token = querystring.parse(window.location.search.slice(1)).token;
         if (!token) {
             return this.redirectTo('/');
         }
+
         xhr({
             url: app.apiUrl + '/validate?token=' + encodeURIComponent(token),
             json: true,
-            withCredentials: true
         }, function (err, resp, body) {
-            if (!err && resp.statusCode !== 200 && body.status !== 'ok') {
+            if (!err && resp.statusCode === 200) {
+                app.accessToken = body.authorization;
                 app.me.fetch();
             }
             return self.redirectTo('/');

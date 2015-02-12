@@ -1,4 +1,4 @@
-/*global app*/
+var app = require('ampersand-app');
 var BaseModel = require('./base');
 
 module.exports = BaseModel.extend({

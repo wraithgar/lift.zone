@@ -1,4 +1,4 @@
-/*global app*/
+var app = require('ampersand-app');
 var View = require('ampersand-view');
 var caber = require('caber');
 var templates = require('templates');

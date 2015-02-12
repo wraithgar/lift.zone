@@ -38,5 +38,8 @@
     "precommit-hook": "^1.0.7",
     "templatizer": "^1.1.1",
     "xhr": "^1.10.0"
+  },
+  "dependencies": {
+    "ampersand-app": "^1.0.0"
   }
 }

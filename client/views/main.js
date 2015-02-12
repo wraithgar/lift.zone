@@ -1,4 +1,4 @@
-/*global app*/
+var app = require('ampersand-app');
 var View = require('ampersand-view');
 var ViewSwitcher = require('ampersand-view-switcher');
 var dom = require('ampersand-dom');

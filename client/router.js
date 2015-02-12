@@ -16,6 +16,8 @@ module.exports = Router.extend({
         '531': 'calc531',
         'about': 'about',
         'auth/callback': 'auth',
+        'login': 'login',
+        'logout': 'logout'
     },
     home: function () {
         app.activities.reset();
@@ -45,10 +47,16 @@ module.exports = Router.extend({
             json: true,
         }, function (err, resp, body) {
             if (!err && resp.statusCode === 200) {
-                app.accessToken = body.authorization;
-                app.me.fetch();
+                app.setAccessToken(body.authorization);
             }
             return self.redirectTo('/');
         });
+    },
+    login: function () {
+        window.location.replace(app.accountsUrl + '/login?redirect=lift.zone');
+    },
+    logout: function () {
+        app.setAccessToken(undefined);
+        this.redirectTo('/');
     }
 });

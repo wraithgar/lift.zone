@@ -17,7 +17,7 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<div><div class="contain-to-grid"><nav data-topbar="data-topbar" role="navigation" class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">lift.zone</a></h1></li><li menu-icon="menu-icon" class="toggle-topbar"><a href="#">Menu</a></li></ul><section class="top-bar-section"><ul class="right"><li><a href="/fitocracy">Fitocracy</a></li><li><a href="/531">531</a></li><li><a href="/about">About</a></li><li data-hook="me"><a href="/login" class="button">Log in</a></li></ul></section></nav></div><div data-hook="page-container"></div></div>';
+        return '<div><div class="contain-to-grid"><nav data-topbar="data-topbar" role="navigation" class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">lift.zone</a></h1></li><li menu-icon="menu-icon" class="toggle-topbar"><a href="#">Menu</a></li></ul><section class="top-bar-section"><ul class="right"><li><a href="/fitocracy">Fitocracy</a></li><li><a href="/531">531</a></li><li><a href="/about">About</a></li><li data-hook="me"></li></ul></section></nav></div><div data-hook="page-container"></div></div>';
     };
 
     // includes/bbcode.jade compiled template
@@ -73,6 +73,11 @@
     // includes/markdownRepItem.jade compiled template
     templatizer["includes"]["markdownRepItem"] = function tmpl_includes_markdownRepItem() {
         return '<span class="rep"><span data-hook="pr">**</span><span data-hook="rep"></span><span class="repsep">, </span><span data-hook="pr">**</span></span>';
+    };
+
+    // includes/me.jade compiled template
+    templatizer["includes"]["me"] = function tmpl_includes_me() {
+        return '<a href="/login" class="button"></a>';
     };
 
     // pages/about.jade compiled template

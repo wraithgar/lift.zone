@@ -1,14 +1,14 @@
 var app = require('ampersand-app');
 var View = require('ampersand-view');
 var caber = require('caber');
-var templates = require('templates');
-var debounce = require('lib/debounce');
-var MarkdownView = require('views/markdown');
-var MarkdownFullView = require('views/markdownFull');
-var BBCodeView = require('views/bbcode');
-var BBCodeFullView = require('views/bbcodeFull');
-var MarkdownCreditsView = require('views/markdownCredits');
-var BBCodeCreditsView = require('views/bbcodeCredits');
+var templates = require('../templates');
+var debounce = require('../lib/debounce');
+var MarkdownView = require('../views/markdown');
+var MarkdownFullView = require('../views/markdownFull');
+var BBCodeView = require('../views/bbcode');
+var BBCodeFullView = require('../views/bbcodeFull');
+var MarkdownCreditsView = require('../views/markdownCredits');
+var BBCodeCreditsView = require('../views/bbcodeCredits');
 
 module.exports = View.extend({
     template: templates.pages.fitocracy,

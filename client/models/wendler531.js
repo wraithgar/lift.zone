@@ -1,5 +1,5 @@
 var Model = require('ampersand-state');
-var LiftModel = require('models/lift531');
+var LiftModel = require('./lift531');
 
 module.exports = Model.extend({
     initialize: function () {

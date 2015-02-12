@@ -1,16 +1,20 @@
-body
-  nav.navbar.navbar-default
-    div.container-fluid
-      div.navbar-header
-        a.navbar-brand(href='/') Workout Logger
-      ul.nav.navbar-nav(role='nav-items')
-        li
-          a(href='/') Log
-        li
-          a(href='/fitocracy') Fitocracy
-        li
-          a(href='/531') 531 Calculator
-        li
-          a(href='/about') About
-  .container
-    main(data-hook='page-container')
+div
+  div.contain-to-grid
+    nav.top-bar(data-topbar, role='navigation')
+      ul.title-area
+        li.name
+          h1
+            a(href='/') lift.zone
+         li.toggle-topbar(menu-icon)
+           a(href='#') Menu
+      section.top-bar-section
+        ul.right
+          li
+            a(href ='/fitocracy') Fitocracy
+          li
+            a(href ='/531') 531
+          li
+            a(href='/about') About
+          li(data-hook='me')
+            a.button(href='/login') Log in
+  div(data-hook='page-container')

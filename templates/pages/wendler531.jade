@@ -1,46 +1,42 @@
-section.page
-  .col-sm-8
-    h1 531 Calculator
-    .workout(data-hook='results')
-    .instructions
-      ol
-        li Type your current maxes into the inputs
-        li See what your 531 workouts calculate to
-        li Go into the gym and lift things
-        li Later, you can add arbitrary weights to the results for subsequent cycles
-        li Don't forget to eat
-  .col-sm-4
-    form.form-horizontal(role='form')
-      .row
-        .form-group.form-group-sm
-          label.col-sm-3 OHP
-          .col-sm-3
+section
+  .row
+    .small-12.columns
+      h1 531 Calculator
+    hr
+  .row
+    .small-8.columns
+      .workout(data-hook='results')
+    .small-4.columns
+      form.form-horizontal(role='form')
+        .row
+          label.small-3.columns OHP
+          .small-3.columns
             input.form-control(type='number', step='5' data-hook='ohp-weight' placeholder='weight', title='weight', value=locals.model.ohp.weight)
-          .col-sm-3
+          .small-3.columns
             input.form-control(type='number' data-hook='ohp-reps' placeholder='reps', title='reps', value=locals.model.ohp.reps)
-          .col-sm-3
+          .small-3.columns
             input.form-control(type='number', step='5' data-hook='ohp-extra' placeholder='+', title='extra', value=locals.model.ohp.extra)
-        .form-group.form-group-sm
-          label.col-sm-3 Squat
-          .col-sm-3
+        .row
+          label.small-3.columns Squat
+          .small-3.columns
             input.form-control(type='number', step='5' data-hook='squat-weight' placeholder='weight', title='weight', value=locals.model.squat.weight)
-          .col-sm-3
+          .small-3.columns
             input.form-control(type='number' data-hook='squat-reps' placeholder='reps', title='reps', value=locals.model.squat.reps)
-          .col-sm-3
+          .small-3.columns
             input.form-control(type='number', step='5' data-hook='squat-extra' placeholder='+', title='extra', value=locals.model.squat.extra)
-        .form-group.form-group-sm
-          label.col-sm-3 Bench
-          .col-sm-3
+        .row
+          label.small-3.columns Bench
+          .small-3.columns
             input.form-control(type='number', step='5' data-hook='bench-weight' placeholder='weight', title='weight', value=locals.model.bench.weight)
-          .col-sm-3
+          .small-3.columns
             input.form-control(type='number' data-hook='bench-reps' placeholder='reps', title='reps', value=locals.model.bench.reps)
-          .col-sm-3
+          .small-3.columns
             input.form-control(type='number', step='5' data-hook='bench-extra' placeholder='+', title='extra', value=locals.model.bench.extra)
-        .form-group.form-group-sm
-          label.col-sm-3 Deadlift
-          .col-sm-3
+        .row
+          label.small-3.columns Deadlift
+          .small-3.columns
             input.form-control(type='number', step='5' data-hook='deadlift-weight' placeholder='weight', title='weight', value=locals.model.deadlift.weight)
-          .col-sm-3
+          .small-3.columns
             input.form-control(type='number' data-hook='deadlift-reps' placeholder='reps', title='reps', value=locals.model.deadlift.reps)
-          .col-sm-3
+          .small-3.columns
             input.form-control(type='number', step='5' data-hook='deadlift-extra' placeholder='+', title='extra', value=locals.model.deadlift.extra)

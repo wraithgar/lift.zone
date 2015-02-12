@@ -1,5 +1,5 @@
 var Model = require('ampersand-state');
-var calc = require('lib/wendlerCalc');
+var calc = require('../lib/wendlerCalc');
 
 module.exports = Model.extend({
     props: {

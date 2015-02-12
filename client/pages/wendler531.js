@@ -1,7 +1,7 @@
 var View = require('ampersand-view');
-var templates = require('templates');
-var LiftView = require('views/lift531');
-var debounce = require('lib/debounce');
+var templates = require('../templates');
+var LiftView = require('../views/lift531');
+var debounce = require('../lib/debounce');
 
 var fuzzyNumber = function fuzzyNumber(value) {
     if (value !== '') {

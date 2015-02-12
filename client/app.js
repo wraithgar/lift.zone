@@ -1,9 +1,9 @@
-var Router = require('router');
 var andlog = require('andlog');
 var domready = require('domready');
-var ActivitiesModel = require('models/activities');
-var MainView = require('views/main');
+var ActivitiesModel = require('./models/activities');
+var MainView = require('./views/main');
 var MeModel = require('./models/me');
+var Router = require('./router');
 
 var app = require('ampersand-app');
 
@@ -16,7 +16,7 @@ app.extend({
 
         this.me.fetch();
         this.view = new MainView({
-            el: document.body
+            el: document.querySelector('[data-hook=app]')
         });
 
         this.router.history.start({pushState: true});

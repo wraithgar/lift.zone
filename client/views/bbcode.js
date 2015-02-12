@@ -1,6 +1,6 @@
 var View = require('ampersand-view');
 var GroupedCollectionView = require('ampersand-grouped-collection-view');
-var templates = require('templates');
+var templates = require('../templates');
 
 var RepItemView = View.extend({
     template: templates.includes.bbcodeRepItem,

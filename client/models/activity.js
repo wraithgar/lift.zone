@@ -1,5 +1,5 @@
 var Model = require('ampersand-state');
-var Sets = require('models/sets');
+var Sets = require('./sets');
 
 //[i]Comments[/i] Comments here after list
 module.exports = Model.extend({

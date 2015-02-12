@@ -3,11 +3,11 @@ var app = require('ampersand-app');
 var xhr = require('xhr');
 var querystring = require('querystring');
 
-var AboutPage = require('pages/about');
-var FitocracyPage = require('pages/fitocracy');
-var HomePage = require('pages/home');
-var Wendler531Model = require('models/wendler531');
-var Wendler531Page = require('pages/wendler531');
+var AboutPage = require('./pages/about');
+var FitocracyPage = require('./pages/fitocracy');
+var HomePage = require('./pages/home');
+var Wendler531Model = require('./models/wendler531');
+var Wendler531Page = require('./pages/wendler531');
 
 module.exports = Router.extend({
     routes: {

@@ -10,7 +10,7 @@ var MarkdownCreditsView = require('../views/markdownCredits');
 var BBCodeCreditsView = require('../views/bbcodeCredits');
 
 module.exports = View.extend({
-    template: templates.pages.fitocracy,
+    template: templates.pages.log,
     initialize: function () {
         this.throttledParse = debounce(this.parseRaw, 1000);
     },
@@ -20,11 +20,11 @@ module.exports = View.extend({
     },
     rawChanged: function (e) {
         e.preventDefault();
-        this.throttledParse();
+        this.throttledParse(e);
     },
-    parseRaw: function () {
-        var raw = this.queryByHook('raw').value;
-        var parsed = caber.fitocracy(raw);
+    parseRaw: function (e) {
+        var raw = e.target.value;
+        var parsed = caber.parse(raw);
         this.collection.reset(parsed, {parse: true});
     },
     changeFormat: function (e) {

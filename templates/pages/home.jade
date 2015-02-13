@@ -1,28 +1,7 @@
 section
-  row
-    .small-6.columns
-      form(role='form')
-        .form-group
-          label.radio Format
-          input(type='radio' name='format' value='md' data-hook='format')
-          =" Markdown "
-          input(type='radio' name='format' value='mdFull' data-hook='format')
-          =" Markdown Long"
-          br
-          input(type='radio' name='format' value='bb' data-hook='format')
-          =" BBCode "
-          input(type='radio' name='format' value='bbFull' data-hook='format')
-          =" BBCode Long"
-        .form-group
-          label Workout
-          textarea.form-control(data-hook='raw' rows=50 placeholder='Squat 255x5x4 315x1*', title='workout' id='rawInput')
-    .small-6.columns
-      h1 Workout Log
-      .workout(data-hook='formatted')
-      .credits(data-hook='credits')
-      .instructions
-        ol
-          li Type your workout in the box
-          li Select an output format
-          li Copy and paste it wherever
-          li Have a great day
+  .row
+    .small-12.columns
+      h1 Welcome to the lift zone
+  hr
+  .row.panel
+    p Coming soon: the ability to actually log your workouts instead of just parse them!

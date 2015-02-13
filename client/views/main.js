@@ -10,6 +10,27 @@ module.exports = View.extend({
     events: {
         'click a[href]': 'handleLinkClick'
     },
+    bindings: {
+        'model.displayName': {
+            type: 'text',
+            hook: 'name'
+        },
+        'model.link': {
+            type: 'attribute',
+            name: 'href',
+            hook: 'name'
+        },
+        'model.loggedIn': [
+            {
+                type: 'booleanClass',
+                no: 'button',
+                hook: 'name'
+            }, {
+                type: 'toggle',
+                hook: 'logout'
+            }
+        ]
+    },
     initialize: function () {
         this.listenTo(app.router, 'page', this.handlePage);
     },

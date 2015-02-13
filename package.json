@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "watch 'npm run-script templates' templates & beefy client/app.js:js/bundle.js 8080 --index=./public/index.html --cwd=./public",
-    "build": "templatizer -d ./templates -o client/templates.js && browserify client/app.js -o public/js/bundle.js --debug",
+    "build": "mv config.js local-config.js && mv build-config.js config.js && templatizer -d ./templates -o client/templates.js && browserify client/app.js -o public/js/bundle.js --debug && mv config.js build-config.js && mv local-config.js config.js",
     "minify": "cat public/js/bundle.js | uglifyjs -o public/js/bundle.js",
     "templates": "templatizer -d ./templates -o client/templates.js"
   },

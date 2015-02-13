@@ -1,34 +1,31 @@
 /*global Modernizr*/
 var andlog = require('andlog');
+var app = require('ampersand-app');
 var domready = require('domready');
 var ActivitiesModel = require('./models/activities');
 var Router = require('./router');
 var MainView = require('./views/main');
-var MeView = require('./views/me');
+//var MeView = require('./views/meMenu');
 var Me = require('./models/me');
+var config = require('../config');
 
-var app = require('ampersand-app');
 
 app.extend({
+    apiUrl: config.APIURL,
+    accountsUrl: config.ACCOUNTSURL,
     init: function () {
-        this.extend({
-            apiUrl: document.querySelector('link[rel=api]').attributes.href.value,
-            accountsUrl: document.querySelector('link[rel=accounts]').attributes.href.value
-        });
-
         this.view = new MainView({
+            model: app.models.me,
             el: document.querySelector('[data-hook=app]')
         });
 
-        window.me = new Me();
-        this.view.renderSubview(new MeView({
-            model: window.me
-        }), this.view.queryByHook('me'));
+        //this.view.renderSubview(new MeView({
+            //model: app.models.me
+        //}), this.view.queryByHook('menu'));
 
         this.router.history.start({pushState: true});
     },
     setAccessToken: function (token) {
-        console.log('setAccessToken', token);
         if (this.accessToken !== token) {
             this.accessToken = token;
             if (Modernizr.localstorage) {
@@ -39,6 +36,9 @@ app.extend({
     },
     activities: new ActivitiesModel(),
     router: new Router(),
+    models: {
+        me: new Me()
+    },
     logger: andlog,
 });
 

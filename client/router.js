@@ -5,13 +5,18 @@ var querystring = require('querystring');
 
 var AboutPage = require('./pages/about');
 var FitocracyPage = require('./pages/fitocracy');
+var MePage = require('./pages/me');
+var LogPage = require('./pages/log');
 var HomePage = require('./pages/home');
 var Wendler531Model = require('./models/wendler531');
 var Wendler531Page = require('./pages/wendler531');
+var Activities = require('./models/activities');
 
 module.exports = Router.extend({
     routes: {
         '': 'home',
+        'me': 'me',
+        'log': 'log',
         'fitocracy': 'fitocracy',
         '531': 'calc531',
         'about': 'about',
@@ -20,12 +25,24 @@ module.exports = Router.extend({
         'logout': 'logout'
     },
     home: function () {
-        app.activities.reset();
         this.trigger('page', new HomePage());
+    },
+    log: function () {
+        app.activities.reset();
+        this.trigger('page', new LogPage({
+            collection: new Activities()
+        }));
+    },
+    me: function () {
+        this.trigger('page', new MePage({
+            model: app.models.me
+        }));
     },
     fitocracy: function () {
         app.activities.reset();
-        this.trigger('page', new FitocracyPage());
+        this.trigger('page', new FitocracyPage({
+            collection: new Activities()
+        }));
     },
     about: function () {
         this.trigger('page', new AboutPage());

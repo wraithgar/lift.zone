@@ -8,12 +8,17 @@ div
          li.toggle-topbar(menu-icon)
            a(href='#') Menu
       section.top-bar-section
-        ul.right
+        ul.right(data-hook='menu')
           li
-            a(href ='/fitocracy') Fitocracy
+            a(href='/log') Log
           li
-            a(href ='/531') 531
+            a(href='/fitocracy') Fitocracy
+          li
+            a(href='/531') 531
           li
             a(href='/about') About
-          li(data-hook='me')
+          li
+            a.button(href='/login', data-hook='name')
+          li(data-hook='logout')
+            a(href='/logout') Logout
   div(data-hook='page-container')

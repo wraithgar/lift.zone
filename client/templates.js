@@ -17,7 +17,7 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<div><div class="contain-to-grid"><nav data-topbar="data-topbar" role="navigation" class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">lift.zone</a></h1></li><li menu-icon="menu-icon" class="toggle-topbar"><a href="#">Menu</a></li></ul><section class="top-bar-section"><ul class="right"><li><a href="/fitocracy">Fitocracy</a></li><li><a href="/531">531</a></li><li><a href="/about">About</a></li><li data-hook="me"></li></ul></section></nav></div><div data-hook="page-container"></div></div>';
+        return '<div><div class="contain-to-grid"><nav data-topbar="data-topbar" role="navigation" class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">lift.zone</a></h1></li><li menu-icon="menu-icon" class="toggle-topbar"><a href="#">Menu</a></li></ul><section class="top-bar-section"><ul data-hook="menu" class="right"><li><a href="/log">Log</a></li><li><a href="/fitocracy">Fitocracy</a></li><li><a href="/531">531</a></li><li><a href="/about">About</a></li><li><a href="/login" data-hook="name" class="button"></a></li><li data-hook="logout"><a href="/logout">Logout</a></li></ul></section></nav></div><div data-hook="page-container"></div></div>';
     };
 
     // includes/bbcode.jade compiled template
@@ -75,24 +75,36 @@
         return '<span class="rep"><span data-hook="pr">**</span><span data-hook="rep"></span><span class="repsep">, </span><span data-hook="pr">**</span></span>';
     };
 
-    // includes/me.jade compiled template
-    templatizer["includes"]["me"] = function tmpl_includes_me() {
-        return '<a href="/login" class="button"></a>';
-    };
-
     // pages/about.jade compiled template
     templatizer["pages"]["about"] = function tmpl_pages_about() {
-        return '<section><div class="row"><div class="small-12 columns"><h1>What the heck even is this?</h1></div></div><hr/><div class="row panel"><p>I like to log my workouts in more than one place, and they all take different formats. One takes bbcode, the next markdown.  Typing them up even once in any of those formats is a chore, let alone more than one.</p><p>This little utility site is an attempt to solve that problem: I can type my workout in what feels to my like natural typing, and it easily converts to the formats I need.</p><p>There is also a function to translate the workouts as they print out on Fitocracy, since that\'s a common thing people seem to want.</p><p>If you find something that\'s not working, or have a different format you would like to see hit me up on <a href="https://github.com/wraithgar/lift.zone">github</a></p><p>I also added a 531 calculator that auto-saves cause I wanted that too.</p><p>Feedback is welcome, you can also email me <a href="mailto:gar+lifts@danger.computer">here</a></p><p>Powered with love from:</p><p class="text-center"><a href="http://danger.computer"><img src="http://danger.computer/danger-computer.png"/><br/>The Danger Computer</a></p></div></section>';
+        return '<section><div class="row"><div class="small-12 columns"><h1>What the heck even is this?</h1></div></div><hr/><div class="row panel"><p>I like to log my workouts in more than one place, and they all take different formats. One takes bbcode, the next markdown.  Typing them up even once in any of those formats is a chore, let alone more than one.</p><p>This little utility site is an attempt to solve that problem: I can type my workout in what feels to my like natural typing, and it easily converts to the formats I need.</p><p>There is also a function to translate the workouts as they print out on Fitocracy, since that\'s a common thing people seem to want.</p><p>If you find something that\'s not working, or have a different format you would like to see hit me up on <a href="https://github.com/wraithgar/lift.zone">github</a></p><p>I also added a 531 calculator that auto-saves cause I wanted that too.</p><p>Feedback is welcome, you can also email me <a href="mailto:gar+code@danger.computer">here</a></p><p>Powered with love from:</p><p class="text-center"><a href="http://danger.computer"><img src="/img/danger-computer.png"/><br/>The Danger Computer</a></p></div></section>';
     };
 
     // pages/fitocracy.jade compiled template
     templatizer["pages"]["fitocracy"] = function tmpl_pages_fitocracy() {
-        return '<section><row><div class="small-6 columns"><form role="form"><div class="form-group"><label class="radio">Format</label><input type="radio" name="format" value="md" data-hook="format"/> Markdown <input type="radio" name="format" value="mdFull" data-hook="format"/> Markdown Long<br/><input type="radio" name="format" value="bb" data-hook="format"/> BBCode <input type="radio" name="format" value="bbFull" data-hook="format"/> BBCode Long</div><div class="form-group"><label>Workout</label><textarea data-hook="raw" rows="50" placeholder="Paste fitocracy workout here" title="fitocracy workout" id="rawInput" class="form-control"></textarea></div></form></div><div class="small-6 columns"><h1>Workout Log from Fitocracy</h1><div data-hook="formatted" class="workout"></div><div data-hook="credits" class="credits"></div><div class="instructions"><ol><li>Copy your workout on fitocracy</li><li>Paste your workout in the box</li><li>Select an output format</li><li>Copy and paste it wherever</li><li>Have a great day</li></ol></div></div></row></section>';
+        return '<section><div class="row"><div class="small-12 columns"><h1>Workout Log from Fitocracy</h1></div></div><hr/><div class="row"><p>Copy your workout from fitocracy and paste it into the box, then select a format</p></div><div class="row"><div class="small-6 columns"><form role="form"><div class="form-group"><label class="radio">Format</label><input type="radio" name="format" value="md" data-hook="format"/> Markdown <input type="radio" name="format" value="mdFull" data-hook="format"/> Markdown Long<br/><input type="radio" name="format" value="bb" data-hook="format"/> BBCode <input type="radio" name="format" value="bbFull" data-hook="format"/> BBCode Long</div><div class="form-group"><label>Workout</label><textarea data-hook="raw" rows="50" placeholder="Paste fitocracy workout here" title="fitocracy workout" id="rawInput" class="form-control"></textarea></div></form></div><div class="small-6 columns"><div data-hook="formatted"></div><div data-hook="credits"></div></div></div></section>';
     };
 
     // pages/home.jade compiled template
     templatizer["pages"]["home"] = function tmpl_pages_home() {
-        return '<section><row><div class="small-6 columns"><form role="form"><div class="form-group"><label class="radio">Format</label><input type="radio" name="format" value="md" data-hook="format"/> Markdown <input type="radio" name="format" value="mdFull" data-hook="format"/> Markdown Long<br/><input type="radio" name="format" value="bb" data-hook="format"/> BBCode <input type="radio" name="format" value="bbFull" data-hook="format"/> BBCode Long</div><div class="form-group"><label>Workout</label><textarea data-hook="raw" rows="50" placeholder="Squat 255x5x4 315x1*" title="workout" id="rawInput" class="form-control"></textarea></div></form></div><div class="small-6 columns"><h1>Workout Log</h1><div data-hook="formatted" class="workout"></div><div data-hook="credits" class="credits"></div><div class="instructions"><ol><li>Type your workout in the box</li><li>Select an output format</li><li>Copy and paste it wherever</li><li>Have a great day</li></ol></div></div></row></section>';
+        return '<section><div class="row"><div class="small-12 columns"><h1>Welcome to the lift zone</h1></div></div><hr/><div class="row panel"><p>Coming soon: the ability to actually log your workouts instead of just parse them!</p></div></section>';
+    };
+
+    // pages/log.jade compiled template
+    templatizer["pages"]["log"] = function tmpl_pages_log() {
+        return '<section><div class="row"><div class="small-12 columns"><h1>Workout Log</h1></div></div><hr/><div class="row"><p>Type your workout in the box, then select a format</p></div><div class="row"><div class="small-6 columns"><form role="form"><div class="form-group"><label class="radio">Format</label><input type="radio" name="format" value="md" data-hook="format"/> Markdown <input type="radio" name="format" value="mdFull" data-hook="format"/> Markdown Long<br/><input type="radio" name="format" value="bb" data-hook="format"/> BBCode <input type="radio" name="format" value="bbFull" data-hook="format"/> BBCode Long</div><div class="form-group"><label>Workout</label><textarea data-hook="raw" rows="50" placeholder="Squat 255x5x4 315x1*" title="workout" id="rawInput" class="form-control"></textarea></div></form></div><div class="small-6 columns"><div data-hook="formatted"></div><div data-hook="credits"></div></div></div></section>';
+    };
+
+    // pages/me.jade compiled template
+    templatizer["pages"]["me"] = function tmpl_pages_me(locals) {
+        var buf = [];
+        var jade_mixins = {};
+        var jade_interp;
+        var locals_for_with = locals || {};
+        (function(accountsUrl) {
+            buf.push('<section><div class="row"><div class="small-12 columns"><h1>Settings for <span data-hook="name"></span></h1></div></div><hr/><div data-hook="invalid" class="row error"><div class="alert-box alert round">Your email is not validated! You will not be able to send invites or recover from a lost password.  You should go validate your email now.</div></div><div class="row panel"><span>To change your account settings (name, password, email) </span><span data-hook="invalid">or to validate your email </span><span>please go to </span><a' + jade.attr("href", "" + accountsUrl + "/me", true, false) + ' target="_blank">the accounts server</a></div></section>');
+        }).call(this, "accountsUrl" in locals_for_with ? locals_for_with.accountsUrl : typeof accountsUrl !== "undefined" ? accountsUrl : undefined);
+        return buf.join("");
     };
 
     // pages/wendler531.jade compiled template

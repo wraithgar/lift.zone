@@ -16,9 +16,16 @@ module.exports = BaseModel.extend({
     props: {
         id: 'number',
         login: 'string',
-        name: 'string'
+        name: 'string',
+        validated: 'number',
     },
     derived: {
+        invalid: {
+            deps: ['validated'],
+            fn: function () {
+                return this.validated !== 1;
+            }
+        },
         displayName: {
             deps: ['loggedIn', 'name'],
             fn: function () {

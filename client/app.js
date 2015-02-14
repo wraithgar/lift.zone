@@ -1,4 +1,4 @@
-/*global Modernizr*/
+/*global Modernizr, $*/
 var andlog = require('andlog');
 var app = require('ampersand-app');
 var domready = require('domready');
@@ -18,10 +18,7 @@ app.extend({
             model: app.models.me,
             el: document.querySelector('[data-hook=app]')
         });
-
-        //this.view.renderSubview(new MeView({
-            //model: app.models.me
-        //}), this.view.queryByHook('menu'));
+        $(this.view.el).foundation();
 
         this.router.history.start({pushState: true});
     },

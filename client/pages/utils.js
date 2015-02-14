@@ -2,8 +2,7 @@ var View = require('ampersand-view');
 var templates = require('../templates');
 
 module.exports = View.extend({
-    template: templates.pages.log,
+    template: templates.pages.utils,
     autoRender: true
 });
-
 

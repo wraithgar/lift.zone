@@ -6,7 +6,9 @@ var querystring = require('querystring');
 var AboutPage = require('./pages/about');
 var FitocracyPage = require('./pages/fitocracy');
 var MePage = require('./pages/me');
+var ParserPage = require('./pages/parser');
 var LogPage = require('./pages/log');
+var UtilsPage = require('./pages/utils');
 var HomePage = require('./pages/home');
 var NotFoundPage = require('./pages/notFound');
 var Wendler531Model = require('./models/wendler531');
@@ -19,8 +21,10 @@ module.exports = Router.extend({
         '': 'home',
         'me': 'me',
         'log': 'log',
-        'fitocracy': 'fitocracy',
-        '531': 'calc531',
+        'utils': 'utils',
+        'utils/parser': 'parser',
+        'utils/fitocracy': 'fitocracy',
+        'utils/531': 'calc531',
         'about': 'about',
         'auth/callback': 'auth',
         'login': 'login',
@@ -39,8 +43,14 @@ module.exports = Router.extend({
         this.trigger('page', new HomePage());
     },
     log: function () {
+        this.trigger('page', new LogPage());
+    },
+    utils: function () {
+        this.trigger('page', new UtilsPage());
+    },
+    parser: function () {
         app.activities.reset();
-        this.trigger('page', new LogPage({
+        this.trigger('page', new ParserPage({
             collection: new Activities()
         }));
     },

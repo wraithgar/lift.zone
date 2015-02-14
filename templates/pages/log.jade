@@ -1,27 +1,7 @@
 section
   .row
     .small-12.columns
-      h1 Workout Log
+      h1 Workout logging
   hr
-  .row
-    p Type your workout in the box, then select a format
-  .row
-    .small-6.columns
-      form(role='form')
-        .form-group
-          label.radio Format
-          input(type='radio' name='format' value='md' data-hook='format')
-          =" Markdown "
-          input(type='radio' name='format' value='mdFull' data-hook='format')
-          =" Markdown Long"
-          br
-          input(type='radio' name='format' value='bb' data-hook='format')
-          =" BBCode "
-          input(type='radio' name='format' value='bbFull' data-hook='format')
-          =" BBCode Long"
-        .form-group
-          label Workout
-          textarea.form-control(data-hook='raw' rows=50 placeholder='Squat 255x5x4 315x1*', title='workout' id='rawInput')
-    .small-6.columns
-      div(data-hook='formatted')
-      div(data-hook='credits')
+  .row.panel
+    p Coming soon

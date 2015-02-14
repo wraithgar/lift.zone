@@ -8,9 +8,11 @@ var FitocracyPage = require('./pages/fitocracy');
 var MePage = require('./pages/me');
 var LogPage = require('./pages/log');
 var HomePage = require('./pages/home');
+var NotFoundPage = require('./pages/notFound');
 var Wendler531Model = require('./models/wendler531');
 var Wendler531Page = require('./pages/wendler531');
 var Activities = require('./models/activities');
+var PrivacyPage = require('./pages/privacy');
 
 module.exports = Router.extend({
     routes: {
@@ -22,7 +24,16 @@ module.exports = Router.extend({
         'about': 'about',
         'auth/callback': 'auth',
         'login': 'login',
-        'logout': 'logout'
+        'logout': 'logout',
+        'privacy': 'privacy',
+        '*catchall': 'notfound'
+    },
+
+    notfound: function () {
+        this.trigger('page', new NotFoundPage());
+    },
+    privacy: function () {
+        this.trigger('page', new PrivacyPage());
     },
     home: function () {
         this.trigger('page', new HomePage());

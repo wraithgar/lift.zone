@@ -20,6 +20,11 @@
         return '<div><div class="contain-to-grid"><nav data-topbar="data-topbar" role="navigation" class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">lift.zone</a></h1></li><li class="toggle-topbar menu-icon"><a href="#">Menu</a></li></ul><section class="top-bar-section"><ul data-hook="menu" class="right"><li><a href="/log">Log</a></li><li><a href="/utils">Utils</a></li><li><a href="/login" data-hook="name" class="button"></a></li><li data-hook="logout"><a href="/logout">Logout</a></li></ul></section></nav></div><div data-hook="page-container"></div><div class="row"><hr/><div class="left"><dl class="sub-nav"><dd><a href="/privacy">Privacy</a></dd><dd><a href="/about">About</a></dd><dd><a href="/">lift.zone</a></dd><dd><a href="//accounts.lift.zone">Accounts</a></dd><dd><a href="https://twitter.com/wraithgar"><i class="fa fa-twitter"></i></a></dd></dl></div><div class="right"><dl class="sub-nav"><dd>© 2015 Michael Garvin</dd></dl></div></div></div>';
     };
 
+    // includes/activity.jade compiled template
+    templatizer["includes"]["activity"] = function tmpl_includes_activity() {
+        return '<li><p data-hook="name"></p></li>';
+    };
+
     // includes/bbcode.jade compiled template
     templatizer["includes"]["bbcode"] = function tmpl_includes_bbcode() {
         return '<div class="section"><div class="row"><div class="col-md-12"><br/><span>[b]</span><span data-hook="name"></span><span>[/b]</span></div></div><div class="row"><div class="col-md-12"><span>[list]</span><span data-hook="sets"></span><span>[/list]</span></div></div><div class="row"><div class="col-md-12"><span data-hook="commentLabel">[i]Comments[/i]&nbsp;</span><span data-hook="comment"></span></div></div></div>';
@@ -92,7 +97,7 @@
 
     // pages/log.jade compiled template
     templatizer["pages"]["log"] = function tmpl_pages_log() {
-        return '<section><div class="row"><div class="small-12 columns"><h1>Workout logging</h1></div></div><hr/><div class="row panel"><p>Coming soon</p></div></section>';
+        return '<section><div class="row"><div class="small-12 columns"><h5>Enter your workout in the box below.  You can start with a workout name, date, or just start typing your activities!</h5><h5><small>If you want to manually set the name and date, turn smart mode off</small></h5></div></div><hr/><div class="row"><div class="ul small-block-grid-2"><li><form><div class="row"></div><div class="small-12 columns"><label data-hook="nameLabel">Name&#xa0;<input id="workoutName" data-hook="nameInput" placeholder="name your workout" name="name"/></label><label data-hook="dateLabel">Date&#xa0;<input data-hook="dateInput" placeholder="Dec 12, 2014"/></label><textarea data-hook="workoutInput" rows="5" placeholder="Enter your workout here." title="Workout" id="rawInput"></textarea><br/><div class="r1w"><div class="switch radius"><input id="smartParsing" type="checkbox" checked="checked" data-hook="smartMode"/><label for="smartParsing"></label></div><div class="label">Smart mode is&#xa0;<span data-hook="smartLabel" class="label radius">on</span></div></div></div></form></li><li data-hook="workout"><div class="row"><div class="small-12 columns"><p data-hook="workoutName">Workout Name</p><p data-hook="workoutDate">Workout Date</p><hr/><p data-hook="workoutActivities"></p></div></div></li></div></div></section>';
     };
 
     // pages/me.jade compiled template
@@ -102,7 +107,7 @@
         var jade_interp;
         var locals_for_with = locals || {};
         (function(accountsUrl) {
-            buf.push('<section><div class="row"><div class="small-12 columns"><h1>Settings for <span data-hook="name"></span></h1></div></div><hr/><div data-hook="invalid" class="row error"><div class="alert-box alert round">Your email is not validated! You will not be able to send invites or recover from a lost password.  You should go validate your email now.</div></div><div class="row panel"><span>To change your account settings (name, password, email) </span><span data-hook="invalid">or to validate your email </span><span>please go to </span><a' + jade.attr("href", "" + accountsUrl + "/me", true, false) + ' target="_blank">the accounts server</a></div></section>');
+            buf.push('<section><div class="row"><div class="small-12 columns"><h1>Settings for&#xao;<span data-hook="name"></span></h1></div></div><hr/><div data-hook="invalid" class="row error"><div class="alert-box alert round">Your email is not validated! You will not be able to send invites or recover from a lost password.  You should go validate your email now.</div></div><div class="row panel"><span>To change your account settings (name, password, email)&#xao;</span><span data-hook="invalid">or to validate your email&#xao;</span><span>please go to&#xao;</span><a' + jade.attr("href", "" + accountsUrl + "/me", true, false) + ' target="_blank">the accounts server</a><!-- Preferred date format--><!-- Time zone?--></div></section>');
         }).call(this, "accountsUrl" in locals_for_with ? locals_for_with.accountsUrl : typeof accountsUrl !== "undefined" ? accountsUrl : undefined);
         return buf.join("");
     };
@@ -114,7 +119,7 @@
 
     // pages/parser.jade compiled template
     templatizer["pages"]["parser"] = function tmpl_pages_parser() {
-        return '<section><div class="row"><div class="small-12 columns"><h1>Workout Log</h1></div></div><hr/><div class="row"><p>Type your workout in the box, then select a format</p></div><div class="row"><div class="small-6 columns"><form role="form"><div class="form-group"><label class="radio">Format</label><input type="radio" name="format" value="md" data-hook="format"/> Markdown <input type="radio" name="format" value="mdFull" data-hook="format"/> Markdown Long<br/><input type="radio" name="format" value="bb" data-hook="format"/> BBCode <input type="radio" name="format" value="bbFull" data-hook="format"/> BBCode Long</div><div class="form-group"><label>Workout</label><textarea data-hook="raw" rows="50" placeholder="Squat 255x5x4 315x1*" title="workout" id="rawInput" class="form-control"></textarea></div></form></div><div class="small-6 columns"><div data-hook="formatted"></div><div data-hook="credits"></div></div></div></section>';
+        return '<section><div class="row"><div class="small-12 columns"><h1>Workout Parser</h1></div></div><hr/><div class="row"><p>Type your workout in the box, then select a format</p></div><div class="row"><div class="small-6 columns"><form role="form"><div class="form-group"><label class="radio">Format</label><input type="radio" name="format" value="md" data-hook="format"/> Markdown <input type="radio" name="format" value="mdFull" data-hook="format"/> Markdown Long<br/><input type="radio" name="format" value="bb" data-hook="format"/> BBCode <input type="radio" name="format" value="bbFull" data-hook="format"/> BBCode Long</div><div class="form-group"><label>Workout</label><textarea data-hook="raw" rows="50" placeholder="Squat 255x5x4 315x1*" title="workout" id="rawInput" class="form-control"></textarea></div></form></div><div class="small-6 columns"><div data-hook="formatted"></div><div data-hook="credits"></div></div></div></section>';
     };
 
     // pages/privacy.jade compiled template

@@ -15,7 +15,7 @@ app.extend({
     accountsUrl: config.ACCOUNTSURL,
     init: function () {
         this.view = new MainView({
-            model: app.models.me,
+            model: app.me,
             el: document.querySelector('[data-hook=app]')
         });
         $(this.view.el).foundation();
@@ -33,9 +33,7 @@ app.extend({
     },
     activities: new ActivitiesModel(),
     router: new Router(),
-    models: {
-        me: new Me()
-    },
+    me: new Me(),
     logger: andlog,
 });
 

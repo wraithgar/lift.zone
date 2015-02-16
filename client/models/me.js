@@ -18,6 +18,7 @@ module.exports = BaseModel.extend({
         login: 'string',
         name: 'string',
         validated: 'number',
+        dateFormat: ['string', 'true', 'dddd, MMM Do YYYY']
     },
     derived: {
         invalid: {

@@ -1,7 +1,32 @@
 section
   .row
     .small-12.columns
-      h1 Workout logging
+      h5 Enter your workout in the box below.  You can start with a workout name, date, or just start typing your activities!
+      h5
+        small If you want to manually set the name and date, turn smart mode off
   hr
-  .row.panel
-    p Coming soon
+  .row
+    .ul.small-block-grid-2
+      li
+        form
+          .row
+          .small-12.columns
+            label(data-hook='nameLabel') Name&#xa0;
+              input#workoutName(data-hook='nameInput', placeholder='name your workout', name='name')
+            label(data-hook='dateLabel') Date&#xa0;
+              input(data-hook='dateInput', placeholder='Dec 12, 2014')
+            textarea(data-hook='workoutInput' rows=5 placeholder='Enter your workout here.', title='Workout' id='rawInput')
+            br
+            .r1w
+              .switch.radius
+                input#smartParsing(type='checkbox' checked, data-hook='smartMode')
+                label(for='smartParsing')
+              .label Smart mode is&#xa0;
+                span.label.radius(data-hook='smartLabel') on
+      li(data-hook='workout')
+        .row
+          .small-12.columns
+            p(data-hook='workoutName') Workout Name
+            p(data-hook='workoutDate') Workout Date
+            hr
+            p(data-hook='workoutActivities')

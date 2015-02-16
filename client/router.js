@@ -15,6 +15,7 @@ var Wendler531Model = require('./models/wendler531');
 var Wendler531Page = require('./pages/wendler531');
 var Activities = require('./models/activities');
 var PrivacyPage = require('./pages/privacy');
+var WorkoutModel = require('./models/workout');
 
 module.exports = Router.extend({
     routes: {
@@ -43,7 +44,9 @@ module.exports = Router.extend({
         this.trigger('page', new HomePage());
     },
     log: function () {
-        this.trigger('page', new LogPage());
+        this.trigger('page', new LogPage({
+            model: new WorkoutModel()
+        }));
     },
     utils: function () {
         this.trigger('page', new UtilsPage());

@@ -1,7 +1,6 @@
 var Model = require('ampersand-state');
 var Sets = require('./sets');
 
-//[i]Comments[/i] Comments here after list
 module.exports = Model.extend({
     props: {
         name: 'string',

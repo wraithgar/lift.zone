@@ -121,6 +121,7 @@ module.exports = BasePage.extend({
         } else {
             this.model.unset('date');
         }
+        console.log(workout.activities);
         this.model.activities.reset(workout.activities);
     }
 

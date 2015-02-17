@@ -10,14 +10,15 @@ section
       li
         form
           .row
-          .small-12.columns
-            label(data-hook='nameLabel') Name&#xa0;
-              input#workoutName(data-hook='nameInput', placeholder='name your workout', name='name')
-            label(data-hook='dateLabel') Date&#xa0;
-              input(data-hook='dateInput', placeholder='Dec 12, 2014')
-            textarea(data-hook='workoutInput' rows=5 placeholder='Enter your workout here.', title='Workout' id='rawInput')
-            br
-            .r1w
+            .small-12.columns
+              label(data-hook='nameLabel') Name&#xa0;
+                input#workoutName(data-hook='nameInput', placeholder='name your workout', name='name')
+              label(data-hook='dateLabel') Date&#xa0;
+                input(data-hook='dateInput', placeholder='Dec 12, 2014')
+              textarea(data-hook='workoutInput' rows=5 placeholder='Enter your workout here.', title='Workout' id='rawInput')
+              br
+          .row
+            .small-12.columns
               .switch.radius
                 input#smartParsing(type='checkbox' checked, data-hook='smartMode')
                 label(for='smartParsing')

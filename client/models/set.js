@@ -4,7 +4,7 @@ module.exports = Model.extend({
     props: {
         'weight': 'number',
         'reps': 'number',
-        'time': 'string',
+        'time': 'number',
         'distance': 'number',
         'unit': 'string',
         'pr': ['boolean', true, false]
@@ -15,7 +15,7 @@ module.exports = Model.extend({
             fn: function formattedFull() {
                 var formatted = [];
                 if (this.time) {
-                    formatted.push(this.time);
+                    formatted.push(this.formattedTime);
                 }
                 if (this.time && this.distance) {
                     formatted.push('|');
@@ -67,6 +67,33 @@ module.exports = Model.extend({
                     formatted.push(this.reps);
                 }
                 return formatted.join('');
+            }
+        },
+        formattedTime: {
+            deps: ['time'],
+            fn: function () {
+                var segments = [];
+                var segment;
+                segment = this.time % 60;
+                if (segment === 0) {
+                    segment = '00';
+                }
+                segments.unshift(segment);
+                if (this.time > 60) {
+                    segment = (this.time - this.time % 60) % 3600 / 60;
+                    if (segment === 0) {
+                        segment = '00';
+                    }
+                    segments.unshift(segment);
+                    if (this.time > 3600) {
+                        segment = (this.time - this.time % 3600) / 3600;
+                        if (segment === 0) {
+                            segment = '00';
+                        }
+                        segments.unshift(segment);
+                    }
+                }
+                return segments.join(':');
             }
         },
         nonpr: {

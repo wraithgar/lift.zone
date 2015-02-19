@@ -1,3 +1,5 @@
+'use strict';
+
 var Router = require('ampersand-router');
 var app = require('ampersand-app');
 var xhr = require('xhr');
@@ -84,8 +86,8 @@ module.exports = Router.extend({
         }
 
         xhr({
-            url: app.apiUrl + '/validate?token=' + encodeURIComponent(token),
-            json: true,
+            url: app.apiUrl + '/login?token=' + encodeURIComponent(token),
+            json: true
         }, function (err, resp, body) {
             if (!err && resp.statusCode === 200) {
                 app.setAccessToken(body.authorization);

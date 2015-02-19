@@ -5,8 +5,8 @@ var domready = require('domready');
 var ActivitiesModel = require('./models/activities');
 var Router = require('./router');
 var MainView = require('./views/main');
-//var MeView = require('./views/meMenu');
 var Me = require('./models/me');
+var Aliases = require('./models/aliases');
 var config = require('../config');
 
 
@@ -34,6 +34,9 @@ app.extend({
     activities: new ActivitiesModel(),
     router: new Router(),
     me: new Me(),
+    cache: {
+        aliases: new Aliases()
+    },
     logger: andlog,
 });
 

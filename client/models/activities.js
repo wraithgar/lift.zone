@@ -1,6 +1,9 @@
+'use strict';
+
 var Collection = require('ampersand-collection');
 var Activity = require('./activity');
 
 module.exports = Collection.extend({
-    model: Activity
+    model: Activity,
+    indexes: ['name']
 });

@@ -1,3 +1,5 @@
+'use strict';
+
 var caber = require('caber');
 var debounce = require('lodash.debounce');
 var moment = require('moment');
@@ -24,7 +26,8 @@ module.exports = BasePage.extend({
         'change [data-hook=smartMode]': 'changeSmartMode',
         'input [data-hook=workoutInput]': 'throttledParse',
         'input [data-hook=nameInput]': 'setName',
-        'input [data-hook=dateInput]': 'setDate'
+        'input [data-hook=dateInput]': 'setDate',
+        'click [data-hook=saveWorkout]': 'saveWorkout'
     },
     bindings: {
         smartMode: [{
@@ -61,9 +64,8 @@ module.exports = BasePage.extend({
             fn: function () {
                 if (this.smartMode) {
                     return 'on';
-                } else {
-                    return 'off';
                 }
+                return 'off';
             }
         }
     },
@@ -97,10 +99,12 @@ module.exports = BasePage.extend({
     },
     parseWorkout: function (el) {
         var workout;
+        var activityNames = [];
         var data = el.value;
         if (!this.smartMode) {
             this.model.unset('date');
             this.model.name = 'Workout';
+            //TODO make this search() too
             this.model.activities.reset(caber.parse(data));
             return;
         }
@@ -121,10 +125,27 @@ module.exports = BasePage.extend({
         } else {
             this.model.unset('date');
         }
-        console.log(workout.activities);
-        this.model.activities.reset(workout.activities);
+        //We need to do a janky merge by alternate index so that our search() functions only have to run once
+        //find things to add
+        workout.activities.forEach(function (activity) {
+            activityNames.push(activity.name);
+            if (!this.model.activities.get(activity.name, 'name')) {
+                this.model.activities.add(activity);
+            } else {
+                this.model.activities.get(activity.name, 'name').set(activity);
+            }
+        }, this);
+        //find things to remove
+        this.model.activities.forEach(function (activity) {
+            if (activityNames.indexOf(activity.name) === -1) {
+                this.model.activities.remove(activity);
+            }
+        }, this);
+    },
+    saveWorkout: function () {
+        var ready = this.model.activities.every(function (activity) {
+            return activity.ready;
+        });
+        console.log('saving workout', ready);
     }
-
 });
-
-

@@ -7,7 +7,6 @@ var app = require('ampersand-app');
 module.exports = Model.extend({
     urlRoot: function () { return app.apiUrl + '/activities'; },
     initialize: function (props) {
-        console.log('adding new activity', props);
         if (props) {
             this.fetch({
                 url: app.apiUrl + '/search/activities/' + this.name
@@ -18,11 +17,14 @@ module.exports = Model.extend({
         id: 'number',
         name: ['string', true],
         aliasID: 'number',
-        alias: 'string',
-        comment: 'string'
+        alias: 'string'
     },
     collections: {
         sets: Sets
+    },
+    session: {
+        comment: 'string',
+        suggestions: ['array', true, function () { return []; }]
     },
     derived: {
         hasComment: {

@@ -22,7 +22,7 @@
 
     // includes/activity.jade compiled template
     templatizer["includes"]["activity"] = function tmpl_includes_activity() {
-        return '<div><p data-hook="name"></p><ul data-hook="sets" class="no-bullet"></ul><span data-hook="comment" class="label info radius"></span></div>';
+        return '<div class="row"><h6><span data-hook="name"></span><span>&#xa0;</span><span data-hook="new" class="button tiny round info">new!</span></h6><ul data-hook="sets" class="no-bullet"></ul><button data-hook="comment" class="label secondary radius"></button><br/></div>';
     };
 
     // includes/bbcode.jade compiled template

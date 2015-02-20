@@ -2,8 +2,8 @@
   h6
     span(data-hook='name')
     span &#xa0;
-    span.circle.alert-bg-color
-      i.fa.fa-question(data-hook='new')
+    span.circle.alert-bg-color(data-hook='new')
+      i.fa.fa-question
   ul.no-bullet(data-hook='sets')
   button.label.secondary.radius(data-hook='comment')
   br
@@ -16,9 +16,7 @@
           .small-12.medium-6.medium-centered.columns
             .text-left I meant what I typed
             br
-            ul.stack.button-group
-              li
-                a.button.tiny.radius(href='#' data-hook='name')
+            ul.stack.button-group(data-hook='newActivity')
             br
       li.bullet-item.cta-button
         .row
@@ -34,6 +32,6 @@
             br
             ul.stack.button-group
               li.text-left
-                a.button.tiny.radius(href='#')
+                a.dismiss-reveal-modal.button.tiny.radius(href='#', data-hook='close')
                   i.fa.fa-arrow-left
             br

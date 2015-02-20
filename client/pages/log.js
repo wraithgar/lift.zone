@@ -97,15 +97,32 @@ module.exports = BasePage.extend({
     userInputChanged: function(e) {
         this.parseWorkout(e.target);
     },
+    addActivities: function (activities) {
+        var activityNames = [];
+        //We need to do a janky merge by alternate index so that our search() functions only have to run once
+        //find things to add
+        activities.forEach(function (activity) {
+            activityNames.push(activity.name);
+            if (!this.model.activities.get(activity.name, 'name')) {
+                this.model.activities.add(activity);
+            } else {
+                this.model.activities.get(activity.name, 'name').set(activity);
+            }
+        }, this);
+        //find things to remove
+        this.model.activities.forEach(function (activity) {
+            if (activityNames.indexOf(activity.name) === -1) {
+                this.model.activities.remove(activity);
+            }
+        }, this);
+    },
     parseWorkout: function (el) {
         var workout;
-        var activityNames = [];
         var data = el.value;
         if (!this.smartMode) {
             this.model.unset('date');
             this.model.name = 'Workout';
-            //TODO make this search() too
-            this.model.activities.reset(caber.parse(data));
+            this.addActivities(workout.activities);
             return;
         }
         if (!data) {
@@ -125,22 +142,8 @@ module.exports = BasePage.extend({
         } else {
             this.model.unset('date');
         }
-        //We need to do a janky merge by alternate index so that our search() functions only have to run once
-        //find things to add
-        workout.activities.forEach(function (activity) {
-            activityNames.push(activity.name);
-            if (!this.model.activities.get(activity.name, 'name')) {
-                this.model.activities.add(activity);
-            } else {
-                this.model.activities.get(activity.name, 'name').set(activity);
-            }
-        }, this);
-        //find things to remove
-        this.model.activities.forEach(function (activity) {
-            if (activityNames.indexOf(activity.name) === -1) {
-                this.model.activities.remove(activity);
-            }
-        }, this);
+        window.workout = this.model;
+        this.addActivities(workout.activities);
     },
     saveWorkout: function () {
         var ready = this.model.activities.every(function (activity) {

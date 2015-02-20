@@ -2,6 +2,7 @@ var View = require('ampersand-view');
 var templates = require('../templates');
 
 module.exports = View.extend({
+    autoRender: true,
     template: templates.includes.suggestion,
     events: {
         'click a': 'chooseAlias'
@@ -13,6 +14,21 @@ module.exports = View.extend({
         }
     },
     chooseAlias: function () {
-        console.log(this.model.parent);
+        var self = this;
+        if (this.model.suggestions) {
+            this.model.save(
+                {aliasID: this.model.id, alias: this.model.name},
+                {success: function () {
+                    self.parent.closeModal();
+                }}
+            );
+        } else {
+            this.model.collection.parent.save(
+                {aliasID: this.model.id, alias: this.model.name},
+                {success: function () {
+                    self.parent.parent.closeModal();
+                }}
+            );
+        }
     }
 });

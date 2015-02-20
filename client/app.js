@@ -14,11 +14,16 @@ app.extend({
     apiUrl: config.APIURL,
     accountsUrl: config.ACCOUNTSURL,
     init: function () {
+        //Configure foundation
+        $(document).foundation({
+            reveal: {
+                dismiss_modal_class: 'dismiss-reveal-modal'
+            }
+        });
         this.view = new MainView({
             model: app.me,
             el: document.querySelector('[data-hook=app]')
         });
-        $(this.view.el).foundation();
 
         this.router.history.start({pushState: true});
     },
@@ -37,7 +42,7 @@ app.extend({
     cache: {
         aliases: new Aliases()
     },
-    logger: andlog,
+    logger: andlog
 });
 
 domready(function renderPage() {

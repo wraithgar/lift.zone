@@ -15,7 +15,7 @@ module.exports = Model.extend({
                 error: function () {
                     //TODO when model sends proper xhr back check for 404 only
                     self.fetch({
-                        url: app.apiUrl + '/suggestions/' + self.name
+                        url: app.apiUrl + '/suggestions/activities/' + self.name
                     });
                 }
             });
@@ -34,11 +34,13 @@ module.exports = Model.extend({
     session: {
         comment: 'string'
     },
-    parse: function (resp) {
-        console.log('parse', resp);
-        return resp;
-    },
     derived: {
+        displayName: {
+            deps: ['name', 'alias'],
+            fn: function () {
+                return this.alias || this.name;
+            }
+        },
         hasComment: {
             deps: ['comment'],
             fn: function () {

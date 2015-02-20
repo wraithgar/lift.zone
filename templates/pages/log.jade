@@ -2,8 +2,8 @@ section
   .row
     .small-12.columns
       h5 Enter your workout in the box below.  You can start with a workout name, date, or just start typing your activities!
-      h5
-        small If you want to manually set the name and date, turn smart mode off
+      //h5
+        //small If you want to manually set the name and date, turn smart mode off
   hr
   form
     .row
@@ -16,13 +16,13 @@ section
               input(data-hook='dateInput', placeholder='Dec 12, 2014')
             textarea(data-hook='workoutInput' rows=5 placeholder='Enter your workout here.', title='Workout' id='rawInput')
             br
-        .row
-          .small-12.columns
-            .switch.radius
-              input#smartParsing(type='checkbox' checked, data-hook='smartMode')
-              label(for='smartParsing')
-            .label Smart mode is&#xa0;
-              span.label.radius(data-hook='smartLabel') on
+        //-.row
+          //-.small-12.columns
+            //-.switch.radius
+              //-input#smartParsing(type='checkbox' checked, data-hook='smartMode')
+              //-label(for='smartParsing')
+            //-.label Smart mode is&#xa0;
+              //-span.label.radius(data-hook='smartLabel') on
       .small-12.medium-6.columns(data-hook='workout')
         h3(data-hook='workoutName') Workout Name
         h4(data-hook='workoutDate') Workout Date

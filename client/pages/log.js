@@ -146,6 +146,7 @@ module.exports = BasePage.extend({
         var ready = this.model.activities.every(function (activity) {
             return activity.ready;
         });
+        console.log(this.model.activities.filter(function (activity) { return !activity.ready;}));
         console.log('saving workout', ready);
     }
 });

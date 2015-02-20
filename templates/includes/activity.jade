@@ -2,7 +2,38 @@
   h6
     span(data-hook='name')
     span &#xa0;
-    span.button.tiny.round.info(data-hook='new') new!
+    span.circle.alert-bg-color
+      i.fa.fa-question(data-hook='new')
   ul.no-bullet(data-hook='sets')
   button.label.secondary.radius(data-hook='comment')
   br
+  .reveal-modal(data-hook='chooseAlias', data-reveal)
+    ul.pricing-table
+      li.title New activity
+      li.description This is the first time you've done this activity.
+      li.bullet-item.cta-button
+        .row
+          .small-12.medium-6.medium-centered.columns
+            .text-left I meant what I typed
+            br
+            ul.stack.button-group
+              li
+                a.button.tiny.radius(href='#' data-hook='name')
+            br
+      li.bullet-item.cta-button
+        .row
+          .small-12.medium-6.medium-centered.columns
+            .text-left I really meant
+            br
+            ul.stack.button-group(data-hook='suggestions')
+            br
+      li.bullet-item.cta-button
+        .row
+          .small-12.medium-6.medium-centered.columns
+            .text-left No, let me go back and edit that
+            br
+            ul.stack.button-group
+              li.text-left
+                a.button.tiny.radius(href='#')
+                  i.fa.fa-arrow-left
+            br

@@ -2,14 +2,22 @@
 
 var Model = require('./base');
 var Sets = require('./sets');
+var Suggestions = require('./suggestions');
 var app = require('ampersand-app');
 
 module.exports = Model.extend({
     urlRoot: function () { return app.apiUrl + '/activities'; },
     initialize: function (props) {
+        var self = this;
         if (props) {
-            this.fetch({
-                url: app.apiUrl + '/search/activities/' + this.name
+            self.fetch({
+                url: app.apiUrl + '/search/activities/' + self.name,
+                error: function () {
+                    //TODO when model sends proper xhr back check for 404 only
+                    self.fetch({
+                        url: app.apiUrl + '/suggestions/' + self.name
+                    });
+                }
             });
         }
     },
@@ -20,11 +28,15 @@ module.exports = Model.extend({
         alias: 'string'
     },
     collections: {
-        sets: Sets
+        sets: Sets,
+        suggestions: Suggestions
     },
     session: {
-        comment: 'string',
-        suggestions: ['array', true, function () { return []; }]
+        comment: 'string'
+    },
+    parse: function (resp) {
+        console.log('parse', resp);
+        return resp;
     },
     derived: {
         hasComment: {

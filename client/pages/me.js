@@ -24,7 +24,5 @@ module.exports = View.extend({
     },
     render: function () {
         this.renderWithTemplate({accountsUrl: app.accountsUrl});
-    },
-    autoRender: true
+    }
 });
-

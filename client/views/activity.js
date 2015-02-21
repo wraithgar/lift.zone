@@ -23,6 +23,10 @@ module.exports = View.extend({
         'model.ready': {
             type: 'toggle',
             no: '[data-hook=new]'
+        },
+        'model.hasSuggestions': {
+            type: 'toggle',
+            hook: 'hasSuggestions'
         }
     },
     events: {

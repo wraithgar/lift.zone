@@ -4,6 +4,7 @@ var Router = require('ampersand-router');
 var app = require('ampersand-app');
 var xhr = require('xhr');
 var querystring = require('querystring');
+var moment = require('moment');
 
 var AboutPage = require('./pages/about');
 var FitocracyPage = require('./pages/fitocracy');
@@ -18,12 +19,14 @@ var Wendler531Page = require('./pages/wendler531');
 var Activities = require('./models/activities');
 var PrivacyPage = require('./pages/privacy');
 var WorkoutModel = require('./models/workout');
+var WorkoutPage = require('./pages/workout');
 
 module.exports = Router.extend({
     routes: {
         '': 'home',
         'me': 'me',
         'log': 'log',
+        'workouts/:date': 'workout',
         'utils': 'utils',
         'utils/parser': 'parser',
         'utils/fitocracy': 'fitocracy',
@@ -45,6 +48,11 @@ module.exports = Router.extend({
     home: function () {
         this.trigger('page', new HomePage());
     },
+    workout: function (date) {
+        this.trigger('page', new WorkoutPage({
+            model: new WorkoutModel({date: moment(date, 'YYYY-MM-DD')})
+        }));
+    },
     log: function () {
         this.trigger('page', new LogPage({
             model: new WorkoutModel()
@@ -61,7 +69,7 @@ module.exports = Router.extend({
     },
     me: function () {
         this.trigger('page', new MePage({
-            model: app.models.me
+            model: app.me
         }));
     },
     fitocracy: function () {

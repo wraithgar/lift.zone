@@ -14,15 +14,14 @@ app.extend({
     apiUrl: config.APIURL,
     accountsUrl: config.ACCOUNTSURL,
     init: function () {
-        //Configure foundation
+        this.view = new MainView({
+            model: app.me,
+            el: document.querySelector('[data-hook=app]')
+        });
         $(document).foundation({
             reveal: {
                 dismiss_modal_class: 'dismiss-reveal-modal'
             }
-        });
-        this.view = new MainView({
-            model: app.me,
-            el: document.querySelector('[data-hook=app]')
         });
 
         this.router.history.start({pushState: true});
@@ -42,7 +41,11 @@ app.extend({
     cache: {
         aliases: new Aliases()
     },
-    logger: andlog
+    logger: andlog,
+    navigate: function (page) {
+        var url = (page.charAt(0) === '/') ? page.slice(1) : page;
+        this.router.history.navigate(url, {trigger: true});
+    }
 });
 
 domready(function renderPage() {

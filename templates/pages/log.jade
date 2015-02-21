@@ -1,10 +1,8 @@
 section
   .row
     .small-12.columns
-      h5 Enter your workout in the box below.  You can start with a workout name, date, or just start typing your activities!
-      //h5
-        //small If you want to manually set the name and date, turn smart mode off
-  hr
+      h3 New Workout
+      p Start typing your activities.  Start with a date or day of week to specify the day of the workout.
   form
     .row
       .small-12.medium-6.columns
@@ -16,16 +14,21 @@ section
               input(data-hook='dateInput', placeholder='Dec 12, 2014')
             textarea(data-hook='workoutInput' rows=5 placeholder='Enter your workout here.', title='Workout' id='rawInput')
             br
-        //-.row
-          //-.small-12.columns
-            //-.switch.radius
-              //-input#smartParsing(type='checkbox' checked, data-hook='smartMode')
-              //-label(for='smartParsing')
-            //-.label Smart mode is&#xa0;
-              //-span.label.radius(data-hook='smartLabel') on
-      .small-12.medium-6.columns(data-hook='workout')
+        .row.clearfix
+          .small-12.medium-6.columns(data-hook='workout')
+            input.radius.button.left(value='Save', data-hook='saveWorkout')
+      .small-12.medium-6.columns
         h3(data-hook='workoutName') Workout Name
         h4(data-hook='workoutDate') Workout Date
-        input.radius.button(value='Save', data-hook='saveWorkout')
-        hr
+        h6 Activities
         p(data-hook='workoutActivities')
+
+  .reveal-modal(data-hook='newActivities', data-reveal)
+    h3 New activities
+    span There are new activities in this workout, please confirm their names by clicking on the&#xa0;
+    i.fa.fa-question
+    span &#xa0;next to their names
+    .clearfix
+      a.button.tiny.radius.dismiss-reveal-modal.left Ok
+    a.close-reveal-modal.dismiss-reveal-modal
+      i.fa.fa-close

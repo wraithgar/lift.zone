@@ -1,8 +1,10 @@
+/*global $*/
 'use strict';
 
 var caber = require('caber');
 var debounce = require('lodash.debounce');
 var moment = require('moment');
+var app = require('ampersand-app');
 
 var BasePage = require('./base');
 var ActivityView = require('../views/activity');
@@ -119,6 +121,7 @@ module.exports = BasePage.extend({
     parseWorkout: function (el) {
         var workout;
         var data = el.value;
+        this.model.raw = data;
         if (!this.smartMode) {
             this.model.unset('date');
             this.model.name = 'Workout';
@@ -146,10 +149,17 @@ module.exports = BasePage.extend({
         this.addActivities(workout.activities);
     },
     saveWorkout: function () {
-        var ready = this.model.activities.every(function (activity) {
+        var self = this;
+        var ready = self.model.activities.every(function (activity) {
             return activity.ready;
         });
-        console.log(this.model.activities.filter(function (activity) { return !activity.ready;}));
-        console.log('saving workout', ready);
+        if (!ready) {
+            return $(self.queryByHook('newActivities')).foundation('reveal', 'open');
+        }
+        self.model.save(null, {
+            success: function () {
+                app.navigate('/workouts/' + self.model.dateId);
+            }
+        });
     }
 });

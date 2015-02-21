@@ -17,14 +17,14 @@ module.exports = View.extend({
         var self = this;
         if (this.model.suggestions) {
             this.model.save(
-                {aliasID: this.model.id, alias: this.model.name},
+                {aliasId: this.model.id, alias: this.model.name},
                 {success: function () {
                     self.parent.closeModal();
                 }}
             );
         } else {
             this.model.collection.parent.save(
-                {aliasID: this.model.id, alias: this.model.name},
+                {aliasId: this.model.id, alias: this.model.name},
                 {success: function () {
                     self.parent.parent.closeModal();
                 }}

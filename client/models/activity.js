@@ -20,11 +20,14 @@ module.exports = Model.extend({
                 }
             });
         }
+        self.listenTo(self.suggestions, 'add remove reset', function () {
+            self.hasSuggestions = self.suggestions.length > 0;
+        });
     },
     props: {
         id: 'number',
         name: ['string', true],
-        aliasID: 'number',
+        aliasId: 'number',
         alias: 'string'
     },
     collections: {
@@ -32,7 +35,8 @@ module.exports = Model.extend({
         suggestions: Suggestions
     },
     session: {
-        comment: 'string'
+        comment: 'string',
+        hasSuggestions: 'boolean'
     },
     derived: {
         displayName: {

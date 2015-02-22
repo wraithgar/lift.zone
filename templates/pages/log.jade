@@ -30,5 +30,8 @@ section
     span &#xa0;next to their names
     .clearfix
       a.button.tiny.radius.dismiss-reveal-modal.left Ok
-    a.close-reveal-modal.dismiss-reveal-modal
-      i.fa.fa-close
+  .reveal-modal(data-hook='workoutExists', data-reveal)
+    h3 Workout exists
+    span There is already a workout for this day, either change the date or go edit the workout directly
+    .clearfix
+      a.button.tiny.radius.dismiss-reveal-modal.left Ok

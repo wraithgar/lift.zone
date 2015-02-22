@@ -52,9 +52,9 @@ module.exports = Model.extend({
                     formatted.push(this.distance);
                     formatted.push(' ');
                     if (this.unit === 'miles') {
-                        formatted.push ('mi');
+                        formatted.push('mi');
                     } else {
-                        formatted.push ('km');
+                        formatted.push('km');
                     }
                 }
                 if (this.weight) {
@@ -102,5 +102,9 @@ module.exports = Model.extend({
                 return !this.pr;
             }
         }
+    },
+    parse: function (resp) {
+        resp.pr = resp.pr === 1;
+        return resp;
     }
 });

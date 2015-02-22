@@ -22,7 +22,10 @@ var dateFormats = [
 module.exports = BasePage.extend({
     template: templates.pages.log,
     initialize: function () {
+        window.workout = this.model;
         this.throttledParse = debounce(this.userInputChanged, 500);
+        this.listenTo(this.model, 'change:date', this.checkExisting);
+        this.checkExisting(this.model, this.model.dateId);
     },
     events: {
         'change [data-hook=smartMode]': 'changeSmartMode',
@@ -30,6 +33,14 @@ module.exports = BasePage.extend({
         'input [data-hook=nameInput]': 'setName',
         'input [data-hook=dateInput]': 'setDate',
         'click [data-hook=saveWorkout]': 'saveWorkout'
+    },
+    checkExisting: function (model, newDate) {
+        var self = this;
+        model.checkExisting(newDate, function () {
+            if (model.exists) {
+                return $(self.queryByHook('workoutExists')).foundation('reveal', 'open');
+            }
+        });
     },
     bindings: {
         smartMode: [{
@@ -145,7 +156,6 @@ module.exports = BasePage.extend({
         } else {
             this.model.unset('date');
         }
-        window.workout = this.model;
         this.addActivities(workout.activities);
     },
     saveWorkout: function () {
@@ -153,6 +163,9 @@ module.exports = BasePage.extend({
         var ready = self.model.activities.every(function (activity) {
             return activity.ready;
         });
+        if (this.model.exists) {
+            return $(self.queryByHook('workoutExists')).foundation('reveal', 'open');
+        }
         if (!ready) {
             return $(self.queryByHook('newActivities')).foundation('reveal', 'open');
         }

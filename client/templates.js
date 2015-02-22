@@ -17,7 +17,7 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<div><div class="contain-to-grid"><nav data-topbar="data-topbar" role="navigation" class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">lift.zone</a></h1></li><li class="toggle-topbar menu-icon"><a href="#">Menu</a></li></ul><section class="top-bar-section"><ul data-hook="menu" class="right"><li><a href="/log">Log</a></li><li><a href="/utils">Utils</a></li><li><a href="/login" data-hook="name" class="button"></a></li><li data-hook="logout"><a href="/logout">Logout</a></li></ul></section></nav></div><div data-hook="page-container"></div><div class="row"><hr/><div class="left"><dl class="sub-nav"><dd><a href="/privacy">Privacy</a></dd><dd><a href="/about">About</a></dd><dd><a href="/">lift.zone</a></dd><dd><a href="//accounts.lift.zone">Accounts</a></dd><dd><a href="https://twitter.com/wraithgar"><i class="fa fa-twitter"></i></a></dd></dl></div><div class="right"><dl class="sub-nav"><dd>© 2015 Michael Garvin</dd></dl></div></div></div>';
+        return '<div><div class="contain-to-grid"><nav data-topbar="data-topbar" role="navigation" class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">lift.zone</a></h1></li><li class="toggle-topbar menu-icon"><a href="#">Menu</a></li></ul><section class="top-bar-section"><ul data-hook="menu" class="right"><li><a href="/log">Log</a></li><li><a href="/utils">Utils</a></li><li><a href="/login" data-hook="userName" class="button"></a></li><li data-hook="logout"><a href="/logout">Logout</a></li></ul></section></nav></div><div data-hook="page-container"></div><div class="row"><hr/><div class="left"><dl class="sub-nav"><dd><a href="/privacy">Privacy</a></dd><dd><a href="/about">About</a></dd><dd><a href="/">lift.zone</a></dd><dd><a href="//accounts.lift.zone">Accounts</a></dd><dd><a href="https://twitter.com/wraithgar"><i class="fa fa-twitter"></i></a></dd></dl></div><div class="right"><dl class="sub-nav"><dd>© 2015 Michael Garvin</dd></dl></div></div></div>';
     };
 
     // includes/activity.jade compiled template
@@ -153,7 +153,7 @@
 
     // pages/workout.jade compiled template
     templatizer["pages"]["workout"] = function tmpl_pages_workout() {
-        return '<section><div class="row"><div class="small-12 columns"><h1>Workout</h1></div></div><hr/><div class="row panel"><p>This will list a workout</p></div></section>';
+        return '<section><div class="row"><div class="small-12 columns"><h1 data-hook="name"></h1><h3 data-hook="date"></h3></div></div><hr/><div class="row panel"><div data-hook="activities" class="small-12 columns"></div></div></section>';
     };
 
     return templatizer;

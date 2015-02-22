@@ -48,7 +48,6 @@ module.exports = View.extend({
         console.log('choosing self alias');
     },
     closeModal: function () {
-        console.log('closemodal');
         $(this.aliasModal).foundation('reveal', 'close');
     }
 });

@@ -22,7 +22,6 @@ var dateFormats = [
 module.exports = BasePage.extend({
     template: templates.pages.log,
     initialize: function () {
-        window.workout = this.model;
         this.throttledParse = debounce(this.userInputChanged, 500);
         this.listenTo(this.model, 'change:date', this.checkExisting);
         this.checkExisting(this.model, this.model.dateId);

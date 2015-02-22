@@ -13,18 +13,18 @@ module.exports = View.extend({
     bindings: {
         'model.displayName': {
             type: 'text',
-            hook: 'name'
+            hook: 'userName'
         },
         'model.link': {
             type: 'attribute',
             name: 'href',
-            hook: 'name'
+            hook: 'userName'
         },
         'model.loggedIn': [
             {
                 type: 'booleanClass',
                 no: 'button',
-                hook: 'name'
+                hook: 'userName'
             }, {
                 type: 'toggle',
                 hook: 'logout'

@@ -11,18 +11,18 @@ module.exports = View.extend({
     bindings: {
         'model.displayName': {
             type: 'text',
-            hook: 'name'
+            hook: 'activityName'
         },
         'model.comment': [{
             type: 'text',
-            hook: 'comment'
+            hook: 'activityComment'
         }, {
             type: 'toggle',
-            hook: 'comment'
+            hook: 'activityComment'
         }],
         'model.ready': {
             type: 'toggle',
-            no: '[data-hook=new]'
+            no: '[data-hook=newActivity]'
         },
         'model.hasSuggestions': {
             type: 'toggle',

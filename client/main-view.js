@@ -2,29 +2,40 @@ var app = require('ampersand-app');
 var View = require('ampersand-view');
 var ViewSwitcher = require('ampersand-view-switcher');
 var dom = require('ampersand-dom');
-var templates = require('../templates');
 
 module.exports = View.extend({
-    template: templates.body,
+    template: require('./templates/body.jade'),
     autoRender: true,
     events: {
         'click a[href]': 'handleLinkClick'
     },
+    session: {
+        message: 'string'
+    },
     bindings: {
+        'message': [
+            {
+                type: 'text',
+                hook: 'page-message'
+            }, {
+                type: 'toggle',
+                hook: 'page-message'
+            }
+        ],
         'model.displayName': {
             type: 'text',
-            hook: 'userName'
+            hook: 'user-name'
         },
         'model.link': {
             type: 'attribute',
             name: 'href',
-            hook: 'userName'
+            hook: 'user-name'
         },
         'model.loggedIn': [
             {
                 type: 'booleanClass',
                 no: 'button',
-                hook: 'userName'
+                hook: 'user-name'
             }, {
                 type: 'toggle',
                 hook: 'logout'
@@ -39,6 +50,7 @@ module.exports = View.extend({
         this.pages = new ViewSwitcher(this.queryByHook('page-container'));
     },
     handlePage: function (pageView) {
+        this.message = '';
         app.currentPage = pageView;
         this.pages.set(pageView);
         this.setActiveNavItem();

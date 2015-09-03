@@ -1,7 +1,6 @@
 var View = require('ampersand-view');
-var templates = require('../templates');
 
 module.exports = View.extend({
-    template: templates.includes.markdownCredits,
+    template: require('../templates/views/markdownCredits.jade'),
     autoRender: true
 });

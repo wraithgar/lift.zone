@@ -1,0 +1,59 @@
+section
+  .row
+    .small-12.columns
+      h1 Create an account
+  hr
+  .row.panel
+    if (action === 'verified')
+      p All set, go <a href='/login'>log in</a> with the username #{user.login}
+    else if (action === 'signup')
+      p Welcome, friend! Tell us a little about yourself and we'll create your account.
+      form(data-abide)
+        .row
+          .small-4.columns
+            label(for='login') Login
+          .small-8.columns
+            input(type='text', id='login', name='login', placeholder='What username do you want', value=user.login, required, data-abide-validator='checkLogin')
+            small.error Login required
+        .row
+          .small-4.columns
+            label(for='name') Name
+          .small-8.columns
+            input(type='text', id='name', name='name', placeholder='What should we call you?', value=user.name, required)
+            small.error You need a name
+        .row
+          .small-4.columns
+            label(for='email') Email
+          .small-8.columns
+            input(type='email', id='email', name='email', placeholder='Email address', value=user.email, required)
+            small.error A valid email is required.
+        .row
+          .small-4.columns
+            h3
+              label(for='password') Password
+          .small-8.columns
+            input(type='password', id='password', name='password', placeholder='New password', pattern='[\\W\\w]{8,}', required)
+            small.error Passwords must be at least 8 characters long
+        .row
+          .small-4.columns
+            h3
+              label(for='passwordConfirm') Confirm Password
+          .small-8.columns
+            input(type='password', id='passwordConfirm', name='passwordConfirm', placeholder='Re-type new password', data-equalto='password')
+            small.error Passwords must match
+        .row
+          .small-12.columns
+            input.button(type='submit', value='Create account')
+    else
+      p Got an invite code? Enter it here
+      form(data-abide)
+        .row
+          .small-4.columns
+            label(for='invite') Invite Code
+          .small-8.columns
+            input(type='text', id='invite', name='invite', placeholder='Invite code', value=invite, required)
+            small.error Please enter an invite code
+        .row
+          .small-12.columns
+            input.button(type='submit', value='Sign up', disabled)
+

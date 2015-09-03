@@ -1,10 +1,9 @@
 var View = require('ampersand-view');
 var app = require('ampersand-app');
 var ActivityView = require('../views/activity');
-var templates = require('../templates');
 
 module.exports = View.extend({
-    template: templates.pages.workout,
+    template: require('../templates/pages/workout.jade'),
     initialize: function () {
         this.model.fetch({
             url: app.apiUrl + '/search/workouts/' + this.model.dateId

@@ -14,10 +14,11 @@ div
           li
             a(href='/utils') Utils
           li
-            a.button(href='/login', data-hook='userName')
+            a.button(href='/login', data-hook='user-name')
           li(data-hook='logout')
             a(href='/logout') Logout
 
+  .panel(data-hook='page-message')
   div(data-hook='page-container')
   .row
     hr
@@ -29,8 +30,6 @@ div
           a(href='/about') About
         dd
           a(href='/') lift.zone
-        dd
-          a(href='//accounts.lift.zone') Accounts
         dd
           a(href='https://twitter.com/wraithgar')
             i.fa.fa-twitter

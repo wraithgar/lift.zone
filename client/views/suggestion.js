@@ -1,9 +1,8 @@
 var View = require('ampersand-view');
-var templates = require('../templates');
 
 module.exports = View.extend({
     autoRender: true,
-    template: templates.includes.suggestion,
+    template: require('../templates/views/suggestion.jade'),
     events: {
         'click a': 'chooseAlias'
     },

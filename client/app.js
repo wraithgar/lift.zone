@@ -1,10 +1,10 @@
 /*global Modernizr, $*/
-var andlog = require('andlog');
+var logger = require('debug')('lift.zone');
 var app = require('ampersand-app');
 var domready = require('domready');
 var ActivitiesModel = require('./models/activities');
 var Router = require('./router');
-var MainView = require('./views/main');
+var MainView = require('./main-view');
 var Me = require('./models/me');
 var Aliases = require('./models/aliases');
 var config = require('../config');
@@ -41,7 +41,7 @@ app.extend({
     cache: {
         aliases: new Aliases()
     },
-    logger: andlog,
+    log: logger,
     navigate: function (page) {
         var url = (page.charAt(0) === '/') ? page.slice(1) : page;
         this.router.history.navigate(url, {trigger: true});
@@ -54,3 +54,7 @@ domready(function renderPage() {
     }
     app.init();
 });
+
+if (config.DEV) {
+    window.app = app;
+}

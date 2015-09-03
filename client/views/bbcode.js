@@ -1,9 +1,8 @@
 var View = require('ampersand-view');
 var GroupedCollectionView = require('ampersand-grouped-collection-view');
-var templates = require('../templates');
 
 var RepItemView = View.extend({
-    template: templates.includes.bbcodeRepItem,
+    template: require('../templates/views/bbcodeRepItem.jade'),
     bindings: {
         'model.formattedShort': {
             type: 'text',
@@ -18,7 +17,7 @@ var RepItemView = View.extend({
 });
 
 var RepGroupView = View.extend({
-    template: templates.includes.bbcodeRepGroup,
+    template: require('../templates/views/bbcodeRepGroup.jade'),
     render: function () {
         this.renderWithTemplate();
         this.cacheElements({
@@ -29,7 +28,7 @@ var RepGroupView = View.extend({
 
 
 module.exports = View.extend({
-    template: templates.includes.bbcode,
+    template: require('../templates/views/bbcode.jade'),
     bindings: {
         'model.name': {
             type: 'text',

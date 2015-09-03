@@ -1,9 +1,8 @@
 var View = require('ampersand-view');
-var templates = require('../templates');
 var app = require('ampersand-app');
 
 module.exports = View.extend({
-    template: templates.pages.me,
+    template: require('../templates/pages/me.jade'),
     bindings: {
         'model.login': {
             type: 'text',

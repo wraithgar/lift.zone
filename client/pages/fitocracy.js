@@ -1,6 +1,5 @@
 var View = require('ampersand-view');
 var caber = require('caber');
-var templates = require('../templates');
 var debounce = require('../lib/debounce');
 var MarkdownView = require('../views/markdown');
 var MarkdownFullView = require('../views/markdownFull');
@@ -10,7 +9,7 @@ var MarkdownCreditsView = require('../views/markdownCredits');
 var BBCodeCreditsView = require('../views/bbcodeCredits');
 
 module.exports = View.extend({
-    template: templates.pages.fitocracy,
+    template: require('../templates/pages/fitocracy.jade'),
     initialize: function () {
         this.throttledParse = debounce(this.parseRaw, 1000);
     },

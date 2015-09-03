@@ -1,6 +1,5 @@
 var View = require('ampersand-view');
-var templates = require('../templates');
 
 module.exports = View.extend({
-    template: templates.pages.privacy
+    template: require('../templates/pages/privacy.jade')
 });

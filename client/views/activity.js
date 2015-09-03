@@ -4,10 +4,9 @@
 var View = require('ampersand-view');
 var SetView = require('./set');
 var SuggestionView = require('./suggestion');
-var templates = require('../templates');
 
 module.exports = View.extend({
-    template: templates.includes.activity,
+    template: require('../templates/views/activity.jade'),
     bindings: {
         'model.displayName': {
             type: 'text',

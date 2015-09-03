@@ -1,8 +1,7 @@
 var View = require('ampersand-view');
-var templates = require('../templates');
 
 module.exports = View.extend({
-    template: templates.includes.lift531,
+    template: require('../templates/views/lift531.jade'),
     autoRender: true,
     bindings: {
         'model.name': {

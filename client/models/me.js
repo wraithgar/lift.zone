@@ -1,8 +1,10 @@
 var app = require('ampersand-app');
-var BaseModel = require('./base');
+var Model = require('./base');
+var xhr = require('xhr');
 
-module.exports = BaseModel.extend({
+module.exports = Model.extend({
     url: function () { return app.apiUrl + '/me'; },
+    type: 'user',
     initialize: function () {
         this.listenTo(app, 'accessToken', function () {
             this.loggedIn = app.accessToken !== undefined;
@@ -17,14 +19,14 @@ module.exports = BaseModel.extend({
         id: 'number',
         login: 'string',
         name: 'string',
-        validated: 'number',
+        validated: 'boolean',
         dateFormat: ['string', 'true', 'dddd, MMM Do YYYY']
     },
     derived: {
         invalid: {
             deps: ['validated'],
             fn: function () {
-                return this.validated !== 1;
+                return !this.validated;
             }
         },
         displayName: {
@@ -48,5 +50,24 @@ module.exports = BaseModel.extend({
     },
     session: {
         loggedIn: ['boolean', true, false]
+    },
+    authenticate: function (login, password, options) {
+        var payload = {
+            data: {
+                type: 'login',
+                attributes: {
+                    login: login,
+                    password: password
+                }
+            }
+        };
+        var syncOptions = {
+            parse: false,
+            url: app.apiUrl + '/login',
+            data: JSON.stringify(payload),
+            success: options.success,
+            error: options.error
+        };
+        this.sync('create', this, syncOptions);
     }
 });

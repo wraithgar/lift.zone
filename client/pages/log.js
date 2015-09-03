@@ -6,9 +6,8 @@ var debounce = require('lodash.debounce');
 var moment = require('moment');
 var app = require('ampersand-app');
 
-var BasePage = require('./base');
+var View = require('ampersand-view');
 var ActivityView = require('../views/activity');
-var templates = require('../templates');
 
 var dateFormats = [
     'MM/DD/YYYY',
@@ -19,8 +18,8 @@ var dateFormats = [
 ];
 
 
-module.exports = BasePage.extend({
-    template: templates.pages.log,
+module.exports = View.extend({
+    template: require('../templates/pages/log.jade'),
     initialize: function () {
         this.throttledParse = debounce(this.userInputChanged, 500);
         this.listenTo(this.model, 'change:date', this.checkExisting);

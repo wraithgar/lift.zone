@@ -1,0 +1,30 @@
+.section
+  .row
+    .small-12.columns
+      h1 Welcome to lift.zone
+  hr
+  .row.panel
+    form(data-abide)
+      .row
+        .small-12.columns
+          h3 Please log in
+      .row
+        .small-4.columns
+          h3
+            label(for='login') Login
+        .small-8.columns
+          input(required type='text', id='login', name='login', placeholder='login')
+          small.error Please enter a login
+      .row
+        .small-4.columns
+          label(for='password') Password
+        .small-8.columns
+          input(required type='password', id='password', name='password', placeholder='password')
+          small.error Please enter a password
+      .row
+        .small-12.columns
+          input.button(type='submit', value='Log in', data-hook='login')
+      .row
+        .small-12.columns
+          a.button.button.tiny(href='/recover') Forgot your password? Click here to recover it.
+

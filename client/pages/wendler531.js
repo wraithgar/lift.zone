@@ -1,5 +1,4 @@
 var View = require('ampersand-view');
-var templates = require('../templates');
 var LiftView = require('../views/lift531');
 var debounce = require('../lib/debounce');
 
@@ -12,7 +11,7 @@ var fuzzyNumber = function fuzzyNumber(value) {
 };
 
 module.exports = View.extend({
-    template: templates.pages.wendler531,
+    template: require('../templates/pages/wendler531.jade'),
     initialize: function () {
         this.ohpView = this.registerSubview(new LiftView({model: this.model.ohp}));
         this.squatView = this.registerSubview(new LiftView({model: this.model.squat}));

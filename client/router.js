@@ -7,17 +7,19 @@ var querystring = require('querystring');
 var moment = require('moment');
 
 var AboutPage = require('./pages/about');
+var Activities = require('./models/activities');
 var FitocracyPage = require('./pages/fitocracy');
-var MePage = require('./pages/me');
-var ParserPage = require('./pages/parser');
-var LogPage = require('./pages/log');
-var UtilsPage = require('./pages/utils');
 var HomePage = require('./pages/home');
+var LogPage = require('./pages/log');
+var LoginPage = require('./pages/login');
+var MePage = require('./pages/me');
 var NotFoundPage = require('./pages/notFound');
+var ParserPage = require('./pages/parser');
+var PrivacyPage = require('./pages/privacy');
+var SignupPage = require('./pages/signup');
+var UtilsPage = require('./pages/utils');
 var Wendler531Model = require('./models/wendler531');
 var Wendler531Page = require('./pages/wendler531');
-var Activities = require('./models/activities');
-var PrivacyPage = require('./pages/privacy');
 var WorkoutModel = require('./models/workout');
 var WorkoutPage = require('./pages/workout');
 
@@ -35,6 +37,7 @@ module.exports = Router.extend({
         'auth/callback': 'auth',
         'login': 'login',
         'logout': 'logout',
+        'signup': 'signup',
         'privacy': 'privacy',
         '*catchall': 'notfound'
     },
@@ -104,10 +107,13 @@ module.exports = Router.extend({
         });
     },
     login: function () {
-        window.location.replace(app.accountsUrl + '/login?redirect=lift.zone');
+        this.trigger('page', new LoginPage());
     },
     logout: function () {
         app.setAccessToken(undefined);
         this.redirectTo('/');
+    },
+    signup: function () {
+        this.trigger('page', new SignupPage());
     }
 });

@@ -1,9 +1,8 @@
 var View = require('ampersand-view');
 var RepView = require('../views/markdownRep');
-var templates = require('../templates');
 
 module.exports = View.extend({
-    template: templates.includes.markdown,
+    template: require('../templates/views/markdown.jade'),
     bindings: {
         'model.name': {
             type: 'text',

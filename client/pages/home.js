@@ -4,7 +4,7 @@ var app = require('ampersand-app');
 module.exports = View.extend({
     template: require('../templates/pages/home.jade'),
     initialize: function () {
-        this.listenTo(app.me, 'change:loggedIn', this.render.bind(this));
+        this.listenTo(app.me, 'change', this.render.bind(this));
     },
     events: {
         'submit form': 'invite',

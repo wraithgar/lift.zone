@@ -36,6 +36,7 @@
     "jade": "^1.11.0",
     "jadeify": "^4.4.0",
     "lodash.debounce": "^3.1.1",
+    "lodash.foreach": "^3.0.3",
     "moment": "^2.10.6",
     "uglify-js": "^2.4.24",
     "xhr": "^2.0.4"

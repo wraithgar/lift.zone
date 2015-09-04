@@ -10,7 +10,7 @@ section
           h3 You are logged in
           p Go use lift.zone now
           p Or check your <a href='/me'>account info</a>
-          if (locals.validated)
+          if !locals.validated
             p You should <a href='/validate'>validate</a> your email address before you go.  Validated accounts can recover lost passwords and send invites to other people.
             p Last warning, if you lose your password and your account isn't validated you're out of luck.
   else
@@ -18,6 +18,7 @@ section
       .small-12.columns
           h3 Sign up or log in
           p If you already have an account, click the login link above
+          p If you don't want an account, check out `utils` up above
     .row.panel
       .small-12.columns
         form(data-abide)

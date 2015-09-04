@@ -30,7 +30,11 @@ app.extend({
         if (this.accessToken !== token) {
             this.accessToken = token;
             if (Modernizr.localstorage) {
-                localStorage.accessToken = token;
+                if (token !== undefined) {
+                    localStorage.accessToken = token;
+                } else {
+                    delete localStorage.accessToken;
+                }
             }
             this.trigger('accessToken', token);
         }

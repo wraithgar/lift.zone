@@ -1,5 +1,6 @@
 var Model = require('ampersand-model');
 var app = require('ampersand-app');
+var forEach = require('lodash.foreach');
 
 //Authorized model that updates app accessToken if it's found to be invalid
 module.exports = Model.extend({
@@ -23,6 +24,16 @@ module.exports = Model.extend({
         data.attributes.id = resp.id;
         return data.attributes;
     },
+    toJSON: function () {
+        var res = this.getAttributes({props: true}, true);
+        forEach(this._children, function (value, key) {
+            res[key] = this[key].serialize();
+        }, this);
+        forEach(this._collections, function (value, key) {
+            res[key] = this[key].serialize();
+        }, this);
+        return res;
+    },
     serialize: function () {
         var data = {};
         data.attributes = this.getAttributes({props: true}, true);
@@ -35,7 +46,7 @@ module.exports = Model.extend({
     sync: function (event, model, options) {
         var error = options.error;
         options.error = function (resp) {
-            if (resp.statusCode === 401) {
+            if (resp.statusCode > 399) {
                 app.setAccessToken(undefined);
             }
             if (error) { error(model, resp, options); }

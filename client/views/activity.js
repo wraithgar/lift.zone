@@ -1,6 +1,3 @@
-/*global $ */
-'use strict';
-
 var View = require('ampersand-view');
 var SetView = require('./set');
 var SuggestionView = require('./suggestion');
@@ -47,6 +44,6 @@ module.exports = View.extend({
         console.log('choosing self alias');
     },
     closeModal: function () {
-        $(this.aliasModal).foundation('reveal', 'close');
+        app.$(this.aliasModal).foundation('reveal', 'close');
     }
 });

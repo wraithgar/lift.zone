@@ -1,12 +1,33 @@
 var View = require('ampersand-view');
 var app = require('ampersand-app');
 var querystring = require('querystring');
+var ViewSwitcher = require('ampersand-view-switcher');
+var InviteView = require('../views/invite');
+var SignupView = require('../views/signup');
+var InviteModel = require('../models/invite');
 
 module.exports = View.extend({
     template: require('../templates/pages/signup.jade'),
-    render: function () {
+    initialize: function () {
         var params = querystring.parse(window.location.search.slice('1'));
-        this.renderWithTemplate({ invite: params.invite });
-        //Check invite, enable/disable submit
+        this.invite = new InviteModel({ code: params.invite });
+        this.stage = 'invite';
+        this.listenTo(this, 'change:stage', this.renderStage.bind(this));
+    },
+    session: {
+        'stage': 'string'
+    },
+    render: function () {
+        this.renderWithTemplate();
+        this.stages = new ViewSwitcher(this.queryByHook('stage'));
+        this.renderStage();
+    },
+    renderStage: function () {
+        if (this.stage === 'invite') {
+            return this.stages.set(new InviteView({model: this.invite, parent: this}));
+        }
+        if (this.stage === 'signup') {
+            return this.stages.set(new SignupView({model: this.invite, parent: this}));
+        }
     }
 });

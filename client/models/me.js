@@ -1,6 +1,5 @@
 var app = require('ampersand-app');
 var Model = require('./base');
-var xhr = require('xhr');
 
 module.exports = Model.extend({
     url: function () { return app.apiUrl + '/me'; },
@@ -62,7 +61,6 @@ module.exports = Model.extend({
             }
         };
         var syncOptions = {
-            parse: false,
             url: app.apiUrl + '/login',
             data: JSON.stringify(payload),
             success: options.success,

@@ -1,0 +1,18 @@
+div
+  p Got an invite code? Enter it here
+  form(data-abide)
+    .row
+      .small-4.columns
+        label(for='invite') Invite Code
+      .small-8.columns
+        input(type='text', id='invite', name='invite', placeholder='Invite code', value=locals.model.code, required)
+        small.error Please enter a valid invite code
+    .row
+      .small-12.columns
+        input.button(type='submit', value='Sign up')
+    .alert-box.info.radius(data-hook='invite-status')
+  .reveal-modal(data-hook='invalid', data-reveal)
+    h3 Invalid
+    span That invite code appears to be invalid
+    .clearfix
+      a.button.tiny.radius.dismiss-reveal-modal.left Ok

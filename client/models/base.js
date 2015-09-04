@@ -21,32 +21,26 @@ module.exports = Model.extend({
         if (data.type !== this.type) {
             throw TypeError('Invalid type ' + data.type);
         }
-        data.attributes.id = resp.id;
+        data.attributes[this.idAttribute] = resp[this.idAttribute];
         return data.attributes;
     },
     toJSON: function () {
-        var res = this.getAttributes({props: true}, true);
-        forEach(this._children, function (value, key) {
-            res[key] = this[key].serialize();
-        }, this);
-        forEach(this._collections, function (value, key) {
-            res[key] = this[key].serialize();
-        }, this);
-        return res;
+        return Model.prototype.serialize.apply(this, arguments);
     },
     serialize: function () {
         var data = {};
         data.attributes = this.getAttributes({props: true}, true);
         data.type = this.type;
-        data.id = this.id;
-        delete data.attributes.id;
+        data[this.idAttributes] = this[this.idAttribute];
+        delete data.attributes[this.idAttribute];
         //TODO children and collections
         return {data: data}
     },
     sync: function (event, model, options) {
         var error = options.error;
         options.error = function (resp) {
-            if (resp.statusCode > 399) {
+            //4xx errors that aren't 404
+            if (resp.statusCode > 399 && resp.statusCode !== 404 && resp.statusCode < 500) {
                 app.setAccessToken(undefined);
             }
             if (error) { error(model, resp, options); }

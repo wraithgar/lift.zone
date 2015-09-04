@@ -1,5 +1,3 @@
-'use strict';
-
 var Collection = require('ampersand-collection');
 var Activity = require('./activity');
 

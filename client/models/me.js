@@ -18,7 +18,10 @@ module.exports = Model.extend({
         id: 'number',
         login: 'string',
         name: 'string',
+        email: 'string',
         validated: 'boolean',
+        smartmode: 'boolean',
+        visible: 'boolean',
         dateFormat: ['string', 'true', 'dddd, MMM Do YYYY']
     },
     derived: {

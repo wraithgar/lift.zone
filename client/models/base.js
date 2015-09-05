@@ -38,9 +38,10 @@ module.exports = Model.extend({
     },
     sync: function (event, model, options) {
         var error = options.error;
+        options.attrs = model.serialize();
         options.error = function (resp) {
             //4xx errors that aren't 404
-            if (resp.statusCode > 399 && resp.statusCode !== 404 && resp.statusCode < 500) {
+            if (resp.statusCode > 400 && resp.statusCode !== 404 && resp.statusCode < 500) {
                 app.setAccessToken(undefined);
             }
             if (error) { error(model, resp, options); }

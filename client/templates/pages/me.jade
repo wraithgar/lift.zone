@@ -1,15 +1,55 @@
 section
   .row
     .small-12.columns
-      h1 Settings for&#xa0;
-        span(data-hook='name')
+      h1 Here is what we know about you
+      p Change any of these and hit `Update` if you need.
+      p You can't change your login, unfortunately. Hope you picked a good one!
   hr
-  .row.error(data-hook='invalid')
-    .alert-box.alert.round Your email is not validated! You will not be able to send invites or recover from a lost password.  You should go validate your email now.
   .row.panel
-    span To change your account settings (name, password, email)&#xa0;
-    span(data-hook='invalid') or to validate your email&#xao;
-    span please go to&#xa0;
-    a(href='#{accountsUrl}/me', target='_blank') the accounts server
-    // Preferred date format
-    // Time zone?
+    form(data-abide)
+      .row
+        .small-4.columns
+          h3
+            label(for='login') Login
+        .small-8.columns
+          .alert-box.secondary(data-alert)
+            span(data-hook='login')
+      .row
+        .small-4.columns
+          h3
+            label(for='name') Name
+        .small-8.columns
+          input(required, type='text', id='name', name='name', placeholder='What do we call you')
+          small.error You need a name
+      .row
+        .small-4.columns
+          h3
+            label(for='password') Password
+        .small-8.columns
+          input(type='password', id='password', name='password', placeholder='New password', pattern='[\\W\\w]{8,}')
+          small.error Passwords must be at least 8 characters long
+      .row
+        .small-4.columns
+          h3
+            label(for='passwordConfirm') Confirm Password
+        .small-8.columns
+          input(type='password', id='passwordConfirm', name='passwordConfirm', placeholder='Re-type new password', data-equalto='password')
+          small.error Passwords must match
+      .row
+        .small-4.columns
+          h3
+            label(for='email') Email
+        .small-8.columns
+          input(required, type='email', id='email', name='email', placeholder='Enter your email')
+          small.error You need a valid email
+      .row
+        .small-4.columns
+          h3
+            label Validation
+        .small-8.columns
+          .alert-box.success.round.text-center(data-hook='validated') Your email address is validated
+          a(href='/validate', data-hook='invalid')
+            .alert-box.alert.round.text-center Your email address is not validated.  You will not be able to send invites or recover your password. click here to validate your email address.
+      .row
+        .small-12.columns.text-center
+          input.round.button(type='submit', value='Update')

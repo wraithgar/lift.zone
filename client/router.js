@@ -34,7 +34,6 @@ module.exports = Router.extend({
         'utils/fitocracy': 'fitocracy',
         'utils/531': 'calc531',
         'about': 'about',
-        'auth/callback': 'auth',
         'login': 'login',
         'logout': 'logout',
         'signup': 'signup',
@@ -88,23 +87,6 @@ module.exports = Router.extend({
         this.trigger('page', new Wendler531Page({
             model: new Wendler531Model()
         }));
-    },
-    auth: function () {
-        var self = this;
-        var token = querystring.parse(window.location.search.slice(1)).token;
-        if (!token) {
-            return this.redirectTo('/');
-        }
-
-        xhr({
-            url: app.apiUrl + '/login?token=' + encodeURIComponent(token),
-            json: true
-        }, function (err, resp, body) {
-            if (!err && resp.statusCode === 200) {
-                app.setAccessToken(body.authorization);
-            }
-            return self.redirectTo('/');
-        });
     },
     login: function () {
         this.trigger('page', new LoginPage());

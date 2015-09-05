@@ -36,7 +36,10 @@ div
     .row
       .small-12.columns
         input.button(type='submit', value='Create account')
-
-    //-if (action === 'verified')
-      //-p All set, go <a href='/login'>log in</a> with the username #{locals.login}
-    //-else if (action === 'signup')
+  .reveal-modal(data-hook='error', data-reveal)
+    h3 Error
+    span Oh no! There was an unexpected error signing you up.
+    br
+    span You may want to contact me <a href="mailto:gar+code@danger.computer">here</a> or on the Twitter link below.
+    .clearfix
+      a.button.tiny.radius.dismiss-reveal-modal.left Ok

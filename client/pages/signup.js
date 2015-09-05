@@ -4,6 +4,7 @@ var querystring = require('querystring');
 var ViewSwitcher = require('ampersand-view-switcher');
 var InviteView = require('../views/invite');
 var SignupView = require('../views/signup');
+var DoneView = require('../views/signedup');
 var InviteModel = require('../models/invite');
 
 module.exports = View.extend({
@@ -23,11 +24,12 @@ module.exports = View.extend({
         this.renderStage();
     },
     renderStage: function () {
-        if (this.stage === 'invite') {
-            return this.stages.set(new InviteView({model: this.invite, parent: this}));
-        }
         if (this.stage === 'signup') {
             return this.stages.set(new SignupView({model: this.invite, parent: this}));
         }
+        if (this.stage === 'done') {
+            return this.stages.set(new DoneView());
+        }
+        return this.stages.set(new InviteView({model: this.invite, parent: this}));
     }
 });

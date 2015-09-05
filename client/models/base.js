@@ -21,7 +21,7 @@ module.exports = Model.extend({
         if (data.type !== this.type) {
             throw TypeError('Invalid type ' + data.type);
         }
-        data.attributes[this.idAttribute] = resp[this.idAttribute];
+        data.attributes[this.idAttribute] = data.id;
         return data.attributes;
     },
     toJSON: function () {
@@ -31,7 +31,7 @@ module.exports = Model.extend({
         var data = {};
         data.attributes = this.getAttributes({props: true}, true);
         data.type = this.type;
-        data[this.idAttributes] = this[this.idAttribute];
+        data.id = this[this.idAttribute];
         delete data.attributes[this.idAttribute];
         //TODO children and collections
         return {data: data}

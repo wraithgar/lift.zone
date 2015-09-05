@@ -36,6 +36,7 @@ module.exports = View.extend({
         var self = this;
         self.status = 'Checking invite...';
         var code = self.query('[name=invite]').value;
+        self.model.code = code;
         self.model.fetch({
             success: function () {
                 self.status = '';

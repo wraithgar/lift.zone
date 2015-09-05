@@ -47,7 +47,6 @@ var checkLogin = debounce(function (el) {
         url: app.apiUrl + '/taken',
         data: JSON.stringify(payload),
         success: function (resp) {
-            app.log(resp);
             checkingLogin = false;
             validLogin = !resp.data.attributes.taken;
             el.trigger('change.fndtn.abide');

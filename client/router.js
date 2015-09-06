@@ -27,10 +27,9 @@ var WorkoutPage = require('./pages/workout');
 
 module.exports = Router.extend({
     routes: {
+        //Unauthenticated
         '': 'home',
-        'me': 'me',
         'log': 'log',
-        'workouts/:date': 'workout',
         'utils': 'utils',
         'utils/parser': 'parser',
         'utils/fitocracy': 'fitocracy',
@@ -40,11 +39,16 @@ module.exports = Router.extend({
         'logout': 'logout',
         'signup': 'signup',
         'privacy': 'privacy',
-        'validate': 'validate',
         'recover': 'recover',
+        //Authenticated
+        'me': 'me',
+        'validate': 'validate',
+        'workouts/:date': 'workout',
+        //Catchall
         '*catchall': 'notfound'
     },
 
+    //Unauthenticated routes
     notfound: function () {
         this.trigger('page', new NotFoundPage());
     },
@@ -53,11 +57,6 @@ module.exports = Router.extend({
     },
     home: function () {
         this.trigger('page', new HomePage());
-    },
-    workout: function (date) {
-        this.trigger('page', new WorkoutPage({
-            model: new WorkoutModel({date: moment(date, 'YYYY-MM-DD')})
-        }));
     },
     log: function () {
         this.trigger('page', new LogPage({
@@ -71,11 +70,6 @@ module.exports = Router.extend({
         app.activities.reset();
         this.trigger('page', new ParserPage({
             collection: new Activities()
-        }));
-    },
-    me: function () {
-        this.trigger('page', new MePage({
-            model: app.me
         }));
     },
     fitocracy: function () {
@@ -102,13 +96,33 @@ module.exports = Router.extend({
     signup: function () {
         this.trigger('page', new SignupPage());
     },
-    validate: function () {
-        this.trigger('page', new ValidatePage({ model: app.me }));
-    },
     recover: function () {
         if (app.me.loggedIn) {
             return this.me();
         }
         this.trigger('page', new RecoverPage());
+    },
+    //Authenticated routes
+    validate: function () {
+        if (!app.me.loggedIn) {
+            return this.navigate('/login');
+        }
+        this.trigger('page', new ValidatePage({ model: app.me }));
+    },
+    me: function () {
+        if (!app.me.loggedIn) {
+            return this.navigate('/login');
+        }
+        return this.trigger('page', new MePage({
+            model: app.me
+        }));
+    },
+    workout: function (date) {
+        if (!app.me.loggedIn) {
+            return this.navigate('/login');
+        }
+        this.trigger('page', new WorkoutPage({
+            model: new WorkoutModel({date: moment(date, 'YYYY-MM-DD')})
+        }));
     }
 });

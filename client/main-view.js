@@ -2,6 +2,7 @@ var app = require('ampersand-app');
 var View = require('ampersand-view');
 var ViewSwitcher = require('ampersand-view-switcher');
 var dom = require('ampersand-dom');
+var localLinks = require('local-links');
 
 module.exports = View.extend({
     template: require('./templates/body.jade'),
@@ -56,17 +57,16 @@ module.exports = View.extend({
     handlePage: function (pageView) {
         this.message = '';
         app.currentPage = pageView;
-        this.pages.set(pageView);
-        this.setActiveNavItem();
         dom.removeClass(this.query('.top-bar'), 'expanded');
+        this.pages.set(pageView);
+        //this.setActiveNavItem();
     },
     handleLinkClick: function (e) {
-        var aTag = e.target;
-        var local = aTag.host === location.host;
 
-        if (local && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+        var localPath = localLinks.pathname(e);
+        if (localPath) {
             e.preventDefault();
-            app.router.history.navigate(aTag.pathname, {trigger: true});
+            app.navigate(localPath);
         }
     },
     setActiveNavItem: function () {

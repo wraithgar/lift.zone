@@ -53,12 +53,16 @@ module.exports = View.extend({
             attrs.password = password;
             attrs.passwordConfirm = passwordConfirm;
         }
+        app.log('saving %j', attrs);
         if (Object.keys(attrs).length === 0) {
             app.view.message = 'You didn\'t change anything';
             return;
         }
         this.model.save(attrs, {
+            patch: true,
             success: function () {
+                //app.me.password = undefined;
+                //app.me.passwordConfirm = undefined;
                 app.view.message = 'Saved your new info';
             },
             error: function () {

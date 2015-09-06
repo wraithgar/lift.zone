@@ -38,7 +38,13 @@ module.exports = Model.extend({
     },
     sync: function (event, model, options) {
         var error = options.error;
-        options.attrs = model.serialize();
+        var attrs = model.serialize();
+        if (!options.attrs) {
+            options.attrs = model.serialize();
+        } else {
+            attrs.data.attributes = options.attrs;
+            options.attrs = attrs;
+        }
         options.error = function (resp) {
             //4xx errors that aren't 404
             if (resp.statusCode > 400 && resp.statusCode !== 404 && resp.statusCode < 500) {

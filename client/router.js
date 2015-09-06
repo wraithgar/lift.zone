@@ -16,6 +16,7 @@ var MePage = require('./pages/me');
 var NotFoundPage = require('./pages/notFound');
 var ParserPage = require('./pages/parser');
 var PrivacyPage = require('./pages/privacy');
+var RecoverPage = require('./pages/recover');
 var SignupPage = require('./pages/signup');
 var UtilsPage = require('./pages/utils');
 var ValidatePage = require('./pages/validate');
@@ -40,6 +41,7 @@ module.exports = Router.extend({
         'signup': 'signup',
         'privacy': 'privacy',
         'validate': 'validate',
+        'recover': 'recover',
         '*catchall': 'notfound'
     },
 
@@ -102,5 +104,11 @@ module.exports = Router.extend({
     },
     validate: function () {
         this.trigger('page', new ValidatePage({ model: app.me }));
+    },
+    recover: function () {
+        if (app.me.loggedIn) {
+            return this.me();
+        }
+        this.trigger('page', new RecoverPage());
     }
 });

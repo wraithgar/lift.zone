@@ -67,7 +67,7 @@ module.exports = View.extend({
     setActiveNavItem: function () {
         var path = window.location.pathname;
 
-        this.queryAll('[role=nav-items] a').forEach(function (aTag) {
+        this.queryAll('[data-hook=navigation] a').forEach(function (aTag) {
             if (aTag.pathname === path) {
                 dom.addClass(aTag.parentNode, 'active');
             } else {

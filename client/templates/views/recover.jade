@@ -1,0 +1,20 @@
+div
+  p You're almost done.  Please enter a new password for your account here
+  form(data-abide)
+    .row
+      .small-4.columns
+        h3
+          label(for='password') Password
+      .small-8.columns
+        input(type='password', id='password', name='password', placeholder='New password', pattern='[\\W\\w]{8,}')
+        small.error Passwords must be at least 8 characters long
+    .row
+      .small-4.columns
+        h3
+          label(for='passwordConfirm') Confirm Password
+      .small-8.columns
+        input(type='password', id='passwordConfirm', name='passwordConfirm', placeholder='Re-type new password', data-equalto='password')
+        small.error Passwords must match
+    .row
+      .small-12.columns
+        input.button(type='submit', value='Save')

@@ -22,6 +22,8 @@ module.exports = Model.extend({
         validated: 'boolean',
         smartmode: 'boolean',
         visible: 'boolean',
+        password: 'string',
+        passwordConfirm: 'string',
         dateFormat: ['string', 'true', 'dddd, MMM Do YYYY']
     },
     derived: {

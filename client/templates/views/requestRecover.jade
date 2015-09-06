@@ -1,0 +1,15 @@
+div
+  p Hmm this is awkward.  Well, just go ahead and enter the email from your account below, and we'll send you a link to reset your password.
+  p Remember, if your email is not validated you're pretty much out of luck.
+  p Oh yeah one last thing, for security purposes we can't exactly tell you if the email you give here is in our system.  If it is rest assured an email will be sent to you.
+  form(data-abide)
+    .row
+      .small-4.columns
+        h3
+          label(for='email') Email
+      .small-8.columns
+        input(required, name='email', type='email', id='email', placeholder='Enter your email')
+        small.error You need a valid email
+    .row
+      .small-12.columns
+        input.button(type='submit', value='Send')

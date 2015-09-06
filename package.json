@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "beefy client/app.js:js/bundle.js 8080 --index=./public/index.html --cwd=./public -- -t jadeify",
-    "build": "mv config.js local-config.js && mv build-config.js config.js && browserify client/app.js -t jadeify -o public/js/bundle.js --debug && mv config.js build-config.js && mv local-config.js config.js",
+    "build": "mv config.js local-config.js && mv build-config.js config.js && browserify client/app.js -t jadeify -p [minifyify --no-map] -o public/js/bundle.js && mv config.js build-config.js && mv local-config.js config.js",
     "minify": "cat public/js/bundle.js | uglifyjs -o public/js/bundle.js"
   },
   "repository": {
@@ -37,8 +37,8 @@
     "jadeify": "^4.4.0",
     "lodash.debounce": "^3.1.1",
     "lodash.foreach": "^3.0.3",
+    "minifyify": "^7.0.5",
     "moment": "^2.10.6",
-    "uglify-js": "^2.4.24",
     "xhr": "^2.0.4"
   }
 }

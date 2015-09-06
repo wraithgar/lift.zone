@@ -11,7 +11,6 @@ module.exports = View.extend({
     },
     render: function () {
         this.renderWithTemplate(app.me);
-        $(this.el).foundation();
         return this;
     },
     invite: function (e) {

@@ -11,7 +11,6 @@ module.exports = View.extend({
             return app.navigate('/');
         }
         this.renderWithTemplate(this);
-        $(this.el).foundation();
         return this;
     },
     authenticate: function (e) {

@@ -4,9 +4,7 @@ section
       h1 531 Calculator
     hr
   .row
-    .small-8.columns
-      .workout(data-hook='results')
-    .small-4.columns
+    .medium-9.columns
       form.form-horizontal(role='form')
         .row
           label.small-3.columns OHP
@@ -40,3 +38,5 @@ section
             input.form-control(type='number' data-hook='deadlift-reps' placeholder='reps', title='reps', value=locals.model.deadlift.reps)
           .small-3.columns
             input.form-control(type='number', step='5' data-hook='deadlift-extra' placeholder='+', title='extra', value=locals.model.deadlift.extra)
+    .medium-3.columns
+      .workout(data-hook='results')

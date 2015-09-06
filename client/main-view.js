@@ -47,7 +47,11 @@ module.exports = View.extend({
     },
     render: function () {
         this.renderWithTemplate();
-        this.pages = new ViewSwitcher(this.queryByHook('page-container'));
+        this.pages = new ViewSwitcher(this.queryByHook('page-container'), {
+            show: function (view) {
+                $(view.el).foundation();
+            }
+        });
     },
     handlePage: function (pageView) {
         this.message = '';

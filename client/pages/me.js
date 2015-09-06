@@ -32,7 +32,6 @@ module.exports = View.extend({
     },
     render: function () {
         this.renderWithTemplate(this);
-        $(this.el).foundation();
         return this;
     },
     update: function (e) {

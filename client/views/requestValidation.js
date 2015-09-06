@@ -13,11 +13,6 @@ module.exports = View.extend({
             hook: 'email'
         },
     },
-    render: function () {
-        this.renderWithTemplate(this);
-        $(this.el).foundation();
-        return this;
-    },
     request: function () {
         app.view.message = '';
         var syncOptions = {

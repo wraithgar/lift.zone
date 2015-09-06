@@ -7,11 +7,6 @@ module.exports = View.extend({
     events: {
         'submit form': 'reset'
     },
-    render: function () {
-        this.renderWithTemplate(this);
-        $(this.el).foundation();
-        return this;
-    },
     reset: function (e) {
         e.preventDefault();
         var password = this.query('[name=password]').value;

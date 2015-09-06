@@ -20,7 +20,11 @@ module.exports = View.extend({
     },
     render: function () {
         this.renderWithTemplate(this);
-        this.stages = new ViewSwitcher(this.queryByHook('stage'));
+        this.stages = new ViewSwitcher(this.queryByHook('stage'), {
+            show: function (view) {
+                $(view.el).foundation();
+            }
+        });
         this.renderStage();
         return this;
     },

@@ -58,6 +58,7 @@ module.exports = View.extend({
         app.currentPage = pageView;
         this.pages.set(pageView);
         this.setActiveNavItem();
+        dom.removeClass(this.query('.top-bar'), 'expanded');
     },
     handleLinkClick: function (e) {
         var aTag = e.target;

@@ -9,7 +9,11 @@ var ValidatedView = require('../views/validated');
 module.exports = View.extend({
     template: require('../templates/pages/validate.jade'),
     initialize: function () {
-        this.listenTo(this, 'change:stage', this.renderStage.bind(this));
+        this.listenTo(this, 'change:stage', this.renderStage.bind(this), {
+            show: function (view) {
+                $(view.el).foundation();
+            }
+        });
     },
     session: {
         'code': 'string',

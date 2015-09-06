@@ -6,7 +6,6 @@ module.exports = View.extend({
     template: require('../templates/views/validate.jade'),
     render: function () {
         this.renderWithTemplate(this)
-        $(this.el).foundation();
         this.validate();
         return this;
     },

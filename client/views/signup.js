@@ -7,11 +7,6 @@ module.exports = View.extend({
     events: {
         'submit form': 'signup'
     },
-    render: function () {
-        this.renderWithTemplate(this);
-        $(this.el).foundation();
-        return this;
-    },
     signup: function (e) {
         e.preventDefault();
         var self = this;

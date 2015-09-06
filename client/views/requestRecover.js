@@ -7,11 +7,6 @@ module.exports = View.extend({
     events: {
         'submit form': 'request'
     },
-    render: function () {
-        this.renderWithTemplate(this);
-        $(this.el).foundation();
-        return this;
-    },
     request: function (e) {
         e.preventDefault(e);
         app.view.message = '';

@@ -23,7 +23,6 @@ module.exports = View.extend({
     },
     render: function () {
         this.renderWithTemplate(this);
-        $(this.el).foundation();
         if (this.model.code) {
             this.checkInvite();
         }

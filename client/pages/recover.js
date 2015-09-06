@@ -13,7 +13,11 @@ module.exports = View.extend({
     render: function () {
         var params = querystring.parse(window.location.search.slice('1'));
         this.renderWithTemplate(this);
-        this.stages = new ViewSwitcher(this.queryByHook('stage'));
+        this.stages = new ViewSwitcher(this.queryByHook('stage'), {
+            show: function (view) {
+                $(view.el).foundation();
+            }
+        });
         if (params.code) {
             this.code = params.code;
             return this.stages.set(new RecoverView({parent: this}));

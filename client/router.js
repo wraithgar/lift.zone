@@ -8,6 +8,7 @@ var moment = require('moment');
 
 var AboutPage = require('./pages/about');
 var Activities = require('./models/activities');
+var BaseActivities = require('./models/base-activities');
 var FitocracyPage = require('./pages/fitocracy');
 var HomePage = require('./pages/home');
 var LogPage = require('./pages/log');
@@ -67,15 +68,13 @@ module.exports = Router.extend({
         this.trigger('page', new UtilsPage());
     },
     parser: function () {
-        app.activities.reset();
         this.trigger('page', new ParserPage({
-            collection: new Activities()
+            collection: new BaseActivities()
         }));
     },
     fitocracy: function () {
-        app.activities.reset();
         this.trigger('page', new FitocracyPage({
-            collection: new Activities()
+            collection: new BaseActivities()
         }));
     },
     about: function () {

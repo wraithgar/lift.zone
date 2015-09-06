@@ -1,6 +1,6 @@
 var View = require('ampersand-view');
 var LiftView = require('../views/lift531');
-var debounce = require('../lib/debounce');
+var debounce = require('lodash.debounce');
 
 var fuzzyNumber = function fuzzyNumber(value) {
     if (value !== '') {

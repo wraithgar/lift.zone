@@ -1,11 +1,9 @@
-'use strict';
-
 var Model = require('./base');
+var Activity = require('./base-activity');
 var Sets = require('./sets');
-var Suggestions = require('./suggestions');
 var app = require('ampersand-app');
 
-module.exports = Model.extend({
+module.exports = Model.extend(Model, Activity, {
     urlRoot: function () { return app.apiUrl + '/activities'; },
     initialize: function (props) {
         var self = this;
@@ -23,42 +21,5 @@ module.exports = Model.extend({
         self.listenTo(self.suggestions, 'add remove reset', function () {
             self.hasSuggestions = self.suggestions.length > 0;
         });
-    },
-    props: {
-        id: 'number',
-        name: ['string', true],
-        aliasId: 'number',
-        alias: 'string'
-    },
-    collections: {
-        sets: Sets,
-        suggestions: Suggestions
-    },
-    session: {
-        comment: 'string',
-        hasSuggestions: 'boolean'
-    },
-    derived: {
-        displayName: {
-            deps: ['name', 'alias'],
-            fn: function () {
-                return this.alias || this.name;
-            }
-        },
-        hasComment: {
-            deps: ['comment'],
-            fn: function () {
-                if (this.comment) {
-                    return true;
-                }
-                return false;
-            }
-        },
-        ready: {
-            deps: ['id'],
-            fn: function () {
-                return !this.isNew();
-            }
-        }
     }
 });

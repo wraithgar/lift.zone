@@ -2,7 +2,6 @@ var logger = require('debug')('lift.zone');
 var app = require('ampersand-app');
 var domready = require('domready');
 var debounce = require('lodash.debounce');
-var ActivitiesModel = require('./models/activities');
 var Router = require('./router');
 var MainView = require('./main-view');
 var Me = require('./models/me');
@@ -107,7 +106,6 @@ app.extend({
             this.trigger('accessToken', token);
         }
     },
-    activities: new ActivitiesModel(),
     router: new Router(),
     me: new Me(),
     cache: {

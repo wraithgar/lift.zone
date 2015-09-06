@@ -1,6 +1,6 @@
 var View = require('ampersand-view');
 var caber = require('caber');
-var debounce = require('../lib/debounce');
+var debounce = require('lodash.debounce');
 var MarkdownView = require('../views/markdown');
 var MarkdownFullView = require('../views/markdownFull');
 var BBCodeView = require('../views/bbcode');
@@ -24,7 +24,7 @@ module.exports = View.extend({
     parseRaw: function (e) {
         var raw = e.target.value;
         var parsed = caber.parse(raw);
-        this.collection.reset(parsed, {parse: true});
+        this.collection.reset(parsed, {parse: false});
     },
     changeFormat: function (e) {
         e.preventDefault();

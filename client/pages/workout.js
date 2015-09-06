@@ -5,9 +5,9 @@ var ActivityView = require('../views/activity');
 module.exports = View.extend({
     template: require('../templates/pages/workout.jade'),
     initialize: function () {
-        this.model.fetch({
-            url: app.apiUrl + '/search/workouts/' + this.model.dateId
-        });
+        //this.model.fetch({
+            //url: app.apiUrl + '/search/workouts/' + this.model.dateId
+        //});
     },
     bindings: {
         'model.name': {

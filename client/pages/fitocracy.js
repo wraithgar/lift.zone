@@ -1,6 +1,6 @@
 var View = require('ampersand-view');
 var caber = require('caber');
-var debounce = require('../lib/debounce');
+var debounce = require('lodash.debounce');
 var MarkdownView = require('../views/markdown');
 var MarkdownFullView = require('../views/markdownFull');
 var BBCodeView = require('../views/bbcode');

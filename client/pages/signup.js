@@ -19,9 +19,10 @@ module.exports = View.extend({
         'stage': 'string'
     },
     render: function () {
-        this.renderWithTemplate();
+        this.renderWithTemplate(this);
         this.stages = new ViewSwitcher(this.queryByHook('stage'));
         this.renderStage();
+        return this;
     },
     renderStage: function () {
         if (this.stage === 'signup') {

@@ -18,6 +18,7 @@ var ParserPage = require('./pages/parser');
 var PrivacyPage = require('./pages/privacy');
 var SignupPage = require('./pages/signup');
 var UtilsPage = require('./pages/utils');
+var ValidatePage = require('./pages/validate');
 var Wendler531Model = require('./models/wendler531');
 var Wendler531Page = require('./pages/wendler531');
 var WorkoutModel = require('./models/workout');
@@ -38,6 +39,7 @@ module.exports = Router.extend({
         'logout': 'logout',
         'signup': 'signup',
         'privacy': 'privacy',
+        'validate': 'validate',
         '*catchall': 'notfound'
     },
 
@@ -97,5 +99,8 @@ module.exports = Router.extend({
     },
     signup: function () {
         this.trigger('page', new SignupPage());
+    },
+    validate: function () {
+        this.trigger('page', new ValidatePage({ model: app.me }));
     }
 });

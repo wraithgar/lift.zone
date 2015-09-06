@@ -38,7 +38,7 @@ module.exports = View.extend({
             success: function () {
                 self.parent.stage = 'done';
             },
-            error: function (resp) {
+            error: function () {
                 $(self.queryByHook('error')).foundation('reveal', 'open');
             }
         };

@@ -1,18 +1,19 @@
 var logger = require('debug')('lift.zone');
-var app = require('ampersand-app');
-var domready = require('domready');
-var debounce = require('lodash.debounce');
+var App = require('ampersand-app');
+var Domready = require('domready');
+var Debounce = require('lodash.debounce');
 var Router = require('./router');
 var MainView = require('./main-view');
 var Me = require('./models/me');
-var config = require('../config');
-var sync = require('ampersand-sync');
+var Config = require('../config');
+var Sync = require('ampersand-sync');
 
 var checkingLogin = false;
 var validLogin = true;
 var lastCheckedLogin = '';
 
-var checkLogin = debounce(function (el) {
+var checkLogin = Debounce(function (el) {
+
     var code = document.location.search.match(/invite=([^&]*)/);
     var val = el.val();
     if (code) {
@@ -42,30 +43,33 @@ var checkLogin = debounce(function (el) {
             'Content-Type': 'application/vnd.api+json',
             'Accept': 'application/vnd.api+json'
         },
-        url: app.apiUrl + '/taken',
+        url: App.apiUrl + '/taken',
         data: JSON.stringify(payload),
         success: function (resp) {
+
             checkingLogin = false;
             validLogin = !resp.data.attributes.taken;
             el.trigger('change.fndtn.abide');
         },
         error: function () {
+
             checkingLogin = false;
             validLogin = false;
             el.trigger('change.fndtn.abide');
         }
     };
-    sync('create', null, syncOptions);
+    Sync('create', null, syncOptions);
 }, 200);
 
-app.extend({
-    apiUrl: config.APIURL,
-    accountsUrl: config.ACCOUNTSURL,
+App.extend({
+    apiUrl: Config.APIURL,
     init: function () {
+
         $(document).foundation({
             abide: {
                 validators: {
                     checkLogin: function (el, required) {
+
 
                         el = $(el);
                         if (required && el.val() === '') {
@@ -81,18 +85,19 @@ app.extend({
         });
 
         this.view = new MainView({
-            model: app.me,
+            model: App.me,
             el: document.querySelector('[data-hook=app]')
         });
         $(document).foundation({
             reveal: {
-                dismiss_modal_class: 'dismiss-reveal-modal'
+                'dismiss_modal_class': 'dismiss-reveal-modal'
             }
         });
 
-        this.router.history.start({pushState: true});
+        this.router.history.start({ pushState: true });
     },
     setAccessToken: function (token) {
+
         if (this.accessToken !== token) {
             this.accessToken = token;
             if (Modernizr.localstorage) {
@@ -109,19 +114,21 @@ app.extend({
     me: new Me(),
     log: logger,
     navigate: function (page) {
+
         var url = (page.charAt(0) === '/') ? page.slice(1) : page;
-        this.router.history.navigate(url, {trigger: true});
+        this.router.history.navigate(url, { trigger: true });
     }
 });
 
-domready(function renderPage() {
+Domready(function renderPage () {
+
     if (Modernizr.localstorage) {
-        app.setAccessToken(localStorage.accessToken);
+        App.setAccessToken(localStorage.accessToken);
     }
-    app.init();
+    App.init();
 });
 
-if (config.DEV) {
+if (Config.DEV) {
     //Name something other than what modules assign locally so we don't accidentally rely on this in development
-    window.liftApp = app;
+    window.liftApp = App;
 }

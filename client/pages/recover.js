@@ -1,6 +1,5 @@
 var View = require('ampersand-view');
-var app = require('ampersand-app');
-var querystring = require('querystring');
+var Querystring = require('querystring');
 var ViewSwitcher = require('ampersand-view-switcher');
 var RequestView = require('../views/request-recover');
 var RecoverView = require('../views/recover');
@@ -11,18 +10,19 @@ module.exports = View.extend({
         'code': 'string'
     },
     render: function () {
-        var params = querystring.parse(window.location.search.slice('1'));
+
+        var params = Querystring.parse(window.location.search.slice('1'));
         this.renderWithTemplate(this);
         this.stages = new ViewSwitcher(this.queryByHook('stage'), {
             show: function (view) {
+
                 $(view.el).foundation();
             }
         });
         if (params.code) {
             this.code = params.code;
-            return this.stages.set(new RecoverView({parent: this}));
-        } else {
-            return this.stages.set(new RequestView());
+            return this.stages.set(new RecoverView({ parent: this }));
         }
+        return this.stages.set(new RequestView());
     }
 });

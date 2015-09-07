@@ -1,5 +1,5 @@
 var View = require('ampersand-view');
-var app = require('ampersand-app');
+var App = require('ampersand-app');
 
 module.exports = View.extend({
     template: require('../templates/pages/me.jade'),
@@ -31,12 +31,14 @@ module.exports = View.extend({
         'submit form': 'update'
     },
     render: function () {
+
         this.renderWithTemplate(this);
         return this;
     },
     update: function (e) {
+
         e.preventDefault();
-        app.view.message = '';
+        App.view.message = '';
         var name = this.query('[name=name]').value;
         var email = this.query('[name=email]').value;
         var password = this.query('[name=password]').value;
@@ -52,20 +54,22 @@ module.exports = View.extend({
             attrs.password = password;
             attrs.passwordConfirm = passwordConfirm;
         }
-        app.log('saving %j', attrs);
+        App.log('saving %j', attrs);
         if (Object.keys(attrs).length === 0) {
-            app.view.message = 'You didn\'t change anything';
+            App.view.message = 'You didn\'t change anything';
             return;
         }
         this.model.save(attrs, {
             patch: true,
             success: function () {
-                //app.me.password = undefined;
-                //app.me.passwordConfirm = undefined;
-                app.view.message = 'Saved your new info';
+
+                App.me.password = undefined;
+                App.me.passwordConfirm = undefined;
+                App.view.message = 'Saved your new info';
             },
             error: function () {
-                app.view.message = 'There was an unknown error saving your info!';
+
+                App.view.message = 'There was an unknown error saving your info!';
             }
         });
     }

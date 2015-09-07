@@ -1,10 +1,7 @@
-/*global $*/
-'use strict';
-
-var caber = require('caber');
-var debounce = require('lodash.debounce');
-var moment = require('moment');
-var app = require('ampersand-app');
+var Caber = require('caber');
+var Debounce = require('lodash.debounce');
+var Moment = require('moment');
+var App = require('ampersand-app');
 
 var View = require('ampersand-view');
 var ActivityView = require('../views/activity');
@@ -21,7 +18,8 @@ var dateFormats = [
 module.exports = View.extend({
     template: require('../templates/pages/log.jade'),
     initialize: function () {
-        this.throttledParse = debounce(this.userInputChanged, 500);
+
+        this.throttledParse = Debounce(this.userInputChanged, 500);
         //this.listenTo(this.model, 'change:date', this.checkExisting);
         //this.checkExisting(this.model, this.model.dateId);
     },
@@ -33,8 +31,10 @@ module.exports = View.extend({
         'click [data-hook=saveWorkout]': 'saveWorkout'
     },
     checkExisting: function (model, newDate) {
+
         var self = this;
         model.checkExisting(newDate, function () {
+
             if (model.exists) {
                 return $(self.queryByHook('workout-exists')).foundation('reveal', 'open');
             }
@@ -73,6 +73,7 @@ module.exports = View.extend({
         smartLabel: {
             deps: ['smartMode'],
             fn: function () {
+
                 if (this.smartMode) {
                     return 'on';
                 }
@@ -81,15 +82,18 @@ module.exports = View.extend({
         }
     },
     render: function () {
+
         this.renderWithTemplate();
         this.renderCollection(this.model.activities, ActivityView, this.queryByHook('workout-activities'));
         return this;
     },
     changeSmartMode: function (e) {
+
         this.smartMode = e.target.checked;
         this.parseWorkout(this.queryByHook('workout-input'));
     },
     setName: function (e) {
+
         var name = e.target.value;
         if (name === '') {
             this.model.unset('name');
@@ -98,21 +102,25 @@ module.exports = View.extend({
         }
     },
     setDate: function (e) {
+
         var date = e.target.value;
         if (date === '') {
             this.model.unset('date');
         } else {
-            this.model.date = moment(e.target.value, dateFormats);
+            this.model.date = Moment(e.target.value, dateFormats);
         }
     },
-    userInputChanged: function(e) {
+    userInputChanged: function (e) {
+
         this.parseWorkout(e.target);
     },
     addActivities: function (activities) {
+
         var activityNames = [];
         //We need to do a janky merge by alternate index so that our search() functions only have to run once
         //find things to add
         activities.forEach(function (activity) {
+
             activityNames.push(activity.name);
             if (!this.model.activities.get(activity.name, 'name')) {
                 this.model.activities.add(activity);
@@ -122,12 +130,14 @@ module.exports = View.extend({
         }, this);
         //find things to remove
         this.model.activities.forEach(function (activity) {
+
             if (activityNames.indexOf(activity.name) === -1) {
                 this.model.activities.remove(activity);
             }
         }, this);
     },
     parseWorkout: function (el) {
+
         var workout;
         var data = el.value;
         this.model.raw = data;
@@ -143,22 +153,24 @@ module.exports = View.extend({
             this.model.activities.reset();
             return;
         }
-        workout = caber.workout(data);
+        workout = Caber.workout(data);
         if (workout.name) {
             this.model.name = workout.name;
         } else {
             this.model.unset('name');
         }
         if (workout.date) {
-            this.model.date = moment(workout.date, dateFormats);
+            this.model.date = Moment(workout.date, dateFormats);
         } else {
             this.model.unset('date');
         }
         this.addActivities(workout.activities);
     },
     saveWorkout: function () {
+
         var self = this;
         var ready = self.model.activities.every(function (activity) {
+
             return activity.ready;
         });
         if (this.model.exists) {
@@ -169,7 +181,8 @@ module.exports = View.extend({
         }
         self.model.save(null, {
             success: function () {
-                app.navigate('/workouts/' + self.model.dateId);
+
+                App.navigate('/workouts/' + self.model.dateId);
             }
         });
     }

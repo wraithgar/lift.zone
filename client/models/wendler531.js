@@ -3,6 +3,7 @@ var LiftModel = require('./lift531');
 
 module.exports = Model.extend({
     initialize: function () {
+
         this.ohp.name = 'OHP';
         this.squat.name = 'Squat';
         this.bench.name = 'Bench';
@@ -16,6 +17,7 @@ module.exports = Model.extend({
         }
     },
     save: function () {
+
         if (localStorage) {
             localStorage.wendler531 = JSON.stringify(this.toJSON());
         }

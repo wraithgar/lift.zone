@@ -1,6 +1,6 @@
 var View = require('ampersand-view');
-var app = require('ampersand-app');
-var sync = require('ampersand-sync');
+var App = require('ampersand-app');
+var Sync = require('ampersand-sync');
 
 module.exports = View.extend({
     template: require('../templates/views/recover.jade'),
@@ -8,6 +8,7 @@ module.exports = View.extend({
         'submit form': 'reset'
     },
     reset: function (e) {
+
         e.preventDefault();
         var password = this.query('[name=password]').value;
         var passwordConfirm = this.query('[name=passwordConfirm]').value;
@@ -26,18 +27,20 @@ module.exports = View.extend({
                 'Content-Type': 'application/vnd.api+json',
                 'Accept': 'application/vnd.api+json'
             },
-            url: app.apiUrl + '/reset',
+            url: App.apiUrl + '/reset',
             data: JSON.stringify(payload),
             success: function (resp) {
-                app.setAccessToken(resp.data.attributes.token);
-                app.me.fetch();
-                app.view.message = 'All set, from now on log in with that password.  Go use the lift zone';
+
+                App.setAccessToken(resp.data.attributes.token);
+                App.me.fetch();
+                App.view.message = 'All set, from now on log in with that password.  Go use the lift zone';
             },
             error: function () {
-                app.view.message = 'Invalid recovery code.';
+
+                App.view.message = 'Invalid recovery code.';
             }
-        }
-        sync('create', null, syncOptions);
+        };
+        Sync('create', null, syncOptions);
     }
 });
 

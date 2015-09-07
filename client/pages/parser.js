@@ -1,6 +1,6 @@
 var View = require('ampersand-view');
-var caber = require('caber');
-var debounce = require('lodash.debounce');
+var Caber = require('caber');
+var Debounce = require('lodash.debounce');
 var MarkdownView = require('../views/markdown');
 var MarkdownFullView = require('../views/markdown-full');
 var BBCodeView = require('../views/bbcode');
@@ -11,22 +11,26 @@ var BBCodeCreditsView = require('../views/bbcode-credits');
 module.exports = View.extend({
     template: require('../templates/pages/parser.jade'),
     initialize: function () {
-        this.throttledParse = debounce(this.parseRaw, 1000);
+
+        this.throttledParse = Debounce(this.parseRaw, 1000);
     },
     events: {
         'input [data-hook=raw]': 'rawChanged',
         'change [data-hook=format]': 'changeFormat'
     },
     rawChanged: function (e) {
+
         e.preventDefault();
         this.throttledParse(e);
     },
     parseRaw: function (e) {
+
         var raw = e.target.value;
-        var parsed = caber.parse(raw);
-        this.collection.reset(parsed, {parse: false});
+        var parsed = Caber.parse(raw);
+        this.collection.reset(parsed, { parse: false });
     },
     changeFormat: function (e) {
+
         e.preventDefault();
         if (this.formattedView) {
             this.formattedView.remove();

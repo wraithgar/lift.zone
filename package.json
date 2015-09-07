@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "beefy client/app.js:js/bundle.js 8080 --index=./public/index.html --cwd=./public -- -t jadeify",
-    "build": "mv config.js local-config.js && mv build-config.js config.js && browserify client/app.js -t jadeify -p [minifyify --no-map] -o public/js/bundle.js && mv config.js build-config.js && mv local-config.js config.js"
+    "build": "node build-static && mv config.js local-config.js && mv build-config.js config.js && browserify client/app.js -t jadeify -p [minifyify --no-map] -o public/js/bundle.js && mv config.js build-config.js && mv local-config.js config.js",
+    "lint": "eslint client",
+    "validate": "npm ls"
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,9 @@
     "caber": "^4.0.5",
     "debug": "^2.2.0",
     "domready": "^1.0.8",
+    "eslint": "^1.3.1",
+    "eslint-config-hapi": "^1.0.1",
+    "eslint-plugin-hapi": "^1.2.0",
     "git-validate": "^2.0.3",
     "jade": "^1.11.0",
     "jadeify": "^4.4.0",
@@ -40,5 +45,9 @@
     "minifyify": "^7.0.5",
     "moment": "^2.10.6",
     "xhr": "^2.0.4"
-  }
+  },
+  "pre-commit": [
+    "lint",
+    "validate"
+  ]
 }

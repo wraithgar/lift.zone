@@ -13,21 +13,26 @@ module.exports = View.extend({
         }
     },
     chooseAlias: function () {
+
         var self = this;
         if (this.model.suggestions) {
-            this.model.save(
-                {aliasId: this.model.id, alias: this.model.name},
-                {success: function () {
+            this.model.save({
+                aliasId: this.model.id, alias: this.model.name
+            }, {
+                success: function () {
+
                     self.parent.closeModal();
-                }}
-            );
+                }
+            });
         } else {
-            this.model.collection.parent.save(
-                {aliasId: this.model.id, alias: this.model.name},
-                {success: function () {
+            this.model.collection.parent.save({
+                aliasId: this.model.id, alias: this.model.name
+            }, {
+                success: function () {
+
                     self.parent.parent.closeModal();
-                }}
-            );
+                }
+            });
         }
     }
 });

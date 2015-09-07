@@ -1,5 +1,4 @@
 var View = require('ampersand-view');
-var app = require('ampersand-app');
 var Invite = require('../models/invite');
 
 module.exports = View.extend({
@@ -22,6 +21,7 @@ module.exports = View.extend({
         'submit form': 'checkInvite'
     },
     render: function () {
+
         this.renderWithTemplate(this);
         if (this.model.code) {
             this.checkInvite();
@@ -29,6 +29,7 @@ module.exports = View.extend({
         return this;
     },
     checkInvite: function (e) {
+
         if (e) {
             e.preventDefault();
         }
@@ -38,13 +39,15 @@ module.exports = View.extend({
         self.model.code = code;
         self.model.fetch({
             success: function () {
+
                 self.status = '';
                 self.parent.stage = 'signup';
             },
             error: function () {
+
                 self.status = '';
                 $(self.queryByHook('invalid')).foundation('reveal', 'open');
             }
-        })
+        });
     }
 });

@@ -1,5 +1,5 @@
 var View = require('ampersand-view');
-var app = require('ampersand-app');
+var App = require('ampersand-app');
 
 module.exports = View.extend({
     template: require('../templates/pages/login.jade'),
@@ -7,25 +7,29 @@ module.exports = View.extend({
         'submit form': 'authenticate'
     },
     render: function () {
-        if (app.me.loggedIn) {
-            return app.navigate('/');
+
+        if (App.me.loggedIn) {
+            return App.navigate('/');
         }
         this.renderWithTemplate(this);
         return this;
     },
     authenticate: function (e) {
+
         e.preventDefault();
-        app.view.message = '';
+        App.view.message = '';
         var login = this.query('[name=login]').value;
         var password = this.query('[name=password]').value;
-        app.me.authenticate(login, password, {
+        App.me.authenticate(login, password, {
             success: function (resp) {
-                app.setAccessToken(resp.data.attributes.token);
-                app.navigate('/');
+
+                App.setAccessToken(resp.data.attributes.token);
+                App.navigate('/');
             },
             error: function (model, resp) {
-                app.log(resp);
-                app.view.message = 'Invalid login.  Please try again.';
+
+                App.log(resp);
+                App.view.message = 'Invalid login.  Please try again.';
             }
         });
     }

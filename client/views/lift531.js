@@ -8,54 +8,53 @@ module.exports = View.extend({
             type: 'text',
             hook: 'name'
         },
-        'model.warmup_1': {
+        'model.warmup1': {
             type: 'text',
-            hook: 'warmup_1'
+            hook: 'warmup1'
         },
-        'model.warmup_2': {
+        'model.warmup2': {
             type: 'text',
-            hook: 'warmup_2'
+            hook: 'warmup2'
         },
-        'model.warmup_3': {
+        'model.warmup3': {
             type: 'text',
-            hook: 'warmup_3'
+            hook: 'warmup3'
         },
-        'model.wave1_1': {
+        'model.wave1Set1': {
             type: 'text',
-            hook: 'wave1_1'
+            hook: 'wave1-set1'
         },
-        'model.wave1_2': {
+        'model.wave1Set2': {
             type: 'text',
-            hook: 'wave1_2'
+            hook: 'wave1-set2'
         },
-        'model.wave1_3': {
+        'model.wave1Set3': {
             type: 'text',
-            hook: 'wave1_3'
+            hook: 'wave1-set3'
         },
-        'model.wave2_1': {
+        'model.wave2Set1': {
             type: 'text',
-            hook: 'wave2_1'
+            hook: 'wave2-set1'
         },
-        'model.wave2_2': {
+        'model.wave2Set2': {
             type: 'text',
-            hook: 'wave2_2'
+            hook: 'wave2-set2'
         },
-        'model.wave2_3': {
+        'model.wave2Set3': {
             type: 'text',
-            hook: 'wave2_3'
+            hook: 'wave2-set3'
         },
-        'model.wave3_1': {
+        'model.wave3Set1': {
             type: 'text',
-            hook: 'wave3_1'
+            hook: 'wave3-set1'
         },
-        'model.wave3_2': {
+        'model.wave3Set2': {
             type: 'text',
-            hook: 'wave3_2'
+            hook: 'wave3-set2'
         },
-        'model.wave3_3': {
+        'model.wave3Set3': {
             type: 'text',
-            hook: 'wave3_3'
+            hook: 'wave3-set3'
         }
     }
 });
-

@@ -19,6 +19,7 @@ var RepItemView = View.extend({
 var RepGroupView = View.extend({
     template: require('../templates/views/bbcode-rep-group.jade'),
     render: function () {
+
         this.renderWithTemplate();
         this.cacheElements({
             groupEl: '[data-hook=repGroup]'
@@ -44,19 +45,21 @@ module.exports = View.extend({
         }
     },
     render: function () {
+
         this.renderWithTemplate();
         var repView = new GroupedCollectionView({
             collection: this.model.sets,
             itemView: RepItemView,
             groupView: RepGroupView,
             groupsWith: function (model) {
+
                 if (model.collection.length < 6) {
                     return true;
-                } else {
-                    return (model.collection.indexOf(model) % 3) !== 0;
                 }
+                return (model.collection.indexOf(model) % 3) !== 0;
             },
             prepareGroup: function () {
+
                 return;
             }
         });

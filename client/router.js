@@ -1,10 +1,6 @@
-'use strict';
-
 var Router = require('ampersand-router');
-var app = require('ampersand-app');
-var xhr = require('xhr');
-var querystring = require('querystring');
-var moment = require('moment');
+var App = require('ampersand-app');
+var Moment = require('moment');
 
 var AboutPage = require('./pages/about');
 var Activities = require('./models/activity-collection');
@@ -51,68 +47,83 @@ module.exports = Router.extend({
 
     //Unauthenticated routes
     notfound: function () {
+
         this.trigger('page', new NotFoundPage());
     },
     privacy: function () {
+
         this.trigger('page', new PrivacyPage());
     },
     home: function () {
+
         this.trigger('page', new HomePage());
     },
     utils: function () {
+
         this.trigger('page', new UtilsPage());
     },
     parser: function () {
+
         this.trigger('page', new ParserPage({
             collection: new BaseActivities()
         }));
     },
     fitocracy: function () {
+
         this.trigger('page', new FitocracyPage({
             collection: new BaseActivities()
         }));
     },
     about: function () {
+
         this.trigger('page', new AboutPage());
     },
     calc531: function () {
+
         this.trigger('page', new Wendler531Page({
             model: new Wendler531Model()
         }));
     },
     login: function () {
+
         this.trigger('page', new LoginPage());
     },
     logout: function () {
-        app.setAccessToken(undefined);
+
+        App.setAccessToken(undefined);
         this.redirectTo('/');
     },
     signup: function () {
+
         this.trigger('page', new SignupPage());
     },
     recover: function () {
-        if (app.me.loggedIn) {
+
+        if (App.me.loggedIn) {
             return this.me();
         }
         this.trigger('page', new RecoverPage());
     },
     //Authenticated routes
     validate: function () {
-        if (!app.me.loggedIn) {
+
+        if (!App.me.loggedIn) {
             return this.navigate('/login');
         }
-        this.trigger('page', new ValidatePage({ model: app.me }));
+        this.trigger('page', new ValidatePage({ model: App.me }));
     },
     me: function () {
-        if (!app.me.loggedIn) {
+
+        if (!App.me.loggedIn) {
             return this.navigate('/login');
         }
         return this.trigger('page', new MePage({
-            model: app.me
+            model: App.me
         }));
     },
     log: function () {
-        if (!app.me.loggedIn) {
+
+        if (!App.me.loggedIn) {
             return this.navigate('/login');
         }
         this.trigger('page', new LogPage({
@@ -120,11 +131,12 @@ module.exports = Router.extend({
         }));
     },
     workout: function (date) {
-        if (!app.me.loggedIn) {
+
+        if (!App.me.loggedIn) {
             return this.navigate('/login');
         }
         this.trigger('page', new WorkoutPage({
-            model: new WorkoutModel({date: moment(date, 'YYYY-MM-DD')})
+            model: new WorkoutModel({ date: Moment(date, 'YYYY-MM-DD') })
         }));
     }
 });

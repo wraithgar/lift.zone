@@ -30,20 +30,24 @@ module.exports = View.extend({
         'click [data-hook=name]': 'selfAlias'
     },
     render: function () {
+
         this.renderWithTemplate();
-        this.renderSubview(new SuggestionView({model: this.model}), this.queryByHook('newActivity'));
+        this.renderSubview(new SuggestionView({ model: this.model }), this.queryByHook('newActivity'));
         this.renderCollection(this.model.sets, SetView, this.queryByHook('sets'));
         this.renderCollection(this.model.suggestions, SuggestionView, this.queryByHook('suggestions'));
-        this.cacheElements({aliasModal: '[data-hook=chooseAlias]'});
+        this.cacheElements({ aliasModal: '[data-hook=chooseAlias]' });
         return this;
     },
     findAlias: function () {
+
         $(this.aliasModal).foundation('reveal', 'open');
     },
     selfAlias: function () {
+
         console.log('choosing self alias');
     },
     closeModal: function () {
-        app.$(this.aliasModal).foundation('reveal', 'close');
+
+        $(this.aliasModal).foundation('reveal', 'close');
     }
 });

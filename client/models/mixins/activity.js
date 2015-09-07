@@ -21,12 +21,14 @@ module.exports = {
         displayName: {
             deps: ['name', 'alias'],
             fn: function () {
+
                 return this.alias || this.name;
             }
         },
         hasComment: {
             deps: ['comment'],
             fn: function () {
+
                 if (this.comment) {
                     return true;
                 }
@@ -36,6 +38,7 @@ module.exports = {
         ready: {
             deps: ['id'],
             fn: function () {
+
                 return !this.isNew();
             }
         }

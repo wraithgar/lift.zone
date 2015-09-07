@@ -12,7 +12,8 @@ module.exports = Model.extend({
     derived: {
         formattedFull: {
             deps: ['distance', 'weight', 'reps', 'unit'],
-            fn: function formattedFull() {
+            fn: function formattedFull () {
+
                 var formatted = [];
                 if (this.time) {
                     formatted.push(this.formattedTime);
@@ -40,7 +41,8 @@ module.exports = Model.extend({
         },
         formattedShort: {
             deps: ['distance', 'weight', 'reps', 'unit'],
-            fn: function formattedShort() {
+            fn: function formattedShort () {
+
                 var formatted = [];
                 if (this.time) {
                     formatted.push(this.time);
@@ -72,6 +74,7 @@ module.exports = Model.extend({
         formattedTime: {
             deps: ['time'],
             fn: function () {
+
                 var segments = [];
                 var segment;
                 segment = this.time % 60;
@@ -99,11 +102,13 @@ module.exports = Model.extend({
         nonpr: {
             deps: ['pr'],
             fn: function () {
+
                 return !this.pr;
             }
         }
     },
     parse: function (resp) {
+
         resp.pr = resp.pr === 1;
         return resp;
     }

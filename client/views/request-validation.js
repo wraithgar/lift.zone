@@ -1,6 +1,6 @@
 var View = require('ampersand-view');
-var app = require('ampersand-app');
-var sync = require('ampersand-sync');
+var App = require('ampersand-app');
+var Sync = require('ampersand-sync');
 
 module.exports = View.extend({
     template: require('../templates/views/request-validation.jade'),
@@ -11,20 +11,23 @@ module.exports = View.extend({
         'model.email': {
             type: 'text',
             hook: 'email'
-        },
+        }
     },
     request: function () {
-        app.view.message = '';
+
+        App.view.message = '';
         var syncOptions = {
             headers: app.me.ajaxConfig().headers,
             url: app.apiUrl + '/validate',
             success: function (model, resp) {
+
                 app.view.message = 'Email sent.  Check your inbox and click the link.  The link expires in one week.';
             },
             error: function () {
+
                 app.view.message = 'Unknown error trying to validate.';
             }
         };
-        sync('create', null, syncOptions);
+        Sync('create', null, syncOptions);
     }
 });

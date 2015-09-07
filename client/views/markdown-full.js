@@ -18,6 +18,7 @@ module.exports = View.extend({
         }
     },
     render: function () {
+
         this.renderWithTemplate();
         this.renderCollection(this.model.sets, RepView, this.queryByHook('sets'));
     }

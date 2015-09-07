@@ -1,23 +1,25 @@
 var Model = require('ampersand-state');
-var calc = require('../lib/wendler-calc');
+var WendlerCals = require('../lib/wendler-calc');
 
 module.exports = Model.extend({
     props: {
         name: 'string',
         weight: 'number',
         reps: 'number',
-        extra: 'number',
+        extra: 'number'
     },
     derived: {
         ready: {
             deps: ['weight', 'reps'],
             fn: function () {
+
                 return (this.weight > 0 && this.reps > 0);
             }
         },
         calculated: {
             deps: ['weight', 'reps'],
             fn: function () {
+
                 if (this.weight > 0 && this.reps > 0) {
                     return ( (this.weight * this.reps / 30) + this.weight );
                 }
@@ -26,6 +28,7 @@ module.exports = Model.extend({
         training: {
             deps: ['calculated', 'extra'],
             fn: function () {
+
                 var calc = this.calculated; //If we reference it directly we get NaN somehow?
                 if (calc !== undefined) {
                     calc = calc * 0.9;
@@ -36,99 +39,111 @@ module.exports = Model.extend({
                 return calc;
             }
         },
-        warmup_1: {
+        warmup1: {
             deps: ['training'],
             fn: function () {
+
                 if (this.training > 0) {
-                    return calc.warmup_1(this.training);
+                    return WendlerCals.warmup1(this.training);
                 }
             }
         },
-        warmup_2: {
+        warmup2: {
             deps: ['training'],
             fn: function () {
+
                 if (this.training > 0) {
-                    return calc.warmup_2(this.training);
+                    return WendlerCals.warmup2(this.training);
                 }
             }
         },
-        warmup_3: {
+        warmup3: {
             deps: ['training'],
             fn: function () {
+
                 if (this.training > 0) {
-                    return calc.warmup_3(this.training);
+                    return WendlerCals.warmup3(this.training);
                 }
             }
         },
-        wave1_1: {
+        wave1Set1: {
             deps: ['training'],
             fn: function () {
+
                 if (this.training > 0) {
-                    return calc.wave1_1(this.training);
+                    return WendlerCals.wave1Set1(this.training);
                 }
             }
         },
-        wave1_2: {
+        wave1Set2: {
             deps: ['training'],
             fn: function () {
+
                 if (this.training > 0) {
-                    return calc.wave1_2(this.training);
+                    return WendlerCals.wave1Set2(this.training);
                 }
             }
         },
-        wave1_3: {
+        wave1Set3: {
             deps: ['training'],
             fn: function () {
+
                 if (this.training > 0) {
-                    return calc.wave1_3(this.training);
+                    return WendlerCals.wave1Set3(this.training);
                 }
             }
         },
-        wave2_1: {
+        wave2Set1: {
             deps: ['training'],
             fn: function () {
+
                 if (this.training > 0) {
-                    return calc.wave2_1(this.training);
+                    return WendlerCals.wave2Set1(this.training);
                 }
             }
         },
-        wave2_2: {
+        wave2Set2: {
             deps: ['training'],
             fn: function () {
+
                 if (this.training > 0) {
-                    return calc.wave2_2(this.training);
+                    return WendlerCals.wave2Set2(this.training);
                 }
             }
         },
-        wave2_3: {
+        wave2Set3: {
             deps: ['training'],
             fn: function () {
+
                 if (this.training > 0) {
-                    return calc.wave2_3(this.training);
+                    return WendlerCals.wave2Set3(this.training);
                 }
             }
         },
-        wave3_1: {
+        wave3Set1: {
             deps: ['training'],
             fn: function () {
+
                 if (this.training > 0) {
-                    return calc.wave3_1(this.training);
+                    return WendlerCals.wave3Set1(this.training);
                 }
             }
         },
-        wave3_2: {
+        wave3Set2: {
             deps: ['training'],
             fn: function () {
+
                 if (this.training > 0) {
-                    return calc.wave3_2(this.training);
+                    return WendlerCals.wave3Set2(this.training);
                 }
             }
         },
-        wave3_3: {
+        wave3Set3: {
             deps: ['training'],
             fn: function () {
+
                 if (this.training > 0) {
-                    return calc.wave3_3(this.training);
+                    return WendlerCals.wave3Set3(this.training);
                 }
             }
         }

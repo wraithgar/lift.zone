@@ -1,12 +1,13 @@
 var View = require('ampersand-view');
-var app = require('ampersand-app');
+var App = require('ampersand-app');
 var ActivityView = require('../views/activity');
 
 module.exports = View.extend({
     template: require('../templates/pages/workout.jade'),
     initialize: function () {
+
         //this.model.fetch({
-            //url: app.apiUrl + '/search/workouts/' + this.model.dateId
+            //url: App.apiUrl + '/search/workouts/' + this.model.dateId
         //});
     },
     bindings: {
@@ -24,6 +25,7 @@ module.exports = View.extend({
         }
     },
     render: function () {
+
         this.renderWithTemplate();
         this.renderCollection(this.model.activities, ActivityView, this.queryByHook('activities'));
     }

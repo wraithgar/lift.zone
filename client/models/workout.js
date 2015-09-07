@@ -1,19 +1,26 @@
-var app = require('ampersand-app');
+var App = require('ampersand-app');
 var Model = require('ampersand-model');
 var JsonApiMixin = require('./mixins/json-api');
 var Activities = require('./activity-collection');
-var moment = require('moment');
+var Moment = require('moment');
 
 var dateId = function (date) {
-    return moment(date).format('YYYY-MM-DD');
+
+    return Moment(date).format('YYYY-MM-DD');
 };
 
 module.exports = Model.extend(JsonApiMixin, {
-    urlRoot: function () { return app.apiUrl + '/workouts'; },
+    urlRoot: function () {
+
+        return App.apiUrl + '/workouts';
+    },
     props: {
         id: 'number',
         name: ['string', true, 'My Workout'],
-        date: ['date', true, function () { return new Date(); }],
+        date: ['date', true, function () {
+
+            return new Date();
+        }],
         raw: 'string'
     },
     session: {
@@ -23,12 +30,14 @@ module.exports = Model.extend(JsonApiMixin, {
         activities: Activities
     },
     parse: function (resp) {
+
         if (resp.date) {
-            resp.date = moment(resp.date, 'YYYY-MM-DD');
+            resp.date = Moment(resp.date, 'YYYY-MM-DD');
         }
         return resp;
     },
     serialize: function () {
+
         var res = Model.prototype.serialize.apply(this, arguments);
         res.date = this.dateId;
         return res;
@@ -37,26 +46,31 @@ module.exports = Model.extend(JsonApiMixin, {
         formattedDate: {
             deps: ['date'],
             fn: function () {
-                return moment(this.date).format(app.me.dateFormat);
+
+                return Moment(this.date).format(App.me.dateFormat);
             }
         },
         dateId: {
             deps: ['date'],
             fn: function () {
+
                 return dateId(this.date);
             }
         }
     },
     checkExisting: function (date, callback) {
+
         var self = this;
         date = date || self.date;
         self.sync('read', self, {
-            url: app.apiUrl + '/search/workouts/' + dateId(date),
+            url: App.apiUrl + '/search/workouts/' + dateId(date),
             success: function () {
+
                 self.exists = true;
                 callback();
             },
             error: function () {
+
                 self.exists = false;
                 callback();
             }

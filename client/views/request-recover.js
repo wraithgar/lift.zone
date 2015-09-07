@@ -1,6 +1,6 @@
 var View = require('ampersand-view');
-var app = require('ampersand-app');
-var sync = require('ampersand-sync');
+var App = require('ampersand-app');
+var Sync = require('ampersand-sync');
 
 module.exports = View.extend({
     template: require('../templates/views/request-recover.jade'),
@@ -8,8 +8,9 @@ module.exports = View.extend({
         'submit form': 'request'
     },
     request: function (e) {
+
         e.preventDefault(e);
-        app.view.message = '';
+        App.view.message = '';
         var email = this.query('[name=email]').value;
         var payload = {
             data: {
@@ -20,16 +21,18 @@ module.exports = View.extend({
             }
         };
         var syncOptions = {
-            headers: app.me.ajaxConfig().headers,
-            url: app.apiUrl + '/recover',
+            headers: App.me.ajaxConfig().headers,
+            url: App.apiUrl + '/recover',
             data: JSON.stringify(payload),
             success: function (model, resp) {
-                app.view.message = 'Email sent, good luck.  Check your inbox and click the link.  The link expires in one day.';
+
+                App.view.message = 'Email sent, good luck.  Check your inbox and click the link.  The link expires in one day.';
             },
             error: function () {
-                app.view.message = 'Unknown error trying to validate.';
+
+                App.view.message = 'Unknown error trying to validate.';
             }
         };
-        sync('create', null, syncOptions);
+        Sync('create', null, syncOptions);
     }
 });

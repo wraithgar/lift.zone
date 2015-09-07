@@ -14,12 +14,13 @@ div
           li
             a(href='/utils') Utils
           li
-            a.button(href='/login', data-hook='user-name')
-          li(data-hook='logout')
+            a.button(href='/login', data-hook='user-name') Log in
+          li(data-hook='logout', style='display:none')
             a(href='/logout') Logout
 
-  .alert-box.info(data-hook='page-message' data-alert)
+  .alert-box.info(data-hook='page-message' data-alert, style='display:none')
   div(data-hook='page-container')
+    block page
   .row
     hr
     .left

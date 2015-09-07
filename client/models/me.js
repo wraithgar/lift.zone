@@ -1,18 +1,23 @@
-var app = require('ampersand-app');
+var App = require('ampersand-app');
 var Model = require('ampersand-model');
 var JsonApiMixin = require('./mixins/json-api');
 
 module.exports = Model.extend(JsonApiMixin, {
-    url: function () { return app.apiUrl + '/me'; },
+    url: function () {
+
+        return App.apiUrl + '/me';
+    },
     type: 'user',
     initialize: function () {
-        this.listenTo(app, 'accessToken', function () {
-            this.loggedIn = app.accessToken !== undefined;
+
+        this.listenTo(App, 'accessToken', function () {
+
+            this.loggedIn = App.accessToken !== undefined;
             if (this.loggedIn) {
                 this.fetch();
             }
         });
-        this.loggedIn = app.accessToken !== undefined;
+        this.loggedIn = App.accessToken !== undefined;
         if (this.loggedIn) { this.fetch(); }
     },
     props: {
@@ -31,12 +36,14 @@ module.exports = Model.extend(JsonApiMixin, {
         invalid: {
             deps: ['validated'],
             fn: function () {
+
                 return !this.validated;
             }
         },
         displayName: {
             deps: ['loggedIn', 'name'],
             fn: function () {
+
                 if (this.loggedIn) {
                     return this.name;
                 }
@@ -46,6 +53,7 @@ module.exports = Model.extend(JsonApiMixin, {
         link: {
             deps: ['loggedIn'],
             fn: function () {
+
                 if (this.loggedIn) {
                     return '/me';
                 }
@@ -57,6 +65,7 @@ module.exports = Model.extend(JsonApiMixin, {
         loggedIn: ['boolean', true, false]
     },
     authenticate: function (login, password, options) {
+
         var payload = {
             data: {
                 type: 'login',
@@ -67,7 +76,7 @@ module.exports = Model.extend(JsonApiMixin, {
             }
         };
         var syncOptions = {
-            url: app.apiUrl + '/login',
+            url: App.apiUrl + '/login',
             data: JSON.stringify(payload),
             success: options.success,
             error: options.error

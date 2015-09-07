@@ -6,7 +6,7 @@ var log = require('debug')('lift.zone');
 //This is a little hard coded but whatever
 //[jade, html]
 var pages = [
-    ['pages/home.jade', 'index.html'],
+    ['pages/static.jade', 'index.html'],
     ['pages/utils.jade', 'utils.html'],
     ['pages/parser.jade', 'utils/parser.html'],
     ['pages/fitocracy.jade', 'utils/fitocracy.html'],

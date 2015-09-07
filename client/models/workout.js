@@ -1,6 +1,6 @@
 var app = require('ampersand-app');
 var Model = require('./base');
-var Activities = require('./activities');
+var Activities = require('./activity-collection');
 var moment = require('moment');
 
 var dateId = function (date) {

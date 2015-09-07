@@ -1,6 +1,6 @@
 var Model = require('ampersand-model');
-var Sets = require('./sets');
-var Suggestions = require('./suggestions');
+var Sets = require('./set-collection');
+var Suggestions = require('./suggestion-collection');
 
 module.exports = Model.extend({
     props: {

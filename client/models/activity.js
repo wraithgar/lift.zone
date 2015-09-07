@@ -1,9 +1,9 @@
 var Model = require('./base');
 var Activity = require('./base-activity');
-var Sets = require('./sets');
+var Sets = require('./set-collection');
 var app = require('ampersand-app');
 
-module.exports = Model.extend(Model, Activity, {
+module.exports = Model.extend(Model).extend(Activity).extend({
     urlRoot: function () { return app.apiUrl + '/activities'; },
     initialize: function (props) {
         var self = this;

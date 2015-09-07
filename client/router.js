@@ -7,14 +7,14 @@ var querystring = require('querystring');
 var moment = require('moment');
 
 var AboutPage = require('./pages/about');
-var Activities = require('./models/activities');
-var BaseActivities = require('./models/base-activities');
+var Activities = require('./models/activity-collection');
+var BaseActivities = require('./models/base-activity-collection');
 var FitocracyPage = require('./pages/fitocracy');
 var HomePage = require('./pages/home');
 var LogPage = require('./pages/log');
 var LoginPage = require('./pages/login');
 var MePage = require('./pages/me');
-var NotFoundPage = require('./pages/notFound');
+var NotFoundPage = require('./pages/not-found');
 var ParserPage = require('./pages/parser');
 var PrivacyPage = require('./pages/privacy');
 var RecoverPage = require('./pages/recover');

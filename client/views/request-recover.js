@@ -3,7 +3,7 @@ var app = require('ampersand-app');
 var sync = require('ampersand-sync');
 
 module.exports = View.extend({
-    template: require('../templates/views/requestRecover.jade'),
+    template: require('../templates/views/request-recover.jade'),
     events: {
         'submit form': 'request'
     },

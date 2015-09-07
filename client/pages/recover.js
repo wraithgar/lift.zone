@@ -2,7 +2,7 @@ var View = require('ampersand-view');
 var app = require('ampersand-app');
 var querystring = require('querystring');
 var ViewSwitcher = require('ampersand-view-switcher');
-var RequestView = require('../views/requestRecover');
+var RequestView = require('../views/request-recover');
 var RecoverView = require('../views/recover');
 
 module.exports = View.extend({

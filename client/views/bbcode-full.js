@@ -1,5 +1,5 @@
 var View = require('ampersand-view');
-var RepView = require('../views/bbcodeRep');
+var RepView = require('../views/bbcode-rep');
 
 module.exports = View.extend({
     template: require('../templates/views/bbcode.jade'),

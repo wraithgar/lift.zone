@@ -2,7 +2,7 @@ var View = require('ampersand-view');
 var GroupedCollectionView = require('ampersand-grouped-collection-view');
 
 var RepItemView = View.extend({
-    template: require('../templates/views/markdownRepItem.jade'),
+    template: require('../templates/views/markdown-rep-item.jade'),
     bindings: {
         'model.formattedShort': {
             type: 'text',
@@ -17,7 +17,7 @@ var RepItemView = View.extend({
 });
 
 var RepGroupView = View.extend({
-    template: require('../templates/views/markdownRepGroup.jade'),
+    template: require('../templates/views/markdown-rep-group.jade'),
     render: function () {
         this.renderWithTemplate();
         this.cacheElements({

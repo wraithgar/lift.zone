@@ -5,7 +5,6 @@ var debounce = require('lodash.debounce');
 var Router = require('./router');
 var MainView = require('./main-view');
 var Me = require('./models/me');
-var Aliases = require('./models/aliases');
 var config = require('../config');
 var sync = require('ampersand-sync');
 
@@ -108,9 +107,6 @@ app.extend({
     },
     router: new Router(),
     me: new Me(),
-    cache: {
-        aliases: new Aliases()
-    },
     log: logger,
     navigate: function (page) {
         var url = (page.charAt(0) === '/') ? page.slice(1) : page;

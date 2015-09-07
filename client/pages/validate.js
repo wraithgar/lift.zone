@@ -2,7 +2,7 @@ var View = require('ampersand-view');
 var app = require('ampersand-app');
 var querystring = require('querystring');
 var ViewSwitcher = require('ampersand-view-switcher');
-var RequestView = require('../views/requestValidation');
+var RequestView = require('../views/request-validation');
 var ValidateView = require('../views/validate');
 var ValidatedView = require('../views/validated');
 

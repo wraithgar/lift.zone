@@ -2,11 +2,11 @@ var View = require('ampersand-view');
 var caber = require('caber');
 var debounce = require('lodash.debounce');
 var MarkdownView = require('../views/markdown');
-var MarkdownFullView = require('../views/markdownFull');
+var MarkdownFullView = require('../views/markdown-full');
 var BBCodeView = require('../views/bbcode');
-var BBCodeFullView = require('../views/bbcodeFull');
-var MarkdownCreditsView = require('../views/markdownCredits');
-var BBCodeCreditsView = require('../views/bbcodeCredits');
+var BBCodeFullView = require('../views/bbcode-full');
+var MarkdownCreditsView = require('../views/markdown-credits');
+var BBCodeCreditsView = require('../views/bbcode-credits');
 
 module.exports = View.extend({
     template: require('../templates/pages/parser.jade'),

@@ -59,11 +59,6 @@ module.exports = Router.extend({
     home: function () {
         this.trigger('page', new HomePage());
     },
-    log: function () {
-        this.trigger('page', new LogPage({
-            model: new WorkoutModel()
-        }));
-    },
     utils: function () {
         this.trigger('page', new UtilsPage());
     },
@@ -114,6 +109,14 @@ module.exports = Router.extend({
         }
         return this.trigger('page', new MePage({
             model: app.me
+        }));
+    },
+    log: function () {
+        if (!app.me.loggedIn) {
+            return this.navigate('/login');
+        }
+        this.trigger('page', new LogPage({
+            model: new WorkoutModel()
         }));
     },
     workout: function (date) {

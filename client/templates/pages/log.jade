@@ -8,29 +8,29 @@ section
       .small-12.medium-6.columns
         .row
           .small-12.columns
-            label(data-hook='nameLabel') Name&#xa0;
-              input#workoutName(data-hook='nameInput', placeholder='name your workout', name='name')
-            label(data-hook='dateLabel') Date&#xa0;
-              input(data-hook='dateInput', placeholder='Dec 12, 2014')
-            textarea(data-hook='workoutInput' rows=5 placeholder='Enter your workout here.', title='Workout' id='rawInput')
+            label(data-hook='name-label') Name&#xa0;
+              input(data-hook='name-input', placeholder='name your workout', name='name')
+            label(data-hook='date-label') Date&#xa0;
+              input(data-hook='date-input', placeholder='Dec 12, 2014')
+            textarea(data-hook='workout-input' rows=5 placeholder='Enter your workout here.', title='Workout' id='rawInput')
             br
         .row.clearfix
           .small-12.medium-6.columns(data-hook='workout')
             input.radius.button.left(value='Save', data-hook='saveWorkout')
       .small-12.medium-6.columns
-        h3(data-hook='workoutName') Workout Name
-        h4(data-hook='workoutDate') Workout Date
+        h3(data-hook='workout-name') Workout Name
+        h4(data-hook='workout-date') Workout Date
         h6 Activities
-        p(data-hook='workoutActivities')
+        p(data-hook='workout-activities')
 
-  .reveal-modal(data-hook='newActivities', data-reveal)
+  .reveal-modal(data-hook='new-activities', data-reveal)
     h3 New activities
     span There are new activities in this workout, please confirm their names by clicking on the&#xa0;
     i.fa.fa-question
     span &#xa0;next to their names
     .clearfix
       a.button.tiny.radius.dismiss-reveal-modal.left Ok
-  .reveal-modal(data-hook='workoutExists', data-reveal)
+  .reveal-modal(data-hook='workout-exists', data-reveal)
     h3 Workout exists
     span There is already a workout for this day, either change the date or go edit the workout directly
     .clearfix

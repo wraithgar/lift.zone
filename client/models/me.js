@@ -1,7 +1,8 @@
 var app = require('ampersand-app');
-var Model = require('./base');
+var Model = require('ampersand-model');
+var JsonApiMixin = require('./mixins/json-api');
 
-module.exports = Model.extend({
+module.exports = Model.extend(JsonApiMixin, {
     url: function () { return app.apiUrl + '/me'; },
     type: 'user',
     initialize: function () {

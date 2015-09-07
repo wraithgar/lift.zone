@@ -1,9 +1,10 @@
-var Model = require('./base');
-var Activity = require('./base-activity');
+var Model = require('ampersand-model');
+var JsonApiMixin = require('./mixins/json-api');
+var ActivityMixin = require('./mixins/activity');
 var Sets = require('./set-collection');
 var app = require('ampersand-app');
 
-module.exports = Model.extend(Model).extend(Activity).extend({
+module.exports = Model.extend(JsonApiMixin, ActivityMixin, {
     urlRoot: function () { return app.apiUrl + '/activities'; },
     initialize: function (props) {
         var self = this;

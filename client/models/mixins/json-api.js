@@ -1,9 +1,8 @@
-var Model = require('ampersand-model');
+//Base mixin for models to interact w/ api
 var app = require('ampersand-app');
-var forEach = require('lodash.foreach');
+var Model = require('ampersand-model');
 
-//Authorized model that updates app accessToken if it's found to be invalid
-module.exports = Model.extend({
+module.exports = {
     ajaxConfig: function () {
         var headers = {
             'Content-Type': 'application/vnd.api+json',
@@ -54,4 +53,5 @@ module.exports = Model.extend({
         };
         return Model.prototype.sync.apply(this, arguments);
     }
-});
+};
+

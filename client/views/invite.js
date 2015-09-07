@@ -7,6 +7,11 @@ module.exports = View.extend({
         status: 'string'
     },
     bindings: {
+        'model.code': {
+            type: 'attribute',
+            hook: 'code',
+            name: 'value'
+        },
         'status': [
             {
                 type: 'text',

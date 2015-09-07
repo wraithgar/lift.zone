@@ -5,12 +5,12 @@ div
       .small-4.columns
         label(for='invite') Invite Code
       .small-8.columns
-        input(type='text', id='invite', name='invite', placeholder='Invite code', value=locals.model.code, required)
+        input(type='text', id='invite', name='invite', placeholder='Invite code', data-hook='code', required)
         small.error Please enter a valid invite code
     .row
       .small-12.columns
         input.button(type='submit', value='Sign up')
-    .alert-box.info.radius(data-hook='invite-status')
+    .alert-box.info.radius(data-hook='invite-status', style='display:none')
   .reveal-modal(data-hook='invalid', data-reveal)
     h3 Invalid
     span That invite code appears to be invalid

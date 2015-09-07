@@ -12,7 +12,9 @@ var pages = [
     ['pages/fitocracy.jade', 'utils/fitocracy.html'],
     ['pages/about.jade', 'about.html'],
     ['pages/login.jade', 'login.html'],
-    ['pages/privacy.jade', 'privacy.html']
+    ['pages/privacy.jade', 'privacy.html'],
+    ['pages/recover.jade', 'recover.html'],
+    ['pages/signup.jade', 'signup.html']
 ];
 
 var bodyJade = Fs.readFileSync('./client/templates/body.jade').toString();

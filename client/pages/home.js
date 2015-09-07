@@ -20,6 +20,6 @@ module.exports = View.extend({
         e.preventDefault();
 
         var inviteCode = this.query('[name=invite]').value;
-        app.navigate('/signup?invite=' + encodeURIComponent(inviteCode));
+        App.navigate('/signup?invite=' + encodeURIComponent(inviteCode));
     }
 });

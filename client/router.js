@@ -26,11 +26,10 @@ module.exports = Router.extend({
     routes: {
         //Unauthenticated
         '': 'home',
-        'log': 'log',
         'utils': 'utils',
         'utils/parser': 'parser',
         'utils/fitocracy': 'fitocracy',
-        'utils/531': 'calc531',
+        'utils/531': 'wendler531',
         'about': 'about',
         'login': 'login',
         'logout': 'logout',
@@ -38,6 +37,7 @@ module.exports = Router.extend({
         'privacy': 'privacy',
         'recover': 'recover',
         //Authenticated
+        'log': 'log',
         'me': 'me',
         'validate': 'validate',
         'workouts/:date': 'workout',
@@ -78,7 +78,7 @@ module.exports = Router.extend({
 
         this.trigger('page', new AboutPage());
     },
-    calc531: function () {
+    wendler531: function () {
 
         this.trigger('page', new Wendler531Page({
             model: new Wendler531Model()
@@ -100,7 +100,7 @@ module.exports = Router.extend({
     recover: function () {
 
         if (App.me.loggedIn) {
-            return this.me();
+            return this.navigate('/me');
         }
         this.trigger('page', new RecoverPage());
     },

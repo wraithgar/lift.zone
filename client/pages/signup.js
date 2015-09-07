@@ -12,7 +12,6 @@ module.exports = View.extend({
 
         var params = Querystring.parse(window.location.search.slice('1'));
         this.invite = new InviteModel({ code: params.invite });
-        this.stage = 'invite';
         this.listenTo(this, 'change:stage', this.renderStage.bind(this));
     },
     session: {
@@ -21,13 +20,14 @@ module.exports = View.extend({
     render: function () {
 
         this.renderWithTemplate(this);
+        this.queryByHook('stage').innerHTML = ''; //This clears out the static content
         this.stages = new ViewSwitcher(this.queryByHook('stage'), {
             show: function (view) {
 
                 $(view.el).foundation();
             }
         });
-        this.renderStage();
+        this.stage = 'invite';
         return this;
     },
     renderStage: function () {

@@ -5,38 +5,38 @@ div
       .small-4.columns
         label(for='login') Login
       .small-8.columns
-        input(type='text', id='login', name='login', placeholder='What username do you want', required, data-abide-validator='checkLogin')
+        input(type='text' id='login' name='login' placeholder='What username do you want' required data-abide-validator='checkLogin' autocapitalize='off' autocorrect='off')
         small.error Login required
     .row
       .small-4.columns
         label(for='name') Name
       .small-8.columns
-        input(type='text', id='name', name='name', placeholder='What should we call you?', required)
+        input(type='text' id='name' name='name' placeholder='What should we call you?' required)
         small.error You need a name
     .row
       .small-4.columns
         label(for='email') Email
       .small-8.columns
-        input(type='email', id='email', name='email', placeholder='Email address', required)
+        input(type='email' id='email' name='email' placeholder='Email address' required)
         small.error A valid email is required.
     .row
       .small-4.columns
         h3
           label(for='password') Password
       .small-8.columns
-        input(type='password', id='password', name='password', placeholder='New password', pattern='[\\W\\w]{8,}', required)
+        input(type='password' id='password' name='password' placeholder='New password' pattern='[\\W\\w]{8,}' required)
         small.error Passwords must be at least 8 characters long
     .row
       .small-4.columns
         h3
           label(for='passwordConfirm') Confirm Password
       .small-8.columns
-        input(type='password', id='passwordConfirm', name='passwordConfirm', placeholder='Re-type new password', data-equalto='password')
+        input(type='password' id='passwordConfirm' name='passwordConfirm' placeholder='Re-type new password' data-equalto='password')
         small.error Passwords must match
     .row
       .small-12.columns
-        input.button(type='submit', value='Create account')
-  .reveal-modal(data-hook='error', data-reveal)
+        input.button(type='submit' value='Create account')
+  .reveal-modal(data-hook='error' data-reveal)
     h3 Error
     span Oh no! There was an unexpected error signing you up.
     br

@@ -32,7 +32,6 @@ module.exports = Router.extend({
         'utils/531': 'wendler531',
         'about': 'about',
         'login': 'login',
-        'logout': 'logout',
         'signup': 'signup',
         'privacy': 'privacy',
         'recover': 'recover',
@@ -41,6 +40,7 @@ module.exports = Router.extend({
         'me': 'me',
         'validate': 'validate',
         'workouts/:date': 'workout',
+        'logout': 'logout',
         //Catchall
         '*catchall': 'notfound'
     },

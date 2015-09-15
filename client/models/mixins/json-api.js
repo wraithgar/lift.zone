@@ -6,8 +6,7 @@ module.exports = {
     ajaxConfig: function () {
 
         var headers = {
-            'Content-Type': 'application/vnd.api+json',
-            'Accept': 'application/vnd.api+json'
+            'Content-Type': 'application/vnd.api+json'
         };
         if (App.accessToken) {
             headers.Authorization = 'Bearer ' + App.accessToken;

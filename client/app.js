@@ -131,4 +131,5 @@ Domready(function renderPage () {
 if (Config.DEV) {
     //Name something other than what modules assign locally so we don't accidentally rely on this in development
     window.liftApp = App;
+    window.dom = require('ampersand-dom');
 }

@@ -7,35 +7,36 @@ module.exports = View.extend({
     bindings: {
         'model.displayName': {
             type: 'text',
-            hook: 'activityName'
+            hook: 'activity-name'
         },
         'model.comment': [{
             type: 'text',
-            hook: 'activityComment'
+            hook: 'activity-comment'
         }, {
             type: 'toggle',
-            hook: 'activityComment'
+            hook: 'activity-comment'
         }],
         'model.ready': {
             type: 'toggle',
-            no: '[data-hook=newActivity]'
+            no: '[data-hook=new-activity]'
         },
         'model.hasSuggestions': {
             type: 'toggle',
-            hook: 'hasSuggestions'
+            hook: 'has-suggestions'
         }
     },
     events: {
-        'click [data-hook=new]': 'findAlias',
+        'click [data-hook=new-activity]': 'findAlias',
         'click [data-hook=name]': 'selfAlias'
     },
     render: function () {
 
         this.renderWithTemplate();
-        this.renderSubview(new SuggestionView({ model: this.model }), this.queryByHook('newActivity'));
+        this.renderSubview(new SuggestionView({ model: this.model }), this.queryByHook('new-confirm'));
         this.renderCollection(this.model.sets, SetView, this.queryByHook('sets'));
         this.renderCollection(this.model.suggestions, SuggestionView, this.queryByHook('suggestions'));
-        this.cacheElements({ aliasModal: '[data-hook=chooseAlias]' });
+        this.cacheElements({ aliasModal: '[data-hook=choose-alias]' });
+        $(this.el).foundation();
         return this;
     },
     findAlias: function () {

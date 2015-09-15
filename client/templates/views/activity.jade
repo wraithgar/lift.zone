@@ -1,13 +1,13 @@
 .row
   h6
-    span(data-hook='activityName')
+    span(data-hook='activity-name')
     span &#xa0;
-    span.circle.info-bg-color(data-hook='newActivity')
+    span.circle.info-bg-color(data-hook='new-activity')
       i.fa.fa-question
   ul.no-bullet(data-hook='sets')
-  button.label.secondary.radius(data-hook='activityComment')
+  button.label.secondary.radius(data-hook='activity-comment')
   br
-  .reveal-modal(data-hook='chooseAlias', data-reveal)
+  .reveal-modal(data-hook='choose-alias', data-reveal)
     ul.pricing-table
       li.title New activity
       li.description This is the first time you've done this activity.
@@ -16,9 +16,9 @@
           .small-12.medium-6.medium-centered.columns
             .text-left I meant what I typed
             br
-            ul.stack.button-group(data-hook='newActivity')
+            ul.stack.button-group(data-hook='new-confirm')
             br
-      li.bullet-item.cta-button(data-hook='hasSuggestions')
+      li.bullet-item.cta-button(data-hook='has-suggestions')
         .row
           .small-12.medium-6.medium-centered.columns
             .text-left I really meant

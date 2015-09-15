@@ -1,6 +1,6 @@
 div
   div.contain-to-grid
-    nav.top-bar(data-topbar, role='navigation', data-hook='navigation')
+    nav.top-bar(data-topbar role='navigation' data-hook='navigation')
       ul.title-area
         li.name
           h1
@@ -14,8 +14,8 @@ div
           li
             a(href='/utils') Utils
           li
-            a.button(href='/login', data-hook='user-name') Log in
-          li(data-hook='logout', style='display:none')
+            a.button(href='/login' data-hook='user-name') Log in
+          li(data-hook='logout' data-anddom-display data-anddom-hidden='true' style='display: none;')
             a(href='/logout') Logout
 
   .alert-box.info(data-hook='page-message' data-alert data-anddom-display data-anddom-hidden='true' style='display: none;')

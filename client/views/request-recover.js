@@ -23,7 +23,7 @@ module.exports = View.extend({
         var syncOptions = {
             headers: App.me.ajaxConfig().headers,
             url: App.apiUrl + '/recover',
-            data: JSON.stringify(payload),
+            json: payload,
             success: function (model, resp) {
 
                 App.view.message = 'Email sent, good luck.  Check your inbox and click the link.  The link expires in one day.';

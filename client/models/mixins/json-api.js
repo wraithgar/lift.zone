@@ -1,6 +1,7 @@
 //Base mixin for models to interact w/ api
 var App = require('ampersand-app');
 var Model = require('ampersand-model');
+var Assign = lodash.assign;
 
 module.exports = {
     ajaxConfig: function () {
@@ -28,10 +29,11 @@ module.exports = {
 
         return Model.prototype.serialize.apply(this, arguments);
     },
-    serialize: function () {
+    serialize: function (options) {
 
         var data = {};
-        data.attributes = this.getAttributes({ props: true }, true);
+        var attrOpts = assign({ props: true }, options);
+        data.attributes = this.getAttributes(attrOpts, true);
         data.type = this.type;
         data.id = this[this.idAttribute];
         delete data.attributes[this.idAttribute];

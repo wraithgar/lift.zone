@@ -30,7 +30,7 @@ module.exports = View.extend({
                 'Accept': 'application/vnd.api+json'
             },
             url: App.apiUrl + '/signup',
-            data: JSON.stringify(payload),
+            json: payload,
             success: function () {
 
                 self.parent.stage = 'done';

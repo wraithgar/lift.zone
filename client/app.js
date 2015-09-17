@@ -44,7 +44,7 @@ var checkLogin = Debounce(function (el) {
             'Accept': 'application/vnd.api+json'
         },
         url: App.apiUrl + '/taken',
-        data: JSON.stringify(payload),
+        json: payload,
         success: function (resp) {
 
             checkingLogin = false;

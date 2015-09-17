@@ -28,7 +28,7 @@ module.exports = View.extend({
                 'Accept': 'application/vnd.api+json'
             },
             url: App.apiUrl + '/reset',
-            data: JSON.stringify(payload),
+            json: payload,
             success: function (resp) {
 
                 App.setAccessToken(resp.data.attributes.token);

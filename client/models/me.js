@@ -77,7 +77,7 @@ module.exports = Model.extend(JsonApiMixin, {
         };
         var syncOptions = {
             url: App.apiUrl + '/login',
-            data: JSON.stringify(payload),
+            json: payload,
             success: options.success,
             error: options.error
         };

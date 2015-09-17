@@ -22,7 +22,7 @@ module.exports = View.extend({
         var syncOptions = {
             headers: App.me.ajaxConfig().headers,
             url: App.apiUrl + '/me/confirm',
-            data: JSON.stringify(payload),
+            json: payload,
             success: function () {
 
                 App.me.validated = true;

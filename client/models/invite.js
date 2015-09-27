@@ -1,8 +1,8 @@
 var Model = require('ampersand-model');
-var JsonApiMixin = require('./mixins/json-api');
+var ApiMixin = require('./mixins/api');
 var App = require('ampersand-app');
 
-module.exports = Model.extend(JsonApiMixin, {
+module.exports = Model.extend(ApiMixin, {
     urlRoot: function () {
 
         return App.apiUrl + '/invite';

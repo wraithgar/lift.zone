@@ -20,8 +20,8 @@ module.exports = View.extend({
     initialize: function () {
 
         this.throttledParse = Debounce(this.userInputChanged, 500);
-        //this.listenTo(this.model, 'change:date', this.checkExisting);
-        //this.checkExisting(this.model, this.model.dateId);
+        this.listenTo(this.model, 'change:date', this.checkExisting);
+        this.checkExisting(this.model, this.model.dateId);
     },
     events: {
         'change [data-hook=smartMode]': 'changeSmartMode',

@@ -13,12 +13,7 @@ module.exports = View.extend({
         App.view.message = '';
         var email = this.query('[name=email]').value;
         var payload = {
-            data: {
-                type: 'login',
-                attributes: {
-                    email: email
-                }
-            }
+            email: email
         };
         var syncOptions = {
             headers: App.me.ajaxConfig().headers,

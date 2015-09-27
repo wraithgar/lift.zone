@@ -16,8 +16,9 @@ module.exports = View.extend({
 
         var self = this;
         if (this.model.suggestions) {
+            console.log('I meant what I typed');
             this.model.save({
-                aliasId: this.model.id, alias: this.model.name
+                name: this.model.name
             }, {
                 success: function () {
 
@@ -25,12 +26,14 @@ module.exports = View.extend({
                 }
             });
         } else {
+            console.log('I really meant', this.model.toJSON());
             this.model.collection.parent.save({
-                aliasId: this.model.id, alias: this.model.name
+                name: this.model.collection.parent.name,
+                useractivityId: this.model.id
             }, {
                 success: function () {
 
-                    self.parent.parent.closeModal();
+                    self.parent.closeModal();
                 }
             });
         }

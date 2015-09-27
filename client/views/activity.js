@@ -1,6 +1,16 @@
 var View = require('ampersand-view');
-var SetView = require('./set');
+
 var SuggestionView = require('./suggestion');
+
+var SetView = View.extend({
+    template: require('../templates/views/set.jade'),
+    bindings: {
+        'model.formattedFull': {
+            type: 'text',
+            hook: 'set'
+        }
+    }
+});
 
 module.exports = View.extend({
     template: require('../templates/views/activity.jade'),
@@ -31,7 +41,7 @@ module.exports = View.extend({
     },
     render: function () {
 
-        this.renderWithTemplate();
+        this.renderWithTemplate(this);
         this.renderSubview(new SuggestionView({ model: this.model }), this.queryByHook('new-confirm'));
         this.renderCollection(this.model.sets, SetView, this.queryByHook('sets'));
         this.renderCollection(this.model.suggestions, SuggestionView, this.queryByHook('suggestions'));

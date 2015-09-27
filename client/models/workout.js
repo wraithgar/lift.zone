@@ -1,6 +1,6 @@
 var App = require('ampersand-app');
 var Model = require('ampersand-model');
-var JsonApiMixin = require('./mixins/json-api');
+var ApiMixin = require('./mixins/api');
 var Activities = require('./activity-collection');
 var Moment = require('moment');
 
@@ -9,7 +9,7 @@ var dateId = function (date) {
     return Moment(date).format('YYYY-MM-DD');
 };
 
-module.exports = Model.extend(JsonApiMixin, {
+module.exports = Model.extend(ApiMixin, {
     urlRoot: function () {
 
         return App.apiUrl + '/workouts';

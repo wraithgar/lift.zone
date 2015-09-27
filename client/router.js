@@ -3,7 +3,6 @@ var App = require('ampersand-app');
 var Moment = require('moment');
 
 var AboutPage = require('./pages/about');
-var Activities = require('./models/activity-collection');
 var BaseActivities = require('./models/base-activity-collection');
 var FitocracyPage = require('./pages/fitocracy');
 var HomePage = require('./pages/home');

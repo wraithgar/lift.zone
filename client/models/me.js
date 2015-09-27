@@ -1,8 +1,8 @@
 var App = require('ampersand-app');
 var Model = require('ampersand-model');
-var JsonApiMixin = require('./mixins/json-api');
+var ApiMixin = require('./mixins/api');
 
-module.exports = Model.extend(JsonApiMixin, {
+module.exports = Model.extend(ApiMixin, {
     url: function () {
 
         return App.apiUrl + '/me';
@@ -67,13 +67,8 @@ module.exports = Model.extend(JsonApiMixin, {
     authenticate: function (login, password, options) {
 
         var payload = {
-            data: {
-                type: 'login',
-                attributes: {
-                    login: login,
-                    password: password
-                }
-            }
+            login: login,
+            password: password
         };
         var syncOptions = {
             url: App.apiUrl + '/login',

@@ -5,9 +5,9 @@ var Suggestions = require('../suggestion-collection');
 module.exports = {
     props: {
         id: 'number',
+        useractivityId: 'number',
         name: ['string', true],
-        aliasId: 'number',
-        alias: 'string'
+        aliasFor: 'object'
     },
     collections: {
         sets: Sets,
@@ -22,6 +22,7 @@ module.exports = {
             deps: ['name', 'alias'],
             fn: function () {
 
+                console.log(this);
                 return this.alias || this.name;
             }
         },

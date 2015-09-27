@@ -29,26 +29,16 @@ var checkLogin = Debounce(function (el) {
     checkingLogin = true;
     lastCheckedLogin = val;
     var payload = {
-        data: {
-            type: 'taken',
-            id: 'taken',
-            attributes: {
-                login: val,
-                invite: code
-            }
-        }
+        login: val,
+        invite: code
     };
     var syncOptions = {
-        headers: {
-            'Content-Type': 'application/vnd.api+json',
-            'Accept': 'application/vnd.api+json'
-        },
         url: App.apiUrl + '/taken',
         json: payload,
         success: function (resp) {
 
             checkingLogin = false;
-            validLogin = !resp.data.attributes.taken;
+            validLogin = !resp.data.taken;
             el.trigger('change.fndtn.abide');
         },
         error: function () {

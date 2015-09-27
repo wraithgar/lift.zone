@@ -13,25 +13,16 @@ module.exports = View.extend({
         var password = this.query('[name=password]').value;
         var passwordConfirm = this.query('[name=passwordConfirm]').value;
         var payload = {
-            data: {
-                type: 'reset',
-                attributes: {
-                    code: this.parent.code,
-                    password: password,
-                    passwordConfirm: passwordConfirm
-                }
-            }
+            code: this.parent.code,
+            password: password,
+            passwordConfirm: passwordConfirm
         };
         var syncOptions = {
-            headers: {
-                'Content-Type': 'application/vnd.api+json',
-                'Accept': 'application/vnd.api+json'
-            },
             url: App.apiUrl + '/reset',
             json: payload,
             success: function (resp) {
 
-                App.setAccessToken(resp.data.attributes.token);
+                App.setAccessToken(resp.data.token);
                 App.me.fetch();
                 App.view.message = 'All set, from now on log in with that password.  Go use the lift zone';
             },

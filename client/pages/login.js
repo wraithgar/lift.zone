@@ -23,7 +23,7 @@ module.exports = View.extend({
         App.me.authenticate(login, password, {
             success: function (resp) {
 
-                App.setAccessToken(resp.data.attributes.token);
+                App.setAccessToken(resp.data.token);
                 App.navigate('/');
             },
             error: function (model, resp) {

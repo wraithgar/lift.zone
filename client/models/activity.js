@@ -1,27 +1,21 @@
 var Model = require('ampersand-model');
-var JsonApiMixin = require('./mixins/json-api');
+var ApiMixin = require('./mixins/api');
 var ActivityMixin = require('./mixins/activity');
 var Sets = require('./set-collection');
 var App = require('ampersand-app');
+var Suggestions = require('./suggestion-collection');
 
-module.exports = Model.extend(JsonApiMixin, ActivityMixin, {
+module.exports = Model.extend(ApiMixin, ActivityMixin, {
     urlRoot: function () {
 
-        return App.apiUrl + '/activities';
+        return App.apiUrl + '/activityNames';
     },
     initialize: function (props) {
 
         var self = this;
         if (props) {
             self.fetch({
-                url: App.apiUrl + '/search/activities/' + self.name,
-                error: function () {
-
-                    //TODO when model sends proper xhr back check for 404 only
-                    self.fetch({
-                        url: App.apiUrl + '/suggestions/activities/' + self.name
-                    });
-                }
+                url: App.apiUrl + '/suggestions/activityName/' + encodeURIComponent(self.name)
             });
         }
         self.listenTo(self.suggestions, 'add remove reset', function () {

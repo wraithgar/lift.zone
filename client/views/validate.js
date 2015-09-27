@@ -14,10 +14,7 @@ module.exports = View.extend({
 
         var self = this;
         var payload = {
-            data: {
-                type: 'validation',
-                id: this.parent.code
-            }
+            code: this.parent.code
         };
         var syncOptions = {
             headers: App.me.ajaxConfig().headers,

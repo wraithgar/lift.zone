@@ -1,10 +1,12 @@
-var App = require('ampersand-app');
-var Model = require('ampersand-model');
-var ApiMixin = require('./mixins/api');
-var Activities = require('./activity-collection');
-var Moment = require('moment');
+'use strict';
 
-var dateId = function (date) {
+const App = require('ampersand-app');
+const Model = require('ampersand-model');
+const ApiMixin = require('./mixins/api');
+const Activities = require('./activity-collection');
+const Moment = require('moment');
+
+const dateId = function (date) {
 
     return Moment(date).format('YYYY-MM-DD');
 };
@@ -38,7 +40,7 @@ module.exports = Model.extend(ApiMixin, {
     },
     serialize: function () {
 
-        var res = Model.prototype.serialize.apply(this, arguments);
+        const res = Model.prototype.serialize.apply(this, arguments);
         res.date = this.dateId;
         return res;
     },
@@ -60,7 +62,7 @@ module.exports = Model.extend(ApiMixin, {
     },
     checkExisting: function (date, callback) {
 
-        var self = this;
+        const self = this;
         date = date || self.date;
         self.sync('read', self, {
             url: App.apiUrl + '/search/workouts/' + dateId(date),

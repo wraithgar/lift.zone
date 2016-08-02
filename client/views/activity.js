@@ -1,8 +1,10 @@
-var View = require('ampersand-view');
+'use strict';
 
-var SuggestionView = require('./suggestion');
+const View = require('ampersand-view');
 
-var SetView = View.extend({
+const SuggestionView = require('./suggestion');
+
+const SetView = View.extend({
     template: require('../templates/views/set.jade'),
     bindings: {
         'model.formattedFull': {

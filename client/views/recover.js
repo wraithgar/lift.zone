@@ -1,6 +1,8 @@
-var View = require('ampersand-view');
-var App = require('ampersand-app');
-var Sync = require('ampersand-sync');
+'use strict';
+
+const View = require('ampersand-view');
+const App = require('ampersand-app');
+const Sync = require('ampersand-sync');
 
 module.exports = View.extend({
     template: require('../templates/views/recover.jade'),
@@ -10,25 +12,25 @@ module.exports = View.extend({
     reset: function (e) {
 
         e.preventDefault();
-        var password = this.query('[name=password]').value;
-        var passwordConfirm = this.query('[name=passwordConfirm]').value;
-        var payload = {
-            code: this.parent.code,
+        const password = this.query('[name=password]').value;
+        const passwordConfirm = this.query('[name=passwordConfirm]').value;
+        const payload = {
+            token: this.parent.token,
             password: password,
             passwordConfirm: passwordConfirm
         };
-        var syncOptions = {
-            url: App.apiUrl + '/reset',
+        const syncOptions = {
+            url: App.apiUrl + '/user/reset',
             json: payload,
             success: function (resp) {
 
-                App.setAccessToken(resp.data.token);
-                App.me.fetch();
+                App.setAccessToken(resp.token);
+                App.navigate('/');
                 App.view.message = 'All set, from now on log in with that password.  Go use the lift zone';
             },
             error: function () {
 
-                App.view.message = 'Invalid recovery code.';
+                App.view.message = 'Invalid recovery token.';
             }
         };
         Sync('create', null, syncOptions);

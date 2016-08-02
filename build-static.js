@@ -8,15 +8,7 @@ const log = require('debug')('lift.zone');
 //This is a little hard coded but whatever
 //[jade, html]
 const pages = [
-    ['pages/static.jade', 'index.html'],
-    ['pages/utils.jade', 'utils.html'],
-    ['pages/parser.jade', 'utils/parser.html'],
-    ['pages/fitocracy.jade', 'utils/fitocracy.html'],
-    ['pages/about.jade', 'about.html'],
-    ['pages/login.jade', 'login.html'],
-    ['pages/signup.jade', 'signup.html'],
-    ['pages/privacy.jade', 'privacy.html'],
-    ['pages/recover.jade', 'recover.html']
+    ['pages/static.jade', 'index.html']
 ];
 
 const bodyJade = Fs.readFileSync('./client/templates/body.jade').toString();

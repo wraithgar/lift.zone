@@ -1,9 +1,14 @@
-var View = require('ampersand-view');
-var Querystring = require('querystring');
-var ViewSwitcher = require('ampersand-view-switcher');
-var RequestView = require('../views/request-validation');
-var ValidateView = require('../views/validate');
-var ValidatedView = require('../views/validated');
+'use strict';
+
+const View = require('ampersand-view');
+const Querystring = require('querystring');
+const ViewSwitcher = require('ampersand-view-switcher');
+const RequestView = require('../views/request-validation');
+const ValidateView = require('../views/validate');
+
+const ValidatedView = View.extend({
+    template: require('../templates/views/validated.jade')
+});
 
 module.exports = View.extend({
     template: require('../templates/pages/validate.jade'),
@@ -17,20 +22,23 @@ module.exports = View.extend({
         });
     },
     session: {
-        'code': 'string',
+        'token': 'string',
         'stage': 'string'
     },
     render: function () {
 
-        var params = Querystring.parse(window.location.search.slice('1'));
+        //const params = Querystring.parse(window.location.search.slice('1'));
+        const params = Querystring.parse(window.location.hash.split('?')[1]);
+        this.token = params.token && params.token.replace(/\s+/, '');
         this.renderWithTemplate(this);
         this.stages = new ViewSwitcher(this.queryByHook('stage'));
         if (this.model.validated) {
             this.stage = 'validated';
-        } else if (params.code) {
-            this.code = params.code;
+        }
+        else if (this.token) {
             this.stage = 'validate';
-        } else {
+        }
+        else {
             this.stage = 'request';
         }
         return this;

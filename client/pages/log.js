@@ -1,12 +1,14 @@
-var Caber = require('caber');
-var Debounce = require('lodash.debounce');
-var Moment = require('moment');
-var App = require('ampersand-app');
+'use strict';
 
-var View = require('ampersand-view');
-var ActivityView = require('../views/activity');
+const Caber = require('caber');
+const Debounce = require('lodash.debounce');
+const Moment = require('moment');
+const App = require('ampersand-app');
 
-var dateFormats = [
+const View = require('ampersand-view');
+const ActivityView = require('../views/activity');
+
+const dateFormats = [
     'MM/DD/YYYY',
     'YYYY/MM/DD',
     'MM-DD-YYYY',
@@ -32,7 +34,7 @@ module.exports = View.extend({
     },
     checkExisting: function (model, newDate) {
 
-        var self = this;
+        const self = this;
         model.checkExisting(newDate, function () {
 
             if (model.exists) {
@@ -94,19 +96,21 @@ module.exports = View.extend({
     },
     setName: function (e) {
 
-        var name = e.target.value;
+        const name = e.target.value;
         if (name === '') {
             this.model.unset('name');
-        } else {
+        }
+        else {
             this.model.name = e.target.value;
         }
     },
     setDate: function (e) {
 
-        var date = e.target.value;
+        const date = e.target.value;
         if (date === '') {
             this.model.unset('date');
-        } else {
+        }
+        else {
             this.model.date = Moment(e.target.value, dateFormats);
         }
     },
@@ -116,7 +120,7 @@ module.exports = View.extend({
     },
     addActivities: function (activities) {
 
-        var activityNames = [];
+        const activityNames = [];
         //We need to do a janky merge by alternate index so that our search() functions only have to run once
         //find things to add
         activities.forEach(function (activity) {
@@ -124,7 +128,8 @@ module.exports = View.extend({
             activityNames.push(activity.name);
             if (!this.model.activities.get(activity.name, 'name')) {
                 this.model.activities.add(activity);
-            } else {
+            }
+            else {
                 this.model.activities.get(activity.name, 'name').set(activity);
             }
         }, this);
@@ -138,8 +143,7 @@ module.exports = View.extend({
     },
     parseWorkout: function (el) {
 
-        var workout;
-        var data = el.value;
+        const data = el.value;
         this.model.raw = data;
         if (!this.smartMode) {
             this.model.unset('date');
@@ -153,23 +157,25 @@ module.exports = View.extend({
             this.model.activities.reset();
             return;
         }
-        workout = Caber.workout(data);
+        const workout = Caber.workout(data);
         if (workout.name) {
             this.model.name = workout.name;
-        } else {
+        }
+        else {
             this.model.unset('name');
         }
         if (workout.date) {
             this.model.date = Moment(workout.date, dateFormats);
-        } else {
+        }
+        else {
             this.model.unset('date');
         }
         this.addActivities(workout.activities);
     },
     saveWorkout: function () {
 
-        var self = this;
-        var ready = self.model.activities.every(function (activity) {
+        const self = this;
+        const ready = self.model.activities.every(function (activity) {
 
             return activity.ready;
         });

@@ -1,6 +1,8 @@
-var View = require('ampersand-view');
-var App = require('ampersand-app');
-var Sync = require('ampersand-sync');
+'use strict';
+
+const View = require('ampersand-view');
+const App = require('ampersand-app');
+const Sync = require('ampersand-sync');
 
 module.exports = View.extend({
     template: require('../templates/views/request-recover.jade'),
@@ -11,17 +13,17 @@ module.exports = View.extend({
 
         e.preventDefault(e);
         App.view.message = '';
-        var email = this.query('[name=email]').value;
-        var payload = {
+        const email = this.query('[name=email]').value;
+        const payload = {
             email: email
         };
-        var syncOptions = {
+        const syncOptions = {
             headers: App.me.ajaxConfig().headers,
-            url: App.apiUrl + '/recover',
+            url: App.apiUrl + '/user/recover',
             json: payload,
             success: function (model, resp) {
 
-                App.view.message = 'Email sent, good luck.  Check your inbox and click the link.  The link expires in one day.';
+                App.view.message = 'Email sent, good luck.  Check your inbox and click the link.  The link expires in three hours.';
             },
             error: function () {
 

@@ -14,7 +14,7 @@ const checkingLogin = false;
 const validLogin = true;
 const lastCheckedLogin = '';
 
-const checkLogin = Debounce((el) => {
+const checkLogin = Debounce(function (el) {
 
     const code = document.location.search.match(/invite=([^&]*)/);
     const val = el.val();
@@ -86,7 +86,7 @@ App.extend({
             }
         });
 
-        this.router.history.start({ pushState: true });
+        this.router.history.start({ pushState: false });
     },
     setAccessToken: function (token) {
 
@@ -113,7 +113,7 @@ App.extend({
     }
 });
 
-Domready(() => {
+Domready(function () {
 
     if (Modernizr.localstorage) {
         App.setAccessToken(localStorage.accessToken);

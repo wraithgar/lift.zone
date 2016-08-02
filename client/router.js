@@ -1,25 +1,27 @@
-var Router = require('ampersand-router');
-var App = require('ampersand-app');
-var Moment = require('moment');
+'use strict';
 
-var AboutPage = require('./pages/about');
-var BaseActivities = require('./models/base-activity-collection');
-var FitocracyPage = require('./pages/fitocracy');
-var HomePage = require('./pages/home');
-var LogPage = require('./pages/log');
-var LoginPage = require('./pages/login');
-var MePage = require('./pages/me');
-var NotFoundPage = require('./pages/not-found');
-var ParserPage = require('./pages/parser');
-var PrivacyPage = require('./pages/privacy');
-var RecoverPage = require('./pages/recover');
-var SignupPage = require('./pages/signup');
-var UtilsPage = require('./pages/utils');
-var ValidatePage = require('./pages/validate');
-var Wendler531Model = require('./models/wendler531');
-var Wendler531Page = require('./pages/wendler531');
-var WorkoutModel = require('./models/workout');
-var WorkoutPage = require('./pages/workout');
+const Router = require('ampersand-router');
+const App = require('ampersand-app');
+const Moment = require('moment');
+
+const AboutPage = require('./pages/about');
+const BaseActivities = require('./models/base-activity-collection');
+const FitocracyPage = require('./pages/fitocracy');
+const HomePage = require('./pages/home');
+const LogPage = require('./pages/log');
+const LoginPage = require('./pages/login');
+const MePage = require('./pages/me');
+const NotFoundPage = require('./pages/not-found');
+const ParserPage = require('./pages/parser');
+const PrivacyPage = require('./pages/privacy');
+const RecoverPage = require('./pages/recover');
+const SignupPage = require('./pages/signup');
+const UtilsPage = require('./pages/utils');
+const ValidatePage = require('./pages/validate');
+const Wendler531Model = require('./models/wendler531');
+const Wendler531Page = require('./pages/wendler531');
+const WorkoutModel = require('./models/workout');
+const WorkoutPage = require('./pages/workout');
 
 module.exports = Router.extend({
     routes: {

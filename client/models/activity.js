@@ -1,9 +1,11 @@
-var Model = require('ampersand-model');
-var ApiMixin = require('./mixins/api');
-var ActivityMixin = require('./mixins/activity');
-var Sets = require('./set-collection');
-var App = require('ampersand-app');
-var Suggestions = require('./suggestion-collection');
+'use strict';
+
+const Model = require('ampersand-model');
+const ApiMixin = require('./mixins/api');
+const ActivityMixin = require('./mixins/activity');
+//const Sets = require('./set-collection');
+const App = require('ampersand-app');
+//const Suggestions = require('./suggestion-collection');
 
 module.exports = Model.extend(ApiMixin, ActivityMixin, {
     urlRoot: function () {
@@ -12,7 +14,7 @@ module.exports = Model.extend(ApiMixin, ActivityMixin, {
     },
     initialize: function (props) {
 
-        var self = this;
+        const self = this;
         if (props) {
             self.fetch({
                 url: App.apiUrl + '/suggestions/activityName/' + encodeURIComponent(self.name)

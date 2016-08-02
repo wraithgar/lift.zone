@@ -1,6 +1,8 @@
+'use strict';
+
 //Mixin for activity model props, etc
-var Sets = require('../set-collection');
-var Suggestions = require('../suggestion-collection');
+const Sets = require('../set-collection');
+const Suggestions = require('../suggestion-collection');
 
 module.exports = {
     props: {

@@ -1,4 +1,6 @@
-var View = require('ampersand-view');
+'use strict';
+
+const View = require('ampersand-view');
 
 module.exports = View.extend({
     autoRender: true,
@@ -14,7 +16,7 @@ module.exports = View.extend({
     },
     chooseAlias: function () {
 
-        var self = this;
+        const self = this;
         if (this.model.suggestions) {
             console.log('I meant what I typed');
             this.model.save({
@@ -25,7 +27,8 @@ module.exports = View.extend({
                     self.parent.closeModal();
                 }
             });
-        } else {
+        }
+        else {
             console.log('I really meant', this.model.toJSON());
             this.model.collection.parent.save({
                 name: this.model.collection.parent.name,

@@ -10,13 +10,13 @@ div
       section.top-bar-section
         ul.right(data-hook='menu')
           li
-            a(href='/log') Log
+            a(href='#/log') Log
           li
-            a(href='/utils') Utils
+            a(href='#/utils') Utils
           li
-            a.button(href='/login' data-hook='user-name') Log in
+            a.button(href='#/login' data-hook='user-name') Log in
           li(data-hook='logout' data-anddom-display data-anddom-hidden='true' style='display: none;')
-            a(href='/logout') Logout
+            a(href='#/logout') Logout
 
   .alert-box.info(data-hook='page-message' data-alert data-anddom-display data-anddom-hidden='true' style='display: none;')
   div(data-hook='page-container')
@@ -26,9 +26,9 @@ div
     .left
       dl.sub-nav(data-hook='navigation')
         dd
-          a(href='/privacy') Privacy
+          a(href='#/privacy') Privacy
         dd
-          a(href='/about') About
+          a(href='#/about') About
         dd
           a(href='https://twitter.com/wraithgar')
             i.fa.fa-twitter

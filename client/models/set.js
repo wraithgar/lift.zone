@@ -1,4 +1,6 @@
-var Model = require('ampersand-state');
+'use strict';
+
+const Model = require('ampersand-state');
 
 module.exports = Model.extend({
     props: {
@@ -12,9 +14,9 @@ module.exports = Model.extend({
     derived: {
         formattedFull: {
             deps: ['distance', 'weight', 'reps', 'unit'],
-            fn: function formattedFull () {
+            fn: function formattedFull() {
 
-                var formatted = [];
+                const formatted = [];
                 if (this.time) {
                     formatted.push(this.formattedTime);
                 }
@@ -41,9 +43,9 @@ module.exports = Model.extend({
         },
         formattedShort: {
             deps: ['distance', 'weight', 'reps', 'unit'],
-            fn: function formattedShort () {
+            fn: function formattedShort() {
 
-                var formatted = [];
+                const formatted = [];
                 if (this.time) {
                     formatted.push(this.time);
                 }
@@ -55,7 +57,8 @@ module.exports = Model.extend({
                     formatted.push(' ');
                     if (this.unit === 'miles') {
                         formatted.push('mi');
-                    } else {
+                    }
+                    else {
                         formatted.push('km');
                     }
                 }
@@ -75,9 +78,8 @@ module.exports = Model.extend({
             deps: ['time'],
             fn: function () {
 
-                var segments = [];
-                var segment;
-                segment = this.time % 60;
+                const segments = [];
+                let segment = this.time % 60;
                 if (segment === 0) {
                     segment = '00';
                 }

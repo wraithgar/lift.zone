@@ -1,8 +1,10 @@
-var View = require('ampersand-view');
-var LiftView = require('../views/lift531');
-var Debounce = require('lodash.debounce');
+'use strict';
 
-var fuzzyNumber = function fuzzyNumber (value) {
+const View = require('ampersand-view');
+const LiftView = require('../views/lift531');
+const Debounce = require('lodash.debounce');
+
+const fuzzyNumber = function fuzzyNumber(value) {
 
     if (value !== '') {
         return Number(value);
@@ -64,8 +66,11 @@ module.exports = View.extend({
 
         if (this.model.ohp.ready) {
             this.queryByHook('results').appendChild(this.ohpView.el);
-        } else {
-            if (this.ohpView.el.parentNode) { this.ohpView.el.parentNode.removeChild(this.ohpView.el); }
+        }
+        else {
+            if (this.ohpView.el.parentNode) {
+                this.ohpView.el.parentNode.removeChild(this.ohpView.el);
+            }
         }
     },
     setSquatWeight: function (e) {
@@ -90,8 +95,11 @@ module.exports = View.extend({
 
         if (this.model.squat.ready) {
             this.queryByHook('results').appendChild(this.squatView.el);
-        } else {
-            if (this.squatView.el.parentNode) { this.squatView.el.parentNode.removeChild(this.squatView.el); }
+        }
+        else {
+            if (this.squatView.el.parentNode) {
+                this.squatView.el.parentNode.removeChild(this.squatView.el);
+            }
         }
     },
     setBenchWeight: function (e) {
@@ -116,8 +124,11 @@ module.exports = View.extend({
 
         if (this.model.bench.ready) {
             this.queryByHook('results').appendChild(this.benchView.el);
-        } else {
-            if (this.benchView.el.parentNode) { this.benchView.el.parentNode.removeChild(this.benchView.el); }
+        }
+        else {
+            if (this.benchView.el.parentNode) {
+                this.benchView.el.parentNode.removeChild(this.benchView.el);
+            }
         }
     },
     setDeadliftWeight: function (e) {
@@ -142,8 +153,11 @@ module.exports = View.extend({
 
         if (this.model.deadlift.ready) {
             this.queryByHook('results').appendChild(this.deadliftView.el);
-        } else {
-            if (this.deadliftView.el.parentNode) { this.deadliftView.el.parentNode.removeChild(this.deadliftView.el); }
+        }
+        else {
+            if (this.deadliftView.el.parentNode) {
+                this.deadliftView.el.parentNode.removeChild(this.deadliftView.el);
+            }
         }
     }
 });

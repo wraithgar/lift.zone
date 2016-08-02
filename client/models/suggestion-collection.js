@@ -1,5 +1,7 @@
-var Collection = require('ampersand-collection');
-var Suggestion = require('./suggestion');
+'use strict';
+
+const Collection = require('ampersand-collection');
+const Suggestion = require('./suggestion');
 
 module.exports = Collection.extend({
     model: Suggestion

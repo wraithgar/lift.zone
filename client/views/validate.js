@@ -1,6 +1,8 @@
-var View = require('ampersand-view');
-var App = require('ampersand-app');
-var Sync = require('ampersand-sync');
+'use strict';
+
+const View = require('ampersand-view');
+const App = require('ampersand-app');
+const Sync = require('ampersand-sync');
 
 module.exports = View.extend({
     template: require('../templates/views/validate.jade'),
@@ -12,13 +14,13 @@ module.exports = View.extend({
     },
     validate: function () {
 
-        var self = this;
-        var payload = {
-            code: this.parent.code
+        const self = this;
+        const payload = {
+            token: this.parent.token
         };
-        var syncOptions = {
+        const syncOptions = {
             headers: App.me.ajaxConfig().headers,
-            url: App.apiUrl + '/me/confirm',
+            url: App.apiUrl + '/user/confirm',
             json: payload,
             success: function () {
 
@@ -27,7 +29,7 @@ module.exports = View.extend({
             },
             error: function () {
 
-                App.view.message = 'Invalid code';
+                App.view.message = 'Invalid token';
             }
         };
         Sync('create', null, syncOptions);

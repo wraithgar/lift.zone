@@ -1,5 +1,7 @@
-var Model = require('ampersand-state');
-var LiftModel = require('./lift531');
+'use strict';
+
+const Model = require('ampersand-state');
+const LiftModel = require('./lift531');
 
 module.exports = Model.extend({
     initialize: function () {
@@ -11,7 +13,8 @@ module.exports = Model.extend({
         if (localStorage && localStorage.wendler531) {
             try {
                 this.set(JSON.parse(localStorage.wendler531));
-            } catch(err) {
+            }
+            catch (err) {
                 localStorage.wendler531 = undefined;
             }
         }

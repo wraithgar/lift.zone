@@ -1,8 +1,10 @@
-var View = require('ampersand-view');
-var Querystring = require('querystring');
-var ViewSwitcher = require('ampersand-view-switcher');
-var RequestView = require('../views/request-recover');
-var RecoverView = require('../views/recover');
+'use strict';
+
+const View = require('ampersand-view');
+const Querystring = require('querystring');
+const ViewSwitcher = require('ampersand-view-switcher');
+const RequestView = require('../views/request-recover');
+const RecoverView = require('../views/recover');
 
 module.exports = View.extend({
     template: require('../templates/pages/recover.jade'),
@@ -11,7 +13,9 @@ module.exports = View.extend({
     },
     render: function () {
 
-        var params = Querystring.parse(window.location.search.slice('1'));
+        //const params = Querystring.parse(window.location.search.slice('1'));
+        const params = Querystring.parse(window.location.hash.split('?')[1]);
+        this.token = params.token && params.token.replace(/\s+/, '');
         this.renderWithTemplate(this);
         this.queryByHook('stage').innerHTML = ''; //This clears out the static content
         this.stages = new ViewSwitcher(this.queryByHook('stage'), {
@@ -20,8 +24,7 @@ module.exports = View.extend({
                 $(view.el).foundation();
             }
         });
-        if (params.code) {
-            this.code = params.code;
+        if (this.token) {
             return this.stages.set(new RecoverView({ parent: this }));
         }
         return this.stages.set(new RequestView());

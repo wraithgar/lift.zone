@@ -1,7 +1,9 @@
-var View = require('ampersand-view');
-var GroupedCollectionView = require('ampersand-grouped-collection-view');
+'use strict';
 
-var RepItemView = View.extend({
+const View = require('ampersand-view');
+const GroupedCollectionView = require('ampersand-grouped-collection-view');
+
+const RepItemView = View.extend({
     template: require('../templates/views/bbcode-rep-item.jade'),
     bindings: {
         'model.formattedShort': {
@@ -16,7 +18,7 @@ var RepItemView = View.extend({
     }
 });
 
-var RepGroupView = View.extend({
+const RepGroupView = View.extend({
     template: require('../templates/views/bbcode-rep-group.jade'),
     render: function () {
 
@@ -47,7 +49,7 @@ module.exports = View.extend({
     render: function () {
 
         this.renderWithTemplate();
-        var repView = new GroupedCollectionView({
+        const repView = new GroupedCollectionView({
             collection: this.model.sets,
             itemView: RepItemView,
             groupView: RepGroupView,
@@ -58,11 +60,12 @@ module.exports = View.extend({
                 }
                 return (model.collection.indexOf(model) % 3) !== 0;
             },
-            prepareGroup: function () {
+            prepareGroup: function (model) {
 
-                return;
+                return model;
             }
         });
+        repView.render();
         this.renderSubview(repView, this.queryByHook('sets'));
     }
 });

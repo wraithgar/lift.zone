@@ -1,16 +1,17 @@
-var Model = require('ampersand-model');
-var ApiMixin = require('./mixins/api');
-var App = require('ampersand-app');
+'use strict';
+
+const Model = require('ampersand-model');
+const ApiMixin = require('./mixins/api');
+const App = require('ampersand-app');
 
 module.exports = Model.extend(ApiMixin, {
     urlRoot: function () {
 
-        return App.apiUrl + '/invite';
+        return App.apiUrl + '/invites';
     },
     type: 'invite',
-    idAttribute: 'code',
+    idAttribute: 'token',
     props: {
-        code: 'string'
+        token: 'string'
     }
 });
-

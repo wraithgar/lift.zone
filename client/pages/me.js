@@ -1,5 +1,7 @@
-var View = require('ampersand-view');
-var App = require('ampersand-app');
+'use strict';
+
+const View = require('ampersand-view');
+const App = require('ampersand-app');
 
 module.exports = View.extend({
     template: require('../templates/pages/me.jade'),
@@ -7,10 +9,6 @@ module.exports = View.extend({
         'model.validated': {
             type: 'toggle',
             hook: 'validated'
-        },
-        'model.login': {
-            type: 'text',
-            hook: 'login'
         },
         'model.name': {
             type: 'attribute',
@@ -39,11 +37,11 @@ module.exports = View.extend({
 
         e.preventDefault();
         App.view.message = '';
-        var name = this.query('[name=name]').value;
-        var email = this.query('[name=email]').value;
-        var password = this.query('[name=password]').value;
-        var passwordConfirm = this.query('[name=passwordConfirm]').value;
-        var attrs = {};
+        const name = this.query('[name=name]').value;
+        const email = this.query('[name=email]').value;
+        const password = this.query('[name=password]').value;
+        const passwordConfirm = this.query('[name=passwordConfirm]').value;
+        const attrs = {};
         if (name !== this.model.name) {
             attrs.name = name;
         }
@@ -69,7 +67,7 @@ module.exports = View.extend({
             },
             error: function () {
 
-                App.view.message = 'There was an unknown error saving your info!';
+                App.view.message = 'There was an error saving your info!';
             }
         });
     }

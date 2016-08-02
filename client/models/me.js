@@ -1,11 +1,13 @@
-var App = require('ampersand-app');
-var Model = require('ampersand-model');
-var ApiMixin = require('./mixins/api');
+'use strict';
+
+const App = require('ampersand-app');
+const Model = require('ampersand-model');
+const ApiMixin = require('./mixins/api');
 
 module.exports = Model.extend(ApiMixin, {
     url: function () {
 
-        return App.apiUrl + '/me';
+        return App.apiUrl + '/user';
     },
     type: 'user',
     initialize: function () {
@@ -18,19 +20,18 @@ module.exports = Model.extend(ApiMixin, {
             }
         });
         this.loggedIn = App.accessToken !== undefined;
-        if (this.loggedIn) { this.fetch(); }
+        if (this.loggedIn) {
+            this.fetch();
+        }
     },
     props: {
-        id: 'number',
-        login: 'string',
+        id: 'string',
         name: 'string',
         email: 'string',
         validated: 'boolean',
-        smartmode: 'boolean',
-        visible: 'boolean',
+        preferences: 'object',
         password: 'string',
-        passwordConfirm: 'string',
-        dateFormat: ['string', 'true', 'dddd, MMM Do YYYY']
+        passwordConfirm: 'string'
     },
     derived: {
         invalid: {
@@ -64,14 +65,14 @@ module.exports = Model.extend(ApiMixin, {
     session: {
         loggedIn: ['boolean', true, false]
     },
-    authenticate: function (login, password, options) {
+    authenticate: function (email, password, options) {
 
-        var payload = {
-            login: login,
+        const payload = {
+            email: email,
             password: password
         };
-        var syncOptions = {
-            url: App.apiUrl + '/login',
+        const syncOptions = {
+            url: App.apiUrl + '/user/login',
             json: payload,
             success: options.success,
             error: options.error

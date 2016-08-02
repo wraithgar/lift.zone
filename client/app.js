@@ -1,21 +1,23 @@
-var logger = require('debug')('lift.zone');
-var App = require('ampersand-app');
-var Domready = require('domready');
-var Debounce = require('lodash.debounce');
-var Router = require('./router');
-var MainView = require('./main-view');
-var Me = require('./models/me');
-var Config = require('../config');
-var Sync = require('ampersand-sync');
+'use strict';
 
-var checkingLogin = false;
-var validLogin = true;
-var lastCheckedLogin = '';
+const logger = require('debug')('lift.zone');
+const App = require('ampersand-app');
+const Domready = require('domready');
+const Debounce = require('lodash.debounce');
+const Router = require('./router');
+const MainView = require('./main-view');
+const Me = require('./models/me');
+const Config = require('../config');
+const Sync = require('ampersand-sync');
 
-var checkLogin = Debounce(function (el) {
+const checkingLogin = false;
+const validLogin = true;
+const lastCheckedLogin = '';
 
-    var code = document.location.search.match(/invite=([^&]*)/);
-    var val = el.val();
+const checkLogin = Debounce((el) => {
+
+    const code = document.location.search.match(/invite=([^&]*)/);
+    const val = el.val();
     if (code) {
         code = code[1];
     }
@@ -28,11 +30,11 @@ var checkLogin = Debounce(function (el) {
     }
     checkingLogin = true;
     lastCheckedLogin = val;
-    var payload = {
+    const payload = {
         login: val,
         invite: code
     };
-    var syncOptions = {
+    const syncOptions = {
         url: App.apiUrl + '/taken',
         json: payload,
         success: function (resp) {
@@ -93,7 +95,8 @@ App.extend({
             if (Modernizr.localstorage) {
                 if (token !== undefined) {
                     localStorage.accessToken = token;
-                } else {
+                }
+                else {
                     delete localStorage.accessToken;
                 }
             }
@@ -105,12 +108,12 @@ App.extend({
     log: logger,
     navigate: function (page) {
 
-        var url = (page.charAt(0) === '/') ? page.slice(1) : page;
+        const url = (page.charAt(0) === '/') ? page.slice(1) : page;
         this.router.history.navigate(url, { trigger: true });
     }
 });
 
-Domready(function renderPage () {
+Domready(() => {
 
     if (Modernizr.localstorage) {
         App.setAccessToken(localStorage.accessToken);

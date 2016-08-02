@@ -1,6 +1,8 @@
-var View = require('ampersand-view');
-var App = require('ampersand-app');
-var Sync = require('ampersand-sync');
+'use strict';
+
+const View = require('ampersand-view');
+const App = require('ampersand-app');
+const Sync = require('ampersand-sync');
 
 module.exports = View.extend({
     template: require('../templates/views/signup.jade'),
@@ -10,25 +12,30 @@ module.exports = View.extend({
     signup: function (e) {
 
         e.preventDefault();
-        var self = this;
-        var payload = {
-            invite: self.model.code,
-            login: self.query('[name=login]').value,
+        const self = this;
+        const payload = {
+            invite: self.model.token,
             name: self.query('[name=name]').value,
             email: self.query('[name=email]').value,
             password: self.query('[name=password]').value,
             passwordConfirm: self.query('[name=passwordConfirm]').value
         };
-        var syncOptions = {
-            url: App.apiUrl + '/signup',
+        const syncOptions = {
+            url: App.apiUrl + '/user/signup',
             json: payload,
-            success: function () {
+            success: function (response) {
 
-                self.parent.stage = 'done';
+                App.setAccessToken(response.token);
+                App.navigate('/');
             },
-            error: function () {
+            error: function (err) {
 
-                $(self.queryByHook('error')).foundation('reveal', 'open');
+                if (err.statusCode === 409) {
+                    $(self.queryByHook('taken')).foundation('reveal', 'open');
+                }
+                else {
+                    $(self.queryByHook('error')).foundation('reveal', 'open');
+                }
             }
         };
         Sync('create', null, syncOptions);

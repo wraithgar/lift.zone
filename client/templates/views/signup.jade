@@ -3,19 +3,13 @@ div
   form(data-abide)
     .row
       .small-4.columns
-        label(for='login') Login
-      .small-8.columns
-        input(type='text' id='login' name='login' placeholder='What username do you want' required data-abide-validator='checkLogin' autocapitalize='off' autocorrect='off')
-        small.error Login required
-    .row
-      .small-4.columns
         label(for='name') Name
       .small-8.columns
         input(type='text' id='name' name='name' placeholder='What should we call you?' required)
         small.error You need a name
     .row
       .small-4.columns
-        label(for='email') Email
+        label(for='email') Email (this will be your login)
       .small-8.columns
         input(type='email' id='email' name='email' placeholder='Email address' required)
         small.error A valid email is required.
@@ -40,6 +34,13 @@ div
     h3 Error
     span Oh no! There was an unexpected error signing you up.
     br
-    span You may want to contact me <a href="mailto:gar+code@danger.computer">here</a> or on the Twitter link below.
+    span You may want to contact me <a href="mailto:support@lift.zone">here</a> or on the Twitter link below.
+    .clearfix
+      a.button.tiny.radius.dismiss-reveal-modal.left Ok
+  .reveal-modal(data-hook='taken' data-reveal)
+    h3 You already signed up?
+    span This is awkward. It would seem you already signed up with that email address.
+    br
+    span If you need to recover your password you can do so <a href="/recover">here</a>
     .clearfix
       a.button.tiny.radius.dismiss-reveal-modal.left Ok

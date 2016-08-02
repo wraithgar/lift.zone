@@ -1,5 +1,6 @@
-var View = require('ampersand-view');
-var Invite = require('../models/invite');
+'use strict';
+
+const View = require('ampersand-view');
 
 module.exports = View.extend({
     template: require('../templates/views/invite.jade'),
@@ -7,9 +8,9 @@ module.exports = View.extend({
         status: 'string'
     },
     bindings: {
-        'model.code': {
+        'model.token': {
             type: 'attribute',
-            hook: 'code',
+            hook: 'token',
             name: 'value'
         },
         'status': [
@@ -28,7 +29,7 @@ module.exports = View.extend({
     render: function () {
 
         this.renderWithTemplate(this);
-        if (this.model.code) {
+        if (this.model.token) {
             this.checkInvite();
         }
         return this;
@@ -38,10 +39,10 @@ module.exports = View.extend({
         if (e) {
             e.preventDefault();
         }
-        var self = this;
+        const self = this;
         self.status = 'Checking invite...';
-        var code = self.query('[name=invite]').value;
-        self.model.code = code;
+        const token = self.query('[name=invite]').value;
+        self.model.token = token;
         self.model.fetch({
             success: function () {
 

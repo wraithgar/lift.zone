@@ -1,3 +1,3 @@
 module.exports = {
-    APIURL: "http://api.lift.zone/api/v1"
+    APIURL: "http://api.lift.zone"
 };

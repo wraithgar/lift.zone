@@ -1,6 +1,6 @@
 'use strict';
 
-const View = require('ampersand-view');
+var View = require('ampersand-view');
 
 module.exports = View.extend({
     template: require('../templates/views/invite.jade'),
@@ -39,9 +39,9 @@ module.exports = View.extend({
         if (e) {
             e.preventDefault();
         }
-        const self = this;
+        var self = this;
         self.status = 'Checking invite...';
-        const token = self.query('[name=invite]').value;
+        var token = self.query('[name=invite]').value;
         self.model.token = token;
         self.model.fetch({
             success: function () {

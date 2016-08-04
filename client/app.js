@@ -1,23 +1,23 @@
 'use strict';
 
-const logger = require('debug')('lift.zone');
-const App = require('ampersand-app');
-const Domready = require('domready');
-const Debounce = require('lodash.debounce');
-const Router = require('./router');
-const MainView = require('./main-view');
-const Me = require('./models/me');
-const Config = require('../config');
-const Sync = require('ampersand-sync');
+var logger = require('debug')('lift.zone');
+var App = require('ampersand-app');
+var Domready = require('domready');
+var Debounce = require('lodash.debounce');
+var Router = require('./router');
+var MainView = require('./main-view');
+var Me = require('./models/me');
+var Config = require('../config');
+var Sync = require('ampersand-sync');
 
-const checkingLogin = false;
-const validLogin = true;
-const lastCheckedLogin = '';
+var checkingLogin = false;
+var validLogin = true;
+var lastCheckedLogin = '';
 
-const checkLogin = Debounce(function (el) {
+var checkLogin = Debounce(function (el) {
 
-    const code = document.location.search.match(/invite=([^&]*)/);
-    const val = el.val();
+    var code = document.location.search.match(/invite=([^&]*)/);
+    var val = el.val();
     if (code) {
         code = code[1];
     }
@@ -30,11 +30,11 @@ const checkLogin = Debounce(function (el) {
     }
     checkingLogin = true;
     lastCheckedLogin = val;
-    const payload = {
+    var payload = {
         login: val,
         invite: code
     };
-    const syncOptions = {
+    var syncOptions = {
         url: App.apiUrl + '/taken',
         json: payload,
         success: function (resp) {
@@ -108,7 +108,7 @@ App.extend({
     log: logger,
     navigate: function (page) {
 
-        const url = (page.charAt(0) === '/') ? page.slice(1) : page;
+        var url = (page.charAt(0) === '/') ? page.slice(1) : page;
         this.router.history.navigate(url, { trigger: true });
     }
 });

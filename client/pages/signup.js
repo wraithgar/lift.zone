@@ -1,19 +1,19 @@
 'use strict';
 
-const View = require('ampersand-view');
-const Querystring = require('querystring');
-const ViewSwitcher = require('ampersand-view-switcher');
-const InviteView = require('../views/invite');
-const SignupView = require('../views/signup');
-const InviteModel = require('../models/invite');
+var View = require('ampersand-view');
+var Querystring = require('querystring');
+var ViewSwitcher = require('ampersand-view-switcher');
+var InviteView = require('../views/invite');
+var SignupView = require('../views/signup');
+var InviteModel = require('../models/invite');
 
 module.exports = View.extend({
     template: require('../templates/pages/signup.jade'),
     initialize: function () {
 
-        //const params = Querystring.parse(window.location.search.slice('1'));
-        const params = Querystring.parse(window.location.hash.split('?')[1]);
-        const token = params.invite && params.invite.replace(/\s+/, '');
+        //var params = Querystring.parse(window.location.search.slice('1'));
+        var params = Querystring.parse(window.location.hash.split('?')[1]);
+        var token = params.invite && params.invite.replace(/\s+/, '');
         this.invite = new InviteModel({ token: token });
         this.listenTo(this, 'change:stage', this.renderStage.bind(this));
     },

@@ -1,7 +1,7 @@
 'use strict';
 
-const View = require('ampersand-view');
-const App = require('ampersand-app');
+var View = require('ampersand-view');
+var App = require('ampersand-app');
 
 module.exports = View.extend({
     template: require('../templates/pages/home.jade'),
@@ -21,7 +21,7 @@ module.exports = View.extend({
 
         e.preventDefault();
 
-        const inviteCode = this.query('[name=invite]').value;
+        var inviteCode = this.query('[name=invite]').value;
         App.navigate('/signup?invite=' + encodeURIComponent(inviteCode));
     }
 });

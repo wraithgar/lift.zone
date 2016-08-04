@@ -1,6 +1,6 @@
 'use strict';
 
-const View = require('ampersand-view');
+var View = require('ampersand-view');
 
 module.exports = View.extend({
     template: require('../templates/views/lift531.jade'),

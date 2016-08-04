@@ -1,8 +1,8 @@
 'use strict';
 
-const View = require('ampersand-view');
-const App = require('ampersand-app');
-const Sync = require('ampersand-sync');
+var View = require('ampersand-view');
+var App = require('ampersand-app');
+var Sync = require('ampersand-sync');
 
 module.exports = View.extend({
     template: require('../templates/views/signup.jade'),
@@ -12,15 +12,15 @@ module.exports = View.extend({
     signup: function (e) {
 
         e.preventDefault();
-        const self = this;
-        const payload = {
+        var self = this;
+        var payload = {
             invite: self.model.token,
             name: self.query('[name=name]').value,
             email: self.query('[name=email]').value,
             password: self.query('[name=password]').value,
             passwordConfirm: self.query('[name=passwordConfirm]').value
         };
-        const syncOptions = {
+        var syncOptions = {
             url: App.apiUrl + '/user/signup',
             json: payload,
             success: function (response) {

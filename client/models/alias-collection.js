@@ -1,8 +1,8 @@
 'use strict';
 
-const Collection = require('ampersand-rest-collection');
-const App = require('ampersand-app');
-const AliasModel = require('./alias');
+var Collection = require('ampersand-rest-collection');
+var App = require('ampersand-app');
+var AliasModel = require('./alias');
 
 module.exports = Collection.extend({
     url: function () {

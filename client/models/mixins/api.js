@@ -1,13 +1,13 @@
 'use strict';
 
 //Base mixin for models to interact w/ api
-const App = require('ampersand-app');
-const Model = require('ampersand-model');
+var App = require('ampersand-app');
+var Model = require('ampersand-model');
 
 module.exports = {
     ajaxConfig: function () {
 
-        const headers = {};
+        var headers = {};
         if (App.accessToken) {
             headers.Authorization = 'Bearer ' + App.accessToken;
         }
@@ -17,7 +17,7 @@ module.exports = {
     },
     sync: function (event, model, options) {
 
-        const error = options.error;
+        var error = options.error;
         options.error = function (resp) {
 
             //4xx errors that aren't 404

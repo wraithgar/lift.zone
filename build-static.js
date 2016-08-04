@@ -1,26 +1,26 @@
 'use strict';
 
-const Jade = require('jade');
-const Fs = require('fs');
-const Path = require('path');
-const log = require('debug')('lift.zone');
+var Jade = require('jade');
+var Fs = require('fs');
+var Path = require('path');
+var log = require('debug')('lift.zone');
 
 //This is a little hard coded but whatever
 //[jade, html]
-const pages = [
+var pages = [
     ['pages/static.jade', 'index.html']
 ];
 
-const bodyJade = Fs.readFileSync('./client/templates/body.jade').toString();
-const indexJade = Fs.readFileSync('./client/templates/index.jade').toString();
+var bodyJade = Fs.readFileSync('./client/templates/body.jade').toString();
+var indexJade = Fs.readFileSync('./client/templates/index.jade').toString();
 
 pages.forEach((page) => {
 
     log('building %s to %s', page[0], page[1]);
-    const pageHtml = Jade.renderFile(Path.join('./client/templates/', page[0]));
+    var pageHtml = Jade.renderFile(Path.join('./client/templates/', page[0]));
     //replace body page w/ html
-    const pageBodyJade = bodyJade.replace('block page', pageHtml);
-    const pageBodyHtml = Jade.render(pageBodyJade);
-    const pageIndexHtml = Jade.render(indexJade.replace('block body', pageBodyHtml));
+    var pageBodyJade = bodyJade.replace('block page', pageHtml);
+    var pageBodyHtml = Jade.render(pageBodyJade);
+    var pageIndexHtml = Jade.render(indexJade.replace('block body', pageBodyHtml));
     Fs.writeFileSync('./public/' + page[1], pageIndexHtml);
 });

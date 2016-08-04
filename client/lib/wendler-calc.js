@@ -1,6 +1,6 @@
 'use strict';
 
-const calc = module.exports = {
+var calc = module.exports = {
     mround: function (weight, nearest) {
 
         return (nearest * Math.round(weight / nearest));

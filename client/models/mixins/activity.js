@@ -1,15 +1,14 @@
 'use strict';
 
 //Mixin for activity model props, etc
-const Sets = require('../set-collection');
-const Suggestions = require('../suggestion-collection');
+var Sets = require('../set-collection');
+var Suggestions = require('../suggestion-collection');
 
 module.exports = {
     props: {
-        id: 'number',
-        useractivityId: 'number',
-        name: ['string', true],
-        aliasFor: 'object'
+        id: 'string',
+        activity_id: 'string',
+        name: ['string', true]
     },
     collections: {
         sets: Sets,
@@ -24,7 +23,6 @@ module.exports = {
             deps: ['name', 'alias'],
             fn: function () {
 
-                console.log(this);
                 return this.alias || this.name;
             }
         },

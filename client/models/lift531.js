@@ -1,7 +1,7 @@
 'use strict';
 
-const Model = require('ampersand-state');
-const WendlerCals = require('../lib/wendler-calc');
+var Model = require('ampersand-state');
+var WendlerCals = require('../lib/wendler-calc');
 
 module.exports = Model.extend({
     props: {
@@ -31,7 +31,7 @@ module.exports = Model.extend({
             deps: ['calculated', 'extra'],
             fn: function () {
 
-                const calc = this.calculated; //If we reference it directly we get NaN somehow?
+                var calc = this.calculated; //If we reference it directly we get NaN somehow?
                 if (calc !== undefined) {
                     calc = calc * 0.9;
                     if (this.extra > 0) {

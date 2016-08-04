@@ -1,7 +1,7 @@
 'use strict';
 
-const View = require('ampersand-view');
-const App = require('ampersand-app');
+var View = require('ampersand-view');
+var App = require('ampersand-app');
 
 module.exports = View.extend({
     template: require('../templates/pages/me.jade'),
@@ -37,11 +37,11 @@ module.exports = View.extend({
 
         e.preventDefault();
         App.view.message = '';
-        const name = this.query('[name=name]').value;
-        const email = this.query('[name=email]').value;
-        const password = this.query('[name=password]').value;
-        const passwordConfirm = this.query('[name=passwordConfirm]').value;
-        const attrs = {};
+        var name = this.query('[name=name]').value;
+        var email = this.query('[name=email]').value;
+        var password = this.query('[name=password]').value;
+        var passwordConfirm = this.query('[name=passwordConfirm]').value;
+        var attrs = {};
         if (name !== this.model.name) {
             attrs.name = name;
         }

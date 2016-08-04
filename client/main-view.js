@@ -1,10 +1,10 @@
 'use strict';
 
-const App = require('ampersand-app');
-const View = require('ampersand-view');
-const ViewSwitcher = require('ampersand-view-switcher');
-const Dom = require('ampersand-dom');
-const LocalLinks = require('local-links');
+var App = require('ampersand-app');
+var View = require('ampersand-view');
+var ViewSwitcher = require('ampersand-view-switcher');
+var Dom = require('ampersand-dom');
+var LocalLinks = require('local-links');
 
 module.exports = View.extend({
     template: require('./templates/body.jade'),
@@ -70,7 +70,7 @@ module.exports = View.extend({
     handleLinkClick: function (e) {
 
 
-        const localPath = LocalLinks.pathname(e);
+        var localPath = LocalLinks.pathname(e);
         if (localPath) {
             e.preventDefault();
             App.navigate(localPath);
@@ -78,7 +78,7 @@ module.exports = View.extend({
     },
     setActiveNavItem: function () {
 
-        const path = window.location.pathname;
+        var path = window.location.pathname;
 
         this.queryAll('[data-hook=navigation] a').forEach(function (aTag) {
 

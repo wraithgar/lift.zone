@@ -1,9 +1,9 @@
 'use strict';
 
-const View = require('ampersand-view');
-const GroupedCollectionView = require('ampersand-grouped-collection-view');
+var View = require('ampersand-view');
+var GroupedCollectionView = require('ampersand-grouped-collection-view');
 
-const RepItemView = View.extend({
+var RepItemView = View.extend({
     template: require('../templates/views/markdown-rep-item.jade'),
     bindings: {
         'model.formattedShort': {
@@ -18,7 +18,7 @@ const RepItemView = View.extend({
     }
 });
 
-const RepGroupView = View.extend({
+var RepGroupView = View.extend({
     template: require('../templates/views/markdown-rep-group.jade'),
     render: function () {
 
@@ -49,7 +49,7 @@ module.exports = View.extend({
     render: function () {
 
         this.renderWithTemplate();
-        const repView = new GroupedCollectionView({
+        var repView = new GroupedCollectionView({
             collection: this.model.sets,
             itemView: RepItemView,
             groupView: RepGroupView,

@@ -1,8 +1,8 @@
 'use strict';
 
-const View = require('ampersand-view');
-const App = require('ampersand-app');
-const Sync = require('ampersand-sync');
+var View = require('ampersand-view');
+var App = require('ampersand-app');
+var Sync = require('ampersand-sync');
 
 module.exports = View.extend({
     template: require('../templates/views/recover.jade'),
@@ -12,14 +12,14 @@ module.exports = View.extend({
     reset: function (e) {
 
         e.preventDefault();
-        const password = this.query('[name=password]').value;
-        const passwordConfirm = this.query('[name=passwordConfirm]').value;
-        const payload = {
+        var password = this.query('[name=password]').value;
+        var passwordConfirm = this.query('[name=passwordConfirm]').value;
+        var payload = {
             token: this.parent.token,
             password: password,
             passwordConfirm: passwordConfirm
         };
-        const syncOptions = {
+        var syncOptions = {
             url: App.apiUrl + '/user/reset',
             json: payload,
             success: function (resp) {

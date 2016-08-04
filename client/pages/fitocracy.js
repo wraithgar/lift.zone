@@ -1,14 +1,14 @@
 'use strict';
 
-const View = require('ampersand-view');
-const Caber = require('caber');
-const Debounce = require('lodash.debounce');
-const MarkdownView = require('../views/markdown');
-const MarkdownFullView = require('../views/markdown-full');
-const BBCodeView = require('../views/bbcode');
-const BBCodeFullView = require('../views/bbcode-full');
-const MarkdownCreditsView = require('../views/markdown-credits');
-const BBCodeCreditsView = require('../views/bbcode-credits');
+var View = require('ampersand-view');
+var Caber = require('caber');
+var Debounce = require('lodash.debounce');
+var MarkdownView = require('../views/markdown');
+var MarkdownFullView = require('../views/markdown-full');
+var BBCodeView = require('../views/bbcode');
+var BBCodeFullView = require('../views/bbcode-full');
+var MarkdownCreditsView = require('../views/markdown-credits');
+var BBCodeCreditsView = require('../views/bbcode-credits');
 
 module.exports = View.extend({
     template: require('../templates/pages/fitocracy.jade'),
@@ -27,8 +27,8 @@ module.exports = View.extend({
     },
     parseRaw: function () {
 
-        const raw = this.queryByHook('raw').value;
-        const parsed = Caber.fitocracy(raw);
+        var raw = this.queryByHook('raw').value;
+        var parsed = Caber.fitocracy(raw);
         this.collection.reset(parsed, { parse: true });
     },
     changeFormat: function (e) {

@@ -1,8 +1,8 @@
 'use strict';
 
-const View = require('ampersand-view');
-const App = require('ampersand-app');
-const Sync = require('ampersand-sync');
+var View = require('ampersand-view');
+var App = require('ampersand-app');
+var Sync = require('ampersand-sync');
 
 module.exports = View.extend({
     template: require('../templates/views/request-recover.jade'),
@@ -13,11 +13,11 @@ module.exports = View.extend({
 
         e.preventDefault(e);
         App.view.message = '';
-        const email = this.query('[name=email]').value;
-        const payload = {
+        var email = this.query('[name=email]').value;
+        var payload = {
             email: email
         };
-        const syncOptions = {
+        var syncOptions = {
             headers: App.me.ajaxConfig().headers,
             url: App.apiUrl + '/user/recover',
             json: payload,

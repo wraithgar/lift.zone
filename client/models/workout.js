@@ -1,12 +1,12 @@
 'use strict';
 
-const App = require('ampersand-app');
-const Model = require('ampersand-model');
-const ApiMixin = require('./mixins/api');
-const Activities = require('./activity-collection');
-const Moment = require('moment');
+var App = require('ampersand-app');
+var Model = require('ampersand-model');
+var ApiMixin = require('./mixins/api');
+var Activities = require('./activity-collection');
+var Moment = require('moment');
 
-const dateId = function (date) {
+var dateId = function (date) {
 
     return Moment(date).format('YYYY-MM-DD');
 };
@@ -33,14 +33,14 @@ module.exports = Model.extend(ApiMixin, {
     },
     parse: function (resp) {
 
-        if (resp.date) {
+        if (resp && resp.date) {
             resp.date = Moment(resp.date, 'YYYY-MM-DD');
         }
         return resp;
     },
     serialize: function () {
 
-        const res = Model.prototype.serialize.apply(this, arguments);
+        var res = Model.prototype.serialize.apply(this, arguments);
         res.date = this.dateId;
         return res;
     },
@@ -49,7 +49,7 @@ module.exports = Model.extend(ApiMixin, {
             deps: ['date'],
             fn: function () {
 
-                return Moment(this.date).format(App.me.dateFormat);
+                return Moment(this.date).format(App.me.preferences.dateFormat);
             }
         },
         dateId: {
@@ -62,7 +62,7 @@ module.exports = Model.extend(ApiMixin, {
     },
     checkExisting: function (date, callback) {
 
-        const self = this;
+        var self = this;
         date = date || self.date;
         self.sync('read', self, {
             url: App.apiUrl + '/search/workouts/' + dateId(date),

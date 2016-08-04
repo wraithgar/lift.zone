@@ -1,7 +1,7 @@
 'use strict';
 
-const View = require('ampersand-view');
-const App = require('ampersand-app');
+var View = require('ampersand-view');
+var App = require('ampersand-app');
 
 module.exports = View.extend({
     template: require('../templates/pages/login.jade'),
@@ -20,8 +20,8 @@ module.exports = View.extend({
 
         e.preventDefault();
         App.view.message = '';
-        const email = this.query('[name=email]').value;
-        const password = this.query('[name=password]').value;
+        var email = this.query('[name=email]').value;
+        var password = this.query('[name=password]').value;
         App.me.authenticate(email, password, {
             success: function (response) {
 

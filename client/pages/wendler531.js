@@ -1,10 +1,10 @@
 'use strict';
 
-const View = require('ampersand-view');
-const LiftView = require('../views/lift531');
-const Debounce = require('lodash.debounce');
+var View = require('ampersand-view');
+var LiftView = require('../views/lift531');
+var Debounce = require('lodash.debounce');
 
-const fuzzyNumber = function fuzzyNumber(value) {
+var fuzzyNumber = function fuzzyNumber(value) {
 
     if (value !== '') {
         return Number(value);

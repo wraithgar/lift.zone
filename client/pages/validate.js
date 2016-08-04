@@ -1,12 +1,12 @@
 'use strict';
 
-const View = require('ampersand-view');
-const Querystring = require('querystring');
-const ViewSwitcher = require('ampersand-view-switcher');
-const RequestView = require('../views/request-validation');
-const ValidateView = require('../views/validate');
+var View = require('ampersand-view');
+var Querystring = require('querystring');
+var ViewSwitcher = require('ampersand-view-switcher');
+var RequestView = require('../views/request-validation');
+var ValidateView = require('../views/validate');
 
-const ValidatedView = View.extend({
+var ValidatedView = View.extend({
     template: require('../templates/views/validated.jade')
 });
 
@@ -27,8 +27,8 @@ module.exports = View.extend({
     },
     render: function () {
 
-        //const params = Querystring.parse(window.location.search.slice('1'));
-        const params = Querystring.parse(window.location.hash.split('?')[1]);
+        //var params = Querystring.parse(window.location.search.slice('1'));
+        var params = Querystring.parse(window.location.hash.split('?')[1]);
         this.token = params.token && params.token.replace(/\s+/, '');
         this.renderWithTemplate(this);
         this.stages = new ViewSwitcher(this.queryByHook('stage'));

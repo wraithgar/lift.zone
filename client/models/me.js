@@ -1,8 +1,8 @@
 'use strict';
 
-const App = require('ampersand-app');
-const Model = require('ampersand-model');
-const ApiMixin = require('./mixins/api');
+var App = require('ampersand-app');
+var Model = require('ampersand-model');
+var ApiMixin = require('./mixins/api');
 
 module.exports = Model.extend(ApiMixin, {
     url: function () {
@@ -56,9 +56,9 @@ module.exports = Model.extend(ApiMixin, {
             fn: function () {
 
                 if (this.loggedIn) {
-                    return '/me';
+                    return '#/me';
                 }
-                return '/login';
+                return '#/login';
             }
         }
     },
@@ -67,11 +67,11 @@ module.exports = Model.extend(ApiMixin, {
     },
     authenticate: function (email, password, options) {
 
-        const payload = {
+        var payload = {
             email: email,
             password: password
         };
-        const syncOptions = {
+        var syncOptions = {
             url: App.apiUrl + '/user/login',
             json: payload,
             success: options.success,

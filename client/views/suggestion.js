@@ -1,6 +1,6 @@
 'use strict';
 
-const View = require('ampersand-view');
+var View = require('ampersand-view');
 
 module.exports = View.extend({
     autoRender: true,
@@ -14,11 +14,11 @@ module.exports = View.extend({
             hook: 'name'
         }
     },
-    chooseAlias: function () {
+    chooseAlias: function (e) {
 
-        const self = this;
+        e.preventDefault();
+        var self = this;
         if (this.model.suggestions) {
-            console.log('I meant what I typed');
             this.model.save({
                 name: this.model.name
             }, {
@@ -29,10 +29,9 @@ module.exports = View.extend({
             });
         }
         else {
-            console.log('I really meant', this.model.toJSON());
             this.model.collection.parent.save({
                 name: this.model.collection.parent.name,
-                useractivityId: this.model.id
+                activity_id: this.model.activity_id
             }, {
                 success: function () {
 

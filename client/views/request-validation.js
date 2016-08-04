@@ -1,8 +1,8 @@
 'use strict';
 
-const View = require('ampersand-view');
-const App = require('ampersand-app');
-const Sync = require('ampersand-sync');
+var View = require('ampersand-view');
+var App = require('ampersand-app');
+var Sync = require('ampersand-sync');
 
 module.exports = View.extend({
     template: require('../templates/views/request-validation.jade'),
@@ -18,7 +18,7 @@ module.exports = View.extend({
     request: function () {
 
         App.view.message = '';
-        const syncOptions = {
+        var syncOptions = {
             headers: App.me.ajaxConfig().headers,
             url: App.apiUrl + '/user/validate',
             success: function (model, resp) {

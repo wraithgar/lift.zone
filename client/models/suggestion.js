@@ -1,10 +1,12 @@
 'use strict';
 
-const Model = require('ampersand-state');
+var Model = require('ampersand-state');
 
 module.exports = Model.extend({
     props: {
-        id: 'number',
-        name: 'string'
+        id: 'string',
+        activity_id: 'string',
+        name: 'string',
+        rank: 'number'
     }
 });

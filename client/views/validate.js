@@ -1,8 +1,8 @@
 'use strict';
 
-const View = require('ampersand-view');
-const App = require('ampersand-app');
-const Sync = require('ampersand-sync');
+var View = require('ampersand-view');
+var App = require('ampersand-app');
+var Sync = require('ampersand-sync');
 
 module.exports = View.extend({
     template: require('../templates/views/validate.jade'),
@@ -14,11 +14,11 @@ module.exports = View.extend({
     },
     validate: function () {
 
-        const self = this;
-        const payload = {
+        var self = this;
+        var payload = {
             token: this.parent.token
         };
-        const syncOptions = {
+        var syncOptions = {
             headers: App.me.ajaxConfig().headers,
             url: App.apiUrl + '/user/confirm',
             json: payload,

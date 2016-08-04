@@ -1,7 +1,7 @@
 'use strict';
 
-const View = require('ampersand-view');
-const ActivityView = require('../views/activity');
+var View = require('ampersand-view');
+var ActivityView = require('../views/activity');
 
 module.exports = View.extend({
     template: require('../templates/pages/workout.jade'),

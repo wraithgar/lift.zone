@@ -1,7 +1,7 @@
 'use strict';
 
-const Model = require('ampersand-state');
-const LiftModel = require('./lift531');
+var Model = require('ampersand-state');
+var LiftModel = require('./lift531');
 
 module.exports = Model.extend({
     initialize: function () {

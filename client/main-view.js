@@ -13,7 +13,8 @@ module.exports = View.extend({
         'click a[href]': 'handleLinkClick'
     },
     session: {
-        message: 'string'
+        message: 'string',
+        assetsUrl: 'string'
     },
     bindings: {
         'message': [
@@ -48,10 +49,12 @@ module.exports = View.extend({
     initialize: function () {
 
         this.listenTo(App.router, 'page', this.handlePage);
+        this.assetsUrl = App.assetsUrl;
     },
     render: function () {
 
-        this.renderWithTemplate();
+        console.log(this.assetsUrl);
+        this.renderWithTemplate(this);
         this.pages = new ViewSwitcher(this.queryByHook('page-container'), {
             show: function (view) {
 

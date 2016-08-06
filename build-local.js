@@ -4,7 +4,7 @@ var Jade = require('jade');
 var Fs = require('fs');
 var Path = require('path');
 var log = require('debug')('lift.zone');
-const Config = require('./build-config.js');
+const Config = require('./config.js');
 
 //This is a little hard coded but whatever
 //[jade, html]

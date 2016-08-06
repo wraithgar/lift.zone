@@ -4,8 +4,9 @@
   "description": "Website to parse your workouts",
   "main": "server.js",
   "scripts": {
-    "start": "beefy client/app.js:js/bundle.js 8080 --index=./public/index.html --cwd=./public -- -t [ jadeify --doctype html ]",
-    "build": "node build-static && mv config.js local-config.js && mv build-config.js config.js && browserify client/app.js -t [ jadeify --doctype html ] -p [ minifyify --no-map ] -o public/js/bundle.js && mv config.js build-config.js && mv local-config.js config.js",
+    "start": "beefy client/app.js:js/bundle.js 8080 --index=./local/index.html --cwd=./assets -- -t [ jadeify --doctype html ]",
+    "build": "node build-static && mv config.js local-config.js && mv build-config.js config.js && browserify client/app.js -t [ jadeify --doctype html ] -p [ minifyify --no-map ] -o assets/js/bundle.js && mv config.js build-config.js && mv local-config.js config.js",
+    "buildlocal": "node build-local",
     "lint": "eslint client",
     "validate": "npm ls"
   },
@@ -30,7 +31,7 @@
     "ampersand-view-switcher": "^2.1.0",
     "beefy": "^2.1.8",
     "browserify": "^13.1.0",
-    "caber": "^4.0.10",
+    "caber": "^4.1.0",
     "debug": "^2.2.0",
     "domready": "^1.0.8",
     "eslint": "^3.2.0",

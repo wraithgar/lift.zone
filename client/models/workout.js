@@ -17,7 +17,7 @@ module.exports = Model.extend(ApiMixin, {
         return App.apiUrl + '/workouts';
     },
     props: {
-        id: 'number',
+        id: 'string',
         name: ['string', true, 'My Workout'],
         date: ['date', true, function () {
 

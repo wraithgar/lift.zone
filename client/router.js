@@ -77,7 +77,7 @@ module.exports = Router.extend({
     },
     about: function () {
 
-        this.trigger('page', new AboutPage());
+        this.trigger('page', new AboutPage({ assetsUrl: App.assetsUrl }));
     },
     wendler531: function () {
 
@@ -136,11 +136,16 @@ module.exports = Router.extend({
     },
     workout: function (date) {
 
+        var self = this;
         if (!App.me.loggedIn) {
             return this.navigate('/login');
         }
-        this.trigger('page', new WorkoutPage({
-            model: new WorkoutModel({ date: Moment(date, 'YYYY-MM-DD') })
-        }));
+        if (App.me.id) {
+            return self.trigger('page', new WorkoutPage({ model: new WorkoutModel({ date: Moment(date, 'YYYY-MM-DD') }) }));
+        }
+        App.me.once('change:id', function () {
+
+            self.trigger('page', new WorkoutPage({ model: new WorkoutModel({ date: Moment(date, 'YYYY-MM-DD') }) }));
+        });
     }
 });

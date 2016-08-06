@@ -56,9 +56,9 @@ module.exports = Model.extend(ApiMixin, {
             fn: function () {
 
                 if (this.loggedIn) {
-                    return '#/me';
+                    return '/me';
                 }
-                return '#/login';
+                return '/login';
             }
         }
     },

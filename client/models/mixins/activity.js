@@ -8,6 +8,8 @@ module.exports = {
     props: {
         id: 'string',
         activity_id: 'string',
+        alias: 'string',
+        comment: 'string',
         name: ['string', true]
     },
     collections: {
@@ -15,7 +17,6 @@ module.exports = {
         suggestions: Suggestions
     },
     session: {
-        comment: 'string',
         hasSuggestions: 'boolean'
     },
     derived: {

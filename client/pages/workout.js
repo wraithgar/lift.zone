@@ -1,5 +1,6 @@
 'use strict';
 
+var App = require('ampersand-app');
 var View = require('ampersand-view');
 var ActivityView = require('../views/activity');
 
@@ -7,9 +8,9 @@ module.exports = View.extend({
     template: require('../templates/pages/workout.jade'),
     initialize: function () {
 
-        //this.model.fetch({
-            //url: App.apiUrl + '/search/workouts/' + this.model.dateId
-        //});
+        this.model.fetch({
+            url: App.apiUrl + '/search/workouts/' + this.model.dateId
+        });
     },
     bindings: {
         'model.name': {

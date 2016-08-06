@@ -55,6 +55,7 @@ var checkLogin = Debounce(function (el) {
 
 App.extend({
     apiUrl: Config.APIURL,
+    assetsUrl: Config.ASSETSURL,
     init: function () {
 
         $(document).foundation({
@@ -86,7 +87,7 @@ App.extend({
             }
         });
 
-        this.router.history.start({ pushState: false });
+        this.router.history.start();
     },
     setAccessToken: function (token) {
 
@@ -103,7 +104,7 @@ App.extend({
             this.trigger('accessToken', token);
         }
     },
-    router: new Router(),
+    router: new Router({ pushState: true }),
     me: new Me(),
     log: logger,
     navigate: function (page) {

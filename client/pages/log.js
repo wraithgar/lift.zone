@@ -32,13 +32,15 @@ module.exports = View.extend({
         'input [data-hook=date-input]': 'setDate',
         'click [data-hook=saveWorkout]': 'saveWorkout'
     },
-    checkExisting: function (model, newDate) {
+    checkExisting: function (model, newDate, ctx) {
 
         var self = this;
         model.checkExisting(newDate, function () {
 
-            if (model.exists) {
-                return $(self.queryByHook('workout-exists')).foundation('reveal', 'open');
+            if (!ctx || !ctx.xhr) {
+                if (model.exists) {
+                    return $(self.queryByHook('workout-exists')).foundation('reveal', 'open');
+                }
             }
         });
     },

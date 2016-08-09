@@ -104,7 +104,7 @@ App.extend({
             this.trigger('accessToken', token);
         }
     },
-    router: new Router({ pushState: true }),
+    router: new Router(),
     me: new Me(),
     log: logger,
     navigate: function (page) {

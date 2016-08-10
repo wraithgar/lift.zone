@@ -24,6 +24,8 @@ module.exports = View.extend({
         this.throttledParse = Debounce(this.userInputChanged, 500);
         this.listenTo(this.model, 'change:date', this.checkExisting);
         this.checkExisting(this.model, this.model.dateId);
+        var year = (new Date()).getFullYear();
+        App.workoutDates.fetchYear(year);
     },
     events: {
         'change [data-hook=smartMode]': 'changeSmartMode',
@@ -34,15 +36,14 @@ module.exports = View.extend({
     },
     checkExisting: function (model, newDate, ctx) {
 
-        var self = this;
-        model.checkExisting(newDate, function () {
+        if (!ctx || !ctx.xhr) {
+            var date =  Moment(newDate).format('YYYY-MM-DD');
+            var exists = App.workoutDates.get(date);
+            if (exists) {
 
-            if (!ctx || !ctx.xhr) {
-                if (model.exists) {
-                    return $(self.queryByHook('workout-exists')).foundation('reveal', 'open');
-                }
+                return $(this.queryByHook('workout-exists')).foundation('reveal', 'open');
             }
-        });
+        }
     },
     bindings: {
         smartMode: [{

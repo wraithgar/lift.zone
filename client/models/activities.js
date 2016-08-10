@@ -1,12 +1,13 @@
+
 'use strict';
 
+var Collection = require('ampersand-collection');
 var Model = require('ampersand-model');
-var ApiMixin = require('./mixins/api');
+var ApiMixin = require('./mixins/api-model');
 var ActivityMixin = require('./mixins/activity');
-//var Sets = require('./set-collection');
 var App = require('ampersand-app');
 
-module.exports = Model.extend(ApiMixin, ActivityMixin, {
+var ActivityModel = Model.extend(ApiMixin, ActivityMixin, {
     urlRoot: function () {
 
         return App.apiUrl + '/activities';
@@ -25,3 +26,9 @@ module.exports = Model.extend(ApiMixin, ActivityMixin, {
         });
     }
 });
+var ActivityCollection = Collection.extend({
+    model: ActivityModel,
+    indexes: ['name']
+});
+
+module.exports = ActivityCollection;

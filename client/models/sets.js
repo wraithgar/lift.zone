@@ -1,8 +1,9 @@
 'use strict';
 
 var Model = require('ampersand-state');
+var Collection = require('ampersand-collection');
 
-module.exports = Model.extend({
+var SetModel = Model.extend({
     props: {
         'weight': 'number',
         'reps': 'number',
@@ -115,3 +116,9 @@ module.exports = Model.extend({
         return resp;
     }
 });
+
+var SetCollection = Collection.extend({
+    model: SetModel
+});
+
+module.exports = SetCollection;

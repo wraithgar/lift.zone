@@ -1,7 +1,7 @@
 'use strict';
 
 var Model = require('ampersand-model');
-var ApiMixin = require('./mixins/api');
+var ApiMixin = require('./mixins/api-model');
 var App = require('ampersand-app');
 
 module.exports = Model.extend(ApiMixin, {

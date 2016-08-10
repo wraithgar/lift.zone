@@ -2,7 +2,7 @@
 
 var App = require('ampersand-app');
 var Model = require('ampersand-model');
-var ApiMixin = require('./mixins/api');
+var ApiMixin = require('./mixins/api-model');
 
 module.exports = Model.extend(ApiMixin, {
     url: function () {

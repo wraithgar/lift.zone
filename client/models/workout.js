@@ -2,8 +2,8 @@
 
 var App = require('ampersand-app');
 var Model = require('ampersand-model');
-var ApiMixin = require('./mixins/api');
-var Activities = require('./activity-collection');
+var ApiMixin = require('./mixins/api-model');
+var Activities = require('./activities');
 var Moment = require('moment');
 
 var dateId = function (date) {
@@ -59,23 +59,5 @@ module.exports = Model.extend(ApiMixin, {
                 return dateId(this.date);
             }
         }
-    },
-    checkExisting: function (date, callback) {
-
-        var self = this;
-        date = date || self.date;
-        self.sync('read', self, {
-            url: App.apiUrl + '/search/workouts/' + dateId(date),
-            success: function () {
-
-                self.exists = true;
-                callback();
-            },
-            error: function () {
-
-                self.exists = false;
-                callback();
-            }
-        });
     }
 });

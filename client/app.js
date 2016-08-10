@@ -7,6 +7,7 @@ var Debounce = require('lodash.debounce');
 var Router = require('./router');
 var MainView = require('./main-view');
 var Me = require('./models/me');
+var WorkoutDates = require('./models/workout-dates');
 var Config = require('../config');
 var Sync = require('ampersand-sync');
 
@@ -106,6 +107,7 @@ App.extend({
     },
     router: new Router(),
     me: new Me(),
+    workoutDates: new WorkoutDates(),
     log: logger,
     navigate: function (page) {
 

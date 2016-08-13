@@ -24,8 +24,6 @@ module.exports = View.extend({
         this.throttledParse = Debounce(this.userInputChanged, 500);
         this.listenTo(this.model, 'change:date', this.checkExisting);
         this.checkExisting(this.model, this.model.dateId);
-        var year = (new Date()).getFullYear();
-        App.workoutDates.fetchYear(year);
     },
     events: {
         'change [data-hook=smartMode]': 'changeSmartMode',
@@ -195,6 +193,7 @@ module.exports = View.extend({
         self.model.save(null, {
             success: function () {
 
+                App.workoutDates.add({ id: self.model.id, date: self.model.dateId });
                 App.navigate('/workouts/' + self.model.dateId);
             }
         });

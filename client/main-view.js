@@ -53,7 +53,6 @@ module.exports = View.extend({
     },
     render: function () {
 
-        console.log(this.assetsUrl);
         this.renderWithTemplate(this);
         this.pages = new ViewSwitcher(this.queryByHook('page-container'), {
             show: function (view) {
@@ -68,7 +67,7 @@ module.exports = View.extend({
         App.currentPage = pageView;
         Dom.removeClass(this.query('.top-bar'), 'expanded');
         this.pages.set(pageView);
-        //this.setActiveNavItem();
+        this.setActiveNavItem();
     },
     handleLinkClick: function (e) {
 
@@ -85,7 +84,8 @@ module.exports = View.extend({
 
         this.queryAll('[data-hook=navigation] a').forEach(function (aTag) {
 
-            if (aTag.pathname === path) {
+            if (path.indexOf(aTag.pathname) === 0 && aTag.getAttribute('href') !== '#' && aTag.pathname !== '/') {
+            //if (aTag.pathname === path) {
                 Dom.addClass(aTag.parentNode, 'active');
             }
             else {

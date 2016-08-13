@@ -12,17 +12,19 @@ module.exports = Model.extend(ApiMixin, {
     type: 'user',
     initialize: function () {
 
-        this.listenTo(App, 'accessToken', function () {
+        this.listenToAndRun(App, 'accessToken', function () {
 
             this.loggedIn = App.accessToken !== undefined;
             if (this.loggedIn) {
-                this.fetch();
+                this.fetch({ success: function () {
+
+                    App.workoutSummaries.fetch({ reset: true, success: function () {
+
+                        App.workoutSummaries.fetched = true;
+                    } });
+                } });
             }
         });
-        this.loggedIn = App.accessToken !== undefined;
-        if (this.loggedIn) {
-            this.fetch();
-        }
     },
     props: {
         id: 'string',

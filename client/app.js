@@ -7,7 +7,7 @@ var Debounce = require('lodash.debounce');
 var Router = require('./router');
 var MainView = require('./main-view');
 var Me = require('./models/me');
-var WorkoutDates = require('./models/workout-dates');
+var WorkoutSummaries = require('./models/workout-summaries');
 var Config = require('../config');
 var Sync = require('ampersand-sync');
 
@@ -78,6 +78,19 @@ App.extend({
             }
         });
 
+        var self = this;
+        if (App.me.loggedIn && !App.me.id) {
+            //Wait for actual fetch to finish
+            App.me.once('change:id', function () {
+
+                self.render();
+            });
+            return;
+        }
+        self.render();
+    },
+    render: function () {
+
         this.view = new MainView({
             model: App.me,
             el: document.querySelector('[data-hook=app]')
@@ -107,7 +120,7 @@ App.extend({
     },
     router: new Router(),
     me: new Me(),
-    workoutDates: new WorkoutDates(),
+    workoutSummaries: new WorkoutSummaries(),
     log: logger,
     navigate: function (page) {
 

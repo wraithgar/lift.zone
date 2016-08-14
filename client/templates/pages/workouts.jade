@@ -9,4 +9,12 @@ section
   .row
     .large-6.medium-12.columns
       p Here are some workouts you've logged, click on the name of one to view it
-    .large-6.medium-12.columns(data-hook='summaries')
+    .large-6.medium-12.columns
+      .row
+        .small-12.columns
+          p(data-hook='summaries')
+        .small-6.columns.left(data-hook='prevPage')
+          button.round.tiny.button(href='#' data-hook='workoutsPrev') &lArr;
+        .small-6.columns.right(data-hook='nextPage')
+          button.round.tiny.button.disabled(href='#' data-hook='workoutsNext' disabled) &rArr;
+

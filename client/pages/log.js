@@ -23,7 +23,6 @@ module.exports = View.extend({
 
         this.throttledParse = Debounce(this.userInputChanged, 500);
         this.listenTo(this.model, 'change:date', this.checkExisting);
-        this.checkExisting(this.model, this.model.dateId);
     },
     events: {
         'change [data-hook=smartMode]': 'changeSmartMode',
@@ -36,7 +35,7 @@ module.exports = View.extend({
 
         if (!ctx || !ctx.xhr) {
             var date =  Moment(newDate).format('YYYY-MM-DD');
-            var exists = App.workoutDates.get(date);
+            var exists = App.workoutSummaries.get(date);
             if (exists) {
 
                 return $(this.queryByHook('workout-exists')).foundation('reveal', 'open');
@@ -88,6 +87,7 @@ module.exports = View.extend({
 
         this.renderWithTemplate();
         this.renderCollection(this.model.activities, ActivityView, this.queryByHook('workout-activities'));
+        this.checkExisting(this.model, this.model.dateId);
         return this;
     },
     changeSmartMode: function (e) {
@@ -193,7 +193,7 @@ module.exports = View.extend({
         self.model.save(null, {
             success: function () {
 
-                App.workoutDates.add({ id: self.model.id, date: self.model.dateId });
+                App.workoutSummaries.add({ id: self.model.id, date: self.model.dateId, name: self.model.name });
                 App.navigate('/workouts/' + self.model.dateId);
             }
         });

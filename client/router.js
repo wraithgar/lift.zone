@@ -2,7 +2,6 @@
 
 var Router = require('ampersand-router');
 var App = require('ampersand-app');
-var Moment = require('moment');
 
 var BaseActivities = require('./models/base-activities');
 

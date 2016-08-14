@@ -23,6 +23,7 @@ module.exports = View.extend({
 
         this.throttledParse = Debounce(this.userInputChanged, 500);
         this.listenTo(this.model, 'change:date', this.checkExisting);
+        this.listenToOnce(App.workoutSummaries, 'reset', this.checkExisting);
     },
     events: {
         'change [data-hook=smartMode]': 'changeSmartMode',
@@ -184,6 +185,9 @@ module.exports = View.extend({
 
             return activity.ready;
         });
+        if (this.model.activities.length === 0) {
+            return $(self.queryByHook('workout-empty')).foundation('reveal', 'open');
+        }
         if (this.model.exists) {
             return $(self.queryByHook('workout-exists')).foundation('reveal', 'open');
         }
@@ -195,6 +199,12 @@ module.exports = View.extend({
 
                 App.workoutSummaries.add({ id: self.model.id, date: self.model.dateId, name: self.model.name });
                 App.navigate('/workouts/' + self.model.dateId);
+            },
+            error: function (model, newModel, ctx) {
+
+                if (ctx.xhr.status === 409) {
+                    return $(self.queryByHook('workout-exists')).foundation('reveal', 'open');
+                }
             }
         });
     }

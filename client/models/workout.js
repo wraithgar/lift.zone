@@ -45,6 +45,13 @@ module.exports = Model.extend(ApiMixin, {
         return res;
     },
     derived: {
+        editLink: {
+            deps: ['dateId'],
+            fn: function () {
+
+                return '/workouts/' + this.dateId + '/edit';
+            }
+        },
         formattedDate: {
             deps: ['date'],
             fn: function () {

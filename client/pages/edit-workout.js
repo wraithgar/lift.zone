@@ -16,11 +16,23 @@ var dateFormats = [
     'dddd'
 ];
 
-
 module.exports = View.extend({
-    template: require('../templates/pages/log.jade'),
-    initialize: function () {
+    template: require('../templates/pages/new-workout.jade'),
+    initialize: function (options) {
 
+        if (options.date) {
+            this.template = require('../templates/pages/edit-workout.jade');
+            this.date = options.date;
+            var workoutSummary = App.workoutSummaries.get(options.date);
+            if (!workoutSummary) {
+                this.template = require('../templates/pages/not-found.jade');
+            }
+            else {
+                this.model.id = workoutSummary.id;
+                this.model.date = workoutSummary.date + ' 00:00';
+                this.model.fetch();
+            }
+        }
         this.throttledParse = Debounce(this.userInputChanged, 500);
         this.listenTo(this.model, 'change:date', this.checkExisting);
         this.listenToOnce(App.workoutSummaries, 'reset', this.checkExisting);
@@ -37,28 +49,34 @@ module.exports = View.extend({
         if (!ctx || !ctx.xhr) {
             var date =  Moment(newDate).format('YYYY-MM-DD');
             var exists = App.workoutSummaries.get(date);
-            if (exists) {
-
+            if (!this.model.id && exists) {
+                return $(this.queryByHook('workout-exists')).foundation('reveal', 'open');
+            }
+            if (this.model.id && (date !== this.date) && exists) {
                 return $(this.queryByHook('workout-exists')).foundation('reveal', 'open');
             }
         }
     },
     bindings: {
-        smartMode: [{
-            type: 'booleanClass',
-            hook: 'smartLabel',
-            yes: 'success',
-            no: 'info'
-        }, {
-            type: 'toggle',
-            no: '[data-hook=name-label]'
-        }, {
-            type: 'toggle',
-            no: '[data-hook=date-label]'
-        }],
-        smartLabel: {
+        //smartMode: [{
+            //type: 'booleanClass',
+            //hook: 'smartLabel',
+            //yes: 'success',
+            //no: 'info'
+        //}, {
+            //type: 'toggle',
+            //no: '[data-hook=name-label]'
+        //}, {
+            //type: 'toggle',
+            //no: '[data-hook=date-label]'
+        //}],
+        //smartLabel: {
+            //type: 'text',
+            //hook: 'smartLabel'
+        //},
+        'model.raw': {
             type: 'text',
-            hook: 'smartLabel'
+            hook: 'workout-input'
         },
         'model.name': {
             type: 'text',
@@ -188,15 +206,15 @@ module.exports = View.extend({
         if (this.model.activities.length === 0) {
             return $(self.queryByHook('workout-empty')).foundation('reveal', 'open');
         }
-        if (this.model.exists) {
-            return $(self.queryByHook('workout-exists')).foundation('reveal', 'open');
-        }
         if (!ready) {
             return $(self.queryByHook('new-activities')).foundation('reveal', 'open');
         }
         self.model.save(null, {
             success: function () {
 
+                if (self.date) {
+                    App.workoutSummaries.remove({ date: self.date });
+                }
                 App.workoutSummaries.add({ id: self.model.id, date: self.model.dateId, name: self.model.name });
                 App.navigate('/workouts/' + self.model.dateId);
             },

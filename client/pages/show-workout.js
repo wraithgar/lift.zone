@@ -1,13 +1,21 @@
 'use strict';
 
+var App = require('ampersand-app');
 var View = require('ampersand-view');
 var ActivityView = require('../views/activity');
 
 module.exports = View.extend({
-    template: require('../templates/pages/workout.jade'),
-    initialize: function () {
+    template: require('../templates/pages/show-workout.jade'),
+    initialize: function (options) {
 
-        this.model.fetch();
+        var workoutSummary = App.workoutSummaries.get(options.date);
+        if (!workoutSummary) {
+            this.template = require('../templates/pages/not-found.jade');
+        }
+        else {
+            this.model.id = workoutSummary.id;
+            this.model.fetch();
+        }
     },
     bindings: {
         'model.name': {
@@ -21,6 +29,11 @@ module.exports = View.extend({
         'model.raw': {
             type: 'text',
             hook: 'raw'
+        },
+        'model.editLink': {
+            type: 'attribute',
+            hook: 'editLink',
+            name: 'href'
         }
     },
     render: function () {

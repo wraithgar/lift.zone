@@ -25,10 +25,11 @@ module.exports = Router.extend({
         'recover': 'recover',
         //Authenticated
         'workouts': 'workouts',
-        'workouts/new': 'log',
+        'workouts/new': 'editWorkout',
+        'workouts/:date': 'showWorkout',
+        'workouts/:date/edit': 'editWorkout',
         'me': 'me',
         'validate': 'validate',
-        'workouts/:date': 'workout',
         'logout': 'logout',
         //Catchall
         '*catchall': 'notfound'
@@ -108,28 +109,39 @@ module.exports = Router.extend({
         }
         this.trigger('page', new Pages.me({ model: App.me }));
     },
-    log: function () {
+    newWorkout: function () {
 
         if (!App.me.loggedIn) {
             return this.navigate('/login');
         }
-        this.trigger('page', new Pages.log({ model: new WorkoutModel() }));
+        this.trigger('page', new Pages.editWorkout({ model: new WorkoutModel() }));
     },
-    workout: function (date) {
+    editWorkout: function (date) {
 
         if (!App.me.loggedIn) {
             return this.navigate('/login');
         }
-        var workoutSummary;
         if (App.workoutSummaries.fetched) {
 
-            workoutSummary = App.workoutSummaries.get(date);
-            return this.trigger('page', new Pages.workout({ model: new WorkoutModel({ id: workoutSummary.id }) }));
+            return this.trigger('page', new Pages.editWorkout({ date: date, model: new WorkoutModel() }));
         }
         this.listenToOnce(App.workoutSummaries, 'reset', function () {
 
-            workoutSummary = App.workoutSummaries.get(date);
-            this.trigger('page', new Pages.workout({ model: new WorkoutModel({ id: workoutSummary.id }) }));
+            return this.trigger('page', new Pages.editWorkout({ date: date, model: new WorkoutModel() }));
+        });
+    },
+    showWorkout: function (date) {
+
+        if (!App.me.loggedIn) {
+            return this.navigate('/login');
+        }
+        if (App.workoutSummaries.fetched) {
+
+            return this.trigger('page', new Pages.showWorkout({ date: date, model: new WorkoutModel() }));
+        }
+        this.listenToOnce(App.workoutSummaries, 'reset', function () {
+
+            return this.trigger('page', new Pages.showWorkout({ date: date, model: new WorkoutModel() }));
         });
     },
     workouts: function () {

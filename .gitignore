@@ -1,3 +1,4 @@
 node_modules
 *.log
 .s3cfg
+assets/js/bundle.js

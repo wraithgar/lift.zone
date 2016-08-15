@@ -33,7 +33,7 @@ module.exports = View.extend({
                 this.model.fetch();
             }
         }
-        this.throttledParse = Debounce(this.userInputChanged, 500);
+        this.throttledParse = Debounce(this.userInputChanged, 1000);
         this.listenTo(this.model, 'change:date', this.checkExisting);
         this.listenToOnce(App.workoutSummaries, 'reset', this.checkExisting);
     },

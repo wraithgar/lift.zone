@@ -8,7 +8,6 @@ var Dom = require('ampersand-dom');
 
 var perPage = 5;
 
-//TODO enable/disable workoutsNext/workoutsPrev buttons as nav is clicked
 module.exports = View.extend({
     initialize: function () {
 

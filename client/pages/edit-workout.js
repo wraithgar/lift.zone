@@ -58,22 +58,6 @@ module.exports = View.extend({
         }
     },
     bindings: {
-        //smartMode: [{
-            //type: 'booleanClass',
-            //hook: 'smartLabel',
-            //yes: 'success',
-            //no: 'info'
-        //}, {
-            //type: 'toggle',
-            //no: '[data-hook=name-label]'
-        //}, {
-            //type: 'toggle',
-            //no: '[data-hook=date-label]'
-        //}],
-        //smartLabel: {
-            //type: 'text',
-            //hook: 'smartLabel'
-        //},
         'model.raw': {
             type: 'text',
             hook: 'workout-input'
@@ -150,6 +134,7 @@ module.exports = View.extend({
                 this.model.activities.add(activity);
             }
             else {
+                this.model.activities.get(activity.name, 'name').set({ comment: undefined });
                 this.model.activities.get(activity.name, 'name').set(activity);
             }
         }, this);

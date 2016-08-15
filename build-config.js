@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    APIURL: 'http://api.lift.zone',
+    APIURL: 'https://api.lift.zone',
     ASSETSURL: 'https://assets.lift.zone',
     BUILDDIR: './public'
 };

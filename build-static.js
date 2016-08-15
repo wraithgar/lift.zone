@@ -9,7 +9,11 @@ const Config = require('./build-config.js');
 //This is a little hard coded but whatever
 //[jade, html]
 var pages = [
-    ['pages/static.jade', 'index.html']
+    ['pages/static.jade', 'index.html'],
+    ['pages/about.jade', 'about'],
+    ['pages/privacy.jade', 'privacy'],
+    ['pages/utils.jade', 'utils'],
+    ['pages/login.jade', 'login']
 ];
 
 var bodyJade = Fs.readFileSync('./client/templates/body.jade').toString();

@@ -4,4 +4,37 @@
 .nonpr {
   display:none
 }
-//info-bg-color
+
+.circle {
+  border-radius: 50%;
+  padding-left: 0.45rem;
+  padding-right: 0.45rem;
+}
+
+.primary-bg-color {
+  background-color: $primary-color;
+}
+
+.secondary-bg-color {
+  background-color: $secondary-color;
+}
+
+.alert-bg-color {
+  background-color: $alert-color;
+}
+
+.success-bg-color {
+  background-color: $success-color;
+}
+
+.warning-bg-color {
+  background-color: $background-color;
+}
+
+.info-bg-color {
+  background-color: $info-color;
+}
+
+//.workout:empty+.instructions{display:block}
+//.workout:empty ~ .instructions{display:block}
+//.instructions{display:none}

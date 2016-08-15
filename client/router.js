@@ -19,6 +19,7 @@ module.exports = Router.extend({
         'utils/fitocracy': 'fitocracy',
         'utils/531': 'wendler531',
         'about': 'about',
+        'news': 'news',
         'login': 'login',
         'signup': 'signup',
         'privacy': 'privacy',
@@ -68,6 +69,10 @@ module.exports = Router.extend({
     about: function () {
 
         this.trigger('page', new Pages.about({ assetsUrl: App.assetsUrl }));
+    },
+    news: function () {
+
+        this.trigger('page', new Pages.news());
     },
     wendler531: function () {
 

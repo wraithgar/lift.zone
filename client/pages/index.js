@@ -10,6 +10,7 @@ module.exports = {
     invites: require('./invites'),
     login: require('./login'),
     me: require('./me'),
+    news: require('./news'),
     parser: require('./parser'),
     privacy: require('./privacy'),
     recover: require('./recover'),

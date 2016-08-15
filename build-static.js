@@ -13,7 +13,8 @@ var pages = [
     ['pages/about.jade', 'about'],
     ['pages/privacy.jade', 'privacy'],
     ['pages/utils.jade', 'utils'],
-    ['pages/login.jade', 'login']
+    ['pages/login.jade', 'login'],
+    ['pages/news.jade', 'news']
 ];
 
 var bodyJade = Fs.readFileSync('./client/templates/body.jade').toString();

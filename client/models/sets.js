@@ -37,7 +37,12 @@ var SetModel = Model.extend({
                 }
                 if (this.reps) {
                     formatted.push(this.reps);
-                    formatted.push('reps');
+                    if (this.reps === 1) {
+                        formatted.push('rep');
+                    }
+                    else {
+                        formatted.push('reps');
+                    }
                 }
                 return formatted.join(' ');
             }

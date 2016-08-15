@@ -13,8 +13,7 @@ module.exports = View.extend({
     },
     render: function () {
 
-        //var params = Querystring.parse(window.location.search.slice('1'));
-        var params = Querystring.parse(window.location.hash.split('?')[1]);
+        var params = Querystring.parse(window.location.search.slice('1'));
         this.token = params.token && params.token.replace(/\s+/, '');
         this.renderWithTemplate(this);
         this.queryByHook('stage').innerHTML = ''; //This clears out the static content

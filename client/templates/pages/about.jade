@@ -3,15 +3,58 @@ section
     .small-12.columns
       h1 What the heck even is this?
   hr
-  .row.panel
-    p I like to log my workouts in more than one place, and they all take different formats. One takes bbcode, the next markdown.  Typing them up even once in any of those formats is a chore, let alone more than one.
-    p This little utility site is an attempt to solve that problem: I can type my workout in what feels to my like natural typing, and it easily converts to the formats I need.
-    p There is also a function to translate the workouts as they print out on Fitocracy, since that's a common thing people seem to want.
-    p I also added a 531 calculator that auto-saves cause I wanted that too.
-    p If you find something that's not working, or have a different format you would like to see, or just have some feedback you can email me <a href="mailto:support@lift.zone">here</a>
-    p Powered with love from:
-    p.text-center
-      a(href='http://danger.computer')
-        img(src='#{assetsUrl}/img/danger-computer.png')
-        br
-        | The Danger Computer
+  .row.panel.radius
+    .small-12.columns
+      p lift.zone started out of my frustration when trying to log my workouts online.  Everywhere I went they had a large, hard to search database of exercise names.  I also had to search for those names every time I logged each activity in my workout, for every workout.
+      p What I really wanted is a place where I could just type out my workout in plain language and have the site just, you know, figure it out.
+      p lift.zone is that place.  You can read below how it all works, and if you'd like to try it out hit me up on Twitter (#[a(href='https://nwitter.com/wraithgar') @wraithgar]) to get an invite.
+      p If you find something that's not working, or have a different format you would like to see, or just have some feedback you can also email me <a href="mailto:support@lift.zone">here</a>
+  .row.panel.radius
+    .small-12.columns
+      h3 Here's how it works:
+    .small-12.medium-6.columns
+      p When you go to log a workout you just start typing.  It's a good idea to name and date your workout. This is not required, if you leave that part out it will just assume the workout was today and will be named #[b My Workout].
+      p Here are some examples of what you can type.
+    .small-12.medium-6.columns
+      blockquote.panel.callout Friday Leg Day
+      blockquote.panel.callout 5/30 Cardio
+      blockquote.panel.callout 2/22/2002 Split A
+    .small-12.medium-6.columns Let's say it's leg day.  Next you'd start typing what you did using weight x reps x sets notation.
+    .small-12.medium-6.columns
+      blockquote.panel.callout
+        p Friday Leg Day
+        p Squat 135x5x4, 185x1
+    .small-12.columns
+      p On your log page you'd see that the workout was named #[b Leg Day] and the date was this Friday.  Because this is your first time logging squats, you'd see a #[span.circle.info-bg-color #[i.fa.fa-question]] next to that activity.  Click on it to get a screen where you can confirm that this is a new activity.
+      p When you're all done click #[b Save] and that's it.  That's how you log workouts here.
+    .small-12.columns
+      h3 Different names for the same activity
+      p Now, let's say next week when you were logging you typed #[b Barbell Squat] instead of just #[b Squat].  You'd get a #[span.circle.info-bg-color #[i.fa.fa-question]] just like before, but when you clicked on it, one of the options would be #[b This is another name for:] followed by #[b Squat].  Click #[b Squat] and now lift.zone will always remember that when you type "Barbell Squat" it should log as "Squat".
+    .small-12.medium-6.columns
+      h3 Comments and PRs
+      p To add a comment to an activity, simply put it in parenthesis.  To indicate a PR (personal record) put a * next to that rep.
+    .small-12.medium-6.columns
+      blockquote.panel.callout
+        p Deadlift
+        p 315x1*
+        p (Felt good, can probably do more)
+    .small-12.medium-6.columns
+      h3 Try it out
+      p That's about all there is to this site for now.  Go ahead and try it out.  Here's an example of different ways you can log activities, including ones with no weight, and ones with time elements.
+    .small-12.medium-6.columns
+      blockquote.panel.callout
+        p 5/30 Workout C
+        p Treadmill
+        p 5 minutes
+        p Pull Ups
+        p -15x5, 5, 5, 5, 15x5
+        p Overhead Press
+        p 45x5, 70x4, 80x1
+  .row.panel.radius
+    .small-12.columns
+      p Powered with love from:
+      p.text-center
+        a(href='http://danger.computer')
+          img(src='#{assetsUrl}/img/danger-computer.png')
+          br
+          | The Danger Computer

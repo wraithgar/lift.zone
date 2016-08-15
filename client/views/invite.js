@@ -3,7 +3,7 @@
 var View = require('ampersand-view');
 
 module.exports = View.extend({
-    template: require('../templates/views/invite.jade'),
+    template: require('../templates/views/signup-invite.jade'),
     session: {
         status: 'string'
     },

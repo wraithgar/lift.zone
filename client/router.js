@@ -29,6 +29,7 @@ module.exports = Router.extend({
         'workouts/:date': 'showWorkout',
         'workouts/:date/edit': 'editWorkout',
         'me': 'me',
+        'me/invites': 'invites',
         'validate': 'validate',
         'logout': 'logout',
         //Catchall
@@ -108,6 +109,13 @@ module.exports = Router.extend({
             return this.navigate('/login');
         }
         this.trigger('page', new Pages.me({ model: App.me }));
+    },
+    invites: function () {
+
+        if (!App.me.loggedIn) {
+            return this.navigate('/login');
+        }
+        this.trigger('page', new Pages.invites({ model: App.me }));
     },
     newWorkout: function () {
 

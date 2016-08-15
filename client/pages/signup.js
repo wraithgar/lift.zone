@@ -11,8 +11,7 @@ module.exports = View.extend({
     template: require('../templates/pages/signup.jade'),
     initialize: function () {
 
-        //var params = Querystring.parse(window.location.search.slice('1'));
-        var params = Querystring.parse(window.location.hash.split('?')[1]);
+        var params = Querystring.parse(window.location.search.slice('1'));
         var token = params.invite && params.invite.replace(/\s+/, '');
         this.invite = new InviteModel({ token: token });
         this.listenTo(this, 'change:stage', this.renderStage.bind(this));

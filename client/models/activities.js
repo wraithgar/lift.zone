@@ -1,4 +1,3 @@
-
 'use strict';
 
 var Collection = require('ampersand-collection');

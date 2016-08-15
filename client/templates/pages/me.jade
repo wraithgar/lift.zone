@@ -46,9 +46,11 @@ section
           h3
             label Validation
         .small-8.columns
-          .alert-box.success.radius.text-center(data-hook='validated') Your email address is validated
-          a(href='/validate', data-hook='invalid')
-            .alert-box.alert.radius.text-center Your email address is not validated.  You will not be able to send invites or recover your password. click here to validate your email address.
+          p.alert-box.success.radius.text-center(data-hook='validated') Your email address is validated
+          a.alert-box.alert.radius.text-center(href='/validate', data-hook='invalid') Your email address is not validated.  You will not be able to send invites or recover your password. click here to validate your email address.
       .row
         .small-12.columns.text-center
           input.round.button(type='submit', value='Update')
+  .row(data-hook='validated')
+    .small-12.columns.text-center
+      a.button.info.round(href='/me/invites') Click here to view your invites. Tell your friends about lift.zone!

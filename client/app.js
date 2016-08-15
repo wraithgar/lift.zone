@@ -3,91 +3,15 @@
 var logger = require('debug')('lift.zone');
 var App = require('ampersand-app');
 var Domready = require('domready');
-//var Debounce = require('lodash.debounce');
 var Router = require('./router');
 var MainView = require('./main-view');
 var Me = require('./models/me');
 var WorkoutSummaries = require('./models/workout-summaries');
 var Config = require('../config');
-//var Sync = require('ampersand-sync');
-
-//var checkingLogin = false;
-//var validLogin = true;
-//var lastCheckedLogin = '';
-
-//var checkLogin = Debounce(function (el) {
-
-    //var code = document.location.search.match(/invite=([^&]*)/);
-    //var val = el.val();
-    //if (code) {
-        //code = code[1];
-    //}
-    //if (checkingLogin || lastCheckedLogin === el.val()) {
-        //return;
-    //}
-    //if (val === '') {
-        ////We're being called on the debounce tail after a bunch of backspaces
-        //return;
-    //}
-    //checkingLogin = true;
-    //lastCheckedLogin = val;
-    //var payload = {
-        //login: val,
-        //invite: code
-    //};
-    //var syncOptions = {
-        //url: App.apiUrl + '/taken',
-        //json: payload,
-        //success: function (resp) {
-
-            //checkingLogin = false;
-            //validLogin = !resp.data.taken;
-            //el.trigger('change.fndtn.abide');
-        //},
-        //error: function () {
-
-            //checkingLogin = false;
-            //validLogin = false;
-            //el.trigger('change.fndtn.abide');
-        //}
-    //};
-    //Sync('create', null, syncOptions);
-//}, 200);
-
-
 App.extend({
     apiUrl: Config.APIURL,
     assetsUrl: Config.ASSETSURL,
     init: function () {
-
-        $(document).foundation({
-            abide: {
-                validators: {
-                    passwordRequired: function (el) {
-
-                        el = $(el);
-                        console.log(el);
-                        if (el.val() === '') {
-                            return true;
-                        }
-                        el.siblings('small').text('Current Password is required');
-                        return false;
-                    }
-                    //checkLogin: function (el, required) {
-
-
-                        //el = $(el);
-                        //if (required && el.val() === '') {
-                            //el.siblings('small').text('Login is required');
-                            //return false;
-                        //}
-                        //el.siblings('small').text('Login is taken');
-                        //checkLogin(el);
-                        //return validLogin;
-                    //}
-                }
-            }
-        });
 
         var self = this;
         if (App.me.loggedIn && !App.me.id) {

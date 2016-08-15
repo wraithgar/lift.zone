@@ -9,6 +9,13 @@ section
       .row
         .small-4.columns
           h3
+            label(for='password') Current Password
+        .small-8.columns
+          input(type='password', id='currentPassword', name='currentPassword', placeholder='Current password', required)
+          small.error Current password is required to change your info
+      .row
+        .small-4.columns
+          h3
             label(for='name') Name
         .small-8.columns
           input(required, type='text', id='name', name='name', placeholder='What do we call you')
@@ -23,16 +30,16 @@ section
       .row
         .small-4.columns
           h3
-            label(for='password') Password
+            label(for='password') New Password
         .small-8.columns
-          input(type='password', id='password', name='password', placeholder='New password', pattern='[\\W\\w]{8,}')
+          input(type='password', id='newPassword', name='newPassword', placeholder='New password', pattern='[\\W\\w]{8,}')
           small.error Passwords must be at least 8 characters long
       .row
         .small-4.columns
           h3
-            label(for='passwordConfirm') Confirm Password
+            label(for='confirmPassword') Confirm Password
         .small-8.columns
-          input(type='password', id='passwordConfirm', name='passwordConfirm', placeholder='Re-type new password', data-equalto='password')
+          input(type='password', id='confirmPassword', name='confirmPassword', placeholder='Re-type new password', data-equalto='newPassword')
           small.error Passwords must match
       .row
         .small-4.columns

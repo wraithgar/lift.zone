@@ -35,35 +35,39 @@ module.exports = View.extend({
     },
     update: function (e) {
 
+        var self = this;
         e.preventDefault();
         App.view.message = '';
-        var name = this.query('[name=name]').value;
-        var email = this.query('[name=email]').value;
-        var password = this.query('[name=password]').value;
-        var passwordConfirm = this.query('[name=passwordConfirm]').value;
+        var name = self.query('[name=name]').value;
+        var email = self.query('[name=email]').value;
+        var currentPassword = self.query('[name=currentPassword]').value;
+        var newPassword = self.query('[name=newPassword]').value;
+        var confirmPassword = self.query('[name=confirmPassword]').value;
         var attrs = {};
-        if (name !== this.model.name) {
+        attrs.currentPassword = currentPassword;
+        if (name !== self.model.name) {
             attrs.name = name;
         }
-        if (email !== this.model.email) {
+        if (email !== self.model.email) {
             attrs.email = email;
         }
-        if (password && passwordConfirm) {
-            attrs.password = password;
-            attrs.passwordConfirm = passwordConfirm;
+        if (newPassword && confirmPassword) {
+            attrs.newPassword = newPassword;
+            attrs.confirmPassword = confirmPassword;
         }
         App.log('saving %j', attrs);
-        if (Object.keys(attrs).length === 0) {
+        if (Object.keys(attrs).length === 1) {
             App.view.message = 'You didn\'t change anything';
             return;
         }
-        this.model.save(attrs, {
+        self.model.save(attrs, {
             patch: true,
             success: function () {
 
-                App.me.password = undefined;
-                App.me.passwordConfirm = undefined;
                 App.view.message = 'Saved your new info';
+                self.query('[name=currentPassword]').value = '';
+                self.query('[name=newPassword]').value = '';
+                self.query('[name=currentPassword]').value = '';
             },
             error: function () {
 

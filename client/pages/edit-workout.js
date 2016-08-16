@@ -6,7 +6,7 @@ var Moment = require('moment');
 var App = require('ampersand-app');
 
 var View = require('ampersand-view');
-var ActivityView = require('../views/activity');
+var ActivityView = require('../views/workout-activity');
 
 var dateFormats = [
     'MM/DD/YYYY',

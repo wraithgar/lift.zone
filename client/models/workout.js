@@ -3,7 +3,7 @@
 var App = require('ampersand-app');
 var Model = require('ampersand-model');
 var ApiMixin = require('./mixins/api-model');
-var Activities = require('./activities');
+var Activities = require('./workout-activities');
 var Moment = require('moment');
 
 var dateId = function (date) {

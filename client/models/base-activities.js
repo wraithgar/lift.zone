@@ -4,7 +4,7 @@
 
 var Collection = require('ampersand-collection');
 var Model = require('ampersand-model');
-var Activity = require('./mixins/activity');
+var Activity = require('./mixins/workout-activity');
 
 var ActivityModel = Model.extend(Activity);
 

@@ -3,10 +3,11 @@
 var Router = require('ampersand-router');
 var App = require('ampersand-app');
 
-var BaseActivities = require('./models/base-activities');
 
 var Pages = require('./pages');
 
+var BaseActivities = require('./models/base-activities');
+var UserActivities = require('./models/user-activities');
 var Wendler531Model = require('./models/wendler531');
 var WorkoutModel = require('./models/workout');
 
@@ -29,6 +30,7 @@ module.exports = Router.extend({
         'workouts/new': 'editWorkout',
         'workouts/:date': 'showWorkout',
         'workouts/:date/edit': 'editWorkout',
+        'activities': 'activities',
         'me': 'me',
         'me/invites': 'invites',
         'validate': 'validate',
@@ -159,6 +161,16 @@ module.exports = Router.extend({
     },
     workouts: function () {
 
+        if (!App.me.loggedIn) {
+            return this.navigate('/login');
+        }
         this.trigger('page', new Pages.workouts());
+    },
+    activities: function () {
+
+        if (!App.me.loggedIn) {
+            return this.navigate('/login');
+        }
+        this.trigger('page', new Pages.activities({ collection: new UserActivities() }));
     }
 });

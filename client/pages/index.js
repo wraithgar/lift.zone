@@ -3,6 +3,7 @@
 module.exports = {
     'not-found': require('./not-found'),
     about: require('./about'),
+    activities: require('./activities'),
     editWorkout: require('./edit-workout'),
     fitocracy: require('./fitocracy'),
     home: require('./home'),

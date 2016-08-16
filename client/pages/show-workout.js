@@ -2,7 +2,7 @@
 
 var App = require('ampersand-app');
 var View = require('ampersand-view');
-var ActivityView = require('../views/activity');
+var ActivityView = require('../views/workout-activity');
 
 module.exports = View.extend({
     template: require('../templates/pages/show-workout.jade'),

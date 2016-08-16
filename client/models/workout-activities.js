@@ -3,7 +3,7 @@
 var Collection = require('ampersand-collection');
 var Model = require('ampersand-model');
 var ApiMixin = require('./mixins/api-model');
-var ActivityMixin = require('./mixins/activity');
+var ActivityMixin = require('./mixins/workout-activity');
 var App = require('ampersand-app');
 
 var ActivityModel = Model.extend(ApiMixin, ActivityMixin, {
@@ -25,6 +25,7 @@ var ActivityModel = Model.extend(ApiMixin, ActivityMixin, {
         });
     }
 });
+
 var ActivityCollection = Collection.extend({
     model: ActivityModel,
     indexes: ['name']

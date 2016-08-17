@@ -15,6 +15,10 @@ module.exports = View.extend({
         'model.date': {
             type: 'text',
             hook: 'workoutDate'
+        },
+        'model.activityLabel': {
+            type: 'text',
+            hook: 'workoutActivities'
         }
     },
     template: require('../templates/views/workout-summary.jade')

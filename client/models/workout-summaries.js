@@ -10,9 +10,20 @@ var WorkoutSummary = State.extend({
     props: {
         id: 'string',
         name: 'string',
-        date: 'string'
+        date: 'string',
+        activities: 'number'
     },
     derived: {
+        activityLabel: {
+            deps: ['activities'],
+            fn: function () {
+
+                if (this.activities === 1) {
+                    return '1 activity';
+                }
+                return String(this.activities) + ' activities';
+            }
+        },
         link: {
             deps: ['date'],
             fn: function () {

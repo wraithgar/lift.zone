@@ -195,13 +195,13 @@ module.exports = View.extend({
             return $(self.queryByHook('new-activities')).foundation('reveal', 'open');
         }
         self.model.save(null, {
-            success: function () {
+            success: function (saved) {
 
                 if (self.date) {
                     App.workoutSummaries.remove({ date: self.date });
                 }
-                App.workoutSummaries.add({ id: self.model.id, date: self.model.dateId, name: self.model.name });
-                App.navigate('/workouts/' + self.model.dateId);
+                App.workoutSummaries.add({ id: saved.id, date: saved.dateId, name: saved.name, activities: saved.activities.length });
+                App.navigate('/workouts/' + saved.dateId);
             },
             error: function (model, newModel, ctx) {
 

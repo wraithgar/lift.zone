@@ -15,7 +15,6 @@
     "url": "git@github.com:wraithgar/lift.zone.git"
   },
   "author": "Gar <gar+code@danger.computer>",
-  "license": "MIT",
   "private": true,
   "dependencies": {
     "ampersand-app": "^2.0.0",
@@ -35,7 +34,7 @@
     "caber": "^4.1.1",
     "debug": "^2.2.0",
     "domready": "^1.0.8",
-    "eslint": "^3.3.0",
+    "eslint": "^3.3.1",
     "eslint-config-hapi": "^10.0.0",
     "eslint-plugin-hapi": "^4.0.0",
     "git-validate": "^2.1.4",

@@ -21,7 +21,6 @@ var AliasView = View.extend({
 
         var oldActivity = self.model.collection.parent;
         var activities = self.model.collection.parent.collection;
-        var index = activities.indexOf(oldActivity);
 
         var syncOptions = {
             headers: {
@@ -31,7 +30,7 @@ var AliasView = View.extend({
             success: function (response) {
 
                 activities.remove(oldActivity);
-                activities.add(response, { at: index });
+                activities.add(response);
             },
             error: function (err) {
 

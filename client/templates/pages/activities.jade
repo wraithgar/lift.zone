@@ -15,6 +15,11 @@ section
         input.button.small.radius(type='submit', value='Add')
   .row
     .small-12.columns(data-hook='activities')
+  .row.clearfix
+    .small-6.columns
+      button.round.tiny.button.disabled.left(data-hook='activitiesPrev' disabled) &lArr;
+    .small-6.columns
+      button.round.tiny.button.disabled.right(data-hook='activitiesNext' disabled) &rArr;
   .reveal-modal(data-hook='activity-exists', data-reveal)
     h3 Error
     span That activity already exists

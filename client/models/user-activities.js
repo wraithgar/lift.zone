@@ -20,6 +20,7 @@ var AliasModel = Model.extend(ApiModelMixin, {
 });
 
 var AliasCollection  = Collection.extend({
+    comparator: 'name',
     model: AliasModel
 });
 
@@ -39,6 +40,7 @@ var ActivityModel = Model.extend(ApiModelMixin, {
 });
 
 var ActivityCollection = RestCollection.extend(ApiCollectionMixin, {
+    comparator: 'name',
     url: function () {
 
         return App.apiUrl + '/activities';

@@ -1,10 +1,11 @@
 'use strict';
 
-var View = require('ampersand-view');
 var App = require('ampersand-app');
-var SummaryView = require('../views/workout-summary');
-var PaginatedSubcollection = require('ampersand-paginated-subcollection');
 var Dom = require('ampersand-dom');
+var PaginatedSubcollection = require('ampersand-paginated-subcollection');
+var View = require('ampersand-view');
+
+var SummaryView = require('../views/workout-summary');
 
 var perPage = 5;
 

@@ -14,7 +14,7 @@ section
         .small-12.columns
           p(data-hook='summaries')
       .row
-        .small-6.columns.left(data-hook='prevPage')
-          button.round.tiny.button(data-hook='workoutsPrev') &lArr;
-        .small-6.columns.right(data-hook='nextPage')
-          button.round.tiny.button.disabled(data-hook='workoutsNext' disabled) &rArr;
+        .small-6.columns
+          button.round.tiny.button.left(data-hook='workoutsPrev') &lArr;
+        .small-6.columns
+          button.round.tiny.button.disabled.right(data-hook='workoutsNext' disabled) &rArr;

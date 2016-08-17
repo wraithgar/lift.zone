@@ -1,25 +1,44 @@
 'use strict';
 
-var View = require('ampersand-view');
-var ActivityView = require('../views/user-activity');
 var App = require('ampersand-app');
+var Dom = require('ampersand-dom');
+var PaginatedSubcollection = require('ampersand-paginated-subcollection');
+var View = require('ampersand-view');
+
+var ActivityView = require('../views/user-activity');
+
+var perPage = 10;
 
 module.exports = View.extend({
     template: require('../templates/pages/activities.jade'),
     initialize: function () {
 
-        this.collection.fetch();
+        this.collection.fetch({ reset: true });
+        this.paginatedCollection = new PaginatedSubcollection(this.collection, {
+            limit: perPage
+        });
     },
     events: {
+        'click [data-hook=activitiesPrev]': 'prevActivities',
+        'click [data-hook=activitiesNext]': 'nextActivities',
         'submit form[data-hook=activity-form]': 'addActivity'
+    },
+    rePaginate: function () {
+
+        var next = this.queryByHook('activitiesNext');
+        if (this.collection.length > perPage) {
+            Dom.removeClass(next, 'disabled');
+            Dom.removeAttribute(next, 'disabled');
+        }
+        this.paginatedCollection.configure({ offset: 0 });
     },
     render: function () {
 
         this.renderWithTemplate(this);
-        this.renderCollection(this.collection, ActivityView, this.queryByHook('activities'));
+        this.renderCollection(this.paginatedCollection, ActivityView, this.queryByHook('activities'));
         this.cacheElements({ activityModal: '[data-hook=activity-modal]' });
+        this.listenToAndRun(this.collection, 'reset', this.rePaginate);
         $(this.el).foundation();
-        return this;
     },
     addActivity: function (e) {
 
@@ -48,5 +67,42 @@ module.exports = View.extend({
                 }
             }
         });
+    },
+    prevActivities: function () {
+
+        var prev = this.queryByHook('activitiesPrev');
+        var next = this.queryByHook('activitiesNext');
+        var offset = this.paginatedCollection.offset - perPage;
+        Dom.removeClass(next, 'disabled');
+        Dom.removeAttribute(next, 'disabled');
+        Dom.removeClass(prev, 'disabled');
+        Dom.removeAttribute(prev, 'disabled');
+        if (offset < 0) {
+            offset = 0;
+        }
+        if (offset === 0) {
+            Dom.addAttribute(prev, 'disabled');
+            Dom.addClass(prev, 'disabled');
+        }
+        this.paginatedCollection.configure({ offset: offset });
+    },
+    nextActivities: function () {
+
+        var prev = this.queryByHook('activitiesPrev');
+        var next = this.queryByHook('activitiesNext');
+        var max = this.collection.length - perPage;
+        var offset = this.paginatedCollection.offset + perPage;
+        Dom.removeClass(next, 'disabled');
+        Dom.removeAttribute(next, 'disabled');
+        Dom.removeClass(prev, 'disabled');
+        Dom.removeAttribute(prev, 'disabled');
+        if (offset + perPage > this.collection.length) {
+            offset = max;
+        }
+        if (offset === max) {
+            Dom.addAttribute(next, 'disabled');
+            Dom.addClass(next, 'disabled');
+        }
+        this.paginatedCollection.configure({ offset: offset });
     }
 });

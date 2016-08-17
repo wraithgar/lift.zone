@@ -124,6 +124,7 @@ module.exports = View.extend({
     },
     addActivities: function (activities) {
 
+        //TODO manual suggestion fetch instead of this janky merge
         var activityNames = [];
         //We need to do a janky merge by alternate index so that our search() functions only have to run once
         //find things to add

@@ -14,7 +14,7 @@ var ActivityModel = Model.extend(ApiMixin, ActivityMixin, {
     initialize: function (props) {
 
         var self = this;
-        if (props) {
+        if (!this.collection.parent.id) {
             self.fetch({
                 url: App.apiUrl + '/suggest/activities/' + encodeURIComponent(self.name)
             });

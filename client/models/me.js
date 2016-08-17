@@ -33,10 +33,18 @@ module.exports = Model.extend(ApiMixin, {
         email: 'string',
         validated: 'boolean',
         preferences: 'object',
+        scope: 'array',
         password: 'string',
         passwordConfirm: 'string'
     },
     derived: {
+        isAdmin: {
+            deps: ['scope'],
+            fn: function () {
+
+                return this.scope.indexOf('admin') > -1;
+            }
+        },
         invalid: {
             deps: ['validated'],
             fn: function () {

@@ -10,6 +10,7 @@ var BaseActivities = require('./models/base-activities');
 var UserActivities = require('./models/user-activities');
 var Wendler531Model = require('./models/wendler531');
 var WorkoutModel = require('./models/workout');
+var AdminUsers = require('./models/admin-users');
 
 module.exports = Router.extend({
     routes: {
@@ -35,6 +36,8 @@ module.exports = Router.extend({
         'me/invites': 'invites',
         'validate': 'validate',
         'logout': 'logout',
+        //Admin
+        'admin': 'admin',
         //Catchall
         '*catchall': 'notfound'
     },
@@ -172,5 +175,15 @@ module.exports = Router.extend({
             return this.navigate('/login');
         }
         this.trigger('page', new Pages.activities({ collection: new UserActivities() }));
+    },
+    admin: function () {
+
+        if (!App.me.loggedIn) {
+            return this.navigate('/login');
+        }
+        if (!App.me.isAdmin) {
+            return this.trigger('page', new Pages['not-found']());
+        }
+        this.trigger('page', new Pages.admin({ collection: new AdminUsers() }));
     }
 });

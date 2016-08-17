@@ -28,21 +28,25 @@ module.exports = View.extend({
         ],
         'model.displayName': {
             type: 'text',
-            hook: 'user-name'
+            hook: 'nav-user-name'
         },
         'model.link': {
             type: 'attribute',
             name: 'href',
-            hook: 'user-name'
+            hook: 'nav-user-name'
+        },
+        'model.isAdmin': {
+            type: 'toggle',
+            hook: 'nav-admin'
         },
         'model.loggedIn': [
             {
                 type: 'booleanClass',
                 no: 'button',
-                hook: 'user-name'
+                hook: 'nav-user-name'
             }, {
                 type: 'toggle',
-                hook: 'logout'
+                hook: 'nav-logout'
             }
         ]
     },
@@ -85,7 +89,7 @@ module.exports = View.extend({
         this.queryAll('[data-hook=navigation] a').forEach(function (aTag) {
 
             if (path.indexOf(aTag.pathname) === 0 && aTag.getAttribute('href') !== '#' && aTag.pathname !== '/') {
-            //if (aTag.pathname === path) {
+                //if (aTag.pathname === path) {
                 Dom.addClass(aTag.parentNode, 'active');
             }
             else {

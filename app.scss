@@ -5,6 +5,16 @@
   display:none
 }
 
+.pr {
+  font-weight: bold;
+}
+
+.pr::after {
+  font-style: oblique;
+  font-size: 75%;
+  content: ' (pr)';
+}
+
 .circle {
   border-radius: 50%;
   padding-left: 0.45rem;
@@ -28,13 +38,21 @@
 }
 
 .warning-bg-color {
-  background-color: $background-color;
+  background-color: $warning-color;
 }
 
 .info-bg-color {
   background-color: $info-color;
 }
 
-//.workout:empty+.instructions{display:block}
-//.workout:empty ~ .instructions{display:block}
-//.instructions{display:none}
+li.comma-separated::after {
+  content: ","
+}
+li.comma-separated:last-child::after {
+  content: ""
+}
+
+blockquote.short {
+  padding-left: 9px;
+  padding-top: 0px;
+}

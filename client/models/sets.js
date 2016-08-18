@@ -114,11 +114,6 @@ var SetModel = Model.extend({
                 return !this.pr;
             }
         }
-    },
-    parse: function (resp) {
-
-        resp.pr = resp.pr === 1;
-        return resp;
     }
 });
 

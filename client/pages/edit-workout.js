@@ -124,7 +124,7 @@ module.exports = View.extend({
     },
     addActivities: function (activities) {
 
-        //TODO manual suggestion fetch instead of this janky merge
+        //TODO now that we're fetching we can reset the collection each time and never lose order
         var activityNames = [];
         //We need to do a janky merge by alternate index so that our search() functions only have to run once
         //find things to add
@@ -132,7 +132,7 @@ module.exports = View.extend({
 
             activityNames.push(activity.name);
             if (!this.model.activities.get(activity.name, 'name')) {
-                this.model.activities.add(activity);
+                this.model.activities.add(activity, { fetch: true });
             }
             else {
                 this.model.activities.get(activity.name, 'name').set({ comment: undefined });

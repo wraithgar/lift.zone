@@ -42,13 +42,11 @@ App.extend({
 
         if (this.accessToken !== token) {
             this.accessToken = token;
-            if (Modernizr.localstorage) {
-                if (token !== undefined) {
-                    localStorage.accessToken = token;
-                }
-                else {
-                    delete localStorage.accessToken;
-                }
+            if (token !== undefined) {
+                localStorage.accessToken = token;
+            }
+            else {
+                delete localStorage.accessToken;
             }
             this.trigger('accessToken', token);
         }
@@ -66,9 +64,7 @@ App.extend({
 
 Domready(function () {
 
-    if (Modernizr.localstorage) {
-        App.setAccessToken(localStorage.accessToken);
-    }
+    App.setAccessToken(localStorage.accessToken);
     App.init();
 });
 

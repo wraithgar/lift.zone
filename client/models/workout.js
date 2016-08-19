@@ -80,7 +80,11 @@ module.exports = Model.extend(ApiMixin, {
             deps: ['date'],
             fn: function () {
 
-                return Moment(this.date).format(App.me.preferences.dateFormat);
+                if (App.me.preferences) {
+                    return Moment(this.date).format(App.me.preferences.dateFormat);
+                }
+                //TODO add user_date_format for public workouts
+                return 'dddd, MMM Do YYYY';
             }
         },
         dateId: {

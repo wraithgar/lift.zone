@@ -15,6 +15,7 @@ module.exports = {
     news: require('./news'),
     parser: require('./parser'),
     privacy: require('./privacy'),
+    publicWorkout: require('./public-workout'),
     recover: require('./recover'),
     showWorkout: require('./show-workout'),
     signup: require('./signup'),

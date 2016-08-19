@@ -1,0 +1,28 @@
+section
+  .row
+    .large-4.columns
+      h1(data-hook='workoutName')
+      h3 By:&nbsp;
+        span(data-hook='workoutUser')
+      h6(data-hook='workoutDate')
+  hr
+  .row
+    .medium-9.columns
+      dl.sub-nav(role='menu' title='Change workout format')
+        dt Format
+        dd(data-hook='format-nav-long')
+          a(href='#long' data-hook='change-format') Long
+        dd(data-hook='format-nav-short')
+          a(href='#short' data-hook='change-format') Short
+        dd(data-hook='format-nav-raw')
+          a(href='#raw' data-hook='change-format') Raw
+  .row(data-hook='share-show' data-anddom-display data-anddom-hidden='true' style='display: none;')
+  .row(data-hook='long-format')
+    .small-12.columns.panel(data-hook='activities-long')
+  .row(data-hook='short-format')
+    .small-12.columns.panel(data-hook='activities-short')
+  .row(data-hook='raw-format')
+    .small-12.columns.panel
+      h4 What they typed
+      blockquote
+        pre(data-hook='raw')

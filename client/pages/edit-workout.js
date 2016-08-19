@@ -6,7 +6,7 @@ var Moment = require('moment');
 var App = require('ampersand-app');
 
 var View = require('ampersand-view');
-var ActivityView = require('../views/workout-activity');
+var ActivityView = require('../views/workout-activity-short');
 
 var dateFormats = [
     'MM/DD/YYYY',
@@ -38,11 +38,10 @@ module.exports = View.extend({
         this.listenToOnce(App.workoutSummaries, 'reset', this.checkExisting);
     },
     events: {
-        'change [data-hook=smartMode]': 'changeSmartMode',
         'input [data-hook=workout-input]': 'throttledParse',
         'input [data-hook=name-input]': 'setName',
         'input [data-hook=date-input]': 'setDate',
-        'click [data-hook=saveWorkout]': 'saveWorkout'
+        'submit form': 'saveWorkout'
     },
     checkExisting: function (model, newDate, ctx) {
 
@@ -71,9 +70,6 @@ module.exports = View.extend({
             hook: 'workout-date'
         }
     },
-    props: {
-        smartMode: ['boolean', true, true]
-    },
     derived: {
         smartLabel: {
             deps: ['smartMode'],
@@ -92,11 +88,6 @@ module.exports = View.extend({
         this.renderCollection(this.model.activities, ActivityView, this.queryByHook('workout-activities'));
         this.checkExisting(this.model, this.model.dateId);
         return this;
-    },
-    changeSmartMode: function (e) {
-
-        this.smartMode = e.target.checked;
-        this.parseWorkout(this.queryByHook('workout-input'));
     },
     setName: function (e) {
 
@@ -124,7 +115,7 @@ module.exports = View.extend({
     },
     addActivities: function (activities) {
 
-        //TODO now that we're fetching we can reset the collection each time and never lose order
+        //TODO figure out how to make this not bump name changes to the bottom of the pile
         var activityNames = [];
         //We need to do a janky merge by alternate index so that our search() functions only have to run once
         //find things to add
@@ -151,12 +142,6 @@ module.exports = View.extend({
 
         var data = el.value;
         this.model.raw = data;
-        if (!this.smartMode) {
-            this.model.unset('date');
-            this.model.name = 'Workout';
-            this.addActivities(workout.activities);
-            return;
-        }
         if (!data) {
             this.model.unset('name');
             if (this.model.dateId !== Moment().format('YYYY-MM-DD')) {
@@ -182,8 +167,9 @@ module.exports = View.extend({
         }
         this.addActivities(workout.activities);
     },
-    saveWorkout: function () {
+    saveWorkout: function (e) {
 
+        e.preventDefault();
         var self = this;
         var ready = self.model.activities.every(function (activity) {
 

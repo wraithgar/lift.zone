@@ -23,6 +23,8 @@ module.exports = Model.extend(ApiMixin, {
 
             return new Date();
         }],
+        user_name: 'string',
+        visible: 'boolean',
         raw: 'string'
     },
     session: {
@@ -44,7 +46,29 @@ module.exports = Model.extend(ApiMixin, {
         res.date = this.dateId;
         return res;
     },
+    fetchPublic: function (opts) {
+
+        opts.url = App.apiUrl + '/public/workouts/' + this.id;
+        this.fetch(opts);
+    },
     derived: {
+        canShare: {
+            deps: ['visible'],
+            fn: function () {
+
+                if (this.visible === null) {
+                    return App.me.preferences.visible;
+                }
+                return this.visible;
+            }
+        },
+        shareLink: {
+            deps: ['id'],
+            fn: function () {
+
+                return App.portalUrl + '/public/workouts/' + this.id;
+            }
+        },
         editLink: {
             deps: ['dateId'],
             fn: function () {

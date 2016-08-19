@@ -2,7 +2,7 @@
 
 var View = require('ampersand-view');
 
-var SuggestionView = require('./suggestion');
+//var SuggestionView = require('./suggestion');
 
 var SetView = View.extend({
     template: require('../templates/views/set.jade'),
@@ -37,43 +37,43 @@ module.exports = View.extend({
             type: 'toggle',
             hook: 'activity-comment'
         }],
-        'model.ready': {
-            type: 'toggle',
-            no: '[data-hook=new-activity]'
-        },
-        'model.hasSuggestions': {
-            type: 'toggle',
-            hook: 'has-suggestions'
-        },
+        //'model.ready': {
+            //type: 'toggle',
+            //no: '[data-hook=new-activity]'
+        //},
+        //'model.hasSuggestions': {
+            //type: 'toggle',
+            //hook: 'has-suggestions'
+        //},
         'model.hasComment': {
             type: 'toggle',
             hook: 'toggle-comment'
         }
     },
-    events: {
-        'click [data-hook=new-activity]': 'findAlias',
-        'click [data-hook=name]': 'selfAlias'
-    },
+    //events: {
+        //'click [data-hook=new-activity]': 'findAlias',
+        //'click [data-hook=name]': 'selfAlias'
+    //},
     render: function () {
 
         this.renderWithTemplate(this);
-        this.renderSubview(new SuggestionView({ model: this.model }), this.queryByHook('new-confirm'));
+        //this.renderSubview(new SuggestionView({ model: this.model }), this.queryByHook('new-confirm'));
         this.renderCollection(this.model.sets, SetView, this.queryByHook('sets'));
-        this.renderCollection(this.model.suggestions, SuggestionView, this.queryByHook('suggestions'));
-        this.cacheElements({ aliasModal: '[data-hook=choose-alias]' });
-        $(this.el).foundation();
+        //this.renderCollection(this.model.suggestions, SuggestionView, this.queryByHook('suggestions'));
+        //this.cacheElements({ aliasModal: '[data-hook=choose-alias]' });
+        //$(this.el).foundation();
         return this;
-    },
-    findAlias: function () {
+    //},
+    //findAlias: function () {
 
-        $(this.aliasModal).foundation('reveal', 'open');
-    },
-    selfAlias: function () {
+        //$(this.aliasModal).foundation('reveal', 'open');
+    //},
+    //selfAlias: function () {
 
-        console.log('choosing self alias');
-    },
-    closeModal: function () {
+        //console.log('choosing self alias');
+    //},
+    //closeModal: function () {
 
-        $(this.aliasModal).foundation('reveal', 'close');
+        //$(this.aliasModal).foundation('reveal', 'close');
     }
 });

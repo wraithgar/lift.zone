@@ -1,14 +1,16 @@
 section
   .row
-    .medium-3.medium-push-9.small-12.columns
+    .large-4.large-push-8.columns
       br
-      a.radius.button.right(data-hook='editLink') Edit this workout
-    .medium-9.medium-pull-3.small-12.columns
+      a.radius.button.right(data-hook='edit-link') Edit this workout
+    .large-8.large-pull-4.columns
       h1(data-hook='workoutName')
       h3(data-hook='workoutDate')
   hr
   .row
-    .small-12.columns
+    .medium-3.medium-push-9.columns(data-hook='share-show' data-anddom-display data-anddom-hidden='true' style='display: none;')
+      a.radius.button.tiny.right(data-hook='share-button') Share
+    .medium-9.medium-pull-3.columns
       dl.sub-nav(role='menu' title='Change workout format')
         dt Format
         dd(data-hook='format-nav-long')
@@ -19,10 +21,18 @@ section
           a(href='#raw' data-hook='change-format') Raw
   .row(data-hook='long-format')
     .small-12.columns.panel(data-hook='activities-long')
-  .row(data-hook='short-format' data-anddom-display data-anddom-hidden='true' style='display: none;')
+  .row(data-hook='short-format')
     .small-12.columns.panel(data-hook='activities-short')
-  .row(data-hook='raw-format' data-anddom-display data-anddom-hidden='true' style='display: none;')
+  .row(data-hook='raw-format')
     .small-12.columns.panel
       h4 What you typed
       blockquote
         pre(data-hook='raw')
+  .reveal-modal(data-hook='share-modal', data-reveal)
+    h3 Share
+    p Tell your friends! You worked out!
+    .panel
+      p Here is the link to this workout:
+      a.button.round(target='_blank' data-hook='share-link')
+    .clearfix
+      a.button.tiny.radius.dismiss-reveal-modal.left Done

@@ -26,6 +26,7 @@ module.exports = Router.extend({
         'signup': 'signup',
         'privacy': 'privacy',
         'recover': 'recover',
+        'public/workouts/:id': 'publicWorkout',
         //Authenticated
         'workouts': 'workouts',
         'workouts/new': 'editWorkout',
@@ -104,6 +105,10 @@ module.exports = Router.extend({
             return this.navigate('/me');
         }
         this.trigger('page', new Pages.recover());
+    },
+    publicWorkout: function (id) {
+
+        this.trigger('page', new Pages.publicWorkout({ model: new WorkoutModel({ id: id }) }));
     },
     //Authenticated routes
     validate: function () {

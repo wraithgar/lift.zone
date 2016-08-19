@@ -2,6 +2,8 @@
 
 var View = require('ampersand-view');
 
+var SuggestionView = require('./suggestion');
+
 var SetView = View.extend({
     template: require('../templates/views/set-short.jade'),
     bindings: {
@@ -31,15 +33,31 @@ module.exports = View.extend({
             type: 'toggle',
             hook: 'activity-comment'
         }],
+        'model.ready': {
+            type: 'toggle',
+            no: '[data-hook=new-activity]'
+        },
+        'model.hasSuggestions': {
+            type: 'toggle',
+            hook: 'has-suggestions'
+        },
         'model.hasComment': {
             type: 'toggle',
             hook: 'toggle-comment'
         }
     },
+    events: {
+        'click [data-hook=new-activity]': 'findAlias',
+        'click [data-hook=name]': 'selfAlias'
+    },
     render: function () {
 
         this.renderWithTemplate(this);
+        this.renderSubview(new SuggestionView({ model: this.model }), this.queryByHook('new-confirm'));
         this.renderCollection(this.model.sets, SetView, this.queryByHook('sets'));
+        this.renderCollection(this.model.suggestions, SuggestionView, this.queryByHook('suggestions'));
+        this.cacheElements({ aliasModal: '[data-hook=choose-alias]' });
+        $(this.el).foundation();
         return this;
     },
     findAlias: function () {

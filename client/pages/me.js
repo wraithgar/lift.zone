@@ -23,6 +23,11 @@ module.exports = View.extend({
         'model.invalid': {
             type: 'toggle',
             hook: 'invalid'
+        },
+        'model.preferences.visible': {
+            type: 'booleanAttribute',
+            name: 'checked',
+            selector: '[name=visible]'
         }
     },
     events: {
@@ -31,6 +36,7 @@ module.exports = View.extend({
     render: function () {
 
         this.renderWithTemplate(this);
+        $(this.el).foundation();
         return this;
     },
     update: function (e) {
@@ -38,12 +44,17 @@ module.exports = View.extend({
         var self = this;
         e.preventDefault();
         App.view.message = '';
+        var visible = self.query('[name=visible]').checked;
         var name = self.query('[name=name]').value;
         var email = self.query('[name=email]').value;
         var currentPassword = self.query('[name=currentPassword]').value;
         var newPassword = self.query('[name=newPassword]').value;
         var confirmPassword = self.query('[name=confirmPassword]').value;
         var attrs = {};
+        if (visible !== self.model.preferences.visible) {
+            attrs.preferences = Object.assign({}, self.model.preferences);
+            attrs.preferences.visible = visible;
+        }
         attrs.currentPassword = currentPassword;
         if (name !== self.model.name) {
             attrs.name = name;

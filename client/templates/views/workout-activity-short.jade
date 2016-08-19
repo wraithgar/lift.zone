@@ -1,6 +1,40 @@
 .row
   .small-6.columns
-    h5(data-hook='activity-name')
+    h5
+      span(data-hook='activity-name')
+      span &#xa0;
+      span.circle.info-bg-color(data-hook='new-activity')
+        i.fa.fa-question
     ul.no-bullet.inline-list(data-hook='sets')
     blockquote.short(data-hook='toggle-comment')
       cite(data-hook='activity-comment')
+    .reveal-modal(data-hook='choose-alias', data-reveal)
+      ul.pricing-table
+        li.title New Activity
+        li.description This is the first time you've tried to log this activity.
+            br
+            |  Please click one of the following options below.
+        li.bullet-item.cta-button
+          .row
+            .small-12.medium-6.medium-centered.columns
+              .text-left This is a new activity:
+              br
+              ul.stack.button-group(data-hook='new-confirm')
+              br
+        li.bullet-item.cta-button(data-hook='has-suggestions')
+          .row
+            .small-12.medium-6.medium-centered.columns
+              .text-left This is another name for:
+              br
+              ul.stack.button-group(data-hook='suggestions')
+              br
+        li.bullet-item.cta-button
+          .row
+            .small-12.medium-6.medium-centered.columns
+              .text-left No, let me go back and edit that.
+              br
+              ul.stack.button-group
+                li.text-left
+                  a.dismiss-reveal-modal.button.tiny.radius(href='#', data-hook='close')
+                    i.fa.fa-arrow-left
+              br

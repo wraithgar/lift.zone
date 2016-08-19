@@ -23,7 +23,7 @@ module.exports = View.extend({
         }
     },
     bindings: {
-        'format': [{
+        format: [{
             type: 'switch',
             cases: {
                 'long': '[data-hook=long-format]',
@@ -54,12 +54,30 @@ module.exports = View.extend({
         },
         'model.editLink': {
             type: 'attribute',
-            hook: 'editLink',
+            hook: 'edit-link',
             name: 'href'
+        },
+        'model.shareLink': [{
+            type: 'attribute',
+            hook: 'share-link',
+            name: 'href'
+        }, {
+            type: 'text',
+            hook: 'share-link'
+        }],
+        'model.canShare': {
+            type: 'toggle',
+            hook: 'share-show'
         }
     },
     events: {
-        'click [data-hook=change-format]': 'changeFormat'
+        'click [data-hook=change-format]': 'changeFormat',
+        'click [data-hook=share-button]': 'share'
+    },
+    share: function (e) {
+
+        e.preventDefault();
+        return $(this.queryByHook('share-modal')).foundation('reveal', 'open');
     },
     render: function () {
 

@@ -42,6 +42,9 @@ module.exports = Model.extend(ApiMixin, {
             deps: ['scope'],
             fn: function () {
 
+                if (!this.scope) {
+                    return false;
+                }
                 return this.scope.indexOf('admin') > -1;
             }
         },

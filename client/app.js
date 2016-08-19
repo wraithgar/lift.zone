@@ -11,6 +11,7 @@ var Config = require('../config');
 App.extend({
     apiUrl: Config.APIURL,
     assetsUrl: Config.ASSETSURL,
+    portalUrl: Config.PORTALURL,
     init: function () {
 
         var self = this;

@@ -8,43 +8,45 @@ section
     form(data-abide)
       .row
         .small-4.columns
-          h3
-            label(for='password') Current Password
+          label.right(for='password') #[b Current Password]
         .small-8.columns
           input(type='password', id='currentPassword', name='currentPassword', placeholder='Current password', required)
           small.error Current password is required to change your info
       .row
         .small-4.columns
-          h3
-            label(for='name') Name
+          label.right(for='name') Name
         .small-8.columns
           input(required, type='text', id='name', name='name', placeholder='What do we call you')
           small.error You need a name
       .row
         .small-4.columns
-          h3
-            label(for='email') Email
+          label.right(for='email') Email
         .small-8.columns
           input(required, type='email', id='email', name='email', placeholder='Enter your email')
           small.error You need a valid email
       .row
         .small-4.columns
-          h3
-            label(for='password') New Password
+          label.right(for='password') New Password
         .small-8.columns
           input(type='password', id='newPassword', name='newPassword', placeholder='New password', pattern='[\\W\\w]{8,}')
           small.error Passwords must be at least 8 characters long
       .row
         .small-4.columns
-          h3
-            label(for='confirmPassword') Confirm Password
+          label.right(for='confirmPassword') Confirm Password
         .small-8.columns
           input(type='password', id='confirmPassword', name='confirmPassword', placeholder='Re-type new password', data-equalto='newPassword')
           small.error Passwords must match
       .row
         .small-4.columns
-          h3
-            label Validation
+          label.right Publicly visible&nbsp;
+            span.has-tip(data-tooltip, aria-haspopup-true, title='If this is turned on, other people can see your workouts, along with your name. You must turn this on to share your workouts.') #[sup ?]
+        .small-8.columns
+          .switch.small.round
+            input(id='visible' type='checkbox' name='visible')
+            label(for='visible')
+      .row
+        .small-4.columns
+          label.right Validation
         .small-8.columns
           p.alert-box.success.radius.text-center(data-hook='validated') Your email address is validated
           a.alert-box.alert.radius.text-center(href='/validate', data-hook='invalid') Your email address is not validated.  You will not be able to send invites or recover your password. click here to validate your email address.

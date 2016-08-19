@@ -56,7 +56,7 @@ module.exports = Model.extend(ApiMixin, {
             deps: ['visible'],
             fn: function () {
 
-                if (this.visible === null) {
+                if (this.visible === null && App.me.preferences) {
                     return App.me.preferences.visible;
                 }
                 return this.visible;
@@ -84,7 +84,7 @@ module.exports = Model.extend(ApiMixin, {
                     return Moment(this.date).format(App.me.preferences.dateFormat);
                 }
                 //TODO add user_date_format for public workouts
-                return 'dddd, MMM Do YYYY';
+                return Moment(this.date).format('dddd, MMM Do YYYY');
             }
         },
         dateId: {

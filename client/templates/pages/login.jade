@@ -4,26 +4,27 @@
       h1 Welcome to lift.zone
   hr
   .row.panel
-    form(data-abide)
-      .row
-        .small-12.columns
-          h3 Please log in
-      .row
-        .small-4.columns
-          h3
-            label(for='email') Email
-        .small-8.columns
-          input(required type='email' id='email' name='email' placeholder='email' autocapitalize='off' autocorrect='off')
-          small.error Please enter your email
-      .row
-        .small-4.columns
-          label(for='password') Password
-        .small-8.columns
-          input(required type='password' id='password' name='password' placeholder='password' pattern='[\\W\\w]{8,}')
-          small.error Passwords must be at least 8 characters long
-      .row
-        .small-12.columns
-          input.button(type='submit' value='Log in' data-hook='login')
-      .row
-        .small-12.columns
-          a.button.button.tiny(href='/recover') Forgot your password? Click here to recover it.
+    .medium-8.medium-centered.columns
+      form(data-abide)
+        .row
+          .small-12.columns
+            h3 Please log in
+        .row
+          .small-4.columns
+            h3
+              label(for='email') Email
+          .small-8.columns
+            input(required type='email' id='email' name='email' placeholder='email' autocapitalize='off' autocorrect='off')
+            small.error Please enter your email
+        .row
+          .small-4.columns
+            label(for='password') Password
+          .small-8.columns
+            input(required type='password' id='password' name='password' placeholder='password' pattern='[\\W\\w]{8,}')
+            small.error Passwords must be at least 8 characters long
+        .row
+          .small-12.columns
+            input.button(type='submit' value='Log in' data-hook='login')
+        .row
+          .small-12.columns
+            a.button.button.tiny(href='/recover') Forgot your password? Click here to recover it.

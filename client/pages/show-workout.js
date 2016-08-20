@@ -12,7 +12,7 @@ module.exports = View.extend({
     },
     initialize: function (options) {
 
-        this.format = window.location.hash.slice(1) || 'long';
+        this.format = window.location.hash.slice(1) || 'short';
         var workoutSummary = App.workoutSummaries.get(options.date);
         if (!workoutSummary) {
             this.template = require('../templates/pages/not-found.jade');

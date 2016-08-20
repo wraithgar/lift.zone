@@ -43,7 +43,7 @@ module.exports = View.extend({
         },
         'model.hasComment': {
             type: 'toggle',
-            hook: 'toggle-comment'
+            hook: 'activity-comment'
         }
     },
     events: {

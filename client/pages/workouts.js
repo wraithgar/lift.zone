@@ -19,7 +19,7 @@ module.exports = View.extend({
     rePaginate: function () {
 
         var offset = App.workoutSummaries.length - perPage;
-        var prev = this.queryByHook('workoutsPrev');
+        var prev = this.queryByHook('workouts-prev');
         Dom.removeClass(prev, 'disabled');
         Dom.removeAttribute(prev, 'disabled');
 
@@ -40,13 +40,13 @@ module.exports = View.extend({
     },
     template: require('../templates/pages/workouts.jade'),
     events: {
-        'click [data-hook=workoutsPrev]': 'prevWorkouts',
-        'click [data-hook=workoutsNext]': 'nextWorkouts'
+        'click [data-hook=workouts-prev]': 'prevWorkouts',
+        'click [data-hook=workouts-next]': 'nextWorkouts'
     },
     prevWorkouts: function () {
 
-        var prev = this.queryByHook('workoutsPrev');
-        var next = this.queryByHook('workoutsNext');
+        var prev = this.queryByHook('workouts-prev');
+        var next = this.queryByHook('workouts-next');
         var offset = this.workoutSummaries.offset - perPage;
         Dom.removeClass(next, 'disabled');
         Dom.removeAttribute(next, 'disabled');
@@ -63,8 +63,8 @@ module.exports = View.extend({
     },
     nextWorkouts: function () {
 
-        var prev = this.queryByHook('workoutsPrev');
-        var next = this.queryByHook('workoutsNext');
+        var prev = this.queryByHook('workouts-prev');
+        var next = this.queryByHook('workouts-next');
         var max = App.workoutSummaries.length - perPage;
         var offset = this.workoutSummaries.offset + perPage;
         Dom.removeClass(next, 'disabled');

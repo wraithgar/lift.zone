@@ -20,11 +20,15 @@ section
         dd(data-hook='format-nav-raw')
           a(href='#raw' data-hook='change-format') Raw
   .row(data-hook='long-format')
-    .small-12.columns.panel.radius(data-hook='activities-long')
+    .small-12.columns
+      .row
+        .medium-8.medium-centered.columns.panel.radius(data-hook='activities-long')
   .row(data-hook='short-format')
-    .small-12.columns.panel.radius(data-hook='activities-short')
+    .small-12.columns
+      .row
+        .medium-8.medium-centered.columns.panel.radius(data-hook='activities-short')
   .row(data-hook='raw-format')
-    .small-12.columns.panel.radius
+    .medium-8.medium-centered.columns.panel.radius
       h4 What you typed
       blockquote
         pre(data-hook='raw')

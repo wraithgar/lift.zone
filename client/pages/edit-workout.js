@@ -147,6 +147,7 @@ module.exports = View.extend({
             if (this.model.dateId !== Moment().format('YYYY-MM-DD')) {
                 this.model.unset('date');
             }
+            this.model.raw_date = workout.rawDate;
             this.model.activities.reset();
             return;
         }
@@ -158,13 +159,18 @@ module.exports = View.extend({
             this.model.unset('name');
         }
         if (workout.date) {
-            if (this.model.dateId !== workout.date.format('YYYY-MM-DD')) {
+            if (workout.rawDate !== this.model.raw_date) {
+                console.log('not equal');
+                console.log(workout.rawDate);
                 this.model.date = workout.date;
             }
         }
         else if (this.model.dateId !== Moment().format('YYYY-MM-DD')) {
-            this.model.unset('date');
+            if (!this.model.id) {
+                this.model.unset('date');
+            }
         }
+        this.model.raw_date = workout.rawDate;
         this.addActivities(workout.activities);
     },
     saveWorkout: function (e) {

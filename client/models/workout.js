@@ -23,6 +23,7 @@ module.exports = Model.extend(ApiMixin, {
 
             return new Date();
         }],
+        raw_date: 'string',
         user_name: 'string',
         visible: 'boolean',
         raw: 'string'

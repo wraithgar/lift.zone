@@ -20,18 +20,18 @@ section
         dd(data-hook='format-nav-raw')
           a(href='#raw' data-hook='change-format') Raw
   .row(data-hook='long-format')
-    .small-12.columns.panel(data-hook='activities-long')
+    .small-12.columns.panel.radius(data-hook='activities-long')
   .row(data-hook='short-format')
-    .small-12.columns.panel(data-hook='activities-short')
+    .small-12.columns.panel.radius(data-hook='activities-short')
   .row(data-hook='raw-format')
-    .small-12.columns.panel
+    .small-12.columns.panel.radius
       h4 What you typed
       blockquote
         pre(data-hook='raw')
   .reveal-modal(data-hook='share-modal', data-reveal)
     h3 Share
     p Tell your friends! You worked out!
-    .panel
+    .panel.radius
       p Here is the link to this workout:
       a.button.round(target='_blank' data-hook='share-link')
     .clearfix

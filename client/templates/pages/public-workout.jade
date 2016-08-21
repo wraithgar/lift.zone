@@ -1,10 +1,10 @@
 section
   .row
     .large-4.columns
-      h1(data-hook='workoutName')
+      h1(data-hook='workout-name')
       h3 By:&nbsp;
         span(data-hook='workoutUser')
-      h6(data-hook='workoutDate')
+      h6(data-hook='workout-date')
   hr
   .row
     .medium-9.columns
@@ -17,13 +17,9 @@ section
         dd(data-hook='format-nav-raw')
           a(href='#raw' data-hook='change-format') Raw
   .row(data-hook='long-format')
-    .small-12.columns
-      .row
-        .medium-8.medium-centered.columns.panel.radius(data-hook='activities-long')
+    .medium-8.medium-centered.columns.panel.radius(data-hook='activities-long')
   .row(data-hook='short-format')
-    .small-12.columns
-      .row
-        .medium-8.medium-centered.columns.panel.radius(data-hook='activities-short')
+    .medium-8.medium-centered.columns.panel.radius(data-hook='activities-short')
   .row(data-hook='raw-format')
     .medium-8.medium-centered.columns.panel.radius
       h4 What they typed

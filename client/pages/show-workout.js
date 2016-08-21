@@ -4,10 +4,11 @@ var App = require('ampersand-app');
 var View = require('ampersand-view');
 var ActivityView = require('../views/workout-activity');
 var ActivityShortView = require('../views/workout-activity-short');
+var WorkoutShareView = require('../views/workout-share');
 
 module.exports = View.extend({
     template: require('../templates/pages/show-workout.jade'),
-    props: {
+    session: {
         format: 'string'
     },
     initialize: function (options) {
@@ -28,7 +29,8 @@ module.exports = View.extend({
             cases: {
                 'long': '[data-hook=long-format]',
                 'short': '[data-hook=short-format]',
-                'raw': '[data-hook=raw-format]'
+                'raw': '[data-hook=raw-format]',
+                'share': '[data-hook=share-format]'
             }
         }, {
             type: 'switchClass',
@@ -36,17 +38,18 @@ module.exports = View.extend({
             cases: {
                 'long': '[data-hook=format-nav-long]',
                 'short': '[data-hook=format-nav-short]',
-                'raw': '[data-hook=format-nav-raw]'
+                'raw': '[data-hook=format-nav-raw]',
+                'share': '[data-hook=format-nav-share]'
             }
 
         }],
         'model.name': {
             type: 'text',
-            hook: 'workoutName'
+            hook: 'workout-name'
         },
         'model.formattedDate': {
             type: 'text',
-            hook: 'workoutDate'
+            hook: 'workout-date'
         },
         'model.raw': {
             type: 'text',
@@ -57,31 +60,18 @@ module.exports = View.extend({
             hook: 'edit-link',
             name: 'href'
         },
-        'model.shareLink': [{
-            type: 'attribute',
-            hook: 'share-link',
-            name: 'href'
-        }, {
-            type: 'text',
-            hook: 'share-link'
-        }],
         'model.canShare': {
             type: 'toggle',
-            hook: 'share-show'
+            hook: 'share-format'
         }
     },
     events: {
-        'click [data-hook=change-format]': 'changeFormat',
-        'click [data-hook=share-button]': 'share'
-    },
-    share: function (e) {
-
-        e.preventDefault();
-        return $(this.queryByHook('share-modal')).foundation('reveal', 'open');
+        'click [data-hook=change-format]': 'changeFormat'
     },
     render: function () {
 
         this.renderWithTemplate();
+        this.renderSubview(new WorkoutShareView({ model: this.model }), this.queryByHook('share-format'));
         this.renderCollection(this.model.activities, ActivityView, this.queryByHook('activities-long'));
         this.renderCollection(this.model.activities, ActivityShortView, this.queryByHook('activities-short'));
     },

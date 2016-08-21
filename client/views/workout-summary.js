@@ -5,20 +5,20 @@ module.exports = View.extend({
     bindings: {
         'model.link': {
             type: 'attribute',
-            hook: 'workoutName',
+            hook: 'workout-name',
             name: 'href'
         },
         'model.name': {
             type: 'text',
-            hook: 'workoutName'
+            hook: 'workout-name'
         },
         'model.date': {
             type: 'text',
-            hook: 'workoutDate'
+            hook: 'workout-date'
         },
         'model.activityLabel': {
             type: 'text',
-            hook: 'workoutActivities'
+            hook: 'workout-activities'
         }
     },
     template: require('../templates/views/workout-summary.jade')

@@ -6,9 +6,7 @@ var App = require('ampersand-app');
 
 var Pages = require('./pages');
 
-var BaseActivities = require('./models/base-activities');
 var UserActivities = require('./models/user-activities');
-var Wendler531Model = require('./models/wendler531');
 var WorkoutModel = require('./models/workout');
 var AdminUsers = require('./models/admin-users');
 
@@ -16,10 +14,6 @@ module.exports = Router.extend({
     routes: {
         //Unauthenticated
         '': 'home',
-        'utils': 'utils',
-        'utils/parser': 'parser',
-        'utils/fitocracy': 'fitocracy',
-        'utils/531': 'wendler531',
         'about': 'about',
         'news': 'news',
         'login': 'login',
@@ -56,22 +50,6 @@ module.exports = Router.extend({
 
         this.trigger('page', new Pages.home());
     },
-    utils: function () {
-
-        this.trigger('page', new Pages.utils());
-    },
-    parser: function () {
-
-        this.trigger('page', new Pages.parser({
-            collection: new BaseActivities()
-        }));
-    },
-    fitocracy: function () {
-
-        this.trigger('page', new Pages.fitocracy({
-            collection: new BaseActivities()
-        }));
-    },
     about: function () {
 
         this.trigger('page', new Pages.about({ assetsUrl: App.assetsUrl }));
@@ -79,12 +57,6 @@ module.exports = Router.extend({
     news: function () {
 
         this.trigger('page', new Pages.news());
-    },
-    wendler531: function () {
-
-        this.trigger('page', new Pages.wendler531({
-            model: new Wendler531Model()
-        }));
     },
     login: function () {
 

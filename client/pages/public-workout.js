@@ -37,11 +37,11 @@ module.exports = View.extend({
         },
         'model.name': {
             type: 'text',
-            hook: 'workoutName'
+            hook: 'workout-name'
         },
         'model.formattedDate': {
             type: 'text',
-            hook: 'workoutDate'
+            hook: 'workout-date'
         },
         'model.raw': {
             type: 'text',

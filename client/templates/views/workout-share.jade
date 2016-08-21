@@ -1,0 +1,44 @@
+.small-12.columns
+  .row(data-hook='show-share-link')
+    .medium-8.medium-centered.columns
+      p Shareable link to this workout:
+      a.label.info.round(target='_blank' data-hook='share-link')
+      hr
+  .row
+    .medium-8.medium-centered.columns
+      label Here is your workout in a few styles ready for copying and pasting into other forums
+      input#markdown-short(type='radio' name='share-style' value='markdown-short' checked)
+      label(for='markdown-short') Markdown (short)
+      input#markdown-long(type='radio' name='share-style' value='markdown-long')
+      label(for='markdown-short') Markdown (long)
+      input#bbcode-short(type='radio' name='share-style' value='bbcode-short')
+      label(for='markdown-short') BBCode (short)
+      input#bbcode-long(type='radio' name='share-style' value='bbcode-long')
+      label(for='markdown-short') BBCode (long)
+  .row(data-hook='markdown-short-share')
+    .medium-8.medium-centered.columns
+      .row
+        .small-12.columns #&nbsp;
+          span(data-hook='workout-name')
+      .row
+        .small-12.columns ###&nbsp;
+          span(data-hook='workout-date')
+      br
+      .row
+        .small-12.columns
+          span(data-hook='activities-markdown-short')
+  .row(data-hook='markdown-long-share')
+    .medium-8.medium-centered.columns
+      p
+        span #&nbsp;
+        span(data-hook='workout-name')
+        br
+        span ###&nbsp;
+        span(data-hook='workout-date')
+        span(data-hook='activities-markdown-long')
+  .row(data-hook='bbcode-short-share')
+    .medium-8.medium-centered.columns(data-hook='activities-bbcode-short')
+      p BBCode short
+  .row(data-hook='bbcode-long-share')
+    .medium-8.medium-centered.columns(data-hook='activities-bbcode-long')
+      p BBCode long

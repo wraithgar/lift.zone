@@ -8,7 +8,7 @@ module.exports = View.extend({
     template: require('../templates/pages/public-workout.jade'),
     initialize: function () {
 
-        this.format = window.location.hash.slice(1) || 'long';
+        this.format = window.location.hash.slice(1) || 'short';
     },
     props: {
         format: 'string'

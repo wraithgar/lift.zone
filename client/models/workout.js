@@ -29,7 +29,8 @@ module.exports = Model.extend(ApiMixin, {
         raw: 'string'
     },
     session: {
-        exists: 'boolean'
+        exists: 'boolean',
+        lastInGroup: 'boolean' //used for sharing styles
     },
     collections: {
         activities: Activities

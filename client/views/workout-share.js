@@ -1,10 +1,8 @@
 'use strict';
 
 var View = require('ampersand-view');
-var MarkdownShortView = require('./markdown-short');
+var MarkdownActivityShortView = require('./markdown-activity-short');
 
-//markdown pr has ** around it
-// &gt;
 module.exports = View.extend({
     template: require('../templates/views/workout-share.jade'),
     session: {
@@ -17,7 +15,7 @@ module.exports = View.extend({
     render: function () {
 
         this.renderWithTemplate(this);
-        this.renderCollection(this.model.activities, MarkdownShortView, this.queryByHook('activities-markdown-short'));
+        this.renderCollection(this.model.activities, MarkdownActivityShortView, this.queryByHook('activities-markdown-short'));
     },
     bindings: {
         style: {

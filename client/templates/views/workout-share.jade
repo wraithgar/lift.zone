@@ -29,13 +29,16 @@
           span(data-hook='activities-markdown-short')
   .row(data-hook='markdown-long-share')
     .medium-8.medium-centered.columns
-      p
-        span #&nbsp;
-        span(data-hook='workout-name')
-        br
-        span ###&nbsp;
-        span(data-hook='workout-date')
-        span(data-hook='activities-markdown-long')
+      .row
+        .small-12.columns #&nbsp;
+          span(data-hook='workout-name')
+      .row
+        .small-12.columns ###&nbsp;
+          span(data-hook='workout-date')
+      br
+      .row
+        .small-12.columns
+          span(data-hook='activities-markdown-long')
   .row(data-hook='bbcode-short-share')
     .medium-8.medium-centered.columns(data-hook='activities-bbcode-short')
       p BBCode short

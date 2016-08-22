@@ -6,7 +6,7 @@
       hr
   .row
     .medium-8.medium-centered.columns
-      label Here is your workout in a few styles ready for copying and pasting into other forums
+      p Here is your workout in a few styles ready for copying and pasting into other forums
       input#markdown-short(type='radio' name='share-style' value='markdown-short' checked)
       label(for='markdown-short') Markdown (short)
       input#markdown-long(type='radio' name='share-style' value='markdown-long')
@@ -18,8 +18,7 @@
   .row(data-hook='markdown-short-share')
     .medium-8.medium-centered.columns
       .row
-        .small-12.columns #&nbsp;
-          span(data-hook='workout-name')
+        .small-12.columns #&nbsp;[#[span(data-hook='workout-name')]](#[span(data-hook='share-link')])
       .row
         .small-12.columns ###&nbsp;
           span(data-hook='workout-date')
@@ -30,8 +29,7 @@
   .row(data-hook='markdown-long-share')
     .medium-8.medium-centered.columns
       .row
-        .small-12.columns #&nbsp;
-          span(data-hook='workout-name')
+        .small-12.columns #&nbsp;[#[span(data-hook='workout-name')]](#[span(data-hook='share-link')])
       .row
         .small-12.columns ###&nbsp;
           span(data-hook='workout-date')
@@ -41,7 +39,13 @@
           span(data-hook='activities-markdown-long')
   .row(data-hook='bbcode-short-share')
     .medium-8.medium-centered.columns(data-hook='activities-bbcode-short')
-      p BBCode short
+      .row
+        .small-12.columns [b][size=200][url=#[span(data-hook='share-link')]]#[span(data-hook='workout-name')][/url][/size][/b]
+      .row
+        .small-12.columns [b][size=150]#[span(data-hook='workout-date')][/size][/b]
   .row(data-hook='bbcode-long-share')
     .medium-8.medium-centered.columns(data-hook='activities-bbcode-long')
-      p BBCode long
+      .row
+        .small-12.columns [b][size=200][url=#[span(data-hook='share-link')]]#[span(data-hook='workout-name')][/url][/size][/b]
+      .row
+        .small-12.columns [b][size=150]#[span(data-hook='workout-date')][/size][/b]

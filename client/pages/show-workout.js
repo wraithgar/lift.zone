@@ -62,7 +62,7 @@ module.exports = View.extend({
         },
         'model.canShare': {
             type: 'toggle',
-            hook: 'share-format'
+            hook: 'format-nav-share'
         }
     },
     events: {

@@ -2,6 +2,9 @@
 
 var View = require('ampersand-view');
 var MarkdownActivityShortView = require('./markdown-activity-short');
+var MarkdownActivityLongView = require('./markdown-activity-long');
+var BBCodeActivityShortView = require('./bbcode-activity-short');
+var BBCodeActivityLongView = require('./bbcode-activity-long');
 
 module.exports = View.extend({
     template: require('../templates/views/workout-share.jade'),
@@ -16,6 +19,9 @@ module.exports = View.extend({
 
         this.renderWithTemplate(this);
         this.renderCollection(this.model.activities, MarkdownActivityShortView, this.queryByHook('activities-markdown-short'));
+        this.renderCollection(this.model.activities, MarkdownActivityLongView, this.queryByHook('activities-markdown-long'));
+        this.renderCollection(this.model.activities, BBCodeActivityShortView, this.queryByHook('activities-bbcode-short'));
+        this.renderCollection(this.model.activities, BBCodeActivityLongView, this.queryByHook('activities-bbcode-long'));
     },
     bindings: {
         style: {

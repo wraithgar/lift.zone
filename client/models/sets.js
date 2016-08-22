@@ -106,13 +106,6 @@ var SetModel = Model.extend({
                 }
                 return segments.join(':');
             }
-        },
-        nonpr: {
-            deps: ['pr'],
-            fn: function () {
-
-                return !this.pr;
-            }
         }
     }
 });

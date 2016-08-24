@@ -28,13 +28,10 @@ module.exports = View.extend({
             type: 'text',
             hook: 'activity-name'
         },
-        'model.comment': [{
+        'model.comment': {
             type: 'text',
             hook: 'activity-comment'
-        }, {
-            type: 'toggle',
-            hook: 'activity-comment'
-        }],
+        },
         'model.hasComment': {
             type: 'toggle',
             hook: 'toggle-comment'

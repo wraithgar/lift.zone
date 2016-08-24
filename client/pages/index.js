@@ -5,6 +5,7 @@ module.exports = {
     about: require('./about'),
     admin: require('./admin'),
     activities: require('./activities'),
+    activityHistory: require('./activity-history'),
     editWorkout: require('./edit-workout'),
     home: require('./home'),
     index: require('./index'),

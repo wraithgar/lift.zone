@@ -1,0 +1,12 @@
+section
+  .row
+    .small-12.columns
+      h1(data-hook='activity-name')
+  hr
+  .row
+    .small-12.columns(data-hook='activity-history')
+  .row
+    .small-6.columns
+      button.round.tiny.button.left(data-hook='activities-prev') &lArr;
+    .small-6.columns
+      button.round.tiny.button.disabled.right(data-hook='activities-next' disabled) &rArr;

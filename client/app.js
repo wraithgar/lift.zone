@@ -8,6 +8,7 @@ var MainView = require('./main-view');
 var Me = require('./models/me');
 var WorkoutSummaries = require('./models/workout-summaries');
 var Config = require('../config');
+
 App.extend({
     apiUrl: Config.APIURL,
     assetsUrl: Config.ASSETSURL,

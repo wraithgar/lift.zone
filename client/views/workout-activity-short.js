@@ -26,13 +26,15 @@ module.exports = View.extend({
             type: 'text',
             hook: 'activity-name'
         },
-        'model.comment': [{
+        'model.historyUrl': {
+            type: 'attribute',
+            name: 'href',
+            hook: 'activity-name'
+        },
+        'model.comment': {
             type: 'text',
             hook: 'activity-comment'
-        }, {
-            type: 'toggle',
-            hook: 'activity-comment'
-        }],
+        },
         'model.ready': {
             type: 'toggle',
             no: '[data-hook=new-activity]'
@@ -43,7 +45,7 @@ module.exports = View.extend({
         },
         'model.hasComment': {
             type: 'toggle',
-            hook: 'activity-comment'
+            hook: 'toggle-comment'
         }
     },
     events: {

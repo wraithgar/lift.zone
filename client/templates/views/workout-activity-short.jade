@@ -1,12 +1,12 @@
 .row
   .small-12.columns
     h5
-      span(data-hook='activity-name')
+      a(data-hook='activity-name')
       span &#xa0;
       span.circle.info-bg-color(data-hook='new-activity')
         i.fa.fa-question
     ul.no-bullet.inline-list(data-hook='sets')
-    blockquote.short
+    blockquote.short(data-hook='toggle-comment')
       cite(data-hook='activity-comment')
     .reveal-modal(data-hook='choose-alias', data-reveal)
       ul.pricing-table

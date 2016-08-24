@@ -59,10 +59,6 @@ module.exports = View.extend({
             type: 'attribute',
             hook: 'edit-link',
             name: 'href'
-        },
-        'model.canShare': {
-            type: 'toggle',
-            hook: 'format-nav-share'
         }
     },
     events: {

@@ -1,10 +1,8 @@
 'use strict';
 
 var Collection = require('ampersand-collection');
-var RestCollection = require('ampersand-rest-collection');
 var Model = require('ampersand-model');
 var ApiModelMixin = require('./mixins/api-model');
-var ApiCollectionMixin = require('./mixins/api-collection');
 var App = require('ampersand-app');
 
 var AliasModel = Model.extend(ApiModelMixin, {
@@ -39,13 +37,4 @@ var ActivityModel = Model.extend(ApiModelMixin, {
     }
 });
 
-var ActivityCollection = RestCollection.extend(ApiCollectionMixin, {
-    comparator: 'name',
-    url: function () {
-
-        return App.apiUrl + '/activities';
-    },
-    model: ActivityModel
-});
-
-module.exports = ActivityCollection;
+module.exports = ActivityModel;

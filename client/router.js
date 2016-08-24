@@ -6,8 +6,10 @@ var App = require('ampersand-app');
 
 var Pages = require('./pages');
 
-var UserActivities = require('./models/user-activities');
+var UserActivities = require('./models/activities');
 var WorkoutModel = require('./models/workout');
+var ActivityModel = require('./models/activity');
+var ActivityHistories = require('./models/activity-histories');
 var AdminUsers = require('./models/admin-users');
 
 module.exports = Router.extend({
@@ -27,6 +29,7 @@ module.exports = Router.extend({
         'workouts/:date': 'showWorkout',
         'workouts/:date/edit': 'editWorkout',
         'activities': 'activities',
+        'activities/:id/history': 'activityHistory',
         'me': 'me',
         'me/invites': 'invites',
         'validate': 'validate',
@@ -152,6 +155,13 @@ module.exports = Router.extend({
             return this.navigate('/login');
         }
         this.trigger('page', new Pages.activities({ collection: new UserActivities() }));
+    },
+    activityHistory: function (id) {
+
+        if (!App.me.loggedIn) {
+            return this.navigate('/login');
+        }
+        this.trigger('page', new Pages.activityHistory({ model: new ActivityModel({ id: id }), collection: new ActivityHistories({ id: id }) }));
     },
     admin: function () {
 

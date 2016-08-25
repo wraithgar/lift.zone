@@ -1,7 +1,10 @@
 section
   .row
     .small-12.columns
-      h1(data-hook='activity-name')
+      h1
+        span Activity History:&nbsp;
+        br.show-for-small-only
+        span(data-hook='activity-name')
   hr
   .row
     .small-12.columns(data-hook='activity-history')

@@ -28,6 +28,11 @@ module.exports = View.extend({
             type: 'text',
             hook: 'activity-name'
         },
+        'model.historyUrl': {
+            type: 'attribute',
+            name: 'href',
+            hook: 'activity-name'
+        },
         'model.comment': {
             type: 'text',
             hook: 'activity-comment'

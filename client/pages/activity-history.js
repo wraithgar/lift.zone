@@ -35,7 +35,7 @@ module.exports = View.extend({
         this.activities.configure({ offset: offset });
     },
     bindings: {
-        'model.name': {
+        'model.displayName': {
             type: 'text',
             hook: 'activity-name'
         }

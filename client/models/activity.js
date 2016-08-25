@@ -30,7 +30,17 @@ var ActivityModel = Model.extend(ApiModelMixin, {
     props: {
         id: 'string',
         activity_id: 'string',
-        name: 'string'
+        name: 'string',
+        alias: 'string'
+    },
+    derived: {
+        displayName: {
+            deps: ['name', 'alias'],
+            fn: function () {
+
+                return this.alias || this.name;
+            }
+        }
     },
     collections: {
         aliases: AliasCollection

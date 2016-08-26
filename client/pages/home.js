@@ -9,12 +9,17 @@ module.exports = View.extend({
 
         this.listenTo(App.me, 'change', this.render.bind(this));
     },
+    session: {
+        assetsUrl: 'string'
+    },
     events: {
         'submit form': 'invite'
     },
     render: function () {
 
-        this.renderWithTemplate(App.me);
+        console.log(this.assetsUrl);
+        this.renderWithTemplate({ me: App.me, assetsUrl: this.assetsUrl });
+        $(this.el).foundation();
         return this;
     },
     invite: function (e) {

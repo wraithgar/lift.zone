@@ -51,7 +51,7 @@ module.exports = Router.extend({
     },
     home: function () {
 
-        this.trigger('page', new Pages.home());
+        this.trigger('page', new Pages.home({ assetsUrl: App.assetsUrl }));
     },
     about: function () {
 

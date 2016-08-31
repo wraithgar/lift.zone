@@ -64,11 +64,11 @@ module.exports = View.extend({
         save: {
             type: 'attribute',
             name: 'value',
-            hook: 'saveWorkout'
+            hook: 'save-workout'
         },
         working: {
             type: 'booleanClass',
-            hook: 'saveWorkout',
+            hook: 'save-workout',
             name: 'disabled'
         },
         'model.raw': {

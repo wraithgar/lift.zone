@@ -33,7 +33,7 @@ module.exports = View.extend({
         }],
         'model.user_name': {
             type: 'text',
-            hook: 'workoutUser'
+            hook: 'workout-user'
         },
         'model.name': {
             type: 'text',

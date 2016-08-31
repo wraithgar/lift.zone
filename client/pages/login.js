@@ -46,7 +46,6 @@ module.exports = View.extend({
         App.me.authenticate(email, password, {
             success: function (response) {
 
-                //enable the page
                 App.setAccessToken(response.token);
                 App.navigate('/');
             },

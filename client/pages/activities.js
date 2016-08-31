@@ -19,13 +19,13 @@ module.exports = View.extend({
         });
     },
     events: {
-        'click [data-hook=activitiesPrev]': 'prevActivities',
-        'click [data-hook=activitiesNext]': 'nextActivities',
+        'click [data-hook=activities-prev]': 'prevActivities',
+        'click [data-hook=activities-next]': 'nextActivities',
         'submit form[data-hook=activity-form]': 'addActivity'
     },
     rePaginate: function () {
 
-        var next = this.queryByHook('activitiesNext');
+        var next = this.queryByHook('activities-next');
         if (this.collection.length > perPage) {
             Dom.removeClass(next, 'disabled');
             Dom.removeAttribute(next, 'disabled');
@@ -70,8 +70,8 @@ module.exports = View.extend({
     },
     prevActivities: function () {
 
-        var prev = this.queryByHook('activitiesPrev');
-        var next = this.queryByHook('activitiesNext');
+        var prev = this.queryByHook('activities-next');
+        var next = this.queryByHook('activities-next');
         var offset = this.paginatedCollection.offset - perPage;
         Dom.removeClass(next, 'disabled');
         Dom.removeAttribute(next, 'disabled');
@@ -88,8 +88,8 @@ module.exports = View.extend({
     },
     nextActivities: function () {
 
-        var prev = this.queryByHook('activitiesPrev');
-        var next = this.queryByHook('activitiesNext');
+        var prev = this.queryByHook('activities-next');
+        var next = this.queryByHook('activities-next');
         var max = this.collection.length - perPage;
         var offset = this.paginatedCollection.offset + perPage;
         Dom.removeClass(next, 'disabled');

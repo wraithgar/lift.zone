@@ -14,22 +14,47 @@ module.exports = View.extend({
             return App.navigate('/');
         }
         this.renderWithTemplate(this);
+        $(this.el).foundation();
         return this;
+    },
+    session: {
+        'working': 'boolean',
+        'login': ['string', true, 'Log in']
+    },
+    bindings: {
+        login: {
+            type: 'attribute',
+            name: 'value',
+            hook: 'login'
+        },
+        working: {
+            type: 'booleanClass',
+            hook: 'login',
+            name: 'disabled'
+        }
     },
     authenticate: function (e) {
 
         e.preventDefault();
+
+        var self = this;
+        self.login = 'Logging in…';
+        self.working = true;
         App.view.message = '';
-        var email = this.query('[name=email]').value;
-        var password = this.query('[name=password]').value;
+        var email = self.query('[name=email]').value;
+        var password = self.query('[name=password]').value;
         App.me.authenticate(email, password, {
             success: function (response) {
 
+                //enable the page
                 App.setAccessToken(response.token);
                 App.navigate('/');
             },
             error: function (model, resp) {
 
+                //enable the page
+                self.working = false;
+                self.login = 'Log in';
                 App.log(resp);
                 App.view.message = 'Invalid login.  Please try again.';
             }

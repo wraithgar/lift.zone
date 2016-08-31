@@ -43,6 +43,10 @@ module.exports = View.extend({
         'input [data-hook=date-input]': 'setDate',
         'submit form': 'saveWorkout'
     },
+    session: {
+        'working': 'boolean',
+        'save': ['string', true, 'Save']
+    },
     checkExisting: function (model, newDate, ctx) {
 
         if (!ctx || !ctx.xhr) {
@@ -57,6 +61,16 @@ module.exports = View.extend({
         }
     },
     bindings: {
+        save: {
+            type: 'attribute',
+            name: 'value',
+            hook: 'saveWorkout'
+        },
+        working: {
+            type: 'booleanClass',
+            hook: 'saveWorkout',
+            name: 'disabled'
+        },
         'model.raw': {
             type: 'text',
             hook: 'workout-input'
@@ -177,6 +191,7 @@ module.exports = View.extend({
 
         e.preventDefault();
         var self = this;
+        App.view.message = '';
         var ready = self.model.activities.every(function (activity) {
 
             return activity.ready;
@@ -187,6 +202,8 @@ module.exports = View.extend({
         if (!ready) {
             return $(self.queryByHook('new-activities')).foundation('reveal', 'open');
         }
+        self.save = 'Saving…';
+        self.working = true;
         self.model.save(null, {
             success: function (saved) {
 
@@ -198,6 +215,9 @@ module.exports = View.extend({
             },
             error: function (model, newModel, ctx) {
 
+                App.view.message = 'Unknown error saving workout.';
+                self.working = false;
+                self.save = 'Save';
                 if (ctx.xhr.status === 409) {
                     return $(self.queryByHook('workout-exists')).foundation('reveal', 'open');
                 }

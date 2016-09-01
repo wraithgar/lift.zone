@@ -38,8 +38,7 @@ module.exports = View.extend({
         }
     },
     events: {
-        'click [data-hook=new-activity]': 'findAlias',
-        'click [data-hook=name]': 'selfAlias'
+        'click [data-hook=new-activity]': 'findAlias'
     },
     render: function () {
 
@@ -54,10 +53,6 @@ module.exports = View.extend({
     findAlias: function () {
 
         $(this.aliasModal).foundation('reveal', 'open');
-    },
-    selfAlias: function () {
-
-        console.log('choosing self alias');
     },
     closeModal: function () {
 

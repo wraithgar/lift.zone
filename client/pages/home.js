@@ -17,7 +17,6 @@ module.exports = View.extend({
     },
     render: function () {
 
-        console.log(this.assetsUrl);
         this.renderWithTemplate({ me: App.me, assetsUrl: this.assetsUrl });
         $(this.el).foundation();
         return this;

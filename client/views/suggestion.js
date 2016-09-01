@@ -6,7 +6,7 @@ module.exports = View.extend({
     autoRender: true,
     template: require('../templates/views/suggestion.jade'),
     events: {
-        'click a': 'chooseAlias'
+        'click [data-hook=name]': 'chooseAlias'
     },
     bindings: {
         'model.name': {

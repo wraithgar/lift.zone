@@ -174,8 +174,6 @@ module.exports = View.extend({
         }
         if (workout.date) {
             if (workout.rawDate !== this.model.raw_date) {
-                console.log('not equal');
-                console.log(workout.rawDate);
                 this.model.date = workout.date;
             }
         }

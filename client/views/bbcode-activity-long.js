@@ -19,7 +19,7 @@ var RepView = View.extend({
 module.exports = View.extend({
     template: require('../templates/views/bbcode-activity.jade'),
     bindings: {
-        'model.name': {
+        'model.displayName': {
             type: 'text',
             hook: 'name'
         },

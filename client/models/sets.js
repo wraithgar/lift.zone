@@ -53,7 +53,7 @@ var SetModel = Model.extend({
 
                 var formatted = [];
                 if (this.time) {
-                    formatted.push(this.time);
+                    formatted.push(this.formattedTime);
                 }
                 if (this.time && this.distance) {
                     formatted.push('|');

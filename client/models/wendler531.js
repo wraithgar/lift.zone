@@ -10,6 +10,7 @@ module.exports = Model.extend({
         this.squat.name = 'Squat';
         this.bench.name = 'Bench';
         this.deadlift.name = 'Deadlift';
+
         if (localStorage && localStorage.wendler531) {
             try {
                 this.set(JSON.parse(localStorage.wendler531));

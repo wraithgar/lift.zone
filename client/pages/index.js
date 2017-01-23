@@ -19,5 +19,6 @@ module.exports = {
     showWorkout: require('./show-workout'),
     signup: require('./signup'),
     validate: require('./validate'),
+    wendler531: require('./wendler531'),
     workouts: require('./workouts')
 };

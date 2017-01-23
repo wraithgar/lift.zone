@@ -2,6 +2,10 @@ section
   .row
     .small-12.columns
       h1 531 Calculator
+      p.panel
+        span Put your current max weight/reps in for each lift and this will calculate your routine.
+        br
+        span You can then add/remove weight manually for subsequent months
     hr
   .row
     .medium-6.columns
@@ -39,4 +43,8 @@ section
           .small-3.columns
             input.form-control(type='number', step='5' data-hook='deadlift-extra' placeholder='+', title='extra', value=locals.model.deadlift.extra)
     .medium-6.columns
-      .workout.right(data-hook='results')
+      .workout.right
+        div(data-hook='ohp-results')
+        div(data-hook='squat-results')
+        div(data-hook='bench-results')
+        div(data-hook='deadlift-results')

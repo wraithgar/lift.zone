@@ -16,14 +16,14 @@ section
               .small-12.columns
                 h3 OHP
               .row
-                .small-2.columns
+                .small-12.medium-3.large-2.columns
                   label Weight
                     input.form-control(type='number', step='5' data-hook='ohp-weight' placeholder='weight', title='weight', value=locals.model.ohp.weight)
                   label Reps
                     input.form-control(type='number' data-hook='ohp-reps' placeholder='reps', title='reps', value=locals.model.ohp.reps)
                   label Extra
                     input.form-control(type='number', step='5' data-hook='ohp-extra' placeholder='+', title='extra', value=locals.model.ohp.extra)
-                .small-10.columns(data-hook='ohp-results')
+                .small-12.medium-9.large-10.columns(data-hook='ohp-results')
         .row.panel
           .small-12.columns
             .row

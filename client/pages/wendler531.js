@@ -18,6 +18,18 @@ module.exports = View.extend({
         'model.ohp.ready': {
             type: 'toggle',
             hook: 'ohp-results'
+        },
+        'model.squat.ready': {
+            type: 'toggle',
+            hook: 'squat-results'
+        },
+        'model.bench.ready': {
+            type: 'toggle',
+            hook: 'bench-results'
+        },
+        'model.deadlift.ready': {
+            type: 'toggle',
+            hook: 'deadlift-results'
         }
     },
     initialize: function () {

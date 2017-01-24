@@ -24,7 +24,8 @@ module.exports = Router.extend({
         'privacy': 'privacy',
         'recover': 'recover',
         'public/workouts/:id': 'publicWorkout',
-        'public/531': 'wendler531',
+        'tools': 'tools',
+        'tools/531': 'wendler531',
         //Authenticated
         'workouts': 'workouts',
         'workouts/new': 'editWorkout',
@@ -86,6 +87,9 @@ module.exports = Router.extend({
     publicWorkout: function (id) {
 
         this.trigger('page', new Pages.publicWorkout({ model: new WorkoutModel({ id: id }) }));
+    },
+    tools: function () {
+        this.trigger('page', new Pages.tools());
     },
     wendler531: function () {
 

@@ -2,41 +2,67 @@ section
   .row
     .small-12.columns
       h1 531 Calculator
+      p.panel
+        span Put your current max weight/reps in for each lift and this will calculate your routine.
+        br
+        span You can then add/remove weight manually for subsequent months
     hr
   .row
-    .medium-6.columns
+    .small-12.columns
       form.form-horizontal(role='form')
-        .row
-          label.small-3.columns OHP
-          .small-3.columns
-            input.form-control(type='number', step='5' data-hook='ohp-weight' placeholder='weight', title='weight', value=locals.model.ohp.weight)
-          .small-3.columns
-            input.form-control(type='number' data-hook='ohp-reps' placeholder='reps', title='reps', value=locals.model.ohp.reps)
-          .small-3.columns
-            input.form-control(type='number', step='5' data-hook='ohp-extra' placeholder='+', title='extra', value=locals.model.ohp.extra)
-        .row
-          label.small-3.columns Squat
-          .small-3.columns
-            input.form-control(type='number', step='5' data-hook='squat-weight' placeholder='weight', title='weight', value=locals.model.squat.weight)
-          .small-3.columns
-            input.form-control(type='number' data-hook='squat-reps' placeholder='reps', title='reps', value=locals.model.squat.reps)
-          .small-3.columns
-            input.form-control(type='number', step='5' data-hook='squat-extra' placeholder='+', title='extra', value=locals.model.squat.extra)
-        .row
-          label.small-3.columns Bench
-          .small-3.columns
-            input.form-control(type='number', step='5' data-hook='bench-weight' placeholder='weight', title='weight', value=locals.model.bench.weight)
-          .small-3.columns
-            input.form-control(type='number' data-hook='bench-reps' placeholder='reps', title='reps', value=locals.model.bench.reps)
-          .small-3.columns
-            input.form-control(type='number', step='5' data-hook='bench-extra' placeholder='+', title='extra', value=locals.model.bench.extra)
-        .row
-          label.small-3.columns Deadlift
-          .small-3.columns
-            input.form-control(type='number', step='5' data-hook='deadlift-weight' placeholder='weight', title='weight', value=locals.model.deadlift.weight)
-          .small-3.columns
-            input.form-control(type='number' data-hook='deadlift-reps' placeholder='reps', title='reps', value=locals.model.deadlift.reps)
-          .small-3.columns
-            input.form-control(type='number', step='5' data-hook='deadlift-extra' placeholder='+', title='extra', value=locals.model.deadlift.extra)
-    .medium-6.columns
-      .workout.right(data-hook='results')
+        .row.panel
+          .small-12.columns
+            .row
+              .small-12.columns
+                h3 OHP
+              .row
+                .small-12.medium-3.large-2.columns
+                  label Weight
+                    input.form-control(type='number', step='5' data-hook='ohp-weight' placeholder='weight', title='weight', value=locals.model.ohp.weight)
+                  label Reps
+                    input.form-control(type='number' data-hook='ohp-reps' placeholder='reps', title='reps', value=locals.model.ohp.reps)
+                  label Extra
+                    input.form-control(type='number', step='5' data-hook='ohp-extra' placeholder='+', title='extra', value=locals.model.ohp.extra)
+                .small-12.medium-9.large-10.columns(data-hook='ohp-results')
+        .row.panel
+          .small-12.columns
+            .row
+              .small-12.columns
+                h3 Squat
+              .row
+                .small-2.columns
+                  label Weight
+                    input.form-control(type='number', step='5' data-hook='squat-weight' placeholder='weight', title='weight', value=locals.model.squat.weight)
+                  label Reps
+                    input.form-control(type='number' data-hook='squat-reps' placeholder='reps', title='reps', value=locals.model.squat.reps)
+                  label Extra
+                    input.form-control(type='number', step='5' data-hook='squat-extra' placeholder='+', title='extra', value=locals.model.squat.extra)
+                .small-10.columns(data-hook='squat-results')
+        .row.panel
+          .small-12.columns
+            .row
+              .small-12.columns
+                h3 Bench
+              .row
+                .small-2.columns
+                  label Weight
+                    input.form-control(type='number', step='5' data-hook='bench-weight' placeholder='weight', title='weight', value=locals.model.bench.weight)
+                  label Reps
+                    input.form-control(type='number' data-hook='bench-reps' placeholder='reps', title='reps', value=locals.model.bench.reps)
+                  label Extra
+                    input.form-control(type='number', step='5' data-hook='bench-extra' placeholder='+', title='extra', value=locals.model.bench.extra)
+                .small-10.columns(data-hook='bench-results')
+        .row.panel
+          .small-12.columns
+            .row
+              .small-12.columns
+                h3 Deadlift
+              .row
+                .small-2.columns
+                  label Weight
+                    input.form-control(type='number', step='5' data-hook='deadlift-weight' placeholder='weight', title='weight', value=locals.model.deadlift.weight)
+                  label Reps
+                    input.form-control(type='number' data-hook='deadlift-reps' placeholder='reps', title='reps', value=locals.model.deadlift.reps)
+                  label Extra
+                    input.form-control(type='number', step='5' data-hook='deadlift-extra' placeholder='+', title='extra', value=locals.model.deadlift.extra)
+                .small-10.columns(data-hook='deadlift-results')

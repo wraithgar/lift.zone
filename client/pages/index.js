@@ -18,6 +18,8 @@ module.exports = {
     recover: require('./recover'),
     showWorkout: require('./show-workout'),
     signup: require('./signup'),
+    tools: require('./tools'),
     validate: require('./validate'),
+    wendler531: require('./wendler531'),
     workouts: require('./workouts')
 };

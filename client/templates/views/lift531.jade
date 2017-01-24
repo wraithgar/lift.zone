@@ -1,53 +1,37 @@
-table.table(role='grid')
-  tr
-    th(data-hook='name')
-    th Weight
-    th Reps
-  tr
-    td Warmup
-    td(data-hook='warmup1')
-    td 5
-  tr
-    td
-    td(data-hook='warmup2')
-    td 5
-  tr
-    td
-    td(data-hook='warmup3')
-    td 3
-  tr
-    td Wave 1
-    td(data-hook='wave1-set1')
-    td 5
-  tr
-    td
-    td(data-hook='wave1-set2')
-    td 5
-  tr
-    td
-    td(data-hook='wave1-set3')
-    td 5+
-  tr
-    td Wave 2
-    td(data-hook='wave2-set1')
-    td 3
-  tr
-    td
-    td(data-hook='wave2-set2')
-    td 3
-  tr
-    td
-    td(data-hook='wave2-set3')
-    td 3+
-  tr
-    td Wave 3
-    td(data-hook='wave3-set1')
-    td 5
-  tr
-    td
-    td(data-hook='wave3-set2')
-    td 3
-  tr
-    td
-    td(data-hook='wave3-set3')
-    td 1+
+.row
+  .row.panel.callout
+    .small-12.columns
+      .row
+        .small-12.columns
+          h4 Wave 1
+      .row
+        .small-2.columns #{locals.waves[0][0]} x 5
+        .small-2.columns #{locals.waves[0][1]} x 5
+        .small-2.columns #{locals.waves[0][2]} x 3
+        .small-2.columns #{locals.waves[1][0]} x 5
+        .small-2.columns #{locals.waves[1][1]} x 5
+        .small-2.columns #{locals.waves[1][2]} x 5+
+  .row.panel.callout
+    .small-12.columns
+      .row
+        .small-12.columns
+          h4 Wave 2
+      .row
+        .small-2.columns #{locals.waves[0][0]} x 5
+        .small-2.columns #{locals.waves[0][1]} x 5
+        .small-2.columns #{locals.waves[0][2]} x 3
+        .small-2.columns #{locals.waves[2][0]} x 3
+        .small-2.columns #{locals.waves[2][1]} x 3
+        .small-2.columns #{locals.waves[2][2]} x 3+
+  .row.panel.callout
+    .small-12.columns
+      .row
+        .small-12.columns
+          h4 Wave 3
+      .row
+        .small-2.columns #{locals.waves[0][0]} x 5
+        .small-2.columns #{locals.waves[0][1]} x 5
+        .small-2.columns #{locals.waves[0][2]} x 3
+        .small-2.columns #{locals.waves[3][0]} x 5
+        .small-2.columns #{locals.waves[3][1]} x 3
+        .small-2.columns #{locals.waves[3][2]} x 1+

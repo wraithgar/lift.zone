@@ -8,6 +8,7 @@ var Pages = require('./pages');
 
 var UserActivities = require('./models/activities');
 var WorkoutModel = require('./models/workout');
+var WendlerModel = require('./models/wendler531');
 var ActivityModel = require('./models/activity');
 var ActivityHistories = require('./models/activity-histories');
 var AdminUsers = require('./models/admin-users');
@@ -23,6 +24,8 @@ module.exports = Router.extend({
         'privacy': 'privacy',
         'recover': 'recover',
         'public/workouts/:id': 'publicWorkout',
+        'tools': 'tools',
+        'tools/531': 'wendler531',
         //Authenticated
         'workouts': 'workouts',
         'workouts/new': 'editWorkout',
@@ -84,6 +87,13 @@ module.exports = Router.extend({
     publicWorkout: function (id) {
 
         this.trigger('page', new Pages.publicWorkout({ model: new WorkoutModel({ id: id }) }));
+    },
+    tools: function () {
+        this.trigger('page', new Pages.tools());
+    },
+    wendler531: function () {
+
+        this.trigger('page', new Pages.wendler531({ model: new WendlerModel() }));
     },
     //Authenticated routes
     validate: function () {

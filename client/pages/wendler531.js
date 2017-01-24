@@ -14,21 +14,35 @@ var fuzzyNumber = function fuzzyNumber(value) {
 
 module.exports = View.extend({
     template: require('../templates/pages/wendler531.jade'),
+    bindings: {
+        'model.ohp.ready': {
+            type: 'toggle',
+            hook: 'ohp-results'
+        },
+        'model.squat.ready': {
+            type: 'toggle',
+            hook: 'squat-results'
+        },
+        'model.bench.ready': {
+            type: 'toggle',
+            hook: 'bench-results'
+        },
+        'model.deadlift.ready': {
+            type: 'toggle',
+            hook: 'deadlift-results'
+        }
+    },
     initialize: function () {
 
-        this.ohpView = this.registerSubview(new LiftView({ model: this.model.ohp }));
-        this.squatView = this.registerSubview(new LiftView({ model: this.model.squat }));
-        this.benchView = this.registerSubview(new LiftView({ model: this.model.bench }));
-        this.deadliftView = this.registerSubview(new LiftView({ model: this.model.deadlift }));
         this.saveModel = Debounce(this.model.save.bind(this.model), 250);
     },
     render: function () {
 
-        this.renderWithTemplate();
-        this.listenToAndRun(this.model.ohp, 'change:ready', this.renderOHP);
-        this.listenToAndRun(this.model.squat, 'change:ready', this.renderSquat);
-        this.listenToAndRun(this.model.bench, 'change:ready', this.renderBench);
-        this.listenToAndRun(this.model.deadlift, 'change:ready', this.renderDeadlift);
+        this.renderWithTemplate(this);
+        this.renderSubview(new LiftView({ model: this.model.ohp }), this.queryByHook('ohp-results'));
+        this.renderSubview(new LiftView({ model: this.model.squat }), this.queryByHook('squat-results'));
+        this.renderSubview(new LiftView({ model: this.model.bench }), this.queryByHook('bench-results'));
+        this.renderSubview(new LiftView({ model: this.model.deadlift }), this.queryByHook('deadlift-results'));
     },
     events: {
         'input [data-hook=ohp-weight]': 'setOHPWeight',
@@ -62,17 +76,6 @@ module.exports = View.extend({
         this.model.ohp.extra = fuzzyNumber(e.target.value);
         this.saveModel();
     },
-    renderOHP: function () {
-
-        if (this.model.ohp.ready) {
-            this.queryByHook('results').appendChild(this.ohpView.el);
-        }
-        else {
-            if (this.ohpView.el.parentNode) {
-                this.ohpView.el.parentNode.removeChild(this.ohpView.el);
-            }
-        }
-    },
     setSquatWeight: function (e) {
 
         e.preventDefault();
@@ -90,17 +93,6 @@ module.exports = View.extend({
         e.preventDefault();
         this.model.squat.extra = fuzzyNumber(e.target.value);
         this.saveModel();
-    },
-    renderSquat: function () {
-
-        if (this.model.squat.ready) {
-            this.queryByHook('results').appendChild(this.squatView.el);
-        }
-        else {
-            if (this.squatView.el.parentNode) {
-                this.squatView.el.parentNode.removeChild(this.squatView.el);
-            }
-        }
     },
     setBenchWeight: function (e) {
 
@@ -120,17 +112,6 @@ module.exports = View.extend({
         this.model.bench.extra = fuzzyNumber(e.target.value);
         this.saveModel();
     },
-    renderBench: function () {
-
-        if (this.model.bench.ready) {
-            this.queryByHook('results').appendChild(this.benchView.el);
-        }
-        else {
-            if (this.benchView.el.parentNode) {
-                this.benchView.el.parentNode.removeChild(this.benchView.el);
-            }
-        }
-    },
     setDeadliftWeight: function (e) {
 
         e.preventDefault();
@@ -148,16 +129,5 @@ module.exports = View.extend({
         e.preventDefault();
         this.model.deadlift.extra = fuzzyNumber(e.target.value);
         this.saveModel();
-    },
-    renderDeadlift: function () {
-
-        if (this.model.deadlift.ready) {
-            this.queryByHook('results').appendChild(this.deadliftView.el);
-        }
-        else {
-            if (this.deadliftView.el.parentNode) {
-                this.deadliftView.el.parentNode.removeChild(this.deadliftView.el);
-            }
-        }
     }
 });

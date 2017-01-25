@@ -10,11 +10,15 @@
     "lint": "eslint client",
     "validate": "npm ls"
   },
+  "bugs": {
+    "url": "https://github.com/wraithgar/lift.zone/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:wraithgar/lift.zone.git"
   },
   "author": "Gar <gar+code@danger.computer>",
+  "private": true,
   "license": "MIT",
   "dependencies": {
     "ampersand-app": "^2.0.0",

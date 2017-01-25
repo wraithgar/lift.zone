@@ -12,7 +12,7 @@ var pages = [
     ['pages/static.jade', 'index.html'],
     ['pages/about.jade', 'about'],
     ['pages/privacy.jade', 'privacy'],
-    ['pages/utils.jade', 'utils'],
+    ['pages/tools.jade', 'tools'],
     ['pages/login.jade', 'login'],
     ['pages/news.jade', 'news']
 ];

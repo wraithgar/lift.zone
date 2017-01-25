@@ -133,11 +133,11 @@ module.exports = View.extend({
         var activityNames = [];
         //We need to do a janky merge by alternate index so that our search() functions only have to run once
         //find things to add
-        activities.forEach(function (activity) {
+        activities.forEach(function (activity, i) {
 
             activityNames.push(activity.name);
             if (!this.model.activities.get(activity.name, 'name')) {
-                this.model.activities.add(activity, { fetch: true });
+                this.model.activities.add(activity, { fetch: true, at: i });
             }
             else {
                 this.model.activities.get(activity.name, 'name').set({ comment: undefined });

@@ -15,7 +15,7 @@
     "url": "git@github.com:wraithgar/lift.zone.git"
   },
   "author": "Gar <gar+code@danger.computer>",
-  "private": true,
+  "license": "MIT",
   "dependencies": {
     "ampersand-app": "^2.0.0",
     "ampersand-collection": "^2.0.0",

@@ -89,6 +89,7 @@ module.exports = Router.extend({
         this.trigger('page', new Pages.publicWorkout({ model: new WorkoutModel({ id: id }) }));
     },
     tools: function () {
+
         this.trigger('page', new Pages.tools());
     },
     wendler531: function () {

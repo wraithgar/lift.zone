@@ -10,12 +10,14 @@ var multipliers = [
 ];
 
 var nearest = function (weight) {
+
     return (5 * Math.round(weight / 5));
 };
 
 //Warmup is wave 0
 //Sets start at 1
-var calc = function (wave, set, weight) {
+var calculate = function (wave, set, weight) {
+
     var multiplier = multipliers[wave][set];
     if (weight > 0) {
         return String(nearest(weight * multiplier)) + ' lb';
@@ -55,39 +57,41 @@ module.exports = Model.extend({
         training: {
             deps: ['calculated', 'extra'],
             fn: function () {
-                var calc = this.calculated; //If we reference it directly we get NaN somehow?
-                if (calc !== undefined) {
-                    calc = calc * 0.9;
+
+                var calculated = this.calculated; //If we reference it directly we get NaN somehow?
+                if (calculated !== undefined) {
+                    calculated = calculated * 0.9;
                     if (this.extra > 0) {
-                        calc = calc + this.extra;
+                        calculated = calculated + this.extra;
                     }
                 }
-                return calc;
+                return calculated;
             }
         },
         waves: {
             deps: ['training'],
             fn: function () {
+
                 return [[
                     //Warmups
-                    calc(0, 0, this.training),
-                    calc(0, 1, this.training),
-                    calc(0, 2, this.training)
+                    calculate(0, 0, this.training),
+                    calculate(0, 1, this.training),
+                    calculate(0, 2, this.training)
                 ], [
                     //Wave 1
-                    calc(1, 0, this.training),
-                    calc(1, 1, this.training),
-                    calc(1, 2, this.training)
+                    calculate(1, 0, this.training),
+                    calculate(1, 1, this.training),
+                    calculate(1, 2, this.training)
                 ], [
                     //Wave 2
-                    calc(2, 0, this.training),
-                    calc(2, 1, this.training),
-                    calc(2, 2, this.training)
+                    calculate(2, 0, this.training),
+                    calculate(2, 1, this.training),
+                    calculate(2, 2, this.training)
                 ], [
                     //Wave 3
-                    calc(3, 0, this.training),
-                    calc(3, 1, this.training),
-                    calc(3, 2, this.training)
+                    calculate(3, 0, this.training),
+                    calculate(3, 1, this.training),
+                    calculate(3, 2, this.training)
                 ]];
             }
         }

@@ -6,6 +6,27 @@ var App = require('ampersand-app');
 var Sync = require('ampersand-sync');
 
 module.exports = {
+    links: {},
+    next: function () {
+
+        if (this.links && this.links.next) {
+            this.fetch({ url: this.links.next, reset: true });
+        }
+    },
+    hasNext: function () {
+
+        return this.links && this.links.next;
+    },
+    prev: function () {
+
+        if (this.links && this.links.prev) {
+            this.fetch({ url: this.links.pref, reset: true });
+        }
+    },
+    hasPrev: function () {
+
+        return this.links && this.links.prev;
+    },
     ajaxConfig: function () {
 
         var headers = {};
@@ -18,7 +39,12 @@ module.exports = {
     },
     sync: function (event, collection, options) {
 
+        var self = this;
         var error = options.error;
+        var success = options.success;
+
+        self.links = {};
+
         options.error = function (resp) {
 
             //4xx errors that aren't 404
@@ -28,6 +54,19 @@ module.exports = {
             }
             if (error) {
                 error(collection, resp, options);
+            }
+        };
+        options.success = function (body, ignored, resp) {
+
+            var link = resp.headers.link;
+            if (link) {
+                link.replace(/<([^>]*)>;\s*rel=([\w]*)/g, function (m, uri, type) {
+
+                    self.links[type] = uri;
+                });
+            }
+            if (success) {
+                success(body, ignored, resp);
             }
         };
         return Sync.apply(this, arguments);

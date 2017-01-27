@@ -20,7 +20,7 @@ module.exports = {
     prev: function () {
 
         if (this.links && this.links.prev) {
-            this.fetch({ url: this.links.pref, reset: true });
+            this.fetch({ url: this.links.prev, reset: true });
         }
     },
     hasPrev: function () {

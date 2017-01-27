@@ -2,21 +2,15 @@
 
 var App = require('ampersand-app');
 var Dom = require('ampersand-dom');
-var PaginatedSubcollection = require('ampersand-paginated-subcollection');
 var View = require('ampersand-view');
 
 var ActivityView = require('../views/user-activity');
-
-var perPage = 10;
 
 module.exports = View.extend({
     template: require('../templates/pages/activities.jade'),
     initialize: function () {
 
         this.collection.fetch({ reset: true });
-        this.paginatedCollection = new PaginatedSubcollection(this.collection, {
-            limit: perPage
-        });
     },
     events: {
         'click [data-hook=activities-prev]': 'prevActivities',
@@ -26,16 +20,21 @@ module.exports = View.extend({
     rePaginate: function () {
 
         var next = this.queryByHook('activities-next');
-        if (this.collection.length > perPage) {
+        var prev = this.queryByHook('activities-prev');
+
+        if (this.collection.hasNext()) {
             Dom.removeClass(next, 'disabled');
             Dom.removeAttribute(next, 'disabled');
         }
-        this.paginatedCollection.configure({ offset: 0 });
+        if (this.collection.hasPrev()) {
+            Dom.removeClass(prev, 'disabled');
+            Dom.removeAttribute(prev, 'disabled');
+        }
     },
     render: function () {
 
         this.renderWithTemplate(this);
-        this.renderCollection(this.paginatedCollection, ActivityView, this.queryByHook('activities'));
+        this.renderCollection(this.collection, ActivityView, this.queryByHook('activities'));
         this.cacheElements({ activityModal: '[data-hook=activity-modal]' });
         this.listenToAndRun(this.collection, 'reset', this.rePaginate);
         $(this.el).foundation();
@@ -70,39 +69,18 @@ module.exports = View.extend({
     },
     prevActivities: function () {
 
-        var prev = this.queryByHook('activities-next');
-        var next = this.queryByHook('activities-next');
-        var offset = this.paginatedCollection.offset - perPage;
-        Dom.removeClass(next, 'disabled');
-        Dom.removeAttribute(next, 'disabled');
-        Dom.removeClass(prev, 'disabled');
-        Dom.removeAttribute(prev, 'disabled');
-        if (offset < 0) {
-            offset = 0;
-        }
-        if (offset === 0) {
-            Dom.addAttribute(prev, 'disabled');
-            Dom.addClass(prev, 'disabled');
-        }
-        this.paginatedCollection.configure({ offset: offset });
+        var prev = this.queryByHook('activities-prev');
+        Dom.addClass(prev, 'disabled');
+        Dom.addAttribute(prev, 'disabled');
+
+        this.collection.prev();
     },
     nextActivities: function () {
 
-        var prev = this.queryByHook('activities-next');
         var next = this.queryByHook('activities-next');
-        var max = this.collection.length - perPage;
-        var offset = this.paginatedCollection.offset + perPage;
-        Dom.removeClass(next, 'disabled');
-        Dom.removeAttribute(next, 'disabled');
-        Dom.removeClass(prev, 'disabled');
-        Dom.removeAttribute(prev, 'disabled');
-        if (offset + perPage > this.collection.length) {
-            offset = max;
-        }
-        if (offset === max) {
-            Dom.addAttribute(next, 'disabled');
-            Dom.addClass(next, 'disabled');
-        }
-        this.paginatedCollection.configure({ offset: offset });
+        Dom.addClass(next, 'disabled');
+        Dom.addAttribute(next, 'disabled');
+
+        this.collection.next();
     }
 });

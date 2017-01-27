@@ -38,7 +38,7 @@
     "caber": "^4.2.3",
     "debug": "^2.2.0",
     "domready": "^1.0.8",
-    "eslint": "^3.3.1",
+    "eslint": "^3.14.1",
     "eslint-config-hapi": "^10.0.0",
     "eslint-plugin-hapi": "^4.0.0",
     "git-validate": "^2.1.4",

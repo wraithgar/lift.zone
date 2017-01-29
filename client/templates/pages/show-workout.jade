@@ -29,3 +29,10 @@ section
       blockquote
         pre(data-hook='raw')
   .row(data-hook='share-format')
+  .row
+    .large-2.columns.right
+      a.radius.button.tiny.warning.right(data-hook='confirm-delete') Delete this workout
+  .reveal-modal.small(data-hook='delete-modal', data-reveal)
+    h3 Are you sure?
+    p Deleting a workout is permanent
+    hr

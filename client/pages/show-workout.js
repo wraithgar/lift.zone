@@ -6,6 +6,25 @@ var ActivityView = require('../views/workout-activity');
 var ActivityShortView = require('../views/workout-activity-short');
 var WorkoutShareView = require('../views/workout-share');
 
+var DeleteButtonsView = View.extend({
+    template: require('../templates/views/delete-workout.jade'),
+    events: {
+        'click [data-hook=delete-workout]': 'deleteWorkout'
+    },
+    deleteWorkout: function () {
+
+        var dateId = this.model.dateId;
+        this.parent.closeDelete();
+        App.workoutSummaries.remove({ date: dateId });
+        this.model.destroy({
+            success: function (model, resp, options) {
+
+                App.navigate('/workouts');
+            }
+        });
+    }
+});
+
 module.exports = View.extend({
     template: require('../templates/pages/show-workout.jade'),
     session: {
@@ -62,19 +81,32 @@ module.exports = View.extend({
         }
     },
     events: {
-        'click [data-hook=change-format]': 'changeFormat'
+        'click [data-hook=change-format]': 'changeFormat',
+        'click [data-hook=confirm-delete]': 'confirmDelete'
     },
     render: function () {
 
-        this.renderWithTemplate();
+        this.renderWithTemplate(this);
+        this.cacheElements({ deleteModal: '[data-hook=delete-modal]' });
         this.renderSubview(new WorkoutShareView({ model: this.model }), this.queryByHook('share-format'));
+        this.renderSubview(new DeleteButtonsView({ model: this.model }), this.queryByHook('delete-modal'));
         this.renderCollection(this.model.activities, ActivityView, this.queryByHook('activities-long'));
         this.renderCollection(this.model.activities, ActivityShortView, this.queryByHook('activities-short'));
+        $(this.el).foundation();
+        return this;
     },
     changeFormat: function (e) {
 
         e.preventDefault();
         this.format = e.target.hash.slice(1);
         window.location.hash = this.format;
+    },
+    confirmDelete: function () {
+
+        $(this.deleteModal).foundation('reveal', 'open');
+    },
+    closeDelete: function () {
+
+        $(this.deleteModal).foundation('reveal', 'close');
     }
 });

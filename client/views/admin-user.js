@@ -3,7 +3,7 @@
 var View = require('ampersand-view');
 
 module.exports = View.extend({
-    template: require('../templates/views/admin-user.jade'),
+    template: require('../templates/views/admin-user.pug'),
     bindings: {
         'model.name': {
             type: 'text',

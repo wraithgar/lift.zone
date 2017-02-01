@@ -4,7 +4,7 @@ var View = require('ampersand-view');
 var App = require('ampersand-app');
 
 module.exports = View.extend({
-    template: require('../templates/pages/home.jade'),
+    template: require('../templates/pages/home.pug'),
     initialize: function () {
 
         this.listenTo(App.me, 'change', this.render.bind(this));

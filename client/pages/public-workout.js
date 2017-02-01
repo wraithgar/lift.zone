@@ -5,7 +5,7 @@ var ActivityView = require('../views/workout-activity');
 var ActivityShortView = require('../views/workout-activity-short');
 
 module.exports = View.extend({
-    template: require('../templates/pages/public-workout.jade'),
+    template: require('../templates/pages/public-workout.pug'),
     initialize: function () {
 
         this.format = window.location.hash.slice(1) || 'short';
@@ -60,7 +60,7 @@ module.exports = View.extend({
         self.model.fetchPublic({
             error: function () {
 
-                self.template = require('../templates/pages/not-found.jade');
+                self.template = require('../templates/pages/not-found.pug');
                 self.renderWithTemplate();
             }
         });

@@ -3,7 +3,7 @@
 var View = require('ampersand-view');
 
 var InviteView = View.extend({
-    template: require('../templates/views/user-invite.jade'),
+    template: require('../templates/views/user-invite.pug'),
     bindings: {
         'model.token': {
             type: 'text',
@@ -13,7 +13,7 @@ var InviteView = View.extend({
 });
 
 module.exports = View.extend({
-    template: require('../templates/pages/invites.jade'),
+    template: require('../templates/pages/invites.pug'),
     render: function () {
 
         this.renderWithTemplate(this);

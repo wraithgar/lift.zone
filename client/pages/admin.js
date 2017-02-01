@@ -3,7 +3,7 @@ var View = require('ampersand-view');
 var AdminUserView = require('../views/admin-user');
 
 module.exports = View.extend({
-    template: require('../templates/pages/admin.jade'),
+    template: require('../templates/pages/admin.pug'),
     initialize: function () {
 
         this.collection.fetch();

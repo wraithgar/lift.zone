@@ -4,7 +4,7 @@ var View = require('ampersand-view');
 var RepView = require('../views/markdown-rep');
 
 module.exports = View.extend({
-    template: require('../templates/views/markdown.jade'),
+    template: require('../templates/views/markdown.pug'),
     bindings: {
         'model.name': {
             type: 'text',

@@ -13,7 +13,7 @@ var fuzzyNumber = function fuzzyNumber(value) {
 };
 
 module.exports = View.extend({
-    template: require('../templates/pages/wendler531.jade'),
+    template: require('../templates/pages/wendler531.pug'),
     bindings: {
         'model.ohp.ready': {
             type: 'toggle',

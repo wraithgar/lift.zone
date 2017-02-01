@@ -7,7 +7,7 @@ var RequestView = require('../views/request-recover');
 var RecoverView = require('../views/recover');
 
 module.exports = View.extend({
-    template: require('../templates/pages/recover.jade'),
+    template: require('../templates/pages/recover.pug'),
     session: {
         'code': 'string'
     },

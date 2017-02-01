@@ -4,7 +4,7 @@ var View = require('ampersand-view');
 
 module.exports = View.extend({
     autoRender: true,
-    template: require('../templates/views/suggestion.jade'),
+    template: require('../templates/views/suggestion.pug'),
     events: {
         'click [data-hook=name]': 'chooseAlias'
     },

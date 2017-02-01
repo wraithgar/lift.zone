@@ -38,7 +38,7 @@ module.exports = View.extend({
         this.renderCollection(this.workoutSummaries, SummaryView, this.queryByHook('summaries'));
         this.listenToAndRun(App.workoutSummaries, 'reset', this.rePaginate);
     },
-    template: require('../templates/pages/workouts.jade'),
+    template: require('../templates/pages/workouts.pug'),
     events: {
         'click [data-hook=workouts-prev]': 'prevWorkouts',
         'click [data-hook=workouts-next]': 'nextWorkouts'

@@ -8,7 +8,7 @@ var SignupView = require('../views/signup');
 var InviteModel = require('../models/invite');
 
 module.exports = View.extend({
-    template: require('../templates/pages/signup.jade'),
+    template: require('../templates/pages/signup.pug'),
     initialize: function () {
 
         var params = Querystring.parse(window.location.search.slice('1'));

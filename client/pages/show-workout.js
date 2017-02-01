@@ -7,7 +7,7 @@ var ActivityShortView = require('../views/workout-activity-short');
 var WorkoutShareView = require('../views/workout-share');
 
 var DeleteButtonsView = View.extend({
-    template: require('../templates/views/delete-workout.jade'),
+    template: require('../templates/views/delete-workout.pug'),
     events: {
         'click [data-hook=delete-workout]': 'deleteWorkout'
     },
@@ -26,7 +26,7 @@ var DeleteButtonsView = View.extend({
 });
 
 module.exports = View.extend({
-    template: require('../templates/pages/show-workout.jade'),
+    template: require('../templates/pages/show-workout.pug'),
     session: {
         format: 'string'
     },
@@ -35,7 +35,7 @@ module.exports = View.extend({
         this.format = window.location.hash.slice(1) || 'short';
         var workoutSummary = App.workoutSummaries.get(options.date);
         if (!workoutSummary) {
-            this.template = require('../templates/pages/not-found.jade');
+            this.template = require('../templates/pages/not-found.pug');
         }
         else {
             this.model.id = workoutSummary.id;

@@ -11,7 +11,7 @@ var MarkdownCreditsView = require('../views/markdown-credits');
 var BBCodeCreditsView = require('../views/bbcode-credits');
 
 module.exports = View.extend({
-    template: require('../templates/pages/fitocracy.jade'),
+    template: require('../templates/pages/fitocracy.pug'),
     initialize: function () {
 
         this.throttledParse = Debounce(this.parseRaw, 1000);

@@ -5,7 +5,7 @@ var App = require('ampersand-app');
 var Sync = require('ampersand-sync');
 
 module.exports = View.extend({
-    template: require('../templates/views/validate.jade'),
+    template: require('../templates/views/validate.pug'),
     render: function () {
 
         this.renderWithTemplate(this);

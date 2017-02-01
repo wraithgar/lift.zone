@@ -7,11 +7,11 @@ var RequestView = require('../views/request-validation');
 var ValidateView = require('../views/validate');
 
 var ValidatedView = View.extend({
-    template: require('../templates/views/validated.jade')
+    template: require('../templates/views/validated.pug')
 });
 
 module.exports = View.extend({
-    template: require('../templates/pages/validate.jade'),
+    template: require('../templates/pages/validate.pug'),
     initialize: function () {
 
         this.listenTo(this, 'change:stage', this.renderStage.bind(this), {

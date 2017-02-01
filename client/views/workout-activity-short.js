@@ -5,7 +5,7 @@ var View = require('ampersand-view');
 var SuggestionView = require('./suggestion');
 
 var SetView = View.extend({
-    template: require('../templates/views/set-short.jade'),
+    template: require('../templates/views/set-short.pug'),
     bindings: {
         'model.formattedShort': {
             type: 'text',
@@ -20,7 +20,7 @@ var SetView = View.extend({
 });
 
 module.exports = View.extend({
-    template: require('../templates/views/workout-activity-short.jade'),
+    template: require('../templates/views/workout-activity-short.pug'),
     bindings: {
         'model.displayName': {
             type: 'text',

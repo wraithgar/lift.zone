@@ -5,7 +5,7 @@ var App = require('ampersand-app');
 var Sync = require('ampersand-sync');
 
 module.exports = View.extend({
-    template: require('../templates/views/request-validation.jade'),
+    template: require('../templates/views/request-validation.pug'),
     events: {
         'click [data-hook=request]': 'request'
     },

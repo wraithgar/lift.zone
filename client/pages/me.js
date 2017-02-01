@@ -4,7 +4,7 @@ var View = require('ampersand-view');
 var App = require('ampersand-app');
 
 module.exports = View.extend({
-    template: require('../templates/pages/me.jade'),
+    template: require('../templates/pages/me.pug'),
     bindings: {
         'model.validated': {
             type: 'toggle',

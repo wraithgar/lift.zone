@@ -4,7 +4,7 @@ var View = require('ampersand-view');
 var GroupedCollectionView = require('ampersand-grouped-collection-view');
 
 var RepView = View.extend({
-    template: require('../templates/views/bbcode-rep-short.jade'),
+    template: require('../templates/views/bbcode-rep-short.pug'),
     bindings: {
         'model.formattedShort': {
             type: 'text',
@@ -23,7 +23,7 @@ var RepView = View.extend({
 });
 
 var SetGroupView = View.extend({
-    template: require('../templates/views/bbcode-set-group.jade'),
+    template: require('../templates/views/bbcode-set-group.pug'),
     render: function () {
 
         this.renderWithTemplate();
@@ -34,7 +34,7 @@ var SetGroupView = View.extend({
 });
 
 module.exports = View.extend({
-    template: require('../templates/views/bbcode-activity.jade'),
+    template: require('../templates/views/bbcode-activity.pug'),
     bindings: {
         'model.displayName': {
             type: 'text',

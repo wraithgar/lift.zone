@@ -3,7 +3,7 @@
 var View = require('ampersand-view');
 
 module.exports = View.extend({
-    template: require('../templates/views/bbcode-credits.jade'),
+    template: require('../templates/views/bbcode-credits.pug'),
     autoRender: true
 });
 

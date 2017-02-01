@@ -17,15 +17,15 @@ var dateFormats = [
 ];
 
 module.exports = View.extend({
-    template: require('../templates/pages/new-workout.jade'),
+    template: require('../templates/pages/new-workout.pug'),
     initialize: function (options) {
 
         if (options.date) {
-            this.template = require('../templates/pages/edit-workout.jade');
+            this.template = require('../templates/pages/edit-workout.pug');
             this.date = options.date;
             var workoutSummary = App.workoutSummaries.get(options.date);
             if (!workoutSummary) {
-                this.template = require('../templates/pages/not-found.jade');
+                this.template = require('../templates/pages/not-found.pug');
             }
             else {
                 this.model.id = workoutSummary.id;

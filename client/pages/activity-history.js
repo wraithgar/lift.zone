@@ -6,7 +6,7 @@ var View = require('ampersand-view');
 var ActivityView = require('../views/activity-history');
 
 module.exports = View.extend({
-    template: require('../templates/pages/activity-history.jade'),
+    template: require('../templates/pages/activity-history.pug'),
     initialize: function () {
 
         this.model.fetch();

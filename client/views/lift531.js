@@ -3,7 +3,7 @@
 var View = require('ampersand-view');
 
 module.exports = View.extend({
-    template: require('../templates/views/lift531.jade'),
+    template: require('../templates/views/lift531.pug'),
     autoRender: true,
     render: function () {
 

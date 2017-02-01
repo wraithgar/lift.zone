@@ -7,7 +7,7 @@ var Dom = require('ampersand-dom');
 var LocalLinks = require('local-links');
 
 module.exports = View.extend({
-    template: require('./templates/body.jade'),
+    template: require('./templates/body.pug'),
     autoRender: true,
     events: {
         'click a[href]': 'handleLinkClick'

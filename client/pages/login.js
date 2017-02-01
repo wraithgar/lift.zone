@@ -4,7 +4,7 @@ var View = require('ampersand-view');
 var App = require('ampersand-app');
 
 module.exports = View.extend({
-    template: require('../templates/pages/login.jade'),
+    template: require('../templates/pages/login.pug'),
     events: {
         'submit form': 'authenticate'
     },

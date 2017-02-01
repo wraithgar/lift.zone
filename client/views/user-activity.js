@@ -5,7 +5,7 @@ var View = require('ampersand-view');
 var Sync = require('ampersand-sync');
 
 var AliasView = View.extend({
-    template: require('../templates/views/user-alias.jade'),
+    template: require('../templates/views/user-alias.pug'),
     bindings: {
         'model.name': {
             type: 'text',
@@ -47,7 +47,7 @@ var AliasView = View.extend({
 });
 
 var ActivityView = View.extend({
-    template: require('../templates/views/user-activity.jade'),
+    template: require('../templates/views/user-activity.pug'),
     bindings: {
         'model.name': {
             type: 'text',

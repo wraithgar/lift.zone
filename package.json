@@ -4,8 +4,8 @@
   "description": "Website to parse your workouts",
   "main": "server.js",
   "scripts": {
-    "start": "beefy client/app.js:js/bundle.js 8080 --index=./local/index.html --cwd=./assets -- -t [ jadeify --doctype html ]",
-    "build": "node build-static && mv config.js local-config.js && mv build-config.js config.js && browserify client/app.js -t [ jadeify --doctype html ] -p [ minifyify --no-map ] -o assets/js/bundle.js && mv config.js build-config.js && mv local-config.js config.js",
+    "start": "beefy client/app.js:js/bundle.js 8080 --index=./local/index.html --cwd=./assets -- -t [ pugify --doctype html ]",
+    "build": "node build-static && mv config.js local-config.js && mv build-config.js config.js && browserify client/app.js -t [ pugify --doctype html ] -p [ minifyify --no-map ] -o assets/js/bundle.js && mv config.js build-config.js && mv local-config.js config.js",
     "buildlocal": "node build-local",
     "lint": "eslint client",
     "validate": "npm ls"
@@ -42,13 +42,13 @@
     "eslint-config-hapi": "^10.0.0",
     "eslint-plugin-hapi": "^4.0.0",
     "git-validate": "^2.1.4",
-    "jade": "^1.11.0",
-    "jadeify": "^4.6.0",
     "local-links": "^1.4.0",
     "lodash.debounce": "^4.0.8",
     "lodash.foreach": "^4.5.0",
     "minifyify": "^7.3.3",
     "moment": "^2.14.1",
+    "pug": "^2.0.0-beta10",
+    "pugify": "^2.1.0",
     "xhr": "^2.2.2"
   },
   "pre-commit": [

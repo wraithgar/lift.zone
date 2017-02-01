@@ -3,7 +3,7 @@
 var View = require('ampersand-view');
 
 var RepView = View.extend({
-    template: require('../templates/views/bbcode-rep-long.jade'),
+    template: require('../templates/views/bbcode-rep-long.pug'),
     bindings: {
         'model.formattedFull': {
             type: 'text',
@@ -17,7 +17,7 @@ var RepView = View.extend({
 });
 
 module.exports = View.extend({
-    template: require('../templates/views/bbcode-activity.jade'),
+    template: require('../templates/views/bbcode-activity.pug'),
     bindings: {
         'model.displayName': {
             type: 'text',

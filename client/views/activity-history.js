@@ -3,7 +3,7 @@
 var View = require('ampersand-view');
 
 var SetView = View.extend({
-    template: require('../templates/views/activity-history-set.jade'),
+    template: require('../templates/views/activity-history-set.pug'),
     bindings: {
         'model.formattedShort': {
             type: 'text',
@@ -18,7 +18,7 @@ var SetView = View.extend({
 });
 
 module.exports = View.extend({
-    template: require('../templates/views/activity-history.jade'),
+    template: require('../templates/views/activity-history.pug'),
     render: function () {
 
         this.renderWithTemplate();

@@ -4,7 +4,7 @@ var View = require('ampersand-view');
 var RepView = require('../views/bbcode-rep');
 
 module.exports = View.extend({
-    template: require('../templates/views/bbcode.jade'),
+    template: require('../templates/views/bbcode.pug'),
     bindings: {
         'model.name': {
             type: 'text',

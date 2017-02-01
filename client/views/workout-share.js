@@ -7,7 +7,7 @@ var BBCodeActivityShortView = require('./bbcode-activity-short');
 var BBCodeActivityLongView = require('./bbcode-activity-long');
 
 module.exports = View.extend({
-    template: require('../templates/views/workout-share.jade'),
+    template: require('../templates/views/workout-share.pug'),
     session: {
         style: 'string'
     },

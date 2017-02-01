@@ -21,5 +21,5 @@ module.exports = View.extend({
             hook: 'workout-activities'
         }
     },
-    template: require('../templates/views/workout-summary.jade')
+    template: require('../templates/views/workout-summary.pug')
 });

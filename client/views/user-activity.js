@@ -49,6 +49,11 @@ var AliasView = View.extend({
 var ActivityView = View.extend({
     template: require('../templates/views/user-activity.pug'),
     bindings: {
+        'model.historyUrl': {
+            type: 'attribute',
+            name: 'href',
+            hook: 'name'
+        },
         'model.name': {
             type: 'text',
             hook: 'name'

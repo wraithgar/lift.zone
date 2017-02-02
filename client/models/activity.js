@@ -40,6 +40,16 @@ var ActivityModel = Model.extend(ApiModelMixin, {
 
                 return this.alias || this.name;
             }
+        },
+        historyUrl: {
+            deps: ['id'],
+            fn: function () {
+
+                if (this.id) {
+                    return '/activities/' + this.id + '/history';
+                }
+                return '#';
+            }
         }
     },
     collections: {

@@ -80,6 +80,9 @@ module.exports = View.extend({
         if (localPath) {
             e.preventDefault();
             App.navigate(localPath);
+            // Hacky way to get nav dropdowns to close.
+            e.target.blur();
+            setTimeout(document.body.click.bind(document.body), 0);
         }
     },
     setActiveNavItem: function () {

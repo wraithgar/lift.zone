@@ -9,8 +9,11 @@ div
           a(href='#') Menu
       section.top-bar-section
         ul.right(data-hook='menu')
-          li
+          li.has-dropdown
             a(href='/workouts') Workouts
+            ul.dropdown
+              li
+                a(href='/workouts/new') New
           li
             a(href='/activities') Activities
           li

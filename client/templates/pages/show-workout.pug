@@ -1,5 +1,11 @@
 section
   .row
+    ul.breadcrumbs
+      li
+        a(href='/workouts') Workouts
+      li.current
+        a(data-hook='workout-id')
+  .row
     .large-4.large-push-8.columns
       br
       a.radius.button.right(data-hook='edit-link') Edit this workout

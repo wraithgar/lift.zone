@@ -1,7 +1,10 @@
 section
   .row
+    ul.breadcrumbs
+      li.current
+        a(href='/activities') Activities
+  .row
     .small-12.columns
-      h1 Activities
       h5 Here you can add new activities, add aliases to those activities, or click #[b Promote] to make an alias the main name for an activity.
   hr
   form(data-abide, data-hook='activity-form')

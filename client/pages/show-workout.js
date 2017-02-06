@@ -78,6 +78,10 @@ module.exports = View.extend({
             type: 'attribute',
             hook: 'edit-link',
             name: 'href'
+        },
+        'model.dateId': {
+            type: 'text',
+            hook: 'workout-id'
         }
     },
     events: {
@@ -86,7 +90,7 @@ module.exports = View.extend({
     },
     render: function () {
 
-        this.renderWithTemplate(this);
+        this.renderWithTemplate();
         this.cacheElements({ deleteModal: '[data-hook=delete-modal]' });
         this.renderSubview(new WorkoutShareView({ model: this.model }), this.queryByHook('share-format'));
         this.renderSubview(new DeleteButtonsView({ model: this.model }), this.queryByHook('delete-modal'));

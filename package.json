@@ -35,7 +35,7 @@
     "ampersand-view-switcher": "^2.1.0",
     "beefy": "^2.1.8",
     "browserify": "^14.0.0",
-    "caber": "^4.2.5",
+    "caber": "^4.3.0",
     "debug": "^2.2.0",
     "domready": "^1.0.8",
     "eslint": "^3.15.0",

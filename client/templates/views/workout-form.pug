@@ -3,7 +3,7 @@ form
     .small-12.medium-6.columns
       .row
         .small-12.columns
-          textarea(data-hook='workout-input' rows=5 placeholder='Enter your workout here.', title='Workout' id='rawInput')
+          textarea(data-hook='workout-input' rows=5 placeholder='Enter your workout here.' title='Workout' id='rawInput' spellcheck='false')
           br
       .row.clearfix
         .small-12.medium-6.columns(data-hook='workout')
@@ -14,7 +14,7 @@ form
       h6 Activities
       p(data-hook='workout-activities')
 
-.reveal-modal(data-hook='new-activities', data-reveal)
+.reveal-modal(data-hook='new-activities' data-reveal)
   h3 New activities
   span There are new activities in this workout, please confirm them by clicking on the&#xa0;
   span.circle.info-bg-color
@@ -22,12 +22,12 @@ form
   span &#xa0;next to their names
   .clearfix
     a.button.tiny.radius.dismiss-reveal-modal.left Ok
-.reveal-modal(data-hook='workout-exists', data-reveal)
+.reveal-modal(data-hook='workout-exists' data-reveal)
   h3 Workout exists
   span There is already a workout for this day, either change the date or go edit the workout directly
   .clearfix
     a.button.tiny.radius.dismiss-reveal-modal.left Ok
-.reveal-modal(data-hook='workout-empty', data-reveal)
+.reveal-modal(data-hook='workout-empty' data-reveal)
   h3 No Activities
   span You need to enter at least one activity to save a workout
   .clearfix

@@ -7,15 +7,15 @@ section
     .small-12.columns
       h5 Here you can add new activities, add aliases to those activities, or click #[b Promote] to make an alias the main name for an activity.
   hr
-  form(data-abide, data-hook='activity-form')
+  form(data-abide data-hook='activity-form')
     .row
       .small-12.columns
         h3 New Activity
     .row
       .small-6.columns
-        input(type='text', name='activity', placeholder='New Activity Name')
+        input(type='text' name='activity' placeholder='New Activity Name' spellcheck='false')
       .small-6.columns
-        input.button.small.radius(type='submit', value='Add')
+        input.button.small.radius(type='submit' value='Add')
   .row
     .small-12.columns(data-hook='activities')
   .row.clearfix
@@ -23,7 +23,7 @@ section
       button.round.tiny.button.disabled.left(data-hook='activities-prev' disabled) &lArr;
     .small-6.columns
       button.round.tiny.button.disabled.right(data-hook='activities-next' disabled) &rArr;
-  .reveal-modal.small(data-hook='activity-exists', data-reveal)
+  .reveal-modal.small(data-hook='activity-exists' data-reveal)
     h3 Error
     p That activity already exists
     .clearfix

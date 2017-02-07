@@ -1,22 +1,22 @@
 .row.panel.radius
   .large-1.columns
-    h6.has-tip(data-tooltip, aria-haspopup-true, title='This is the name that will show up in your workouts') Activity
+    h6.has-tip(data-tooltip aria-haspopup-true title='This is the name that will show up in your workouts') Activity
   .large-2.columns
     a(data-hook='name')
   .large-1.columns
-    h6.has-tip(data-tooltip, aria-haspopup-true, title='These are the names you can type that will be aliased to the main activity in your workouts') Aliases
+    h6.has-tip(data-tooltip aria-haspopup-true title='These are the names you can type that will be aliased to the main activity in your workouts') Aliases
   .large-4.columns
     p(data-hook='aliases')
   .large-4.columns
     .row
       .small-6.columns
-    form(data-abide, data-hook='alias-form')
+    form(data-abide data-hook='alias-form')
       .row
         .small-6.columns
-          input(type='text' name='alias', placeholder='New Alias')
+          input(type='text' name='alias' placeholder='New Alias' spellcheck='false')
         .small-6.columns
-          input.button.tiny.radius(type='submit', value='Add')
-  .reveal-modal(data-hook='alias-exists', data-reveal)
+          input.button.tiny.radius(type='submit' value='Add')
+  .reveal-modal(data-hook='alias-exists' data-reveal)
     h3 Error
     span That activity already exists
     .clearfix

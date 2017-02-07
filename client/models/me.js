@@ -74,6 +74,16 @@ module.exports = Model.extend(ApiMixin, {
                 }
                 return '/login';
             }
+        },
+        weightLb: {
+            deps: ['preferences'],
+            fn: function () {
+
+                if (this.preferences.weightUnit === 'lb') {
+                    return true;
+                }
+                return false;
+            }
         }
     },
     session: {

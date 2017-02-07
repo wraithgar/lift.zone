@@ -28,7 +28,17 @@ module.exports = View.extend({
             type: 'booleanAttribute',
             name: 'checked',
             selector: '[name=visible]'
-        }
+        },
+        'model.weightLb': [{
+            type: 'booleanAttribute',
+            name: 'checked',
+            hook: 'weight-unit-lb'
+        },{
+            type: 'booleanAttribute',
+            name: 'checked',
+            invert: true,
+            hook: 'weight-unit-kg'
+        }]
     },
     events: {
         'submit form': 'update'
@@ -50,10 +60,21 @@ module.exports = View.extend({
         var currentPassword = self.query('[name=currentPassword]').value;
         var newPassword = self.query('[name=newPassword]').value;
         var confirmPassword = self.query('[name=confirmPassword]').value;
+        var weightUnit = self.query('[name=weightUnit]:checked').value;
         var attrs = {};
+        var hasPreferences = false;
+
+        attrs.preferences = Object.assign({}, self.model.preferences);
         if (visible !== self.model.preferences.visible) {
-            attrs.preferences = Object.assign({}, self.model.preferences);
+            hasPreferences = true;
             attrs.preferences.visible = visible;
+        }
+        if (weightUnit !== self.model.preferences.weightUnit) {
+            hasPreferences = true;
+            attrs.preferences.weightUnit = weightUnit;
+        }
+        if (!hasPreferences) {
+            delete attrs.preferences;
         }
         attrs.currentPassword = currentPassword;
         if (name !== self.model.name) {

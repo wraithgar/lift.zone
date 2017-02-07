@@ -46,6 +46,15 @@ section
             label(for='visible')
       .row
         .small-4.columns
+          label.right Weight Unit
+            span.has-tip(data-tooltip, aria-haspopup-true, title='Choose your default weight unit, lb or kg') #[sup ?]
+        .small-8.columns
+          input(id='weightUnitLb' type='radio' name='weightUnit' value='lb' data-hook='weight-unit-lb')
+          label(for='weightUnitLb') LB
+          input(id='weightUnitKg' type='radio' name='weightUnit' value='kg' data-hook='weight-unit-kg')
+          label(for='weightUnitKg') KG
+      .row
+        .small-4.columns
           label.right Validation
         .small-8.columns
           p.alert-box.success.radius.text-center(data-hook='validated') Your email address is validated

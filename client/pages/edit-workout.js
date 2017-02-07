@@ -165,7 +165,7 @@ module.exports = View.extend({
             this.model.activities.reset();
             return;
         }
-        var workout = Caber.workout(data);
+        var workout = Caber.workout(data, App.me.preferences.weightUnit);
         if (workout.name) {
             this.model.name = workout.name;
         }

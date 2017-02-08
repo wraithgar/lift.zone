@@ -14,7 +14,8 @@ var pages = [
     ['pages/privacy.pug', 'privacy'],
     ['pages/tools.pug', 'tools'],
     ['pages/login.pug', 'login'],
-    ['pages/news.pug', 'news']
+    ['pages/news.pug', 'news'],
+    ['pages/old-news.pug', 'old-news']
 ];
 
 var bodyPug = Fs.readFileSync('./client/templates/body.pug').toString();

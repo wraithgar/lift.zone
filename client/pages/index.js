@@ -13,6 +13,7 @@ module.exports = {
     login: require('./login'),
     me: require('./me'),
     news: require('./news'),
+    oldNews: require('./old-news'),
     privacy: require('./privacy'),
     publicWorkout: require('./public-workout'),
     recover: require('./recover'),

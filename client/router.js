@@ -19,6 +19,7 @@ module.exports = Router.extend({
         '': 'home',
         'about': 'about',
         'news': 'news',
+        'old-news': 'oldNews',
         'login': 'login',
         'signup': 'signup',
         'privacy': 'privacy',
@@ -63,6 +64,10 @@ module.exports = Router.extend({
     news: function () {
 
         this.trigger('page', new Pages.news());
+    },
+    oldNews: function () {
+
+        this.trigger('page', new Pages.oldNews());
     },
     login: function () {
 

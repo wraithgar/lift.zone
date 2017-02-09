@@ -4,14 +4,12 @@ section
       li.current
         a(href='/workouts') Workouts
   .row
-    .medium-3.medium-offset-9.small-12.columns
-      br
-      a.radius.button.right(href='/workouts/new') New workout
-  hr
+    .small-12.columns
+      h5 Here are some workouts you've logged, click on the name of one to view it.  Use the arrow buttons below to find more.
+      h5 To log a new workout, click #[b New workout] below.
+    hr
   .row
-    .medium-6.columns
-      p Here are some workouts you've logged, click on the name of one to view it.  Use the arrows below to find more.
-    .medium-6.columns
+    .medium-9.columns
       .row
         .small-12.columns
           p(data-hook='summaries')
@@ -20,3 +18,5 @@ section
           button.round.tiny.button.left(data-hook='workouts-prev') &lArr;
         .small-6.columns
           button.round.tiny.button.disabled.right(data-hook='workouts-next' disabled) &rArr;
+    .medium-3.columns
+      a.radius.large.button(href='/workouts/new') New workout

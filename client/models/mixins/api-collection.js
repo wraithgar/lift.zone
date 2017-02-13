@@ -61,7 +61,7 @@ module.exports = {
             var link = resp.headers.link;
             if (link) {
                 //Adapted from https://github.com/mikedeboer/node-github/blob/7f7e14b4fc3e64110bb7b9b069674ef804f4a0f6/index.js#L414
-                link.replace(/<([^>]*)>;\s*rel=([\w]*)/g, function (m, uri, type) {
+                link.replace(/<([^>]*)>;\s*rel="([\w]*)"/g, function (m, uri, type) {
 
                     self.links[type] = uri;
                 });

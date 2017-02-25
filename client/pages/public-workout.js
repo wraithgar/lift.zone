@@ -4,6 +4,20 @@ var View = require('ampersand-view');
 var ActivityView = require('../views/workout-activity');
 var ActivityShortView = require('../views/workout-activity-short');
 
+var ActivityBindings = Object.assign({}, ActivityView.prototype.bindings);
+var ActivityShortBindings = Object.assign({}, ActivityShortView.prototype.bindings);
+
+delete ActivityBindings['model.historyUrl'];
+delete ActivityShortBindings['model.historyUrl'];
+
+var PublicActivityView = ActivityView.extend({
+    bindings: ActivityBindings
+});
+
+var PublicActivityShortView = ActivityShortView.extend({
+    bindings: ActivityShortBindings
+});
+
 module.exports = View.extend({
     template: require('../templates/pages/public-workout.pug'),
     initialize: function () {
@@ -55,8 +69,8 @@ module.exports = View.extend({
 
         var self = this;
         self.renderWithTemplate();
-        self.renderCollection(self.model.activities, ActivityView, self.queryByHook('activities-long'));
-        self.renderCollection(self.model.activities, ActivityShortView, self.queryByHook('activities-short'));
+        self.renderCollection(self.model.activities, PublicActivityView, self.queryByHook('activities-long'));
+        self.renderCollection(self.model.activities, PublicActivityShortView, self.queryByHook('activities-short'));
         self.model.fetchPublic({
             error: function () {
 

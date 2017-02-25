@@ -17,7 +17,9 @@
       label(for='markdown-short') BBCode (long)
   .row(data-hook='markdown-short-share')
     .medium-8.medium-centered.columns
-      .row
+      .row(data-hook='no-share-link')
+        .small-12.columns #&nbsp;#[span(data-hook='workout-name')]
+      .row(data-hook='show-share-link')
         .small-12.columns #&nbsp;[#[span(data-hook='workout-name')]](#[span(data-hook='share-link')])
       .row
         .small-12.columns ###&nbsp;
@@ -28,7 +30,9 @@
           span(data-hook='activities-markdown-short')
   .row(data-hook='markdown-long-share')
     .medium-8.medium-centered.columns
-      .row
+      .row(data-hook='no-share-link')
+        .small-12.columns #&nbsp;#[span(data-hook='workout-name')]
+      .row(data-hook='show-share-link')
         .small-12.columns #&nbsp;[#[span(data-hook='workout-name')]](#[span(data-hook='share-link')])
       .row
         .small-12.columns ###&nbsp;
@@ -39,13 +43,17 @@
           span(data-hook='activities-markdown-long')
   .row(data-hook='bbcode-short-share')
     .medium-8.medium-centered.columns(data-hook='activities-bbcode-short')
-      .row
+      .row(data-hook='no-share-link')
+        .small-12.columns [b]#[span(data-hook='workout-name')][/b]
+      .row(data-hook='show-share-link')
         .small-12.columns [b][url=#[span(data-hook='share-link')]]#[span(data-hook='workout-name')][/url][/b]
       .row
         .small-12.columns [b]#[span(data-hook='workout-date')][/b]
   .row(data-hook='bbcode-long-share')
     .medium-8.medium-centered.columns(data-hook='activities-bbcode-long')
-      .row
+      .row(data-hook='no-share-link')
+        .small-12.columns [b]#[span(data-hook='workout-name')][/b]
+      .row(data-hook='show-share-link')
         .small-12.columns [b][url=#[span(data-hook='share-link')]]#[span(data-hook='workout-name')][/url][/b]
       .row
         .small-12.columns [b]#[span(data-hook='workout-date')][/b]

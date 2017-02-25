@@ -49,10 +49,14 @@ module.exports = View.extend({
             type: 'text',
             hook: 'share-link'
         }],
-        'model.canShare': {
+        'model.canShare': [{
             type: 'toggle',
             hook: 'show-share-link'
-        }
+        }, {
+            type: 'toggle',
+            hook: 'no-share-link',
+            invert: true
+        }]
     },
     events: {
         'click [name=share-style]': 'changeStyle'

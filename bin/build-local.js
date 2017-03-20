@@ -1,10 +1,11 @@
+#!/usr/bin/env node
 'use strict';
 
 var Pug = require('pug');
 var Fs = require('fs');
 var Path = require('path');
 var log = require('debug')('lift.zone');
-const Config = require('./config.js');
+const Config = require('../configs/local.js');
 
 //This is a little hard coded but whatever
 //[pug, html]
@@ -23,5 +24,5 @@ pages.forEach((page) => {
     var pageBodyPug = bodyPug.replace('block page', pageHtml);
     var pageBodyHtml = Pug.render(pageBodyPug, { assetsUrl: Config.ASSETSURL });
     var pageIndexHtml = Pug.render(indexPug.replace('block body', pageBodyHtml), { assetsUrl: Config.ASSETSURL });
-    Fs.writeFileSync(Path.join(Config.BUILDDIR, page[1]), pageIndexHtml);
+    Fs.writeFileSync(Path.join('./local', page[1]), pageIndexHtml);
 });

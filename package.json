@@ -4,9 +4,12 @@
   "description": "Website to parse your workouts",
   "main": "server.js",
   "scripts": {
-    "start": "beefy client/app.js:js/bundle.js 8080 --index=./local/index.html --cwd=./assets -- -t [ pugify --doctype html ]",
-    "build": "node build-static && mv config.js local-config.js && mv build-config.js config.js && browserify client/app.js -t [ pugify --doctype html ] -p [ minifyify --no-map ] -o assets/js/bundle.js && mv config.js build-config.js && mv local-config.js config.js",
-    "buildlocal": "node build-local",
+    "start": "command cp -f configs/local.js config.js && beefy client/app.js:js/bundle.js 8080 --index=./local/index.html --cwd=./assets -- -t [ pugify --doctype html ]",
+    "buildproduction": "bin/build-production.js && command cp -f configs/production.js config.js && browserify client/app.js -t [ pugify --doctype html ] -p [ minifyify --no-map ] -o production-assets/js/bundle.js",
+    "buildstaging": "bin/build-staging.js && command cp -f configs/staging.js config.js && browserify client/app.js -t [ pugify --doctype html ] -p [ minifyify --no-map ] -o staging-assets/js/bundle.js",
+    "buildlocal": "bin/build-local.js",
+    "deployproduction": "bin/build-production.js && bin/deploy-production.sh",
+    "deploystaging": "bin/build-staging.js && bin/deploy-staging.sh",
     "lint": "eslint client",
     "validate": "npm ls"
   },
